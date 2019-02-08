@@ -1,0 +1,39 @@
+package supplyChainModel.agents;
+
+import repast.simphony.context.Context;
+import supplyChainModel.enums.SCType;
+
+public class AgentDistributor extends BaseAgent {
+	
+	public AgentDistributor(final Context<Object> context, String name, SCType scType, CountryAgent country) {
+		super(context, country, scType);
+		
+		this.name = name;
+	}
+	
+	@Override
+	public void step_2_receive_shipment() {
+		//This is done by the shipments
+	}
+	
+	@Override
+	public void step_3_choose_suppliers_and_buyers() {
+		searchBuyers();
+		searchSuppliers();
+	}
+	
+	@Override
+	public void step_4_send_shipment() {
+		sendShipment();
+	}
+	
+	@Override
+	public void step_5_receive_order() {
+		updateOrders();
+	}
+	
+	@Override
+	public void step_6_send_order() {
+		sendOrders();
+	}
+}

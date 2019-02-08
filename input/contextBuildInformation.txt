@@ -1,0 +1,9 @@
+%Name,types[0=0,1=1,2=234,3=34],
+South America,0
+International,1
+The Netherlands,2
+Spain,2
+United Kingdom,3
+Germany,3
+France,3
+Italy,3
