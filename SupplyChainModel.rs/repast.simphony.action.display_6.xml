@@ -1,0 +1,190 @@
+<repast.simphony.visualization.engine.CartesianDisplayDescriptor simphonyVersion="2.6.0">
+  <name>Old Display</name>
+  <type>2D</type>
+  <styles>
+    <entry>
+      <string>supplyChainModel.support.Shipment</string>
+      <string>supplyChainModel.styles.ShipmentStyle2D</string>
+    </entry>
+    <entry>
+      <string>supplyChainModel.common.DataCollector</string>
+      <string>supplyChainModel.styles.DataCollector2D</string>
+    </entry>
+    <entry>
+      <string>supplyChainModel.agents.BaseAgent</string>
+      <string>supplyChainModel.styles.AgentStyle2D</string>
+    </entry>
+    <entry>
+      <string>supplyChainModel.agents.CountryAgent</string>
+      <string>supplyChainModel.styles.CountryAgentStyle2D</string>
+    </entry>
+  </styles>
+  <editedStyles>
+    <entry>
+      <string>supplyChainModel.support.Shipment</string>
+      <null/>
+    </entry>
+    <entry>
+      <string>supplyChainModel.common.DataCollector</string>
+      <null/>
+    </entry>
+    <entry>
+      <string>supplyChainModel.agents.BaseAgent</string>
+      <null/>
+    </entry>
+    <entry>
+      <string>supplyChainModel.agents.CountryAgent</string>
+      <null/>
+    </entry>
+  </editedStyles>
+  <netStyles>
+    <entry>
+      <string>sc network reversed</string>
+      <string>supplyChainModel.styles.SCReversedEdgeStyleOGL2D2</string>
+    </entry>
+    <entry>
+      <string>sc network</string>
+      <string>supplyChainModel.styles.SCEdgeStyleOGL2D</string>
+    </entry>
+  </netStyles>
+  <editedNetStyles>
+    <entry>
+      <string>sc network reversed</string>
+      <null/>
+    </entry>
+    <entry>
+      <string>sc network</string>
+      <null/>
+    </entry>
+  </editedNetStyles>
+  <frequency>ON_MOVE</frequency>
+  <schedParams>
+    <start>1.0</start>
+    <interval>1.0</interval>
+    <priority>-Infinity</priority>
+    <pType>LAST</pType>
+    <duration>-1.0</duration>
+    <frequency>REPEAT</frequency>
+    <hashCode>-2058683654</hashCode>
+  </schedParams>
+  <layoutClassName>foo.bar.baz</layoutClassName>
+  <layoutProjection>grid</layoutProjection>
+  <layoutInterval>0</layoutInterval>
+  <layerOrder>
+    <entry>
+      <string>supplyChainModel.support.Shipment</string>
+      <int>3</int>
+    </entry>
+    <entry>
+      <string>supplyChainModel.common.DataCollector</string>
+      <int>1</int>
+    </entry>
+    <entry>
+      <string>supplyChainModel.agents.BaseAgent</string>
+      <int>2</int>
+    </entry>
+    <entry>
+      <string>supplyChainModel.agents.CountryAgent</string>
+      <int>0</int>
+    </entry>
+  </layerOrder>
+  <projections>
+    <repast.simphony.scenario.data.ProjectionData>
+      <id>continuous space</id>
+      <attributes/>
+      <type>continuous space</type>
+    </repast.simphony.scenario.data.ProjectionData>
+    <repast.simphony.scenario.data.ProjectionData>
+      <id>grid</id>
+      <attributes/>
+      <type>grid</type>
+    </repast.simphony.scenario.data.ProjectionData>
+    <repast.simphony.scenario.data.ProjectionData>
+      <id>sc network</id>
+      <attributes/>
+      <type>network</type>
+    </repast.simphony.scenario.data.ProjectionData>
+    <repast.simphony.scenario.data.ProjectionData>
+      <id>sc network reversed</id>
+      <attributes/>
+      <type>network</type>
+    </repast.simphony.scenario.data.ProjectionData>
+  </projections>
+  <visualizationProperties class="repast.simphony.visualization.UnitSizeLayoutProperties">
+    <unitSize>40.0</unitSize>
+  </visualizationProperties>
+  <projectionDescriptors>
+    <entry>
+      <string>sc network reversed</string>
+      <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[4]"/>
+        <props/>
+      </repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+    </entry>
+    <entry>
+      <string>continuous space</string>
+      <repast.simphony.visualization.continuous.ContinuousProjectionDescriptor>
+        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData"/>
+        <props>
+          <entry>
+            <string>repast.simphony.visualization.continuous.ContinuousDecorator</string>
+            <map>
+              <entry>
+                <string>COLOR</string>
+                <int>-13421569</int>
+              </entry>
+              <entry>
+                <string>UNIT_SIZE</string>
+                <float>40.0</float>
+              </entry>
+              <entry>
+                <string>SHOW</string>
+                <boolean>true</boolean>
+              </entry>
+            </map>
+          </entry>
+        </props>
+      </repast.simphony.visualization.continuous.ContinuousProjectionDescriptor>
+    </entry>
+    <entry>
+      <string>sc network</string>
+      <repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[3]"/>
+        <props/>
+      </repast.simphony.visualization.engine.DefaultProjectionDescriptor>
+    </entry>
+    <entry>
+      <string>grid</string>
+      <repast.simphony.visualization.grid.GridProjectionDescriptor>
+        <proj reference="../../../../projections/repast.simphony.scenario.data.ProjectionData[2]"/>
+        <props>
+          <entry>
+            <string>repast.simphony.visualization.grid.GridDecorator</string>
+            <map>
+              <entry>
+                <string>COLOR</string>
+                <int>-3355444</int>
+              </entry>
+              <entry>
+                <string>UNIT_SIZE</string>
+                <float>40.0</float>
+              </entry>
+              <entry>
+                <string>SHOW</string>
+                <boolean>true</boolean>
+              </entry>
+            </map>
+          </entry>
+        </props>
+      </repast.simphony.visualization.grid.GridProjectionDescriptor>
+    </entry>
+  </projectionDescriptors>
+  <props/>
+  <backgroundColor>
+    <red>255</red>
+    <green>255</green>
+    <blue>255</blue>
+    <alpha>255</alpha>
+  </backgroundColor>
+  <valueLayers/>
+</repast.simphony.visualization.engine.CartesianDisplayDescriptor>

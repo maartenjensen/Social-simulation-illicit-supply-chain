@@ -56,7 +56,7 @@ public class AgentConsumer extends BaseAgent {
 	}
 	
 	public String getLabel() {
-		return name + id + String.format(", $:%.1f, *:%.1f, #:%.1f", money, stock, baseConsumption);
+		return id + String.format(", $:%.1f, *:%.1f, #:%.1f", money, stock, baseConsumption);
 	}
 	
 	public Color getColor() {

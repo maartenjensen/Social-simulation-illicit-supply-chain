@@ -16,11 +16,20 @@
   <atEnd>false</atEnd>
   <methodDataSources class="linked-hash-map">
     <entry>
-      <string>Satisfied</string>
+      <string>Stock Spain</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Satisfied</id>
-        <className>supplyChainModel.agents.AgentConsumer</className>
-        <methodName>getSatisfied</methodName>
+        <id>Stock Spain</id>
+        <className>supplyChainModel.common.DataCollector</className>
+        <methodName>getStockCurrentES</methodName>
+        <aggType>SUM</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Stock The Netherlands</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Stock The Netherlands</id>
+        <className>supplyChainModel.common.DataCollector</className>
+        <methodName>getStockCurrentNL</methodName>
         <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>

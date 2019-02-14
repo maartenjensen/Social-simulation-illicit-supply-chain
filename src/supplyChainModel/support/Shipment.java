@@ -1,5 +1,6 @@
 package supplyChainModel.support;
 
+import repast.simphony.context.Context;
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.NdPoint;
@@ -17,12 +18,15 @@ public class Shipment {
 	private double moveSpeed = 0;
 	private double moveHeading = 0;
 	
-	public Shipment(double size, int step, BaseAgent supplier, BaseAgent buyer) {
+	public Shipment(final Context<Object> context, double size, int step, BaseAgent supplier, BaseAgent buyer) {
 
+		context.add(this);
 		this.size = size;
 		this.step = step;
 		this.supplier = supplier;
 		this.buyer = buyer;
+		
+		setStartPosition();
 	}
 	
 	/**
@@ -62,7 +66,7 @@ public class Shipment {
 	public double getSize() {
 		return size;
 	}
-	
+
 	public String getLabel() {
 		return String.format("%.2f", size);
 	}

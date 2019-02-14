@@ -21,6 +21,7 @@ public class AgentProducer extends BaseAgent {
 		}
 		int stockIncrease = RandomHelper.nextIntFromTo(2, 6);
 		stock += stockIncrease;
+		totalImport += stockIncrease;
 		Logger.logInfoId(id, getNameId() + (stock + stockIncrease) + " - " + stockIncrease + " = " + stock);
 	}
 	

@@ -52,7 +52,7 @@ public class CountryAgent {
 	private ArrayList<Integer> createCountryPoints() {
 
 		ArrayList<Integer> emptyCountryPoints = new ArrayList<Integer>();
-		for (int y = this.y; y < this.y + height; y ++) {
+		for (int y = this.y; y > this.y - height; y --) {
 				emptyCountryPoints.add(y);
 		}
 		return emptyCountryPoints;
@@ -75,7 +75,7 @@ public class CountryAgent {
 				}
 		}
 		Logger.logInfo("No free point in " + name);
-		return new Point(scType.getX(), this.y + height/2);
+		return new Point(scType.getX(), this.y - height/2);
 	}
 	
 	public boolean containsSCType(SCType scType) {
@@ -84,5 +84,9 @@ public class CountryAgent {
 			return true;
 		else
 			return false;
+	}
+	
+	public String getName() {
+		return name;
 	}
 }

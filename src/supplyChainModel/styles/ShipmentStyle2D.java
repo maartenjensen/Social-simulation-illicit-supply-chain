@@ -18,12 +18,12 @@ public class ShipmentStyle2D extends DefaultStyleOGL2D {
 		
 		return null;
 	}
-	
+
 	@Override
 	public float getScale(Object o) {
-		if (o instanceof Shipment)
-			return (float) (1 + (((Shipment)o).getSize() * 0.5));
-		
+		if (o instanceof Shipment) {
+			return (float) (1 + (((Shipment)o).getSize() * 0.25));
+		}
 		return 2f;
 	}
 	
@@ -31,7 +31,8 @@ public class ShipmentStyle2D extends DefaultStyleOGL2D {
 	public String getLabel(Object object) {
 
 		if (object instanceof Shipment) {
-			return ((Shipment) object).getLabel();
+			final Shipment shipment = (Shipment) object;
+			return shipment.getLabel();
 		}
 		
 		return "Warning label not found for object";

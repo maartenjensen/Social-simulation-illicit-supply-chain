@@ -24,6 +24,6 @@ public class SCReversedEdgeStyleOGL2D2 extends DefaultEdgeStyleOGL2D {
 	@Override
 	public int getLineWidth(RepastEdge<?> edge) {
 		
-		return 3;
+		return 1;
 	}
 }

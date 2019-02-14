@@ -19,6 +19,7 @@ import supplyChainModel.agents.AgentProducer;
 import supplyChainModel.agents.CountryAgent;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.ContextDataLoader;
+import supplyChainModel.common.DataCollector;
 import supplyChainModel.common.Logger;
 import supplyChainModel.common.RepastParam;
 import supplyChainModel.common.SU;
@@ -42,10 +43,13 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		
 		RepastParam.setRepastParameters();
 		
+		new DataCollector(context);
+		
 		// Create the supply chain
 		ContextDataLoader countryLoader = new ContextDataLoader();
 		countryLoader.readFullFile(context,"./input","contextBuildInformation");
 		supplyChainCreation(context);
+		
 		
 		// If running in batch mode, tell the scheduler when to end each run.
 		if (RunEnvironment.getInstance().isBatch()){
@@ -71,31 +75,31 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		for (CountryAgent country : countryAgents) {
 			
 			if (country.containsSCType(SCType.PRODUCER)) {
-				for (int i = 0; i < 8; i++) {
+				for (int i = 0; i < 12; i++) {
 					new AgentProducer(context, SCType.PRODUCER, country);
 				}
 			}
 			
 			if (country.containsSCType(SCType.INTERNATIONAL)) {
-				for (int i = 0; i < 4; i++) {
+				for (int i = 0; i < 6; i++) {
 					 new AgentDistributor(context, "I", SCType.INTERNATIONAL, country);
 				}
 			}
 			
 			if (country.containsSCType(SCType.WHOLESALER)) {
-				for (int i = 0; i < 2; i++) {
+				for (int i = 0; i < 3; i++) {
 					new AgentDistributor(context, "W", SCType.WHOLESALER, country);
 				}
 			}
 			
 			if (country.containsSCType(SCType.RETAIL)) {
-				for (int i = 0; i < 1; i++) {
+				for (int i = 0; i < 2; i++) {
 					new AgentDistributor(context, "R", SCType.RETAIL, country);
 				}
 			}
 			
 			if (country.containsSCType(SCType.CONSUMER)) {
-				for (int i = 0; i < 2; i++) {
+				for (int i = 0; i < 3; i++) {
 					new AgentConsumer(context, SCType.CONSUMER, country);
 				}
 			}

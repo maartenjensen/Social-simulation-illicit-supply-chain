@@ -5,38 +5,26 @@ import java.awt.Font;
 
 import repast.simphony.visualizationOGL2D.DefaultStyleOGL2D;
 import saf.v3d.scene.Position;
-import supplyChainModel.agents.CountryAgent;
 import supplyChainModel.common.Constants;
 
-public class CountryAgentStyle2D extends DefaultStyleOGL2D {
+public class DataCollector2D extends DefaultStyleOGL2D {
 
 	@Override
 	public Color getColor(Object o){
 		
-		if (o instanceof CountryAgent) {
-			return Color.CYAN;				
-		}
-		
-		return null;
+		return Color.BLACK;
 	}
 	
 	@Override
 	public float getScale(Object o) {
-		if (o instanceof CountryAgent)
-			return 1f;
 		
-		return 2f;
+		return 1f;
 	}
 	
 	@Override
 	public String getLabel(Object object) {
-
-		if (object instanceof CountryAgent) {
-			final CountryAgent agent = (CountryAgent) object;
-			return agent.getLabel();
-		}
 		
-		return "Warning label not found for object";
+		return "Collector";
 	}
 
 	@Override
@@ -47,6 +35,6 @@ public class CountryAgentStyle2D extends DefaultStyleOGL2D {
 	
 	@Override
 	public Position getLabelPosition(Object object) {
-	    return Position.NORTH_EAST;
+	    return Position.SOUTH_EAST;
 	}
 }

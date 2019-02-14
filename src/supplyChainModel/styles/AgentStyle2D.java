@@ -15,8 +15,7 @@ public class AgentStyle2D extends DefaultStyleOGL2D {
 		
 		if (o instanceof BaseAgent) {
 			BaseAgent scNode = (BaseAgent)o;
-			return scNode.getColor();
-				
+			return scNode.getColor();	
 		}
 		
 		return null;
@@ -49,6 +48,6 @@ public class AgentStyle2D extends DefaultStyleOGL2D {
 	
 	@Override
 	public Position getLabelPosition(Object object) {
-	    return Position.SOUTH;
+	    return Position.SOUTH_EAST;
 	}
 }

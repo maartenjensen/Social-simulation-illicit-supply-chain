@@ -1,10 +1,14 @@
 <repast.simphony.visualization.engine.CartesianDisplayDescriptor simphonyVersion="2.6.0">
-  <name>Main Display</name>
+  <name>1. Main Display</name>
   <type>2D</type>
   <styles>
     <entry>
       <string>supplyChainModel.support.Shipment</string>
       <string>supplyChainModel.styles.ShipmentStyle2D</string>
+    </entry>
+    <entry>
+      <string>supplyChainModel.common.DataCollector</string>
+      <string>supplyChainModel.styles.DataCollector2D</string>
     </entry>
     <entry>
       <string>supplyChainModel.agents.BaseAgent</string>
@@ -18,6 +22,10 @@
   <editedStyles>
     <entry>
       <string>supplyChainModel.support.Shipment</string>
+      <null/>
+    </entry>
+    <entry>
+      <string>supplyChainModel.common.DataCollector</string>
       <null/>
     </entry>
     <entry>
@@ -57,7 +65,7 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>-1969432548</hashCode>
+    <hashCode>-2058683654</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>continuous space</layoutProjection>
@@ -65,15 +73,19 @@
   <layerOrder>
     <entry>
       <string>supplyChainModel.support.Shipment</string>
-      <int>1</int>
-    </entry>
-    <entry>
-      <string>supplyChainModel.agents.BaseAgent</string>
       <int>2</int>
     </entry>
     <entry>
-      <string>supplyChainModel.agents.CountryAgent</string>
+      <string>supplyChainModel.common.DataCollector</string>
       <int>0</int>
+    </entry>
+    <entry>
+      <string>supplyChainModel.agents.BaseAgent</string>
+      <int>3</int>
+    </entry>
+    <entry>
+      <string>supplyChainModel.agents.CountryAgent</string>
+      <int>1</int>
     </entry>
   </layerOrder>
   <projections>
@@ -99,7 +111,7 @@
     </repast.simphony.scenario.data.ProjectionData>
   </projections>
   <visualizationProperties class="repast.simphony.visualization.UnitSizeLayoutProperties">
-    <unitSize>50.0</unitSize>
+    <unitSize>40.0</unitSize>
   </visualizationProperties>
   <projectionDescriptors>
     <entry>
@@ -119,11 +131,11 @@
             <map>
               <entry>
                 <string>COLOR</string>
-                <int>-13421569</int>
+                <int>-6697729</int>
               </entry>
               <entry>
                 <string>UNIT_SIZE</string>
-                <float>50.0</float>
+                <float>40.0</float>
               </entry>
               <entry>
                 <string>SHOW</string>
@@ -155,7 +167,7 @@
               </entry>
               <entry>
                 <string>UNIT_SIZE</string>
-                <float>50.0</float>
+                <float>40.0</float>
               </entry>
               <entry>
                 <string>SHOW</string>

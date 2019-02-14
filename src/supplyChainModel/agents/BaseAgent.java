@@ -3,6 +3,7 @@ package supplyChainModel.agents;
 import java.awt.Color;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,6 +31,7 @@ public class BaseAgent {
 	
 	protected double securityStock = RepastParam.getSecurityStock();
 	protected double stock = securityStock;
+	protected double totalImport = stock;
 	protected double money = 0;
 	
 	protected double supplyNeeded = 0;
@@ -64,7 +66,7 @@ public class BaseAgent {
 		Logger.logInfo(getNameId() + " pos:[" + newPos.x + ", " + newPos.y + "]");
 		
 		SU.getContinuousSpace().moveTo(this, newPos.getX(), newPos.getY());	
-		SU.getGrid().moveTo(this, newPos.x, (int) newPos.y);
+		SU.getGrid().moveTo(this, newPos.x, newPos.y);
 	}
 	
 	/*====================================
@@ -114,25 +116,36 @@ public class BaseAgent {
 			trustOther.get(supplierId).addShipmentReceived(size);
 		}
 		stock += size;
+		totalImport += size;
 	}
 
-	public ArrayList<BaseAgent> getBuyers() { //TODO shuffle buyers
+	/**
+	 * Retrieve buyers that are connected to this supplier
+	 * @return the ArrayList of buyers
+	 */
+	public ArrayList<BaseAgent> myBuyers() {
 	
 		final Iterable<RepastEdge<Object>> objects = (Iterable<RepastEdge<Object>>) SU.getNetworkSC().getOutEdges(this);
 		final ArrayList<BaseAgent> objectList = new ArrayList<BaseAgent>();
 		for (final RepastEdge<Object> edge : objects) {
 			objectList.add((BaseAgent) edge.getTarget());
 		}
+		Collections.shuffle(objectList);
 		return objectList;
 	}
 
-	public ArrayList<BaseAgent> getSuppliers() { //TODO shuffle suppliers
+	/**
+	 * Retrieve suppliers that are connected to this buyer
+	 * @return the ArrayList of suppliers
+	 */
+	public ArrayList<BaseAgent> getSuppliers() {
 		
 		final Iterable<RepastEdge<Object>> objects = (Iterable<RepastEdge<Object>>) SU.getNetworkSC().getInEdges(this);
 		final ArrayList<BaseAgent> objectList = new ArrayList<BaseAgent>();
 		for (final RepastEdge<Object> edge : objects) {
 			objectList.add((BaseAgent) edge.getSource());
 		}
+		Collections.shuffle(objectList);
 		return objectList;
 	}
 	
@@ -143,8 +156,14 @@ public class BaseAgent {
 			
 			ArrayList<BaseAgent> suppliers = SU.getObjectsAllRandom(BaseAgent.class);
 			for (BaseAgent supplier : suppliers) {
+				
+				// Condition for layer
 				if (supplier.getScLayer() == (scType.getScLayer() - 1)) {
 					
+					// Countries should match up between retail and consumers
+					if (supplier.getScType() == SCType.RETAIL && !supplier.getCountry().equals(this.getCountry())) {
+						break;
+					}
 					addSupplier(supplier);
 					supplier.addBuyer(this);
 					break;
@@ -163,6 +182,10 @@ public class BaseAgent {
 			for (BaseAgent buyer : buyers) {
 				if (buyer.getScLayer() == (scType.getScLayer() + 1)) {
 
+					// Countries should match up between retail and consumers
+					if (buyer.getScType() == SCType.CONSUMER && !buyer.getCountry().equals(this.getCountry())) {
+						break;
+					}
 					addBuyer(buyer);
 					buyer.addSupplier(this);
 					break;
@@ -196,9 +219,7 @@ public class BaseAgent {
 			
 			double size = Math.min(stock, order.getSize());
 			if (size > 0) {
-				Shipment shipment = new Shipment(order.getSize(), RepastParam.getShipmentStep(), this, order.getBuyer());
-				SU.getContext().add(shipment);
-				shipment.setStartPosition();
+				new Shipment(SU.getContext(), order.getSize(), RepastParam.getShipmentStep(), this, order.getBuyer());
 				stock -= size;
 			}
 		}
@@ -259,12 +280,28 @@ public class BaseAgent {
 	public Color getColor() {
 		return Color.DARK_GRAY;
 	}
-	
+
 	/**
 	 * Support functions
 	 */
+	public double getStock() {
+		return stock;
+	}
+	
+	public double getTotalImport() {
+		return totalImport;
+	}
+	
+	public CountryAgent getCountry() {
+		return baseCountry;
+	}
+	
 	public int getScLayer() {
 		return scType.getScLayer();
+	}
+	
+	public SCType getScType() {
+		return scType;
 	}
 	
 	public int getId() {
@@ -276,7 +313,7 @@ public class BaseAgent {
 	}
 	
 	public String getLabel() {
-		return name + id + String.format(", $%.1f,*:%.1f", money, stock);
+		return id + String.format(", $%.1f,*:%.1f", money, stock);
 	}
 	
 	public String toString() {
