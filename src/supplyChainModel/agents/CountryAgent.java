@@ -5,14 +5,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import repast.simphony.context.Context;
+import repast.simphony.random.RandomHelper;
 import supplyChainModel.common.Logger;
+import supplyChainModel.common.RepastParam;
 import supplyChainModel.common.SU;
 import supplyChainModel.enums.SCType;
 
 public class CountryAgent {
 
-	String name = "none";
-	ArrayList<SCType> scTypes = new ArrayList<SCType>();
+	private String name = "none";
+	private ArrayList<SCType> scTypes = new ArrayList<SCType>();
 
 	private final int x;
 	private int y;
@@ -31,6 +33,39 @@ public class CountryAgent {
 		
 		countryPoints = createCountryPoints();
 		move(this.x, this.y);
+	}
+	
+	public void stepSpawning() {
+		
+		for (SCType scType : scTypes) {
+			if (RandomHelper.nextDouble() < RepastParam.getSpawnRate()) {
+				spawnAgent(scType);
+			}
+		}
+		
+	}
+	
+	public void spawnAgent(SCType scType) {
+		
+		if (containsSCType(SCType.PRODUCER) && scType == SCType.PRODUCER) {
+			new Agent1Producer(SU.getContext(), this);
+		}
+		
+		if (containsSCType(SCType.INTERNATIONAL) && scType == SCType.INTERNATIONAL) {
+			new Agent2International(SU.getContext(), this);
+		}
+		
+		if (containsSCType(SCType.WHOLESALER) && scType == SCType.WHOLESALER) {
+			new Agent3Wholesaler(SU.getContext(), this);
+		}
+		
+		if (containsSCType(SCType.RETAIL) && scType == SCType.RETAIL) {
+			new Agent4Retailer(SU.getContext(), this);
+		}
+		
+		if (containsSCType(SCType.CONSUMER) && scType == SCType.CONSUMER) {
+			new Agent5Consumer(SU.getContext(), this);
+		}
 	}
 	
 	/**

@@ -42,7 +42,7 @@ public class ContextDataLoader {
 	 */
 	public void generateCountry(final Context<Object> context, List<String> dataC) {
 		
-		int consumers = 2;
+		int consumers = Constants.COUNTRY_CONSUMERS_MAX;
 		// Count countries
 		for (String nodeString : dataC) {
 			
@@ -128,6 +128,4 @@ public class ContextDataLoader {
 		}
 		return data;
 	}
-	
-	
 }

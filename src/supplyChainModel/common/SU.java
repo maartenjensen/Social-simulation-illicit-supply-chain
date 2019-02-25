@@ -3,6 +3,7 @@ package supplyChainModel.common;
 import java.util.ArrayList;
 
 import repast.simphony.context.Context;
+import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.random.RandomHelper;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.graph.Network;
@@ -63,6 +64,23 @@ public class SU {
 	}
 	
 	/**
+	 * Retrieves all the objects within the master context based on the given class, excluding the given Object.
+	 * @param clazz (e.g. use as input Human.class)
+	 * @return an ArrayList of objects from the given class
+	 */
+	public static <T> ArrayList<T> getObjectsAllExclude(Class<T> clazz, Object exclude) {
+		
+		@SuppressWarnings("unchecked")
+		final Iterable<T> objects = (Iterable<T>) getContext().getObjects(clazz);
+		final ArrayList<T> objectList = new ArrayList<T>();
+		for (final T object : objects) {
+			if (object != exclude)
+				objectList.add(object);
+		}
+		return objectList;
+	}
+	
+	/**
 	 * Same as getObjectsAll but uses SimUtilities.shuffle to randomize
 	 * the ArrayList of objects
 	 * @param clazz (e.g. use as input Human.class)
@@ -91,7 +109,16 @@ public class SU {
 		return Math.sqrt( Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2) );
 	}
 	
+	public static boolean getIsInitializing() {
+		if (getTick() <= RepastParam.getTicksInitPopulation()) 
+			return true;
+		else
+			return false;
+	}
 	
+	public static int getTick() {
+		return (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+	}
 	
 	public static Grid<Object> getGrid() {
 		@SuppressWarnings("unchecked")

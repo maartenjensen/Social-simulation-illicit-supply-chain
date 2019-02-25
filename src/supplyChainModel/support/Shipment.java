@@ -10,25 +10,27 @@ import supplyChainModel.common.SU;
 public class Shipment {
 
 
-	private double size = 0;
-	private int step = 0;
-	private BaseAgent supplier = null;
-	private BaseAgent buyer = null;
+	private double size;
+	private int step;
+	private BaseAgent supplier;
+	private BaseAgent buyer;
+	private double price;
 	
-	private double moveSpeed = 0;
-	private double moveHeading = 0;
+	private double moveSpeed;
+	private double moveHeading;
 	
-	public Shipment(final Context<Object> context, double size, int step, BaseAgent supplier, BaseAgent buyer) {
+	public Shipment(final Context<Object> context, double size, int step, BaseAgent supplier, BaseAgent buyer, double price) {
 
 		context.add(this);
 		this.size = size;
 		this.step = step;
 		this.supplier = supplier;
 		this.buyer = buyer;
+		this.price = price;
 		
 		setStartPosition();
 	}
-	
+
 	/**
 	 * 1. Set starting position of the shipment (on the supplier)
 	 * 2. Calculate direction and movement speed (for visualization)
@@ -46,7 +48,7 @@ public class Shipment {
 		
 		move();
 	}
-	
+
 	public void move() {
 		
 		SU.getContinuousSpace().moveByVector(this, moveSpeed, moveHeading,0);
@@ -58,7 +60,7 @@ public class Shipment {
 		move();
 		//space.moveByVector(this, 1, Math.toRadians(heading),0,0);
 		if (step == 0) {
-			buyer.receivePackage(supplier.getId(), size);
+			buyer.receivePackage(supplier, size, price);
 			SU.getContext().remove(this);
 		}
 	}
@@ -68,6 +70,6 @@ public class Shipment {
 	}
 
 	public String getLabel() {
-		return String.format("%.2f", size);
+		return String.format("%.1f", size);
 	}
 }

@@ -12,6 +12,12 @@
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
 		/>
+				<parameter name="pTicksInitPopulation" displayName="Ticks Init Population" type="int" 
+						defaultValue="100" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
 				<parameter name="pSecurityStock" displayName="Security Stock" type="double" 
 						defaultValue="10" 
 						isReadOnly="false" 
@@ -24,8 +30,8 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="pMaxPackage" displayName="Package Maximum" type="double" 
-						defaultValue="5.0" 
+				<parameter name="pSpawnRate" displayName="Spawn rate" type="double" 
+						defaultValue="0.01" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									

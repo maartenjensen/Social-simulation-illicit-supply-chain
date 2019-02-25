@@ -1,9 +1,9 @@
 <repast.simphony.chart2.engine.TimeSeriesChartDescriptor simphonyVersion="2.6.0">
-  <name>Total Import By European Country</name>
+  <name>Production and import Europe</name>
   <dataSet>DataCollector</dataSet>
   <xAxisLabel>Tick Count</xAxisLabel>
-  <yAxisLabel>Import</yAxisLabel>
-  <chartTitle>Total Import By European Country</chartTitle>
+  <yAxisLabel>Amount in kg</yAxisLabel>
+  <chartTitle>Production and import Europe</chartTitle>
   <type>TIME_SERIES</type>
   <background>
     <red>255</red>
@@ -25,9 +25,9 @@
       <SeriesData>
         <label>Import France</label>
         <color>
-          <red>255</red>
+          <red>0</red>
           <green>255</green>
-          <blue>0</blue>
+          <blue>255</blue>
           <alpha>255</alpha>
         </color>
       </SeriesData>
@@ -38,8 +38,8 @@
         <label>Import UK</label>
         <color>
           <red>255</red>
-          <green>200</green>
-          <blue>0</blue>
+          <green>0</green>
+          <blue>255</blue>
           <alpha>255</alpha>
         </color>
       </SeriesData>
@@ -49,9 +49,9 @@
       <SeriesData>
         <label>Import Germany</label>
         <color>
-          <red>0</red>
+          <red>51</red>
           <green>255</green>
-          <blue>255</blue>
+          <blue>51</blue>
           <alpha>255</alpha>
         </color>
       </SeriesData>
@@ -61,9 +61,9 @@
       <SeriesData>
         <label>Import Italy</label>
         <color>
-          <red>0</red>
+          <red>255</red>
           <green>0</green>
-          <blue>255</blue>
+          <blue>0</blue>
           <alpha>255</alpha>
         </color>
       </SeriesData>

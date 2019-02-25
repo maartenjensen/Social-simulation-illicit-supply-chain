@@ -11,21 +11,23 @@ public final class RepastParam {
 	private static double securityStock = 1;
 	private static double consumptionMax = 0;
 	private static double consumptionMin = 0;
-	private static double maxPackage = 0;
 	private static int shipmentStep = 3;
+	private static double spawnRate = 0.01;
+	private static int ticksInitPopulation = 100;
 	
 	public static void setRepastParameters() {
 		
 		Parameters p = RunEnvironment.getInstance().getParameters();
-		runLength = p.getInteger("pRunLength");  
+		runLength = p.getInteger("pRunLength");
 		securityStock = p.getDouble("pSecurityStock");
 		learningRate = p.getDouble("pLearningRate");
 		consumptionMax = p.getDouble("pConMax");
-		consumptionMin = p.getDouble("pConMin");  
-		maxPackage = p.getDouble("pMaxPackage");
+		consumptionMin = p.getDouble("pConMin");
 		shipmentStep = p.getInteger("pShipmentStep");
+		spawnRate = p.getDouble("pSpawnRate");
+		ticksInitPopulation = p.getInteger("pTicksInitPopulation");
 	}
-	
+
 	public static double getRunLength() {
 		return runLength;
 	}
@@ -46,11 +48,15 @@ public final class RepastParam {
 		return consumptionMin;
 	}
 	
-	public static double getMaxPackage() {
-		return maxPackage;
-	}
-	
 	public static int getShipmentStep() {
 		return shipmentStep;
+	}
+	
+	public static double getSpawnRate() {
+		return spawnRate;
+	}
+	
+	public static int getTicksInitPopulation() {
+		return ticksInitPopulation;
 	}
 }

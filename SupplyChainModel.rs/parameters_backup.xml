@@ -7,9 +7,15 @@
 									
 		/>
 				<parameter name="pLearningRate" displayName="Learning rate" type="double" 
-						defaultValue="0.5" 
+						defaultValue="0.2" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
+				<parameter name="pTicksInitPopulation" displayName="Ticks Init Population" type="int" 
+						defaultValue="100" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
 				<parameter name="pSecurityStock" displayName="Security Stock" type="double" 
@@ -30,14 +36,26 @@
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
 		/>
-				<parameter name="pConMin" displayName="Consumption Min" type="double" 
-						defaultValue="2.0" 
+				<parameter name="pSpawnRate" displayName="Spawn rate" type="double" 
+						defaultValue="0.01" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
 		/>
+				<parameter name="pConMin" displayName="Consumption Min" type="double" 
+						defaultValue="1.0" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
+				<parameter name="pShipmentStep" displayName="Shipment Step" type="int" 
+						defaultValue="3" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
 				<parameter name="pConMax" displayName="Consumption Max" type="double" 
-						defaultValue="8.0" 
+						defaultValue="5.0" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									

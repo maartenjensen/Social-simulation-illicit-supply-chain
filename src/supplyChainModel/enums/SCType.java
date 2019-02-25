@@ -28,6 +28,16 @@ public enum SCType {
 		return scLayer;
 	}
 	
+	public String getScCharacter() {
+		if (name().length() > 0) {
+			return name().substring(0, 1);
+		}
+		else {
+			Logger.logError("SCType.getScCharacter() ");
+			return "X";
+		}
+	}
+	
 	// Static functions
 	public static int getScLayers() {
 		return scLayers;

@@ -37,6 +37,27 @@ public class DataCollector {
 		return getStockCurrent("Spain");
 	}
 	
+	public double getCurrentImport(String countryName, SCType importLayer) {
+		
+		double stock = 0;
+		ArrayList<BaseAgent> agents = SU.getObjectsAll(BaseAgent.class);
+		for (BaseAgent agent : agents) {
+			
+			if (agent.getCountry().getName().equals(countryName) && agent.getScType() == importLayer) {
+				stock += agent.getCurrentImport();
+			}
+		}
+		return stock;
+	}
+	
+	public double getImportCurrentNL() {
+		return getCurrentImport("The Netherlands", SCType.WHOLESALER);
+	}
+	
+	public double getImportCurrentES() {
+		return getCurrentImport("Spain", SCType.WHOLESALER);
+	}
+	
 	public double getTotalImport(String countryName, SCType importLayer) {
 		
 		double stock = 0;
@@ -47,7 +68,6 @@ public class DataCollector {
 				stock += agent.getTotalImport();
 			}
 		}
-		
 		return stock;
 	}
 	

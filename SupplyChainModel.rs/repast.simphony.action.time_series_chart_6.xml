@@ -1,9 +1,9 @@
 <repast.simphony.chart2.engine.TimeSeriesChartDescriptor simphonyVersion="2.6.0">
-  <name>Consumer satisfaction</name>
-  <dataSet>Consumers</dataSet>
+  <name>Import Wholesalers</name>
+  <dataSet>DataCollector</dataSet>
   <xAxisLabel>Tick Count</xAxisLabel>
-  <yAxisLabel>Count</yAxisLabel>
-  <chartTitle>Consumer Satisfaction</chartTitle>
+  <yAxisLabel>Amount</yAxisLabel>
+  <chartTitle>Current import wholesalers</chartTitle>
   <type>TIME_SERIES</type>
   <background>
     <red>255</red>
@@ -21,13 +21,25 @@
   <showLegend>true</showLegend>
   <seriesIds>
     <entry>
-      <string>Satisfied</string>
+      <string>Import current ES</string>
       <SeriesData>
-        <label>Satisfied</label>
+        <label>Import current ES</label>
         <color>
-          <red>51</red>
-          <green>255</green>
-          <blue>51</blue>
+          <red>153</red>
+          <green>0</green>
+          <blue>0</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+    <entry>
+      <string>Import current NL</string>
+      <SeriesData>
+        <label>Import current NL</label>
+        <color>
+          <red>255</red>
+          <green>153</green>
+          <blue>102</blue>
           <alpha>255</alpha>
         </color>
       </SeriesData>

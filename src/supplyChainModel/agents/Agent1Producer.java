@@ -2,26 +2,27 @@ package supplyChainModel.agents;
 
 import repast.simphony.context.Context;
 import repast.simphony.random.RandomHelper;
+import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
 import supplyChainModel.enums.SCType;
 
-public class AgentProducer extends BaseAgent {
+public class Agent1Producer extends BaseAgent {
 
-	public AgentProducer(final Context<Object> context, SCType scType, CountryAgent country) {
-		super(context, country, scType);
-		
-		name = "P";
+	public Agent1Producer(final Context<Object> context, CountryAgent country) {
+		super(context, country, SCType.PRODUCER, Constants.PRICE_BUY_FROM_PRODUCER, Constants.SHIPMENT_MAX_1TO2);
 	}
 	
 	@Override
 	public void step_2_receive_shipment() { //Produced by itself
 		
 		if (stock >= securityStock) {
-			return ;
+			return;
 		}
 		int stockIncrease = RandomHelper.nextIntFromTo(2, 6);
+		money -= stockIncrease * Constants.PRICE_PRODUCTION;
 		stock += stockIncrease;
-		totalImport += stockIncrease;
+		outputTotalImport += stockIncrease;
+		outputCurrentImport += stockIncrease;
 		Logger.logInfoId(id, getNameId() + (stock + stockIncrease) + " - " + stockIncrease + " = " + stock);
 	}
 	

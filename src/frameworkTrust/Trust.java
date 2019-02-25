@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import repast.simphony.engine.environment.RunEnvironment;
-import supplyChainModel.common.Logger;
 
 public class Trust {
 
@@ -19,13 +18,12 @@ public class Trust {
 	public Trust(int id) {
 		this.otherId = id;
 	}
-	
+
 	/**
 	 * Returns the trust in the agent with given id
 	 */
 	public double getTrustLevel() {
 		
-		double trustLevel = 0.5;
 		double amountOrders = 0;
 		double amountShipments = 0;
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
@@ -35,7 +33,7 @@ public class Trust {
 			if (orders.containsKey(step) && step <= (tick - 6)) {
 				amountOrders += orders.get(step);
 				// If there is no shipment, the shipped amount is zero so it will not be added
-				if (shipments.containsKey(step + 6)) { 
+				if (shipments.containsKey(step + 6)) {
 					amountShipments += shipments.get(step + 6); //TODO make this dependent on the time it can take, maybe orders have to get an ID (this line, previous line and before)
 				}
 			}
@@ -43,11 +41,9 @@ public class Trust {
 		
 		// Return trust amount when there are some orders
 		if (amountOrders > 0) {
-			Logger.logInfo("Trust in " + otherId + ":" + trustLevel);
 			return amountShipments / amountOrders;
 		}
 		else {
-			Logger.logInfo("Trust in " + otherId + ":" + trustLevel);
 			return 0.5;
 		}
 	}

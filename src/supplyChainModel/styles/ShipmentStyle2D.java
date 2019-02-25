@@ -46,6 +46,6 @@ public class ShipmentStyle2D extends DefaultStyleOGL2D {
 	
 	@Override
 	public Position getLabelPosition(Object object) {
-	    return Position.SOUTH;
+	    return Position.NORTH;
 	}
 }

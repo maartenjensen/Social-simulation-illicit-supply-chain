@@ -13,6 +13,7 @@ import repast.simphony.context.Context;
 import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.space.graph.Network;
 import repast.simphony.space.graph.RepastEdge;
+import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
 import supplyChainModel.common.RepastParam;
 import supplyChainModel.common.SU;
@@ -24,19 +25,24 @@ import supplyChainModel.support.Shipment;
 public class BaseAgent {
 
 	// Agent variables
-	protected int id = -1;
+	protected int id;
 	protected CountryAgent baseCountry;
 	protected SCType scType;
-	protected String name = "None";
+	protected String name;
+	protected double sellPrice;
+	protected int minPackageSize;
+	protected int maxPackageSize;
 	
-	protected double securityStock = RepastParam.getSecurityStock();
-	protected double stock = securityStock;
-	protected double totalImport = stock;
-	protected double money = 0;
+	protected double securityStock;
+	protected double stock;
+	protected double money;
 	
 	protected double supplyNeeded = 0;
 	protected double supplyAsked = 0;
 	
+	protected double outputCurrentImport = 0;
+	protected double outputTotalImport = 0;
+
 	// Other variables
 	protected Map<Integer, Trust> trustOther = new HashMap<Integer, Trust>(); // Key: node id
 	
@@ -49,11 +55,20 @@ public class BaseAgent {
 	 * - Adds the agent to the context
 	 * - Moves the agent to an appropriate location
 	 */
-	public BaseAgent(final Context<Object> context, CountryAgent baseCountry, SCType scType) {
+	public BaseAgent(final Context<Object> context, CountryAgent baseCountry, SCType scType, double sellPrice, int maxPackageSize) {
 		context.add(this);
 		this.baseCountry = baseCountry;
 		this.id = SU.getNewId();
 		this.scType = scType;
+		this.name = getScType().getScCharacter();
+		this.sellPrice = sellPrice;
+		this.money = sellPrice * maxPackageSize;
+		
+		this.minPackageSize = maxPackageSize / Constants.SHIPMENT_MIN_PERCENTAGE;
+		this.maxPackageSize = maxPackageSize;
+		this.securityStock = maxPackageSize;
+		this.stock = securityStock;
+		
 		move();
 	}
 	
@@ -63,7 +78,7 @@ public class BaseAgent {
 	public void move() {
 
 		Point newPos = baseCountry.getFreePosition(this, scType);
-		Logger.logInfo(getNameId() + " pos:[" + newPos.x + ", " + newPos.y + "]");
+		Logger.logInfo(getNameId() + " " + baseCountry.getName() + " pos:[" + newPos.x + ", " + newPos.y + "]");
 		
 		SU.getContinuousSpace().moveTo(this, newPos.getX(), newPos.getY());	
 		SU.getGrid().moveTo(this, newPos.x, newPos.y);
@@ -72,6 +87,16 @@ public class BaseAgent {
 	/*====================================
 	 * The main steps of the agents
 	 *====================================*/
+	
+	public void stepRemoval() {
+		if (money < 0) {
+			removeNode();
+		}
+	}
+	
+	public void stepResetParameters() {
+		outputCurrentImport = 0;
+	}
 	
 	public void step_1_shipment_intervention() {
 		// Override by subclasses
@@ -105,18 +130,46 @@ public class BaseAgent {
 	
 	/*================================
 	 * Functions
-	 *===============================/
-	
+	 *===============================*/
+
+	public void removeNode() {
+		
+		Logger.logInfo("Remove " + getNameId() + " " + baseCountry.getName());
+		final Iterable<RepastEdge<Object>> edges = (Iterable<RepastEdge<Object>>) SU.getNetworkSC().getEdges(this);
+		for (final RepastEdge<Object> edge : edges) {
+			SU.getNetworkSC().removeEdge(edge);
+		}
+		final Iterable<RepastEdge<Object>> edgesRev = (Iterable<RepastEdge<Object>>) SU.getNetworkSCReversed().getEdges(this);
+		for (final RepastEdge<Object> edge : edgesRev) {
+			SU.getNetworkSCReversed().removeEdge(edge);
+		}
+		for (BaseAgent agent : SU.getObjectsAllExclude(BaseAgent.class, this)) {
+			agent.removeOrdersFrom(this);
+		}
+		SU.getContext().remove(this);
+	}
+
 	/**
 	 * This function is 
 	 * @param size
 	 */
-	public void receivePackage(int supplierId, double size) {
-		if (trustOther.containsKey(supplierId)) {
-			trustOther.get(supplierId).addShipmentReceived(size);
-		}
+	public void receivePackage(BaseAgent supplier, double size, double price) {
+		// Update trust relation
+		if (trustOther.containsKey(supplier.getId()))
+			trustOther.get(supplier.getId()).addShipmentReceived(size);
+		else
+			Logger.logError("BaseAgent.receivePackage():supplier " + supplier.getId() + " not found in key");
+		// Make payment
+		money -= price;
+		supplier.receivePayment(price);
+		// Change stock
 		stock += size;
-		totalImport += size;
+		outputTotalImport += size;
+		outputCurrentImport += size;
+	}
+
+	public void receivePayment(double payment) {
+		money += payment;
 	}
 
 	/**
@@ -218,8 +271,10 @@ public class BaseAgent {
 		for (Order order : orders) {
 			
 			double size = Math.min(stock, order.getSize());
-			if (size > 0) {
-				new Shipment(SU.getContext(), order.getSize(), RepastParam.getShipmentStep(), this, order.getBuyer());
+			double price = size * sellPrice;
+			
+			if (size >= minPackageSize && size <= maxPackageSize) {
+				new Shipment(SU.getContext(), size, RepastParam.getShipmentStep(), this, order.getBuyer(), price);
 				stock -= size;
 			}
 		}
@@ -242,6 +297,10 @@ public class BaseAgent {
 		Logger.logInfoId(id, getNameId() + ", supply needed:" + supplyNeeded);
 	}
 
+	/**
+	 * Orders have a limit on size, they should be within minPackageSize and maxPackageSize
+	 * Needs the only order when having enough money to pay
+	 */
 	public void sendOrders() {
 				
 		supplyAsked = supplyNeeded * RepastParam.getLearningRate() + (1 - RepastParam.getLearningRate()) * supplyAsked;
@@ -250,8 +309,10 @@ public class BaseAgent {
 		ArrayList<BaseAgent> suppliers = getSuppliers();
 		for (BaseAgent supplier : suppliers) {
 			
-			double size = Math.min(tempSupplyAsked, RepastParam.getMaxPackage());
+			double size = Math.min(tempSupplyAsked, supplier.getMaxPackageSize());
 			if (size > 0) {
+				//Ask minimum
+				size = Math.max(size, supplier.getMinPackageSize());
 				if (trustOther.containsKey(supplier.getId())) {
 					trustOther.get(supplier.getId()).addOrderSend(size);
 				}
@@ -262,9 +323,28 @@ public class BaseAgent {
 				return ;
 		}
 	}
+	
+	public void removeOrdersFrom(BaseAgent baseAgent) {
+		
+		ArrayList<Order> unreceivedOrdersRemove = new ArrayList<Order>();
+		for (Order order : unreceivedOrders) {
+			
+			if (order.getBuyer() == baseAgent)
+				unreceivedOrdersRemove.add(order);
+		}
+		unreceivedOrders.removeAll(unreceivedOrdersRemove);
+		
+		ArrayList<Order> ordersRemove = new ArrayList<Order>();
+		for (Order order : orders) {
+			
+			if (order.getBuyer() == baseAgent)
+				ordersRemove.add(order);
+		}
+		orders.removeAll(ordersRemove);
+	}
 
 	public double getTrustLevel(int otherId) {
-		Logger.logInfo("Trust from" + name + id );
+		//Logger.logInfo("Trust from" + name + id );
 		
 		if (trustOther.containsKey(otherId)) 
 			return trustOther.get(otherId).getTrustLevel();
@@ -289,9 +369,13 @@ public class BaseAgent {
 	}
 	
 	public double getTotalImport() {
-		return totalImport;
+		return outputTotalImport;
 	}
 	
+	public double getCurrentImport() {
+		return outputCurrentImport;
+	}
+
 	public CountryAgent getCountry() {
 		return baseCountry;
 	}
@@ -308,12 +392,20 @@ public class BaseAgent {
 		return id;
 	}
 	
+	public int getMinPackageSize() {
+		return minPackageSize;
+	}
+	
+	public int getMaxPackageSize() {
+		return maxPackageSize;
+	}
+	
 	public String getNameId() {
 		return name + id;
 	}
 	
 	public String getLabel() {
-		return id + String.format(", $%.1f,*:%.1f", money, stock);
+		return id + String.format("  $%.0f  s:%.1f", money, stock);
 	}
 	
 	public String toString() {

@@ -5,5 +5,4 @@
 	<projection type="grid" id="grid"></projection>
 	<projection type="network" id="sc network"></projection>
 	<projection type="network" id="sc network reversed"></projection>
-
 </context>

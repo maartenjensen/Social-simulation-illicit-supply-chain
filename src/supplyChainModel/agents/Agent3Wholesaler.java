@@ -1,16 +1,15 @@
 package supplyChainModel.agents;
 
 import repast.simphony.context.Context;
+import supplyChainModel.common.Constants;
 import supplyChainModel.enums.SCType;
 
-public class AgentDistributor extends BaseAgent {
+public class Agent3Wholesaler extends BaseAgent {
 	
-	public AgentDistributor(final Context<Object> context, String name, SCType scType, CountryAgent country) {
-		super(context, country, scType);
-		
-		this.name = name;
+	public Agent3Wholesaler(final Context<Object> context, CountryAgent country) {
+		super(context, country, SCType.WHOLESALER, Constants.PRICE_BUY_FROM_WHOLESALER, Constants.SHIPMENT_MAX_3TO4);
 	}
-	
+
 	@Override
 	public void step_2_receive_shipment() {
 		//This is done by the shipments

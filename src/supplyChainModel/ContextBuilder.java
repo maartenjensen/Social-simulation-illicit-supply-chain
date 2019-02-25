@@ -7,15 +7,14 @@ import repast.simphony.context.space.continuous.ContinuousSpaceFactoryFinder;
 import repast.simphony.context.space.graph.NetworkBuilder;
 import repast.simphony.context.space.grid.GridFactoryFinder;
 import repast.simphony.engine.environment.RunEnvironment;
+import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.RandomCartesianAdder;
 import repast.simphony.space.graph.Network;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridBuilderParameters;
 import repast.simphony.space.grid.SimpleGridAdder;
-import supplyChainModel.agents.AgentConsumer;
-import supplyChainModel.agents.AgentDistributor;
-import supplyChainModel.agents.AgentProducer;
+import supplyChainModel.agents.BaseAgent;
 import supplyChainModel.agents.CountryAgent;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.ContextDataLoader;
@@ -38,21 +37,21 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		createNetwork(context);
 		createNetworkReversed(context);
 		
+		context.add(this); //Used for ScheduledMethod
 		SU.setContext(context);
 		SU.resetId();
 		
 		RepastParam.setRepastParameters();
 		
 		new DataCollector(context);
-		
+
 		// Create the supply chain
 		ContextDataLoader countryLoader = new ContextDataLoader();
 		countryLoader.readFullFile(context,"./input","contextBuildInformation");
 		supplyChainCreation(context);
 		
-		
 		// If running in batch mode, tell the scheduler when to end each run.
-		if (RunEnvironment.getInstance().isBatch()){
+		if (RunEnvironment.getInstance().isBatch()) {
 			
 			double endAt = RepastParam.getRunLength();
 			RunEnvironment.getInstance().endAt(endAt);
@@ -60,11 +59,7 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		
 		return context;
 	}
-	
-	/*====================================
-	 * Main steps
-	 *====================================*/
-	
+
 	private void supplyChainCreation(final Context<Object> context) {
 		
 		if (SCType.getScLayers() <= 2)
@@ -75,38 +70,59 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		for (CountryAgent country : countryAgents) {
 			
 			if (country.containsSCType(SCType.PRODUCER)) {
-				for (int i = 0; i < 12; i++) {
-					new AgentProducer(context, SCType.PRODUCER, country);
+				for (int i = 0; i < Constants.N_PRODUCERS; i++) {
+					country.spawnAgent(SCType.PRODUCER);
 				}
 			}
 			
 			if (country.containsSCType(SCType.INTERNATIONAL)) {
-				for (int i = 0; i < 6; i++) {
-					 new AgentDistributor(context, "I", SCType.INTERNATIONAL, country);
+				for (int i = 0; i < Constants.N_INTERNATIONALS; i++) {
+					country.spawnAgent(SCType.INTERNATIONAL);
 				}
 			}
 			
 			if (country.containsSCType(SCType.WHOLESALER)) {
-				for (int i = 0; i < 3; i++) {
-					new AgentDistributor(context, "W", SCType.WHOLESALER, country);
+				for (int i = 0; i < Constants.N_WHOLESALERS; i++) {
+					country.spawnAgent(SCType.WHOLESALER);
 				}
 			}
 			
 			if (country.containsSCType(SCType.RETAIL)) {
-				for (int i = 0; i < 2; i++) {
-					new AgentDistributor(context, "R", SCType.RETAIL, country);
+				for (int i = 0; i < Constants.N_RETAILERS; i++) {
+					country.spawnAgent(SCType.RETAIL);
 				}
 			}
 			
 			if (country.containsSCType(SCType.CONSUMER)) {
-				for (int i = 0; i < 3; i++) {
-					new AgentConsumer(context, SCType.CONSUMER, country);
+				for (int i = 0; i < Constants.N_CONSUMERS; i++) {
+					country.spawnAgent(SCType.CONSUMER);
 				}
 			}
 		}
 	}
 
+	/*====================================
+	 * Main steps
+	 *====================================*/
+	@ScheduledMethod(start = 1, interval = 1, priority = 1, shuffle=true)
+	public void step00Tick() {
+		
+		for (BaseAgent baseAgent : SU.getObjectsAll(BaseAgent.class)) {
+			baseAgent.stepRemoval();
+		}
+		
+		for (BaseAgent baseAgent : SU.getObjectsAll(BaseAgent.class)) {
+			baseAgent.stepResetParameters();
+		}
+	}
 	
+	@ScheduledMethod(start = 1, interval = 1, priority = 0, shuffle=true)
+	public void step0Tick() {
+		
+		for (CountryAgent country : SU.getObjectsAll(CountryAgent.class)) {
+			country.stepSpawning();
+		}
+	}
 	
 	/**
 	 * Create continuous space space for the given context
