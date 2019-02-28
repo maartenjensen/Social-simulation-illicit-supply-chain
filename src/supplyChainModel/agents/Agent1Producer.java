@@ -1,7 +1,6 @@
 package supplyChainModel.agents;
 
 import repast.simphony.context.Context;
-import repast.simphony.random.RandomHelper;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
 import supplyChainModel.enums.SCType;
@@ -18,7 +17,7 @@ public class Agent1Producer extends BaseAgent {
 		if (stock >= securityStock) {
 			return;
 		}
-		int stockIncrease = RandomHelper.nextIntFromTo(2, 6);
+		int stockIncrease = Constants.PRODUCER_PRODUCE_AMOUNT;
 		money -= stockIncrease * Constants.PRICE_PRODUCTION;
 		stock += stockIncrease;
 		outputTotalImport += stockIncrease;

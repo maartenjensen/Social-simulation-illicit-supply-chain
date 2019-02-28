@@ -1,5 +1,5 @@
 <repast.simphony.data2.engine.DataSetDescriptor simphonyVersion="2.6.0">
-  <name>DataCollector</name>
+  <name>Consumers</name>
   <type>AGGREGATE</type>
   <inclTick>true</inclTick>
   <inclBatchRun>false</inclBatchRun>
@@ -11,97 +11,25 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>-2018163360</hashCode>
+    <hashCode>1067499139</hashCode>
   </scheduleParams>
   <atEnd>false</atEnd>
   <methodDataSources class="linked-hash-map">
     <entry>
-      <string>Import The Netherlands</string>
+      <string>Stock Spain</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Import The Netherlands</id>
+        <id>Stock Spain</id>
         <className>supplyChainModel.common.DataCollector</className>
-        <methodName>getTotalImportNL</methodName>
+        <methodName>getStockCurrentES</methodName>
         <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>Import Spain</string>
+      <string>Stock The Netherlands</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Import Spain</id>
+        <id>Stock The Netherlands</id>
         <className>supplyChainModel.common.DataCollector</className>
-        <methodName>getTotalImportES</methodName>
-        <aggType>SUM</aggType>
-      </repast.simphony.data2.engine.MethodDataSourceDefinition>
-    </entry>
-    <entry>
-      <string>Production Producers</string>
-      <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Production Producers</id>
-        <className>supplyChainModel.common.DataCollector</className>
-        <methodName>getTotalProductionSouthAmerica</methodName>
-        <aggType>SUM</aggType>
-      </repast.simphony.data2.engine.MethodDataSourceDefinition>
-    </entry>
-    <entry>
-      <string>Import UK</string>
-      <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Import UK</id>
-        <className>supplyChainModel.common.DataCollector</className>
-        <methodName>getTotalImportUK</methodName>
-        <aggType>SUM</aggType>
-      </repast.simphony.data2.engine.MethodDataSourceDefinition>
-    </entry>
-    <entry>
-      <string>Import Germany</string>
-      <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Import Germany</id>
-        <className>supplyChainModel.common.DataCollector</className>
-        <methodName>getTotalImportD</methodName>
-        <aggType>SUM</aggType>
-      </repast.simphony.data2.engine.MethodDataSourceDefinition>
-    </entry>
-    <entry>
-      <string>Import France</string>
-      <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Import France</id>
-        <className>supplyChainModel.common.DataCollector</className>
-        <methodName>getTotalImportF</methodName>
-        <aggType>SUM</aggType>
-      </repast.simphony.data2.engine.MethodDataSourceDefinition>
-    </entry>
-    <entry>
-      <string>Import Italy</string>
-      <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Import Italy</id>
-        <className>supplyChainModel.common.DataCollector</className>
-        <methodName>getTotalImportI</methodName>
-        <aggType>SUM</aggType>
-      </repast.simphony.data2.engine.MethodDataSourceDefinition>
-    </entry>
-    <entry>
-      <string>Import Internationals</string>
-      <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Import Internationals</id>
-        <className>supplyChainModel.common.DataCollector</className>
-        <methodName>getTotalImportInternational</methodName>
-        <aggType>SUM</aggType>
-      </repast.simphony.data2.engine.MethodDataSourceDefinition>
-    </entry>
-    <entry>
-      <string>Import current NL</string>
-      <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Import current NL</id>
-        <className>supplyChainModel.common.DataCollector</className>
-        <methodName>getImportCurrentNL</methodName>
-        <aggType>SUM</aggType>
-      </repast.simphony.data2.engine.MethodDataSourceDefinition>
-    </entry>
-    <entry>
-      <string>Import current ES</string>
-      <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Import current ES</id>
-        <className>supplyChainModel.common.DataCollector</className>
-        <methodName>getImportCurrentES</methodName>
+        <methodName>getStockCurrentNL</methodName>
         <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>

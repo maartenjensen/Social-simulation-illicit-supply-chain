@@ -22,7 +22,7 @@ public class ShipmentStyle2D extends DefaultStyleOGL2D {
 	@Override
 	public float getScale(Object o) {
 		if (o instanceof Shipment) {
-			return (float) (1 + (((Shipment)o).getSize() * 0.25));
+			return (float) (0.5 + (((Shipment)o).getSize() * 0.05));
 		}
 		return 2f;
 	}

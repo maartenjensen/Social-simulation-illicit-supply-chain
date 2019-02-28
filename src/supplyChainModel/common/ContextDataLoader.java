@@ -66,26 +66,26 @@ public class ContextDataLoader {
 			switch (layer) {
 			case 0: // Producer country
 				scTypes.add(SCType.PRODUCER);
-				new CountryAgent(context, name, scTypes, 1 + layer * 4, Constants.GRID_HEIGHT - 4, Constants.GRID_HEIGHT - 8); //TODO
+				new CountryAgent(context, name, scTypes, 1 + layer * 6, Constants.GRID_HEIGHT - 4, Constants.GRID_HEIGHT - 8); //TODO
 				break;
 			case 1: // International country
 				scTypes.add(SCType.INTERNATIONAL);
-				new CountryAgent(context, name, scTypes, 1 + layer * 4, Constants.GRID_HEIGHT - 6, Constants.GRID_HEIGHT - 12); //TODO
+				new CountryAgent(context, name, scTypes, 1 + layer * 6, Constants.GRID_HEIGHT - 6, Constants.GRID_HEIGHT - 12); //TODO
 				break;
 			case 2: // Transit country
 				scTypes.add(SCType.WHOLESALER);
 				scTypes.add(SCType.RETAIL);
 				scTypes.add(SCType.CONSUMER);
 				if (transitCountry == 0)
-					new CountryAgent(context, name, scTypes, 1 + layer * 4, Constants.GRID_HEIGHT - 1, stepSize - 1);
+					new CountryAgent(context, name, scTypes, 1 + layer * 6, Constants.GRID_HEIGHT - 1, stepSize - 1);
 				else
-					new CountryAgent(context, name, scTypes, 1 + layer * 4, (Constants.GRID_HEIGHT - 1) - stepSize * (consumers - 1), stepSize - 1);
+					new CountryAgent(context, name, scTypes, 1 + layer * 6, (Constants.GRID_HEIGHT - 1) - stepSize * (consumers - 1), stepSize - 1);
 				transitCountry ++;
 				break;
 			case 3: // Consumer country
 				scTypes.add(SCType.RETAIL);
 				scTypes.add(SCType.CONSUMER);
-				new CountryAgent(context, name, scTypes, 1 + layer * 4, (Constants.GRID_HEIGHT - 1) - stepSize * consumerCountry, stepSize - 1);
+				new CountryAgent(context, name, scTypes, 1 + layer * 6, (Constants.GRID_HEIGHT - 1) - stepSize * consumerCountry, stepSize - 1);
 				consumerCountry ++;
 				break;
 			}

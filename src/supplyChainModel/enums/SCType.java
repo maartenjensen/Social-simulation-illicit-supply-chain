@@ -18,7 +18,7 @@ public enum SCType {
 
 	public int getX() {
 		
-		int x =  2 + scLayer * 4;
+		int x =  2 + scLayer * 6;
 		if (x > Constants.GRID_WIDTH)
 			Logger.logError("SCType.getScLayerX(): x > Constants.GRID_WIDTH . " + x + " > " + Constants.GRID_WIDTH);
 		return x;
