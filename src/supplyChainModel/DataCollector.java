@@ -1,10 +1,12 @@
-package supplyChainModel.common;
+package supplyChainModel;
 
 import java.awt.Point;
 import java.util.ArrayList;
 
 import repast.simphony.context.Context;
 import supplyChainModel.agents.BaseAgent;
+import supplyChainModel.common.Logger;
+import supplyChainModel.common.SU;
 import supplyChainModel.enums.SCType;
 
 public class DataCollector {

@@ -11,8 +11,7 @@ public class Agent1Producer extends BaseAgent {
 		super(context, country, SCType.PRODUCER, Constants.PRICE_BUY_FROM_PRODUCER, Constants.SHIPMENT_MAX_1TO2);
 	}
 	
-	@Override
-	public void step_2_receive_shipment() { //Produced by itself
+	public void stepProduce() { //Produced by itself
 		
 		if (stock >= securityStock) {
 			return;
@@ -20,28 +19,28 @@ public class Agent1Producer extends BaseAgent {
 		int stockIncrease = Constants.PRODUCER_PRODUCE_AMOUNT;
 		money -= stockIncrease * Constants.PRICE_PRODUCTION;
 		stock += stockIncrease;
-		outputTotalImport += stockIncrease;
-		outputCurrentImport += stockIncrease;
-		Logger.logInfoId(id, getNameId() + (stock + stockIncrease) + " - " + stockIncrease + " = " + stock);
+		out_totalImport += stockIncrease;
+		out_currentImport += stockIncrease;
+		Logger.logInfoId(id, getNameId() + " " + (stock + stockIncrease) + " - " + stockIncrease + " = " + stock);
 	}
 	
 	@Override
-	public void step_3_choose_suppliers_and_buyers() {
-		searchBuyers();
+	public void stepChooseSuppliersAndClients() {
+		searchClients();
 	}
 	
 	@Override
-	public void step_4_send_shipment() {
+	public void stepSendShipment() {
 		sendShipment();
 	}
 	
 	@Override
-	public void step_5_receive_order() {
+	public void stepReceiveOrder() {
 		updateOrders();
 	}
 	
 	@Override
-	public void step_6_send_order() {
+	public void stepSendOrder() {
 		// Override by subclasses
 	}
 }

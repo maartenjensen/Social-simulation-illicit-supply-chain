@@ -14,15 +14,16 @@ import repast.simphony.space.graph.Network;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridBuilderParameters;
 import repast.simphony.space.grid.SimpleGridAdder;
+import supplyChainModel.agents.Agent1Producer;
+import supplyChainModel.agents.Agent5Consumer;
 import supplyChainModel.agents.BaseAgent;
 import supplyChainModel.agents.CountryAgent;
 import supplyChainModel.common.Constants;
-import supplyChainModel.common.ContextDataLoader;
-import supplyChainModel.common.DataCollector;
 import supplyChainModel.common.Logger;
 import supplyChainModel.common.RepastParam;
 import supplyChainModel.common.SU;
 import supplyChainModel.enums.SCType;
+import supplyChainModel.support.Shipment;
 
 public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder<Object> {
 	
@@ -65,6 +66,7 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		if (SCType.getScLayers() <= 2)
 			Logger.logError("To few supply chain layers, minimum of 3 required:" + SCType.getScLayers());
 		
+		
 		ArrayList<CountryAgent> countryAgents = SU.getObjectsAll(CountryAgent.class);
 		
 		for (CountryAgent country : countryAgents) {
@@ -98,31 +100,75 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 					country.spawnAgent(SCType.CONSUMER);
 				}
 			}
-		}
+		}	
 	}
 
 	/*====================================
-	 * Main steps
+	 * Step method
 	 *====================================*/
-	@ScheduledMethod(start = 1, interval = 1, priority = 1, shuffle=true)
-	public void step00Tick() {
+	
+	/**
+	 * Step method, called from ContextBuilder to have more control
+	 */
+	@ScheduledMethod(start = 1, interval = 1, priority = 0, shuffle=false)
+	public void step() {
 		
+		Logger.logMain("Step-Shipment: police intervention on shipments");
+		for (Shipment shipment : SU.getObjectsAll(Shipment.class)) {
+			shipment.stepRemoval();
+		}
+		
+		Logger.logMain("Step-BaseAgent: remove bankrupt agents");
 		for (BaseAgent baseAgent : SU.getObjectsAll(BaseAgent.class)) {
 			baseAgent.stepRemoval();
 		}
 		
+		Logger.logMain("Step-BaseAgent: reset output parameters");
 		for (BaseAgent baseAgent : SU.getObjectsAll(BaseAgent.class)) {
 			baseAgent.stepResetParameters();
 		}
-	}
-	
-	@ScheduledMethod(start = 1, interval = 1, priority = 0, shuffle=true)
-	public void step0Tick() {
 		
+		Logger.logMain("Step-CountryAgent: spawning of new agents");
 		for (CountryAgent country : SU.getObjectsAll(CountryAgent.class)) {
 			country.stepSpawning();
 		}
+		
+		Logger.logMain("Step-Shipment: shipments and order advancements");
+		for (Shipment shipment : SU.getObjectsAll(Shipment.class)) {
+			shipment.stepAdvanceShipment();
+		}
+		//Temporary
+		Logger.logMain("Step-Agent1Producer: temporary produce");
+		for (Agent1Producer producer : SU.getObjectsAll(Agent1Producer.class)) {
+			producer.stepProduce();
+		}
+		//Temporary
+		Logger.logMain("Step-Agent5Consumer: temporary receive income");
+		for (Agent5Consumer producer : SU.getObjectsAll(Agent5Consumer.class)) {
+			producer.stepReceiveIncome();
+		}
+		
+		Logger.logMain("Step-BaseAgent: choose suppliers and buyers");
+		for (BaseAgent baseAgent : SU.getObjectsAll(BaseAgent.class)) {
+			baseAgent.stepChooseSuppliersAndClients();
+		}
+		
+		Logger.logMain("Step-BaseAgent: send shipment");
+		for (BaseAgent baseAgent : SU.getObjectsAll(BaseAgent.class)) {
+			baseAgent.stepSendShipment();
+		}
+		
+		Logger.logMain("Step-BaseAgent: receive order");
+		for (BaseAgent baseAgent : SU.getObjectsAll(BaseAgent.class)) {
+			baseAgent.stepReceiveOrder();
+		}
+		
+		Logger.logMain("Step-BaseAgent: send order");
+		for (BaseAgent baseAgent : SU.getObjectsAll(BaseAgent.class)) {
+			baseAgent.stepSendOrder();
+		}
 	}
+
 	
 	/**
 	 * Create continuous space space for the given context

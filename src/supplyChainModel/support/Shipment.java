@@ -2,6 +2,7 @@ package supplyChainModel.support;
 
 import repast.simphony.context.Context;
 import repast.simphony.engine.schedule.ScheduledMethod;
+import repast.simphony.random.RandomHelper;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.NdPoint;
 import supplyChainModel.agents.BaseAgent;
@@ -10,16 +11,19 @@ import supplyChainModel.common.SU;
 public class Shipment {
 
 
+	// State variables
 	private double size;
 	private int step;
 	private BaseAgent supplier;
 	private BaseAgent buyer;
 	private double price;
+	private double quality;
+	private double seizureChance;
 	
 	private double moveSpeed;
 	private double moveHeading;
 	
-	public Shipment(final Context<Object> context, double size, int step, BaseAgent supplier, BaseAgent buyer, double price) {
+	public Shipment(final Context<Object> context, double size, int step, BaseAgent supplier, BaseAgent buyer, double price, double seizureChance) {
 
 		context.add(this);
 		this.size = size;
@@ -27,6 +31,7 @@ public class Shipment {
 		this.supplier = supplier;
 		this.buyer = buyer;
 		this.price = price;
+		this.seizureChance = seizureChance;
 		
 		setStartPosition();
 	}
@@ -49,13 +54,20 @@ public class Shipment {
 		move();
 	}
 
+	public void stepRemoval() {
+		
+		if (RandomHelper.nextDouble() <= seizureChance) {
+			
+			SU.getContext().remove(this);
+		}
+	}
+	
 	public void move() {
 		
 		SU.getContinuousSpace().moveByVector(this, moveSpeed, moveHeading,0);
 	}
 	
-	@ScheduledMethod(start = 1, interval = 1, priority = -2, shuffle=true)
-	public void step() {
+	public void stepAdvanceShipment() {
 		step -= 1;
 		move();
 		//space.moveByVector(this, 1, Math.toRadians(heading),0,0);

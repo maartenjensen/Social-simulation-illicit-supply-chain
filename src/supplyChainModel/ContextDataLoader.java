@@ -1,14 +1,17 @@
-package supplyChainModel.common;
+package supplyChainModel;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import repast.simphony.context.Context;
 import supplyChainModel.agents.CountryAgent;
+import supplyChainModel.common.Constants;
+import supplyChainModel.common.Logger;
 import supplyChainModel.enums.SCType;
 
 public class ContextDataLoader {
@@ -61,31 +64,37 @@ public class ContextDataLoader {
 			List<String> vars = Arrays.asList(nodeString.split(","));
 			String name = vars.get(0);
 			int layer = Integer.parseInt(vars.get(1));
-
+			
+			HashMap<SCType, Double> interceptProbability = new HashMap<SCType, Double>();
+			interceptProbability.put(SCType.INTERNATIONAL, Double.parseDouble(vars.get(2)));
+			interceptProbability.put(SCType.WHOLESALER, Double.parseDouble(vars.get(3)));
+			interceptProbability.put(SCType.RETAIL, Double.parseDouble(vars.get(4)));
+			interceptProbability.put(SCType.CONSUMER, Double.parseDouble(vars.get(5)));
+			
 			ArrayList<SCType> scTypes = new ArrayList<SCType>(); 
 			switch (layer) {
 			case 0: // Producer country
 				scTypes.add(SCType.PRODUCER);
-				new CountryAgent(context, name, scTypes, 1 + layer * 6, Constants.GRID_HEIGHT - 4, Constants.GRID_HEIGHT - 8); //TODO
+				new CountryAgent(context, name, scTypes, 1 + layer * 6, Constants.GRID_HEIGHT - 4, Constants.GRID_HEIGHT - 8, interceptProbability); //TODO
 				break;
 			case 1: // International country
 				scTypes.add(SCType.INTERNATIONAL);
-				new CountryAgent(context, name, scTypes, 1 + layer * 6, Constants.GRID_HEIGHT - 6, Constants.GRID_HEIGHT - 12); //TODO
+				new CountryAgent(context, name, scTypes, 1 + layer * 6, Constants.GRID_HEIGHT - 6, Constants.GRID_HEIGHT - 12, interceptProbability); //TODO
 				break;
 			case 2: // Transit country
 				scTypes.add(SCType.WHOLESALER);
 				scTypes.add(SCType.RETAIL);
 				scTypes.add(SCType.CONSUMER);
 				if (transitCountry == 0)
-					new CountryAgent(context, name, scTypes, 1 + layer * 6, Constants.GRID_HEIGHT - 1, stepSize - 1);
+					new CountryAgent(context, name, scTypes, 1 + layer * 6, Constants.GRID_HEIGHT - 1, stepSize - 1, interceptProbability);
 				else
-					new CountryAgent(context, name, scTypes, 1 + layer * 6, (Constants.GRID_HEIGHT - 1) - stepSize * (consumers - 1), stepSize - 1);
+					new CountryAgent(context, name, scTypes, 1 + layer * 6, (Constants.GRID_HEIGHT - 1) - stepSize * (consumers - 1), stepSize - 1, interceptProbability);
 				transitCountry ++;
 				break;
 			case 3: // Consumer country
 				scTypes.add(SCType.RETAIL);
 				scTypes.add(SCType.CONSUMER);
-				new CountryAgent(context, name, scTypes, 1 + layer * 6, (Constants.GRID_HEIGHT - 1) - stepSize * consumerCountry, stepSize - 1);
+				new CountryAgent(context, name, scTypes, 1 + layer * 6, (Constants.GRID_HEIGHT - 1) - stepSize * consumerCountry, stepSize - 1, interceptProbability);
 				consumerCountry ++;
 				break;
 			}

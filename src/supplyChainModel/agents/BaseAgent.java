@@ -8,9 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import frameworkTrust.Trust;
-import repast.simphony.annotate.AgentAnnot;
 import repast.simphony.context.Context;
-import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.space.graph.Network;
 import repast.simphony.space.graph.RepastEdge;
 import supplyChainModel.common.Constants;
@@ -21,14 +19,12 @@ import supplyChainModel.enums.SCType;
 import supplyChainModel.support.Order;
 import supplyChainModel.support.Shipment;
 
-@AgentAnnot(displayName = "Redundant name")
 public class BaseAgent {
 
 	// Agent variables
 	protected int id;
 	protected CountryAgent baseCountry;
 	protected SCType scType;
-	protected String name;
 	protected double sellPrice;
 	protected int minPackageSize;
 	protected int maxPackageSize;
@@ -40,8 +36,8 @@ public class BaseAgent {
 	protected double supplyNeeded = 0;
 	protected double supplyAsked = 0;
 	
-	protected double outputCurrentImport = 0;
-	protected double outputTotalImport = 0;
+	protected double out_currentImport = 0;
+	protected double out_totalImport = 0;
 
 	// Other variables
 	protected Map<Integer, Trust> trustOther = new HashMap<Integer, Trust>(); // Key: node id
@@ -56,11 +52,11 @@ public class BaseAgent {
 	 * - Moves the agent to an appropriate location
 	 */
 	public BaseAgent(final Context<Object> context, CountryAgent baseCountry, SCType scType, double sellPrice, int maxPackageSize) {
+		
 		context.add(this);
 		this.baseCountry = baseCountry;
 		this.id = SU.getNewId();
 		this.scType = scType;
-		this.name = getScType().getScCharacter();
 		this.sellPrice = sellPrice;
 		this.money = sellPrice * maxPackageSize;
 		
@@ -95,36 +91,22 @@ public class BaseAgent {
 	}
 	
 	public void stepResetParameters() {
-		outputCurrentImport = 0;
+		out_currentImport = 0;
 	}
 	
-	public void step_1_shipment_intervention() {
+	public void stepChooseSuppliersAndClients() {
 		// Override by subclasses
 	}
 	
-	@ScheduledMethod(start = 1, interval = 1, priority = -2, shuffle=true)
-	public void step_2_receive_shipment() {
-		// Override by subclasses
-		// This is regulated by the shipments (which is bad)
-	}
-	
-	@ScheduledMethod(start = 1, interval = 1, priority = -3, shuffle=true)
-	public void step_3_choose_suppliers_and_buyers() {
+	public void stepSendShipment() {
 		// Override by subclasses
 	}
 	
-	@ScheduledMethod(start = 1, interval = 1, priority = -4, shuffle=true)
-	public void step_4_send_shipment() {
+	public void stepReceiveOrder() {
 		// Override by subclasses
 	}
 	
-	@ScheduledMethod(start = 1, interval = 1, priority = -5, shuffle=true)
-	public void step_5_receive_order() {
-		// Override by subclasses
-	}
-	
-	@ScheduledMethod(start = 1, interval = 1, priority = -6, shuffle=true)
-	public void step_6_send_order() {
+	public void stepSendOrder() {
 		// Override by subclasses
 	}
 	
@@ -164,8 +146,8 @@ public class BaseAgent {
 		supplier.receivePayment(price);
 		// Change stock
 		stock += size;
-		outputTotalImport += size;
-		outputCurrentImport += size;
+		out_totalImport += size;
+		out_currentImport += size;
 	}
 
 	public void receivePayment(double payment) {
@@ -173,8 +155,8 @@ public class BaseAgent {
 	}
 
 	/**
-	 * Retrieve buyers that are connected to this supplier
-	 * @return the ArrayList of buyers
+	 * Retrieve clients that are connected to this supplier
+	 * @return the ArrayList of clients
 	 */
 	public ArrayList<BaseAgent> myBuyers() {
 	
@@ -188,7 +170,7 @@ public class BaseAgent {
 	}
 
 	/**
-	 * Retrieve suppliers that are connected to this buyer
+	 * Retrieve suppliers that are connected to this client
 	 * @return the ArrayList of suppliers
 	 */
 	public ArrayList<BaseAgent> getSuppliers() {
@@ -218,29 +200,29 @@ public class BaseAgent {
 						break;
 					}
 					addSupplier(supplier);
-					supplier.addBuyer(this);
+					supplier.addClient(this);
 					break;
 				}
 			}
 		}
 	}
 
-	public void searchBuyers() {
+	public void searchClients() {
 		
 		Network<Object> net = SU.getNetworkSC();
 		
 		if (net.getOutDegree(this) == 0) {
 			
-			ArrayList<BaseAgent> buyers = SU.getObjectsAllRandom(BaseAgent.class);
-			for (BaseAgent buyer : buyers) {
-				if (buyer.getScLayer() == (scType.getScLayer() + 1)) {
+			ArrayList<BaseAgent> clients = SU.getObjectsAllRandom(BaseAgent.class);
+			for (BaseAgent client : clients) {
+				if (client.getScLayer() == (scType.getScLayer() + 1)) {
 
 					// Countries should match up between retail and consumers
-					if (buyer.getScType() == SCType.CONSUMER && !buyer.getCountry().equals(this.getCountry())) {
+					if (client.getScType() == SCType.CONSUMER && !client.getCountry().equals(this.getCountry())) {
 						break;
 					}
-					addBuyer(buyer);
-					buyer.addSupplier(this);
+					addClient(client);
+					client.addSupplier(this);
 					break;
 				}
 			}
@@ -256,14 +238,14 @@ public class BaseAgent {
 		Logger.logInfoId(id, getNameId() + " added supplier: " + supplier.getNameId());
 	}
 	
-	public void addBuyer(BaseAgent buyer) {
+	public void addClient(BaseAgent client) {
 		
-		if (!trustOther.keySet().contains(buyer.getId())) {
-			SU.getNetworkSC().addEdge(this, buyer);
-			trustOther.put(buyer.getId(), new Trust(buyer.getId()));
+		if (!trustOther.keySet().contains(client.getId())) {
+			SU.getNetworkSC().addEdge(this, client);
+			trustOther.put(client.getId(), new Trust(client.getId()));
 		}
 		
-		Logger.logInfoId(id, getNameId() + " added buyer: " + buyer.getNameId());
+		Logger.logInfoId(id, getNameId() + " added client: " + client.getNameId());
 	}
 
 	public void sendShipment() {
@@ -274,7 +256,7 @@ public class BaseAgent {
 			double price = size * sellPrice;
 			
 			if (size >= minPackageSize && size <= maxPackageSize) {
-				new Shipment(SU.getContext(), size, RepastParam.getShipmentStep(), this, order.getBuyer(), price);
+				new Shipment(SU.getContext(), size, RepastParam.getShipmentStep(), this, order.getClient(), price, 0.1);
 				stock -= size;
 			}
 		}
@@ -329,7 +311,7 @@ public class BaseAgent {
 		ArrayList<Order> unreceivedOrdersRemove = new ArrayList<Order>();
 		for (Order order : unreceivedOrders) {
 			
-			if (order.getBuyer() == baseAgent)
+			if (order.getClient() == baseAgent)
 				unreceivedOrdersRemove.add(order);
 		}
 		unreceivedOrders.removeAll(unreceivedOrdersRemove);
@@ -337,13 +319,21 @@ public class BaseAgent {
 		ArrayList<Order> ordersRemove = new ArrayList<Order>();
 		for (Order order : orders) {
 			
-			if (order.getBuyer() == baseAgent)
+			if (order.getClient() == baseAgent)
 				ordersRemove.add(order);
 		}
 		orders.removeAll(ordersRemove);
 	}
 
-	public double getTrustLevel(int otherId) {
+	/**
+	 * This method is purposely called retrieveTrustLevel and not getTrustLevel, 
+	 * since repast automatically calls functions that start with get... when an
+	 * agent is clicked in the Repast HUB. This happens due to a problem with 
+	 * repast and getters WITH one or more parameters
+	 * @param otherId
+	 * @return the trust level to that agent
+	 */
+	public double retrieveTrustLevel(int otherId) {
 		//Logger.logInfo("Trust from" + name + id );
 		
 		if (trustOther.containsKey(otherId)) 
@@ -357,23 +347,24 @@ public class BaseAgent {
 		unreceivedOrders.add(unreceivedOrder);
 	}
 
+	/*================================
+	 * Standard getters
+	 *===============================*/
+	
 	public Color getColor() {
 		return Color.DARK_GRAY;
 	}
 
-	/**
-	 * Support functions
-	 */
 	public double getStock() {
 		return stock;
 	}
 	
 	public double getTotalImport() {
-		return outputTotalImport;
+		return out_totalImport;
 	}
 	
 	public double getCurrentImport() {
-		return outputCurrentImport;
+		return out_currentImport;
 	}
 
 	public CountryAgent getCountry() {
@@ -401,7 +392,7 @@ public class BaseAgent {
 	}
 	
 	public String getNameId() {
-		return name + id;
+		return scType.getScCharacter() + id;
 	}
 	
 	public String getLabel() {

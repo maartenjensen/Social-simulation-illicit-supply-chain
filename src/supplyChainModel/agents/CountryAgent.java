@@ -3,6 +3,7 @@ package supplyChainModel.agents;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 import repast.simphony.context.Context;
 import repast.simphony.random.RandomHelper;
@@ -19,10 +20,11 @@ public class CountryAgent {
 	private final int x;
 	private int y;
 	private int height;
+	private HashMap<SCType, Double> interceptProbability = new HashMap<SCType, Double>();
 	
 	private ArrayList<Integer> countryPoints;
 	
-	public CountryAgent(final Context<Object> context, String countryName, ArrayList<SCType> scTypes, int x, int y, int height) {
+	public CountryAgent(final Context<Object> context, String countryName, ArrayList<SCType> scTypes, int x, int y, int height, HashMap<SCType, Double> interceptProbability) {
 		
 		context.add(this);
 		name = countryName;
@@ -30,7 +32,7 @@ public class CountryAgent {
 		this.x = x;
 		this.y = y;
 		this.height = height;
-		
+		this.interceptProbability = interceptProbability;
 		countryPoints = createCountryPoints();
 		move(this.x, this.y);
 	}

@@ -1,14 +1,14 @@
 <repast.simphony.visualization.engine.CartesianDisplayDescriptor simphonyVersion="2.6.0">
-  <name>1. Main Display</name>
+  <name>Main Display</name>
   <type>2D</type>
   <styles>
     <entry>
-      <string>supplyChainModel.support.Shipment</string>
-      <string>supplyChainModel.styles.ShipmentStyle2D</string>
+      <string>supplyChainModel.DataCollector</string>
+      <string>supplyChainModel.styles.DataCollector2D</string>
     </entry>
     <entry>
-      <string>supplyChainModel.common.DataCollector</string>
-      <string>supplyChainModel.styles.DataCollector2D</string>
+      <string>supplyChainModel.support.Shipment</string>
+      <string>supplyChainModel.styles.ShipmentStyle2D</string>
     </entry>
     <entry>
       <string>supplyChainModel.agents.BaseAgent</string>
@@ -21,11 +21,11 @@
   </styles>
   <editedStyles>
     <entry>
-      <string>supplyChainModel.support.Shipment</string>
+      <string>supplyChainModel.DataCollector</string>
       <null/>
     </entry>
     <entry>
-      <string>supplyChainModel.common.DataCollector</string>
+      <string>supplyChainModel.support.Shipment</string>
       <null/>
     </entry>
     <entry>
@@ -65,18 +65,18 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>-2058683654</hashCode>
+    <hashCode>-1257805811</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>continuous space</layoutProjection>
   <layoutInterval>0</layoutInterval>
   <layerOrder>
     <entry>
-      <string>supplyChainModel.support.Shipment</string>
-      <int>2</int>
+      <string>supplyChainModel.DataCollector</string>
+      <int>1</int>
     </entry>
     <entry>
-      <string>supplyChainModel.common.DataCollector</string>
+      <string>supplyChainModel.support.Shipment</string>
       <int>0</int>
     </entry>
     <entry>
@@ -85,7 +85,7 @@
     </entry>
     <entry>
       <string>supplyChainModel.agents.CountryAgent</string>
-      <int>1</int>
+      <int>2</int>
     </entry>
   </layerOrder>
   <projections>
@@ -111,7 +111,7 @@
     </repast.simphony.scenario.data.ProjectionData>
   </projections>
   <visualizationProperties class="repast.simphony.visualization.UnitSizeLayoutProperties">
-    <unitSize>40.0</unitSize>
+    <unitSize>25.0</unitSize>
   </visualizationProperties>
   <projectionDescriptors>
     <entry>
@@ -135,7 +135,7 @@
               </entry>
               <entry>
                 <string>UNIT_SIZE</string>
-                <float>40.0</float>
+                <float>25.0</float>
               </entry>
               <entry>
                 <string>SHOW</string>
@@ -167,7 +167,7 @@
               </entry>
               <entry>
                 <string>UNIT_SIZE</string>
-                <float>40.0</float>
+                <float>25.0</float>
               </entry>
               <entry>
                 <string>SHOW</string>

@@ -3,7 +3,6 @@ package supplyChainModel.agents;
 import java.awt.Color;
 
 import repast.simphony.context.Context;
-import repast.simphony.engine.schedule.ScheduledMethod;
 import repast.simphony.random.RandomHelper;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
@@ -42,16 +41,15 @@ public class Agent5Consumer extends BaseAgent {
 	}
 	
 	/**
-	 * Consume drugs
+	 * Gain money
 	 */
-	@Override
-	public void step_2_receive_shipment() {
+	public void stepReceiveIncome() {
 		
 		money += Constants.PRICE_CONSUMER_INCOME;
 	}
 
 	@Override
-	public void step_3_choose_suppliers_and_buyers() {
+	public void stepChooseSuppliersAndClients() {
 		searchSuppliers();
 	}
 	
@@ -59,7 +57,7 @@ public class Agent5Consumer extends BaseAgent {
 	 * Consume instead of sending shipment
 	 */
 	@Override
-	public void step_4_send_shipment() {
+	public void stepSendShipment() {
 		
 		if (stock >= baseConsumption) {
 			Logger.logInfoId(id, getNameId() + ":" + stock + " - " + baseConsumption + " = " + (stock - baseConsumption));
@@ -74,13 +72,13 @@ public class Agent5Consumer extends BaseAgent {
 		}
 	}
 	
-	@ScheduledMethod(start = 1, interval = 1, priority = -5, shuffle=true)
-	public void step_5_receive_order() {
+	@Override
+	public void stepReceiveOrder() {
 		supplyNeeded = Math.max((securityStock - stock) + baseConsumption, 0);
 	}
 	
 	@Override
-	public void step_6_send_order() {
+	public void stepSendOrder() {
 		sendOrders();
 	}
 
@@ -97,5 +95,26 @@ public class Agent5Consumer extends BaseAgent {
 	
 	public boolean getSatisfied() {
 		return satisfied;
+	}
+	
+	/**
+	 * This function is 
+	 * @param size
+	 */
+	@Override
+	public void receivePackage(BaseAgent supplier, double size, double price) {
+		// Update trust relation
+		if (trustOther.containsKey(supplier.getId()))
+			trustOther.get(supplier.getId()).addShipmentReceived(size);
+		else
+			Logger.logError("BaseAgent.receivePackage():supplier " + supplier.getId() + " not found in key");
+		// Make payment
+		money -= price;
+		supplier.receivePayment(price);
+		// Change stock
+		stock += size;
+		out_totalImport += size;
+		out_currentImport += size;
+		ticksWithoutSatisfaction = 0;
 	}
 }

@@ -1,9 +1,9 @@
-%Name,types[0=0,1=1,2=234,3=34],
-South America,0
-International,1
-The Netherlands,2
-Spain,2
-United Kingdom,3
-Germany,3
-France,3
-Italy,3
+%Name,types[0=0,1=1,2=234,3=34],p01,p12,p23,p34
+South America,0,0,0,0,0
+International,1,0.1,0,0,0
+The Netherlands,2,0,0.2,0.1,0.02
+Spain,2,0,0.2,0.1,0.02
+United Kingdom,3,0,0,0.1,0.02
+Germany,3,0,0,0.1,0.02
+France,3,0,0,0.1,0.02
+Italy,3,0,0,0.1,0.02

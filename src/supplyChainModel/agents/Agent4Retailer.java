@@ -11,28 +11,23 @@ public class Agent4Retailer extends BaseAgent {
 	}
 	
 	@Override
-	public void step_2_receive_shipment() {
-		//This is done by the shipments
-	}
-	
-	@Override
-	public void step_3_choose_suppliers_and_buyers() {
-		searchBuyers();
+	public void stepChooseSuppliersAndClients() {
+		searchClients();
 		searchSuppliers();
 	}
 	
 	@Override
-	public void step_4_send_shipment() {
+	public void stepSendShipment() {
 		sendShipment();
 	}
 	
 	@Override
-	public void step_5_receive_order() {
+	public void stepReceiveOrder() {
 		updateOrders();
 	}
 	
 	@Override
-	public void step_6_send_order() {
+	public void stepSendOrder() {
 		sendOrders();
 	}
 }

@@ -15,7 +15,7 @@ public class SCReversedEdgeStyleOGL2D2 extends DefaultEdgeStyleOGL2D {
 		Object target = edge.getTarget();
 		
 		if (source instanceof BaseAgent && target instanceof BaseAgent) {
-			double trustLevel = ((BaseAgent) source).getTrustLevel( ((BaseAgent) target).getId() );
+			double trustLevel = ((BaseAgent) source).retrieveTrustLevel( ((BaseAgent) target).getId() );
 			return new Color((float) (1 - trustLevel), (float) trustLevel, 0.0f);
 		}
 		return Color.BLUE;

@@ -17,7 +17,7 @@ public class AgentStyle2D extends DefaultStyleOGL2D {
 			BaseAgent scNode = (BaseAgent)o;
 			return scNode.getColor();	
 		}
-		
+
 		return null;
 	}
 	
@@ -25,7 +25,7 @@ public class AgentStyle2D extends DefaultStyleOGL2D {
 	public float getScale(Object o) {
 		if (o instanceof BaseAgent)
 			return 1f;
-		
+
 		return 2f;
 	}
 	

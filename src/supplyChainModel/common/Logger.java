@@ -12,18 +12,23 @@ public final class Logger {
 
 	// Initialize variables
 	private static boolean logErrors = true;
+	private static boolean logMain = true;
 	private static boolean logInfo = true;
 	private static boolean logId = true;
 	private static int logIdIndex = -1;
 	
 	public static void enableLogger() {
 		logErrors = true;
+		logMain = true;
 		logInfo = true;
+		logId = true;
 	}
 	
 	public static void disableLogger() {
 		logErrors = true;
+		logMain = false;
 		logInfo = false;
+		logId = false;
 	}
 	
 	public static void setLogErrors(boolean logErrors) {
@@ -38,9 +43,14 @@ public final class Logger {
 		}
 	}
 	
+	public static void logMain(String output) {
+		if (logMain)
+			System.out.println(output);
+	}
+	
 	public static void logInfo(String output) {
 		if (logInfo)
-			System.out.println(output);
+			System.out.println(" - " + output);
 	}
 	
 	public static void resetId() {
@@ -56,7 +66,7 @@ public final class Logger {
 		if (logId && (logIdIndex == id || logIdIndex == -1)) {
 			
 			logIdIndex = id;
-			System.out.println(output);
+			System.out.println(" - " + output);
 		}
 	}
 }

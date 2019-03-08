@@ -37,7 +37,7 @@ public class Constants {
 	public static final int N_INTERNATIONALS = 3;
 	public static final int N_WHOLESALERS = 2;
 	public static final int N_RETAILERS	= 2;
-	public static final int N_CONSUMERS	= 3;
+	public static final int N_CONSUMERS	= 1;
 
 	// Consumer specific
 	public static final int CONSUMER_REMOVE_TICKS = 200;

@@ -4,15 +4,16 @@ import supplyChainModel.agents.BaseAgent;
 
 public class Order {
 
+	// State variables
 	private double size = 0;
 	private int step = 0;
-	private BaseAgent buyer = null;
+	private BaseAgent client = null;
 	
-	public Order(double size, int step, BaseAgent buyer) {
+	public Order(double size, int step, BaseAgent client) {
 
 		this.size = size;
 		this.step = step;
-		this.buyer = buyer;
+		this.client = client;
 	}
 	
 	/**
@@ -33,7 +34,7 @@ public class Order {
 		return size;
 	}
 	
-	public BaseAgent getBuyer() {
-		return buyer;
+	public BaseAgent getClient() {
+		return client;
 	}
 }
