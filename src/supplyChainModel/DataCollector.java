@@ -24,7 +24,7 @@ public class DataCollector {
 		for (BaseAgent agent : agents) {
 			
 			if (agent.getCountry().getName().equals(countryName)) {
-				stock += agent.getStock();
+				stock += 0; //TODO get the right information agent.getStock();
 			}
 		}
 		

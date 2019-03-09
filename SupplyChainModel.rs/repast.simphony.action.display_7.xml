@@ -1,5 +1,5 @@
 <repast.simphony.visualization.engine.CartesianDisplayDescriptor simphonyVersion="2.6.0">
-  <name>Main Display</name>
+  <name>Display</name>
   <type>2D</type>
   <styles>
     <entry>
@@ -13,6 +13,10 @@
     <entry>
       <string>supplyChainModel.agents.BaseAgent</string>
       <string>supplyChainModel.styles.AgentStyle2D</string>
+    </entry>
+    <entry>
+      <string>supplyChainModel.support.Order</string>
+      <string>supplyChainModel.styles.OrderStyle2D</string>
     </entry>
     <entry>
       <string>supplyChainModel.agents.CountryAgent</string>
@@ -30,6 +34,10 @@
     </entry>
     <entry>
       <string>supplyChainModel.agents.BaseAgent</string>
+      <null/>
+    </entry>
+    <entry>
+      <string>supplyChainModel.support.Order</string>
       <null/>
     </entry>
     <entry>
@@ -65,7 +73,7 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>-1257805811</hashCode>
+    <hashCode>-1258532778</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>continuous space</layoutProjection>
@@ -73,19 +81,23 @@
   <layerOrder>
     <entry>
       <string>supplyChainModel.DataCollector</string>
-      <int>1</int>
-    </entry>
-    <entry>
-      <string>supplyChainModel.support.Shipment</string>
       <int>0</int>
     </entry>
     <entry>
+      <string>supplyChainModel.support.Shipment</string>
+      <int>2</int>
+    </entry>
+    <entry>
       <string>supplyChainModel.agents.BaseAgent</string>
-      <int>3</int>
+      <int>4</int>
+    </entry>
+    <entry>
+      <string>supplyChainModel.support.Order</string>
+      <int>1</int>
     </entry>
     <entry>
       <string>supplyChainModel.agents.CountryAgent</string>
-      <int>2</int>
+      <int>3</int>
     </entry>
   </layerOrder>
   <projections>
@@ -131,7 +143,7 @@
             <map>
               <entry>
                 <string>COLOR</string>
-                <int>-6697729</int>
+                <int>-13395457</int>
               </entry>
               <entry>
                 <string>UNIT_SIZE</string>

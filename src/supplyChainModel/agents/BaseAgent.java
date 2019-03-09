@@ -8,12 +8,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import frameworkTrust.Trust;
-import repast.simphony.context.Context;
 import repast.simphony.space.graph.Network;
 import repast.simphony.space.graph.RepastEdge;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
-import supplyChainModel.common.RepastParam;
 import supplyChainModel.common.SU;
 import supplyChainModel.enums.SCType;
 import supplyChainModel.support.Order;
@@ -21,7 +19,7 @@ import supplyChainModel.support.Shipment;
 
 public class BaseAgent {
 
-	// Agent variables
+	// State variables
 	protected int id;
 	protected CountryAgent baseCountry;
 	protected SCType scType;
@@ -30,68 +28,58 @@ public class BaseAgent {
 	protected int maxPackageSize;
 	
 	protected double securityStock;
-	protected double stock;
+	protected Map<Byte, Double> stock;
 	protected double money;
 	
 	protected double supplyNeeded = 0;
 	protected double supplyAsked = 0;
+
+	protected Map<Integer, Trust> trustOther = new HashMap<Integer, Trust>(); // Key: node id
 	
+	// Visualization
 	protected double out_currentImport = 0;
 	protected double out_totalImport = 0;
 
-	// Other variables
-	protected Map<Integer, Trust> trustOther = new HashMap<Integer, Trust>(); // Key: node id
-	
-	// Lists and other structures
-	protected ArrayList<Order> orders = new ArrayList<Order>();
-	protected ArrayList<Order> unreceivedOrders = new ArrayList<Order>();
-	
 	/**
 	 * Constructor
 	 * - Adds the agent to the context
 	 * - Moves the agent to an appropriate location
 	 */
-	public BaseAgent(final Context<Object> context, CountryAgent baseCountry, SCType scType, double sellPrice, int maxPackageSize) {
+	public BaseAgent(CountryAgent baseCountry, SCType scType, double sellPrice, int maxPackageSize) {
 		
-		context.add(this);
-		this.baseCountry = baseCountry;
+		SU.getContext().add(this);
+		
 		this.id = SU.getNewId();
+		this.baseCountry = baseCountry;
 		this.scType = scType;
+		
 		this.sellPrice = sellPrice;
-		this.money = sellPrice * maxPackageSize;
+		this.money = sellPrice * maxPackageSize * 100;
 		
 		this.minPackageSize = maxPackageSize / Constants.SHIPMENT_MIN_PERCENTAGE;
 		this.maxPackageSize = maxPackageSize;
 		this.securityStock = maxPackageSize;
-		this.stock = securityStock;
+		this.stock = new HashMap<Byte, Double>();
 		
 		move();
-	}
-	
-	/**
-	 * Moves the supply chain agent to the correct location, dependent on the base country
-	 */
-	public void move() {
-
-		Point newPos = baseCountry.getFreePosition(this, scType);
-		Logger.logInfo(getNameId() + " " + baseCountry.getName() + " pos:[" + newPos.x + ", " + newPos.y + "]");
-		
-		SU.getContinuousSpace().moveTo(this, newPos.getX(), newPos.getY());	
-		SU.getGrid().moveTo(this, newPos.x, newPos.y);
 	}
 	
 	/*====================================
 	 * The main steps of the agents
 	 *====================================*/
 	
-	public void stepRemoval() {
+	public void stepCheckRemoval() {
 		if (money < 0) {
-			removeNode();
+			remove();
 		}
 	}
 	
 	public void stepResetParameters() {
 		out_currentImport = 0;
+	}
+	
+	public void stepReceiveShipments() {
+		// handle shipments
 	}
 	
 	public void stepChooseSuppliersAndClients() {
@@ -107,35 +95,17 @@ public class BaseAgent {
 	}
 	
 	public void stepSendOrder() {
-		// Override by subclasses
+		// sendOrders();
 	}
 	
 	/*================================
-	 * Functions
+	 * Functions (Non-decision making)
 	 *===============================*/
-
-	public void removeNode() {
-		
-		Logger.logInfo("Remove " + getNameId() + " " + baseCountry.getName());
-		final Iterable<RepastEdge<Object>> edges = (Iterable<RepastEdge<Object>>) SU.getNetworkSC().getEdges(this);
-		for (final RepastEdge<Object> edge : edges) {
-			SU.getNetworkSC().removeEdge(edge);
-		}
-		final Iterable<RepastEdge<Object>> edgesRev = (Iterable<RepastEdge<Object>>) SU.getNetworkSCReversed().getEdges(this);
-		for (final RepastEdge<Object> edge : edgesRev) {
-			SU.getNetworkSCReversed().removeEdge(edge);
-		}
-		for (BaseAgent agent : SU.getObjectsAllExclude(BaseAgent.class, this)) {
-			agent.removeOrdersFrom(this);
-		}
-		SU.getContext().remove(this);
-	}
-
 	/**
-	 * This function is 
+	 * Handles receiving a shipment
 	 * @param size
 	 */
-	public void receivePackage(BaseAgent supplier, double size, double price) {
+	/*public void receivePackage(BaseAgent supplier, double size, double price) {
 		// Update trust relation
 		if (trustOther.containsKey(supplier.getId()))
 			trustOther.get(supplier.getId()).addShipmentReceived(size);
@@ -148,8 +118,8 @@ public class BaseAgent {
 		stock += size;
 		out_totalImport += size;
 		out_currentImport += size;
-	}
-
+	}*/
+	
 	public void receivePayment(double payment) {
 		money += payment;
 	}
@@ -247,9 +217,9 @@ public class BaseAgent {
 		
 		Logger.logInfoId(id, getNameId() + " added client: " + client.getNameId());
 	}
-
+/*
 	public void sendShipment() {
-				
+
 		for (Order order : orders) {
 			
 			double size = Math.min(stock, order.getSize());
@@ -262,8 +232,8 @@ public class BaseAgent {
 		}
 		
 		orders.removeAll(orders);
-	}
-
+	}*/
+/*
 	public void updateOrders() {
 	
 		supplyNeeded = Math.max(securityStock - stock, 0);
@@ -277,13 +247,13 @@ public class BaseAgent {
 		unreceivedOrders.removeAll(newOrders);
 		orders.addAll(newOrders);
 		Logger.logInfoId(id, getNameId() + ", supply needed:" + supplyNeeded);
-	}
+	}*/
 
 	/**
 	 * Orders have a limit on size, they should be within minPackageSize and maxPackageSize
 	 * Needs the only order when having enough money to pay
 	 */
-	public void sendOrders() {
+	/*public void sendOrders() {
 				
 		supplyAsked = supplyNeeded * RepastParam.getLearningRate() + (1 - RepastParam.getLearningRate()) * supplyAsked;
 		double tempSupplyAsked = supplyAsked;
@@ -299,32 +269,15 @@ public class BaseAgent {
 					trustOther.get(supplier.getId()).addOrderSend(size);
 				}
 				supplier.addUnreceivedOrder(new Order(size, 3, this) ); //TODO make this a parameter
+				// new Shipment(SU.getContext(), size, RepastParam.getShipmentStep(), this, order.getClient(), price, 0.1);
+				new Order(SU.getContext(), );
 			}
 			tempSupplyAsked -= size;
 			if (tempSupplyAsked <= 0)
 				return ;
 		}
-	}
+	}*/
 	
-	public void removeOrdersFrom(BaseAgent baseAgent) {
-		
-		ArrayList<Order> unreceivedOrdersRemove = new ArrayList<Order>();
-		for (Order order : unreceivedOrders) {
-			
-			if (order.getClient() == baseAgent)
-				unreceivedOrdersRemove.add(order);
-		}
-		unreceivedOrders.removeAll(unreceivedOrdersRemove);
-		
-		ArrayList<Order> ordersRemove = new ArrayList<Order>();
-		for (Order order : orders) {
-			
-			if (order.getClient() == baseAgent)
-				ordersRemove.add(order);
-		}
-		orders.removeAll(ordersRemove);
-	}
-
 	/**
 	 * This method is purposely called retrieveTrustLevel and not getTrustLevel, 
 	 * since repast automatically calls functions that start with get... when an
@@ -342,21 +295,128 @@ public class BaseAgent {
 		Logger.logError("BaseAgent.getTrustLevel " + getNameId() + ": id " + otherId + " not in trust map.");
 		return -1;
 	}
+	
+	/**
+	 * Add the goods to the stock, if there is already stock of the
+	 * same quality, it will be added to that stock
+	 * @param goods
+	 */
+	public void addToStock(Map<Byte, Double> goods) {
 
-	public void addUnreceivedOrder(Order unreceivedOrder) {
-		unreceivedOrders.add(unreceivedOrder);
+		Logger.logInfo("Add:" + goods + " to " + stock);
+		for (Byte quality : goods.keySet()) {
+			if (stock.keySet().contains(quality))
+				stock.put(quality, stock.get(quality) + goods.get(quality));
+			else 
+				stock.put(quality, goods.get(quality));
+		}
+		Logger.logInfo("New stock: " + stock);
+		
+		//out_totalImport += size; TODO correctly add it as history
+		//out_currentImport += size;
 	}
+	
+	/**
+	 * Find the given quality and amount in the stock,
+	 * removes it from the stock and returns the amount
+	 * when the stock is lower than the craved amount it
+	 * is removed from the Map
+	 */
+	public Map<Byte, Double> findGoodsInStock(Map<Byte, Double> cravedGoods) {
 
+		Map<Byte, Double> choosenGoods = new HashMap<Byte, Double>();
+		for (Byte quality : cravedGoods.keySet()) {
+			if (stock.containsKey(quality)) {
+				if (stock.get(quality) <= cravedGoods.get(quality)) {
+					choosenGoods.put(quality, stock.get(quality));
+					stock.remove(quality);
+				}
+				else {
+					choosenGoods.put(quality, cravedGoods.get(quality));
+					stock.put(quality, stock.get(quality) - cravedGoods.get(quality));
+				}
+			}
+		}
+		return choosenGoods;
+	}
+	
+	/**
+	 * Removes this object from the simulation
+	 * This removes the edges, reversed edges, shipments and orders
+	 */
+	public void remove() {
+		
+		Logger.logInfo("Remove " + getNameId() + " " + baseCountry.getName());
+		final Iterable<RepastEdge<Object>> edges = (Iterable<RepastEdge<Object>>) SU.getNetworkSC().getEdges(this);
+		for (final RepastEdge<Object> edge : edges) {
+			SU.getNetworkSC().removeEdge(edge);
+		}
+		final Iterable<RepastEdge<Object>> edgesRev = (Iterable<RepastEdge<Object>>) SU.getNetworkSCReversed().getEdges(this);
+		for (final RepastEdge<Object> edge : edgesRev) {
+			SU.getNetworkSCReversed().removeEdge(edge);
+		}
+		for (Shipment shipment : getAllMyShipments()) {
+			shipment.remove();
+		}
+		for (Order order : getAllMyOrders()) {
+			order.remove();
+		}
+		SU.getContext().remove(this);
+	}
+	
 	/*================================
-	 * Standard getters
-	 *===============================*/
+	 * Getters and setters
+	 *===============================*/	
+	protected ArrayList<Shipment> getArrivedShipments() {
+		
+		ArrayList<Shipment> arrivedShipments = new ArrayList<Shipment>();
+		for (Shipment shipment : SU.getObjectsAll(Shipment.class)) {
+			if (shipment.isArrived() && shipment.getClient() == this)
+				arrivedShipments.add(shipment);
+		}
+		return arrivedShipments;
+	}
+	
+	protected ArrayList<Order> getArrivedOrders() {
+		
+		ArrayList<Order> arrivedOrders = new ArrayList<Order>();
+		for (Order order : SU.getObjectsAll(Order.class)) {
+			if (order.isArrived() && order.getSupplier() == this)
+				arrivedOrders.add(order);
+		}
+		return arrivedOrders;
+	}
+	
+	protected ArrayList<Shipment> getAllMyShipments() {
+		
+		ArrayList<Shipment> allMyShipments = new ArrayList<Shipment>();
+		for (Shipment shipment : SU.getObjectsAll(Shipment.class)) {
+			if (shipment.getClient() == this || shipment.getSupplier() == this)
+				allMyShipments.add(shipment);
+		}
+		return allMyShipments;
+	}
+	
+	protected ArrayList<Order> getAllMyOrders() {
+		
+		ArrayList<Order> allMyOrders = new ArrayList<Order>();
+		for (Order order : SU.getObjectsAll(Order.class)) {
+			if (order.getClient() == this || order.getSupplier() == this)
+				allMyOrders.add(order);
+		}
+		return allMyOrders;
+	}
 	
 	public Color getColor() {
 		return Color.DARK_GRAY;
 	}
 
-	public double getStock() {
+	public Map<Byte, Double> getStock() {
 		return stock;
+	}
+	
+	public String getStockStr() {
+		return stock.toString();
 	}
 	
 	public double getTotalImport() {
@@ -396,10 +456,26 @@ public class BaseAgent {
 	}
 	
 	public String getLabel() {
-		return id + String.format("  $%.0f  s:%.1f", money, stock);
+		return id + String.format("  $%.0f", money);
 	}
 	
 	public String toString() {
-		return id + ", stock " + String.format("%.0f", stock);
+		return id + ", stock " + stock.toString();//String.format("%.0f", stock);
+	}
+	
+	/*================================
+	 * Visualization
+	 *===============================*/
+	
+	/**
+	 * Moves the supply chain agent to the correct location, dependent on the base country
+	 */
+	public void move() {
+
+		Point newPos = baseCountry.getFreePosition(this, scType);
+		Logger.logInfo(getNameId() + " " + baseCountry.getName() + " pos:[" + newPos.x + ", " + newPos.y + "]");
+		
+		SU.getContinuousSpace().moveTo(this, newPos.getX(), newPos.getY());	
+		SU.getGrid().moveTo(this, newPos.x, newPos.y);
 	}
 }

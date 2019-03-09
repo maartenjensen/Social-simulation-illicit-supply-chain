@@ -12,7 +12,7 @@ public final class RepastParam {
 	private static double consumptionMax = 0;
 	private static double consumptionMin = 0;
 	private static int shipmentStep = 3;
-	private static double spawnRate = 0.01;
+	private static double spawnRate = 0;
 	private static int ticksInitPopulation = 100;
 	
 	public static void setRepastParameters() {

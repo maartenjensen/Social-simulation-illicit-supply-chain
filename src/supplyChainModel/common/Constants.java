@@ -11,7 +11,7 @@ public class Constants {
 	public static final String ID_SC_NETWORK = "sc network";
 	public static final String ID_SC_NETWORK_REVERSED = "sc network reversed";
 	
-	public static final int GRID_WIDTH = 31;
+	public static final int GRID_WIDTH = 35;
 	public static final int GRID_HEIGHT = 40;
 	public static final int GRID_CELL_SIZE = 25;
 	
@@ -33,16 +33,21 @@ public class Constants {
 	public static final int SHIPMENT_MIN_PERCENTAGE = 10;
 	
 	// Number of nodes per country
-	public static final int N_PRODUCERS	= 10;
-	public static final int N_INTERNATIONALS = 3;
-	public static final int N_WHOLESALERS = 2;
-	public static final int N_RETAILERS	= 2;
-	public static final int N_CONSUMERS	= 1;
+	public static final int N_PRODUCERS	= 1;
+	public static final int N_INTERNATIONALS = 0;
+	public static final int N_WHOLESALERS = 0;
+	public static final int N_RETAILERS	= 0;
+	public static final int N_CONSUMERS	= 0;
 
 	// Consumer specific
 	public static final int CONSUMER_REMOVE_TICKS = 200;
 	public static final int CONSUMER_LIMIT_WITHOUT_SATISFACTION = 10;
 	
-	// Visualization constants
 	public static final int COUNTRY_CONSUMERS_MAX = 2;
+	
+	// Visualization constants
+	public static final int VSL_COUNTRY_X = 6;
+	public static final int VSL_COUNTRY_WIDTH = 6;
+	public static final double VSL_ORD_SHP_DIF_Y = 0.2;
+	public static final double VSL_ORD_SHP_DIF_MOVE = 0.2;
 }

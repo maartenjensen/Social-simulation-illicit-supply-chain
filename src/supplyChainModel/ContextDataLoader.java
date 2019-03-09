@@ -64,6 +64,7 @@ public class ContextDataLoader {
 			List<String> vars = Arrays.asList(nodeString.split(","));
 			String name = vars.get(0);
 			int layer = Integer.parseInt(vars.get(1));
+			int countryX = Constants.VSL_COUNTRY_X + layer * Constants.VSL_COUNTRY_WIDTH;
 			
 			HashMap<SCType, Double> interceptProbability = new HashMap<SCType, Double>();
 			interceptProbability.put(SCType.INTERNATIONAL, Double.parseDouble(vars.get(2)));
@@ -75,26 +76,26 @@ public class ContextDataLoader {
 			switch (layer) {
 			case 0: // Producer country
 				scTypes.add(SCType.PRODUCER);
-				new CountryAgent(context, name, scTypes, 1 + layer * 6, Constants.GRID_HEIGHT - 4, Constants.GRID_HEIGHT - 8, interceptProbability); //TODO
+				new CountryAgent(context, name, scTypes, countryX, Constants.GRID_HEIGHT - 4, Constants.GRID_HEIGHT - 8, interceptProbability); //TODO
 				break;
 			case 1: // International country
 				scTypes.add(SCType.INTERNATIONAL);
-				new CountryAgent(context, name, scTypes, 1 + layer * 6, Constants.GRID_HEIGHT - 6, Constants.GRID_HEIGHT - 12, interceptProbability); //TODO
+				new CountryAgent(context, name, scTypes, countryX, Constants.GRID_HEIGHT - 6, Constants.GRID_HEIGHT - 12, interceptProbability); //TODO
 				break;
 			case 2: // Transit country
 				scTypes.add(SCType.WHOLESALER);
 				scTypes.add(SCType.RETAIL);
 				scTypes.add(SCType.CONSUMER);
 				if (transitCountry == 0)
-					new CountryAgent(context, name, scTypes, 1 + layer * 6, Constants.GRID_HEIGHT - 1, stepSize - 1, interceptProbability);
+					new CountryAgent(context, name, scTypes, countryX, Constants.GRID_HEIGHT - 1, stepSize - 1, interceptProbability);
 				else
-					new CountryAgent(context, name, scTypes, 1 + layer * 6, (Constants.GRID_HEIGHT - 1) - stepSize * (consumers - 1), stepSize - 1, interceptProbability);
+					new CountryAgent(context, name, scTypes, countryX, (Constants.GRID_HEIGHT - 1) - stepSize * (consumers - 1), stepSize - 1, interceptProbability);
 				transitCountry ++;
 				break;
 			case 3: // Consumer country
 				scTypes.add(SCType.RETAIL);
 				scTypes.add(SCType.CONSUMER);
-				new CountryAgent(context, name, scTypes, 1 + layer * 6, (Constants.GRID_HEIGHT - 1) - stepSize * consumerCountry, stepSize - 1, interceptProbability);
+				new CountryAgent(context, name, scTypes, countryX, (Constants.GRID_HEIGHT - 1) - stepSize * consumerCountry, stepSize - 1, interceptProbability);
 				consumerCountry ++;
 				break;
 			}

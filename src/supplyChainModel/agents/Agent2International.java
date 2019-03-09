@@ -7,9 +7,14 @@ import supplyChainModel.enums.SCType;
 public class Agent2International extends BaseAgent {
 	
 	public Agent2International(final Context<Object> context, CountryAgent country) {
-		super(context, country, SCType.INTERNATIONAL, Constants.PRICE_BUY_FROM_INTERNATIONAL, Constants.SHIPMENT_MAX_2TO3);
+		super(country, SCType.INTERNATIONAL, Constants.PRICE_BUY_FROM_INTERNATIONAL, Constants.SHIPMENT_MAX_2TO3);
 	}
 		
+	@Override
+	public void stepReceiveShipments() {
+		
+	}
+	
 	@Override
 	public void stepChooseSuppliersAndClients() {
 		searchClients();
@@ -18,16 +23,16 @@ public class Agent2International extends BaseAgent {
 	
 	@Override
 	public void stepSendShipment() {
-		sendShipment();
+		//sendShipment();
 	}
 	
 	@Override
 	public void stepReceiveOrder() {
-		updateOrders();
+		//updateOrders();
 	}
 	
 	@Override
 	public void stepSendOrder() {
-		sendOrders();
+		//sendOrders();
 	}
 }

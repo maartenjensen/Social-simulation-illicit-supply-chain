@@ -13,6 +13,7 @@ public final class Logger {
 	// Initialize variables
 	private static boolean logErrors = true;
 	private static boolean logMain = true;
+	private static boolean logRemove = true;
 	private static boolean logInfo = true;
 	private static boolean logId = true;
 	private static int logIdIndex = -1;
@@ -46,6 +47,11 @@ public final class Logger {
 	public static void logMain(String output) {
 		if (logMain)
 			System.out.println(output);
+	}
+	
+	public static void logRemove(String output) {
+		if (logRemove)
+			System.out.println("  - " + output);
 	}
 	
 	public static void logInfo(String output) {

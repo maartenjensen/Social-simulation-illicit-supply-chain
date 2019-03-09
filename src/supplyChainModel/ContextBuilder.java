@@ -14,7 +14,6 @@ import repast.simphony.space.graph.Network;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.space.grid.GridBuilderParameters;
 import repast.simphony.space.grid.SimpleGridAdder;
-import supplyChainModel.agents.Agent1Producer;
 import supplyChainModel.agents.Agent5Consumer;
 import supplyChainModel.agents.BaseAgent;
 import supplyChainModel.agents.CountryAgent;
@@ -23,6 +22,7 @@ import supplyChainModel.common.Logger;
 import supplyChainModel.common.RepastParam;
 import supplyChainModel.common.SU;
 import supplyChainModel.enums.SCType;
+import supplyChainModel.support.Order;
 import supplyChainModel.support.Shipment;
 
 public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder<Object> {
@@ -113,14 +113,17 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 	@ScheduledMethod(start = 1, interval = 1, priority = 0, shuffle=false)
 	public void step() {
 		
-		Logger.logMain("Step-Shipment: police intervention on shipments");
+		Logger.logMain("----------------------------------");
+		Logger.logMain("Step " + SU.getTick());
+		
+		/*Logger.logMain("Step-Shipment: police intervention on shipments");
 		for (Shipment shipment : SU.getObjectsAll(Shipment.class)) {
 			shipment.stepRemoval();
-		}
+		}*/
 		
 		Logger.logMain("Step-BaseAgent: remove bankrupt agents");
 		for (BaseAgent baseAgent : SU.getObjectsAll(BaseAgent.class)) {
-			baseAgent.stepRemoval();
+			baseAgent.stepCheckRemoval();
 		}
 		
 		Logger.logMain("Step-BaseAgent: reset output parameters");
@@ -133,19 +136,25 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 			country.stepSpawning();
 		}
 		
-		Logger.logMain("Step-Shipment: shipments and order advancements");
+		Logger.logMain("Step-Shipment: shipments advancements");
 		for (Shipment shipment : SU.getObjectsAll(Shipment.class)) {
 			shipment.stepAdvanceShipment();
 		}
-		//Temporary
-		Logger.logMain("Step-Agent1Producer: temporary produce");
-		for (Agent1Producer producer : SU.getObjectsAll(Agent1Producer.class)) {
-			producer.stepProduce();
+		
+		Logger.logMain("Step-Shipment: orders advancements");
+		for (Order order : SU.getObjectsAll(Order.class)) {
+			order.stepAdvanceOrder();
 		}
+		
 		//Temporary
 		Logger.logMain("Step-Agent5Consumer: temporary receive income");
 		for (Agent5Consumer producer : SU.getObjectsAll(Agent5Consumer.class)) {
 			producer.stepReceiveIncome();
+		}
+		
+		Logger.logMain("Step-BaseAgent: receive shipment from suppliers");
+		for (BaseAgent baseAgent : SU.getObjectsAll(BaseAgent.class)) {
+			baseAgent.stepReceiveShipments();
 		}
 		
 		Logger.logMain("Step-BaseAgent: choose suppliers and buyers");
@@ -153,7 +162,7 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 			baseAgent.stepChooseSuppliersAndClients();
 		}
 		
-		Logger.logMain("Step-BaseAgent: send shipment");
+		Logger.logMain("Step-BaseAgent: send shipment to clients");
 		for (BaseAgent baseAgent : SU.getObjectsAll(BaseAgent.class)) {
 			baseAgent.stepSendShipment();
 		}

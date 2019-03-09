@@ -5,7 +5,6 @@ import java.awt.Color;
 import repast.simphony.context.Context;
 import repast.simphony.random.RandomHelper;
 import supplyChainModel.common.Constants;
-import supplyChainModel.common.Logger;
 import supplyChainModel.common.RepastParam;
 import supplyChainModel.common.SU;
 import supplyChainModel.enums.SCType;
@@ -18,7 +17,7 @@ public class Agent5Consumer extends BaseAgent {
 	public int ticksWithoutSatisfaction;
 	
 	public Agent5Consumer(final Context<Object> context, CountryAgent country) {
-		super(context, country, SCType.CONSUMER, 0, 0);
+		super(country, SCType.CONSUMER, 0, 0);
 		
 		baseConsumption = RandomHelper.nextDoubleFromTo(RepastParam.getConsumptionMin(), RepastParam.getConsumptionMax());
 		satisfied = false;
@@ -26,17 +25,21 @@ public class Agent5Consumer extends BaseAgent {
 		ticksWithoutSatisfaction = 0;
 	}
 	
+	/*====================================
+	 * The main steps of the agents
+	 *====================================*/
+	
 	/**
 	 * Adjusted to change removal based on life and rehab instead of from bankruptcy
 	 * Can't die when initializing
 	 */
 	@Override
-	public void stepRemoval() {
+	public void stepCheckRemoval() {
 		
 		ticksUntilRemoved -= 1;
 		
 		if (!SU.getIsInitializing() && (ticksUntilRemoved == 0 || ticksWithoutSatisfaction >= Constants.CONSUMER_LIMIT_WITHOUT_SATISFACTION)) {
-			removeNode();
+			remove();
 		}
 	}
 	
@@ -46,6 +49,11 @@ public class Agent5Consumer extends BaseAgent {
 	public void stepReceiveIncome() {
 		
 		money += Constants.PRICE_CONSUMER_INCOME;
+	}
+	
+	@Override
+	public void stepReceiveShipments() {
+		
 	}
 
 	@Override
@@ -58,7 +66,7 @@ public class Agent5Consumer extends BaseAgent {
 	 */
 	@Override
 	public void stepSendShipment() {
-		
+		/*
 		if (stock >= baseConsumption) {
 			Logger.logInfoId(id, getNameId() + ":" + stock + " - " + baseConsumption + " = " + (stock - baseConsumption));
 			stock -= baseConsumption;
@@ -69,39 +77,25 @@ public class Agent5Consumer extends BaseAgent {
 			stock = 0;
 			ticksWithoutSatisfaction ++;
 			satisfied = false;
-		}
+		}*/
 	}
 	
 	@Override
 	public void stepReceiveOrder() {
-		supplyNeeded = Math.max((securityStock - stock) + baseConsumption, 0);
+		//supplyNeeded = Math.max((securityStock - stock) + baseConsumption, 0);
 	}
 	
 	@Override
 	public void stepSendOrder() {
-		sendOrders();
-	}
-
-	public String getLabel() {
-		return id + String.format("  $:%.0f  *:%.1f  #:%.1f", money, stock, baseConsumption);
+		//sendOrders();
 	}
 	
-	public Color getColor() {
-		if (satisfied)
-			return Color.GREEN;
-		else
-			return Color.RED;
-	}
-	
-	public boolean getSatisfied() {
-		return satisfied;
-	}
 	
 	/**
 	 * This function is 
 	 * @param size
 	 */
-	@Override
+	/*@Override
 	public void receivePackage(BaseAgent supplier, double size, double price) {
 		// Update trust relation
 		if (trustOther.containsKey(supplier.getId()))
@@ -116,5 +110,25 @@ public class Agent5Consumer extends BaseAgent {
 		out_totalImport += size;
 		out_currentImport += size;
 		ticksWithoutSatisfaction = 0;
+	}*/
+
+	/*================================
+	 * Getters and setters
+	 *===============================*/	
+	
+	public String getLabel() {
+		return id + String.format("  $:%.0f  *:%.1f  #:%.1f", money, stock, baseConsumption);
 	}
+	
+	public Color getColor() {
+		if (satisfied)
+			return Color.GREEN;
+		else
+			return Color.RED;
+	}
+	
+	public boolean getSatisfied() {
+		return satisfied;
+	}
+
 }

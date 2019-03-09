@@ -20,7 +20,7 @@ public class CountryAgent {
 	private final int x;
 	private int y;
 	private int height;
-	private HashMap<SCType, Double> interceptProbability = new HashMap<SCType, Double>();
+	//private HashMap<SCType, Double> interceptProbability = new HashMap<SCType, Double>();
 	
 	private ArrayList<Integer> countryPoints;
 	
@@ -32,7 +32,7 @@ public class CountryAgent {
 		this.x = x;
 		this.y = y;
 		this.height = height;
-		this.interceptProbability = interceptProbability;
+		//this.interceptProbability = interceptProbability;
 		countryPoints = createCountryPoints();
 		move(this.x, this.y);
 	}

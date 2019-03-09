@@ -30,14 +30,8 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="pMaxPackage" displayName="Package Maximum" type="double" 
-						defaultValue="5.0" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
-									
-		/>
 				<parameter name="pSpawnRate" displayName="Spawn rate" type="double" 
-						defaultValue="0.01" 
+						defaultValue="0" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
