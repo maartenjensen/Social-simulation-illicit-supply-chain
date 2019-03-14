@@ -59,6 +59,10 @@ public class Order {
 	public HashMap<Byte, Double> getGoods() {
 		return goods;
 	}
+	
+	public String getGoodsStr() {
+		return goods.toString();
+	}
 
 	/**
 	 * This function should only be allowed at initialization of

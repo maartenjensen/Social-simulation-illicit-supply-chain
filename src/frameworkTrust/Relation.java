@@ -98,6 +98,7 @@ public class Relation {
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		orders.put(tick, orderedGoods);
 		
+		Logger.logInfo("Add order to supplier: " + orderedGoods.toString());
 		addCurrentOrder(orderedGoods);
 	}
 	

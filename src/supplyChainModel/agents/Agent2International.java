@@ -66,9 +66,8 @@ public class Agent2International extends BaseAgent {
 					double oldQuantity = relationOther.get(supplier.getId()).getPreviousOrder(quality);
 					double chosenQuantity = Constants.SEND_ORDER_LEARN_RATE * requiredQuantity +
 											(1 - Constants.SEND_ORDER_LEARN_RATE) * oldQuantity;
-					Logger.logInfo("Sup id:" + supplier.getId() + ", befor quantity:" + chosenQuantity);
+
 					chosenQuantity = Math.min(Math.max(chosenQuantity, supplier.getMinPackageSize()), supplier.getMaxPackageSize());
-					Logger.logInfo("Sup id:" + supplier.getId() + ", after quantity:" + chosenQuantity);
 					requiredQuantity -= chosenQuantity;
 					
 					//Decide whether the order should be added or create anew
@@ -78,7 +77,7 @@ public class Agent2International extends BaseAgent {
 					else {
 						HashMap<Byte, Double> chosenGoods = new HashMap<Byte, Double>();
 						chosenGoods.put(quality, chosenQuantity);
-						new Order(this, supplier, chosenGoods, RepastParam.getShipmentStep());
+						placedOrders.put(supplier.getId(), new Order(this, supplier, chosenGoods, RepastParam.getShipmentStep()));
 					}
 				}
 			}

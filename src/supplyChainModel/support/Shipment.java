@@ -64,6 +64,10 @@ public class Shipment {
 		return goods;
 	}
 	
+	public String getGoodsStr() {
+		return goods.toString();
+	}
+	
 	public double getPrice() {
 		return price;
 	}
@@ -100,7 +104,6 @@ public class Shipment {
 		if (factor > 1) {
 			Logger.logError("Shipment.getColor(): factor > 1 =" + factor + ", quality:" + vsl_largest_quality);
 		}
-		Logger.logInfo("The factor: " + factor);
 		return new Color(factor, factor, 0);		
 	}
 	
