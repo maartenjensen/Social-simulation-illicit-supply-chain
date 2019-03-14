@@ -154,7 +154,7 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		
 		Logger.logMain("Step-BaseAgent: receive shipment from suppliers");
 		for (BaseAgent baseAgent : SU.getObjectsAll(BaseAgent.class)) {
-			baseAgent.stepReceiveShipments();
+			baseAgent.stepProcessArrivedShipments();
 		}
 		
 		Logger.logMain("Step-BaseAgent: choose suppliers and buyers");
@@ -167,18 +167,12 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 			baseAgent.stepSendShipment();
 		}
 		
-		Logger.logMain("Step-BaseAgent: receive order");
-		for (BaseAgent baseAgent : SU.getObjectsAll(BaseAgent.class)) {
-			baseAgent.stepReceiveOrder();
-		}
-		
 		Logger.logMain("Step-BaseAgent: send order");
 		for (BaseAgent baseAgent : SU.getObjectsAll(BaseAgent.class)) {
 			baseAgent.stepSendOrder();
 		}
 	}
 
-	
 	/**
 	 * Create continuous space space for the given context
 	 * @param context

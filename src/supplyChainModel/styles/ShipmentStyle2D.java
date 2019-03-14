@@ -14,7 +14,7 @@ public class ShipmentStyle2D extends DefaultStyleOGL2D {
 	public Color getColor(Object o){
 		
 		if (o instanceof Shipment)
-			return Color.ORANGE;
+			return ((Shipment) o).getColor();
 		
 		return null;
 	}

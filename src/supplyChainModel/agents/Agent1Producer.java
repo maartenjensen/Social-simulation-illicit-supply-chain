@@ -12,29 +12,21 @@ import supplyChainModel.support.Shipment;
 
 public class Agent1Producer extends BaseAgent {
 
-	public Agent1Producer(final Context<Object> context, CountryAgent country) {
+	// State variables
+	private byte quality;
+	
+	public Agent1Producer(final Context<Object> context, CountryAgent country, byte quality) {
 		super(country, SCType.PRODUCER, Constants.PRICE_BUY_FROM_PRODUCER, Constants.SHIPMENT_MAX_1TO2);
-	}
-	/*
-	public void stepProduce() { //Produced by itself
 		
-		if (stock >= securityStock) {
-			return;
-		}
-		int stockIncrease = Constants.PRODUCER_PRODUCE_AMOUNT;
-		money -= stockIncrease * Constants.PRICE_PRODUCTION;
-		stock += stockIncrease;
-		out_totalImport += stockIncrease;
-		out_currentImport += stockIncrease;
-		Logger.logInfoId(id, getNameId() + " " + (stock + stockIncrease) + " - " + stockIncrease + " = " + stock);
-	}*/
+		this.quality = quality;
+	}
 	
 	/**
 	 * The producer receives shipments it has made itself,
 	 * the money is the trade in for raw materials and production costs
 	 */
 	@Override
-	public void stepReceiveShipments() {
+	public void stepProcessArrivedShipments() {
 		for (Shipment shipment : getArrivedShipments()) {
 			money -= shipment.getPrice();
 			addToStock(shipment.getGoods());
@@ -50,20 +42,16 @@ public class Agent1Producer extends BaseAgent {
 	@Override
 	public void stepSendShipment() {
 		
+		updateArrivedOrders();
+		
 		//TODO order the orders based on most important clients
-		//sendShipment();
 		for (Order order : getArrivedOrders()) {
 			Map<Byte, Double> goodsToSend = findGoodsInStock(order.getGoods());
 			if (!goodsToSend.isEmpty()) {
-				new Shipment(order.getClient(), this, goodsToSend, 10, RepastParam.getShipmentStep()); //TODO calculate price
+				new Shipment(order.getClient(), this, goodsToSend, 2500, RepastParam.getShipmentStep()); //TODO calculate price
 			}
 			order.remove();
 		}
-	}
-	
-	@Override
-	public void stepReceiveOrder() {
-		//updateOrders();
 	}
 	
 	/**
@@ -75,8 +63,8 @@ public class Agent1Producer extends BaseAgent {
 		
 		//TODO make this part of decision with correct values
 		Map<Byte, Double> producedGoods = new HashMap<Byte, Double>();
-		producedGoods.put((byte) 90, 20.0);
-		double productionCost = 90 * 20.0;
+		producedGoods.put(quality, 20.0);
+		double productionCost = quality * 20.0;
 		new Shipment(this, null, producedGoods, productionCost, RepastParam.getShipmentStep());
 	}
 }

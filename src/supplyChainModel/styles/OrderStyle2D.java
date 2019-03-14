@@ -6,23 +6,23 @@ import java.awt.Font;
 import repast.simphony.visualizationOGL2D.DefaultStyleOGL2D;
 import saf.v3d.scene.Position;
 import supplyChainModel.common.Constants;
-import supplyChainModel.support.Shipment;
+import supplyChainModel.support.Order;
 
 public class OrderStyle2D extends DefaultStyleOGL2D {
 
 	@Override
 	public Color getColor(Object o){
 		
-		if (o instanceof Shipment)
-			return Color.ORANGE;
+		if (o instanceof Order)
+			return Color.BLUE;
 		
 		return null;
 	}
 
 	@Override
 	public float getScale(Object o) {
-		if (o instanceof Shipment) {
-			return (float) (0.5 + (((Shipment)o).getSize() * 0.05));
+		if (o instanceof Order) {
+			return 0.5f;
 		}
 		return 2f;
 	}
@@ -30,9 +30,9 @@ public class OrderStyle2D extends DefaultStyleOGL2D {
 	@Override
 	public String getLabel(Object object) {
 
-		if (object instanceof Shipment) {
-			final Shipment shipment = (Shipment) object;
-			return shipment.getLabel();
+		if (object instanceof Order) {
+			final Order order = (Order) object;
+			return order.getLabel();
 		}
 		
 		return "Warning label not found for object";

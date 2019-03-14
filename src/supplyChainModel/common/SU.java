@@ -9,6 +9,7 @@ import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.graph.Network;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.util.SimUtilities;
+import supplyChainModel.agents.BaseAgent;
 
 // Simulation Utils class
 public class SU {
@@ -45,6 +46,25 @@ public class SU {
 			Logger.logError("SimUtils.getContext(): context returned null");
 		}
 		return masterContext;
+	}
+	
+	/**
+	 * Retrieves the agent reference based on the ID.
+	 * @param clazz (e.g. use as input Human.class)
+	 * @return an ArrayList of objects from the given class
+	 */
+	public static BaseAgent getBaseAgent(int id) {
+		
+		//@SuppressWarnings("unchecked")
+		final Iterable<Object> objects = (Iterable<Object>) getContext().getObjects(BaseAgent.class);
+		for (final Object object : objects) {
+			
+			if (object instanceof BaseAgent) {
+				if ( ((BaseAgent) object).getId() == id)
+					return (BaseAgent) object;
+			}
+		}
+		return null;
 	}
 	
 	/**

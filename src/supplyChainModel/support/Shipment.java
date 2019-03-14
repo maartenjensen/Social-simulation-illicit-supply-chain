@@ -1,5 +1,6 @@
 package supplyChainModel.support;
 
+import java.awt.Color;
 import java.util.Map;
 
 import repast.simphony.space.continuous.ContinuousSpace;
@@ -10,7 +11,6 @@ import supplyChainModel.common.Logger;
 import supplyChainModel.common.SU;
 
 public class Shipment {
-
 
 	// State variables
 	private BaseAgent client;
@@ -24,6 +24,7 @@ public class Shipment {
 	private double vsl_moveSpeed;
 	private double vsl_moveHeading;
 	private double vsl_size;
+	private Byte vsl_largest_quality;
 	
 	public Shipment(BaseAgent client, BaseAgent supplier, Map<Byte, Double> goods, double price, int stepsLeft) {
 
@@ -37,6 +38,7 @@ public class Shipment {
 		//this.seizureChance = seizureChance;
 		
 		setStartPosition();
+		setLargestQuality();
 	}
 	
 	/**
@@ -85,7 +87,21 @@ public class Shipment {
 	}
 	
 	public String getLabel() {
-		return String.format("%.1f", 10.0);
+		return String.format("%.1f", goods.get(vsl_largest_quality));
+	}
+	
+	/*
+	 * Higher quality means a brighter yellow color for the
+	 * shipments
+	 */
+	public Color getColor() {
+		
+		float factor = (float) vsl_largest_quality / Constants.MAX_GOOD_QUALITY;
+		if (factor > 1) {
+			Logger.logError("Shipment.getColor(): factor > 1 =" + factor + ", quality:" + vsl_largest_quality);
+		}
+		Logger.logInfo("The factor: " + factor);
+		return new Color(factor, factor, 0);		
 	}
 	
 	// Visualization 
@@ -100,7 +116,7 @@ public class Shipment {
 		final ContinuousSpace<Object> space = SU.getContinuousSpace();
 		NdPoint clientLoc   = new NdPoint(space.getLocation(client).getX(), space.getLocation(client).getY() + Constants.VSL_ORD_SHP_DIF_Y);
 		NdPoint supplierLoc = new NdPoint(clientLoc.getX() - Constants.VSL_COUNTRY_X, clientLoc.getY());
-		if (supplier != null) 
+		if (supplier != null)
 			supplierLoc = new NdPoint(space.getLocation(supplier).getX(), space.getLocation(supplier).getY() + Constants.VSL_ORD_SHP_DIF_Y);
 		
 		space.moveTo(this, supplierLoc.getX(), supplierLoc.getY());
@@ -110,10 +126,25 @@ public class Shipment {
 		
 		SU.getContinuousSpace().moveByVector(this, vsl_moveSpeed * (1 + Constants.VSL_ORD_SHP_DIF_MOVE), vsl_moveHeading,0);
 	}
-	
+
 	public void move() {
 		
 		SU.getContinuousSpace().moveByVector(this, vsl_moveSpeed, vsl_moveHeading,0);
+	}
+	
+	public void setLargestQuality() {
+		
+		double quantity = -1;
+		for (Byte quality : goods.keySet()) {
+			if (quantity == -1) {
+				vsl_largest_quality = quality;
+				quantity = goods.get(quality);
+			}
+			else if (goods.get(quality) > quantity) {
+				vsl_largest_quality = quality;
+				quantity = goods.get(quality);
+			}	
+		}
 	}
 	
 	public void setSize() {

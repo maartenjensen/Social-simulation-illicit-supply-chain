@@ -7,11 +7,12 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import frameworkTrust.Trust;
+import frameworkTrust.Relation;
 import repast.simphony.space.graph.Network;
 import repast.simphony.space.graph.RepastEdge;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
+import supplyChainModel.common.RepastParam;
 import supplyChainModel.common.SU;
 import supplyChainModel.enums.SCType;
 import supplyChainModel.support.Order;
@@ -24,8 +25,8 @@ public class BaseAgent {
 	protected CountryAgent baseCountry;
 	protected SCType scType;
 	protected double sellPrice;
-	protected int minPackageSize;
-	protected int maxPackageSize;
+	protected double minPackageSize;
+	protected double maxPackageSize;
 	
 	protected double securityStock;
 	protected Map<Byte, Double> stock;
@@ -34,7 +35,7 @@ public class BaseAgent {
 	protected double supplyNeeded = 0;
 	protected double supplyAsked = 0;
 
-	protected Map<Integer, Trust> trustOther = new HashMap<Integer, Trust>(); // Key: node id
+	protected Map<Integer, Relation> relationOther = new HashMap<Integer, Relation>(); // Key: node id
 	
 	// Visualization
 	protected double out_currentImport = 0;
@@ -45,7 +46,7 @@ public class BaseAgent {
 	 * - Adds the agent to the context
 	 * - Moves the agent to an appropriate location
 	 */
-	public BaseAgent(CountryAgent baseCountry, SCType scType, double sellPrice, int maxPackageSize) {
+	public BaseAgent(CountryAgent baseCountry, SCType scType, double sellPrice, double maxPackageSize) {
 		
 		SU.getContext().add(this);
 		
@@ -56,14 +57,14 @@ public class BaseAgent {
 		this.sellPrice = sellPrice;
 		this.money = sellPrice * maxPackageSize * 100;
 		
-		this.minPackageSize = maxPackageSize / Constants.SHIPMENT_MIN_PERCENTAGE;
+		this.minPackageSize = maxPackageSize * (Constants.SHIPMENT_MIN_PERCENTAGE / 100);
 		this.maxPackageSize = maxPackageSize;
 		this.securityStock = maxPackageSize;
 		this.stock = new HashMap<Byte, Double>();
 		
 		move();
 	}
-	
+
 	/*====================================
 	 * The main steps of the agents
 	 *====================================*/
@@ -78,7 +79,7 @@ public class BaseAgent {
 		out_currentImport = 0;
 	}
 	
-	public void stepReceiveShipments() {
+	public void stepProcessArrivedShipments() {
 		// handle shipments
 	}
 	
@@ -87,10 +88,6 @@ public class BaseAgent {
 	}
 	
 	public void stepSendShipment() {
-		// Override by subclasses
-	}
-	
-	public void stepReceiveOrder() {
 		// Override by subclasses
 	}
 	
@@ -201,23 +198,24 @@ public class BaseAgent {
 
 	public void addSupplier(BaseAgent supplier) {
 		
-		if (!trustOther.keySet().contains(supplier.getId())) {
+		if (!relationOther.keySet().contains(supplier.getId())) {
 			SU.getNetworkSCReversed().addEdge(this, supplier);
-			trustOther.put(supplier.getId(), new Trust(supplier.getId()));
+			relationOther.put(supplier.getId(), new Relation(supplier.getId(), true, Constants.EXPECTED_ORDER_LEARN_RATE, RepastParam.getShipmentStep() * 2));
 		}
 		Logger.logInfoId(id, getNameId() + " added supplier: " + supplier.getNameId());
 	}
 	
 	public void addClient(BaseAgent client) {
 		
-		if (!trustOther.keySet().contains(client.getId())) {
+		if (!relationOther.keySet().contains(client.getId())) {
 			SU.getNetworkSC().addEdge(this, client);
-			trustOther.put(client.getId(), new Trust(client.getId()));
+			relationOther.put(client.getId(), new Relation(client.getId(), false, Constants.EXPECTED_ORDER_LEARN_RATE, RepastParam.getShipmentStep() * 2));
 		}
 		
 		Logger.logInfoId(id, getNameId() + " added client: " + client.getNameId());
 	}
-/*
+	
+	/*
 	public void sendShipment() {
 
 		for (Order order : orders) {
@@ -233,25 +231,10 @@ public class BaseAgent {
 		
 		orders.removeAll(orders);
 	}*/
-/*
-	public void updateOrders() {
-	
-		supplyNeeded = Math.max(securityStock - stock, 0);
-		ArrayList<Order> newOrders = new ArrayList<Order>();
-		for (Order order : unreceivedOrders) {
-			if (order.updateOrder()) {
-				newOrders.add(order);
-				supplyNeeded += order.getSize();
-			}
-		}
-		unreceivedOrders.removeAll(newOrders);
-		orders.addAll(newOrders);
-		Logger.logInfoId(id, getNameId() + ", supply needed:" + supplyNeeded);
-	}*/
 
 	/**
 	 * Orders have a limit on size, they should be within minPackageSize and maxPackageSize
-	 * Needs the only order when having enough money to pay
+	 * TODO Only send order when having enough money to pay
 	 */
 	/*public void sendOrders() {
 				
@@ -279,6 +262,31 @@ public class BaseAgent {
 	}*/
 	
 	/**
+	 * Adds the orders who are placed by this agent
+	 * @param placedOrders
+	 */
+	public void addOrdersToRelation(HashMap<Integer, Order> placedOrders) {
+		
+		for (int supplierId: placedOrders.keySet()) {
+			relationOther.get(supplierId).addOrderToSupplier(placedOrders.get(supplierId).getGoods());
+		}
+	}
+	
+	/**
+	 * Updates the arrived orders in the Relation Class,
+	 * this class automatically applies a learning function
+	 * to calculate the expected orders
+	 */
+	public void updateArrivedOrders() {
+		
+		for (Order order : getArrivedOrders()) {
+			
+			Relation relationClient = relationOther.get(order.getClient().getId());
+			relationClient.addOrderFromClient(order.getGoods());
+		}
+	}
+	
+	/**
 	 * This method is purposely called retrieveTrustLevel and not getTrustLevel, 
 	 * since repast automatically calls functions that start with get... when an
 	 * agent is clicked in the Repast HUB. This happens due to a problem with 
@@ -289,11 +297,32 @@ public class BaseAgent {
 	public double retrieveTrustLevel(int otherId) {
 		//Logger.logInfo("Trust from" + name + id );
 		
-		if (trustOther.containsKey(otherId)) 
-			return trustOther.get(otherId).getTrustLevel();
+		if (relationOther.containsKey(otherId)) 
+			return relationOther.get(otherId).getTrustLevel();
 		
 		Logger.logError("BaseAgent.getTrustLevel " + getNameId() + ": id " + otherId + " not in trust map.");
 		return -1;
+	}
+	
+	/**
+	 * This function retrieves all the suppliers, then converts them to
+	 * TrustCompare objects who can easily be sorted according to their 
+	 * trust. The suppliers are sorted with higher trust levels first.
+	 * @param quality
+	 * @return
+	 */
+	public ArrayList<TrustCompare> retrieveSortedSuppliers(int quality) {
+		
+		ArrayList<TrustCompare> sortedSuppliers = new ArrayList<TrustCompare>();
+		for (BaseAgent supplier : getSuppliers()) {
+			Relation relation = relationOther.get(supplier.getId());
+			sortedSuppliers.add(new TrustCompare(SU.getBaseAgent(relation.getId()),
+								relation.getTrustForQuality((byte) quality)));
+		}
+		
+		Collections.sort(sortedSuppliers);
+		Collections.reverse(sortedSuppliers);
+		return sortedSuppliers;
 	}
 	
 	/**
@@ -333,13 +362,15 @@ public class BaseAgent {
 				}
 				else {
 					choosenGoods.put(quality, cravedGoods.get(quality));
+					Logger.logInfo("Before:" + stock.toString());
 					stock.put(quality, stock.get(quality) - cravedGoods.get(quality));
+					Logger.logInfo("After:" + stock.toString());
 				}
 			}
 		}
 		return choosenGoods;
 	}
-	
+
 	/**
 	 * Removes this object from the simulation
 	 * This removes the edges, reversed edges, shipments and orders
@@ -363,7 +394,7 @@ public class BaseAgent {
 		}
 		SU.getContext().remove(this);
 	}
-	
+
 	/*================================
 	 * Getters and setters
 	 *===============================*/	
@@ -376,7 +407,7 @@ public class BaseAgent {
 		}
 		return arrivedShipments;
 	}
-	
+
 	protected ArrayList<Order> getArrivedOrders() {
 		
 		ArrayList<Order> arrivedOrders = new ArrayList<Order>();
@@ -419,6 +450,10 @@ public class BaseAgent {
 		return stock.toString();
 	}
 	
+	public String getRelationStr() {
+		return relationOther.toString();
+	}
+	
 	public double getTotalImport() {
 		return out_totalImport;
 	}
@@ -443,11 +478,11 @@ public class BaseAgent {
 		return id;
 	}
 	
-	public int getMinPackageSize() {
+	public double getMinPackageSize() {
 		return minPackageSize;
 	}
 	
-	public int getMaxPackageSize() {
+	public double getMaxPackageSize() {
 		return maxPackageSize;
 	}
 	

@@ -52,7 +52,7 @@ public class Agent5Consumer extends BaseAgent {
 	}
 	
 	@Override
-	public void stepReceiveShipments() {
+	public void stepProcessArrivedShipments() {
 		
 	}
 
@@ -78,11 +78,6 @@ public class Agent5Consumer extends BaseAgent {
 			ticksWithoutSatisfaction ++;
 			satisfied = false;
 		}*/
-	}
-	
-	@Override
-	public void stepReceiveOrder() {
-		//supplyNeeded = Math.max((securityStock - stock) + baseConsumption, 0);
 	}
 	
 	@Override

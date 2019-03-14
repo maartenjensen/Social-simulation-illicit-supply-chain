@@ -11,7 +11,7 @@ public class Agent3Wholesaler extends BaseAgent {
 	}
 
 	@Override
-	public void stepReceiveShipments() {
+	public void stepProcessArrivedShipments() {
 		
 	}
 	
@@ -24,11 +24,6 @@ public class Agent3Wholesaler extends BaseAgent {
 	@Override
 	public void stepSendShipment() {
 		//sendShipment();
-	}
-	
-	@Override
-	public void stepReceiveOrder() {
-		//updateOrders();
 	}
 	
 	@Override
