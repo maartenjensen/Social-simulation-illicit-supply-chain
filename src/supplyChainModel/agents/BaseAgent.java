@@ -319,6 +319,7 @@ public class BaseAgent {
 	 * when the stock is lower than the craved amount it
 	 * is put at zero. When the requested quality is not 
 	 * in the stock it is added as a zero to the stock
+	 * There is a check on minimum package size
 	 */
 	public HashMap<Byte, Double> findGoodsInStock(Map<Byte, Double> cravedGoods) {
 
@@ -326,8 +327,10 @@ public class BaseAgent {
 		for (Byte quality : cravedGoods.keySet()) {
 			if (stock.containsKey(quality)) {
 				if (stock.get(quality) <= cravedGoods.get(quality)) {
-					choosenGoods.put(quality, stock.get(quality));
-					stock.put(quality, 0.0);
+					if (stock.get(quality) >= minPackageSize) {
+						choosenGoods.put(quality, stock.get(quality));
+						stock.put(quality, 0.0);
+					}
 				}
 				else {
 					choosenGoods.put(quality, cravedGoods.get(quality));

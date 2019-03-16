@@ -50,7 +50,7 @@ public class CountryAgent {
 	public void spawnAgent(SCType scType) {
 		
 		if (containsSCType(SCType.PRODUCER) && scType == SCType.PRODUCER) {
-			new Agent1Producer(SU.getContext(), this, (byte) 90);
+			new Agent1Producer(SU.getContext(), this, (byte) 90); //TODO randomized quality
 		}
 		
 		if (containsSCType(SCType.INTERNATIONAL) && scType == SCType.INTERNATIONAL) {
@@ -66,7 +66,7 @@ public class CountryAgent {
 		}
 		
 		if (containsSCType(SCType.CONSUMER) && scType == SCType.CONSUMER) {
-			new Agent5Consumer(SU.getContext(), this);
+			new Agent5Consumer(SU.getContext(), this, (byte) 90); //TODO randomized quality
 		}
 	}
 	

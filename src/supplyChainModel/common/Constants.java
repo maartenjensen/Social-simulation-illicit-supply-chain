@@ -43,8 +43,8 @@ public class Constants {
 	public static final int N_PRODUCERS	= 2;
 	public static final int N_INTERNATIONALS = 1;
 	public static final int N_WHOLESALERS = 1;
-	public static final int N_RETAILERS	= 0;
-	public static final int N_CONSUMERS	= 0;
+	public static final int N_RETAILERS	= 1;
+	public static final int N_CONSUMERS	= 1;
 
 	public static final byte MAX_GOOD_QUALITY = 100;
 	

@@ -106,8 +106,7 @@ public class Agent3Wholesaler extends BaseAgent {
 	public HashMap<Byte, Double> getRequiredGoods() {
 		
 		HashMap<Byte, Double> requiredGoods = new HashMap<Byte, Double>();
-		requiredGoods.put((byte) 90, 50.0);
-		/*
+		
 		for (Byte quality : stock.keySet()) {
 			
 			double requiredQuantity = securityStockMultiplier * minPackageSize;
@@ -118,7 +117,7 @@ public class Agent3Wholesaler extends BaseAgent {
 			requiredQuantity -= stock.get(quality);
 			
 			requiredGoods.put(quality, requiredQuantity);
-		}*/
+		}
 		
 		return requiredGoods;
 	}
