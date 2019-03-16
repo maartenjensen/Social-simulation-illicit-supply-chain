@@ -2,7 +2,6 @@ package supplyChainModel.agents;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import repast.simphony.context.Context;
 import supplyChainModel.common.Constants;
@@ -20,6 +19,9 @@ public class Agent2International extends BaseAgent {
 		
 	@Override
 	public void stepProcessArrivedShipments() {
+		
+		updateArrivedShipments();
+		
 		for (Shipment shipment : getArrivedShipments()) { //TODO add payment to supplier
 			money -= shipment.getPrice();
 			shipment.getSupplier().receivePayment(shipment.getPrice());
@@ -51,7 +53,7 @@ public class Agent2International extends BaseAgent {
 	public void stepSendOrder() {
 		
 		HashMap<Integer, Order> placedOrders = new HashMap<Integer, Order>();
-		Map<Byte, Double> requiredGoods = new HashMap<Byte, Double>();
+		HashMap<Byte, Double> requiredGoods = new HashMap<Byte, Double>();
 		requiredGoods.put((byte) 90, 10.0);
 		
 		for (Byte quality : requiredGoods.keySet()) {
@@ -64,7 +66,7 @@ public class Agent2International extends BaseAgent {
 				Logger.logInfo("Required:" + requiredQuantity + ", min package size:" + supplier.getMinPackageSize());
 				if (requiredQuantity >= supplier.getMinPackageSize()) {
 					
-					double oldQuantity = relationOther.get(supplier.getId()).getPreviousOrder(quality);
+					double oldQuantity = relationsS.get(supplier.getId()).getPreviousMyOrder(quality);
 					double chosenQuantity = Constants.SEND_ORDER_LEARN_RATE * requiredQuantity +
 											(1 - Constants.SEND_ORDER_LEARN_RATE) * oldQuantity;
 

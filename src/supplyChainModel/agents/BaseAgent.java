@@ -7,7 +7,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import frameworkTrust.Relation;
+import frameworkTrust.RelationC;
+import frameworkTrust.RelationS;
 import repast.simphony.space.graph.Network;
 import repast.simphony.space.graph.RepastEdge;
 import supplyChainModel.common.Constants;
@@ -35,7 +36,8 @@ public class BaseAgent {
 	protected double supplyNeeded = 0;
 	protected double supplyAsked = 0;
 
-	protected Map<Integer, Relation> relationOther = new HashMap<Integer, Relation>(); // Key: node id
+	protected Map<Integer, RelationS> relationsS = new HashMap<Integer, RelationS>(); // Key: node id
+	protected Map<Integer, RelationC> relationsC = new HashMap<Integer, RelationC>(); // Key: node id
 	
 	// Visualization
 	protected double out_currentImport = 0;
@@ -180,65 +182,65 @@ public class BaseAgent {
 
 	public void addSupplier(BaseAgent supplier) {
 		
-		if (!relationOther.keySet().contains(supplier.getId())) {
+		if (!relationsS.keySet().contains(supplier.getId())) {
 			SU.getNetworkSCReversed().addEdge(this, supplier);
-			relationOther.put(supplier.getId(), new Relation(supplier.getId(), true, RepastParam.getShipmentStep() * 2));
+			relationsS.put(supplier.getId(), new RelationS(supplier.getId(), RepastParam.getShipmentStep() * 2));
 		}
 		Logger.logInfoId(id, getNameId() + " added supplier: " + supplier.getNameId());
 	}
 	
 	public void addClient(BaseAgent client) {
 		
-		if (!relationOther.keySet().contains(client.getId())) {
+		if (!relationsC.keySet().contains(client.getId())) {
 			SU.getNetworkSC().addEdge(this, client);
-			relationOther.put(client.getId(), new Relation(client.getId(), false, RepastParam.getShipmentStep() * 2));
+			relationsC.put(client.getId(), new RelationC(client.getId(), RepastParam.getShipmentStep() * 2));
 		}
 		
 		Logger.logInfoId(id, getNameId() + " added client: " + client.getNameId());
 	}
 	
-	/*
-	public void sendShipment() {
-
-		for (Order order : orders) {
-			
-			double size = Math.min(stock, order.getSize());
-			double price = size * sellPrice;
-			
-			if (size >= minPackageSize && size <= maxPackageSize) {
-				new Shipment(SU.getContext(), size, RepastParam.getShipmentStep(), this, order.getClient(), price, 0.1);
-				stock -= size;
-			}
-		}
-		
-		orders.removeAll(orders);
-	}*/
-	
 	/**
-	 * Adds the orders who are placed by this agent
+	 * Adds the orders who are placed by this agent to the relationsS
 	 * @param placedOrders
 	 */
 	public void addOrdersToRelation(HashMap<Integer, Order> placedOrders) {
 		
 		for (int supplierId: placedOrders.keySet()) {
-			relationOther.get(supplierId).addOrderToSupplier(placedOrders.get(supplierId).getGoods());
+			relationsS.get(supplierId).addMyOrder(placedOrders.get(supplierId).getGoods());
 		}
 	}
 	
 	/**
-	 * Updates the arrived orders in the Relation Class,
-	 * this class automatically applies a learning function
-	 * to calculate the expected orders
+	 * Updates the arrived shipments which are shipments from the suppliers.
+	 * This function should not be called from the Agent1Producer, since he is
+	 * the Supplier itself and therefore the getSupplier() function of the shipment
+	 * will return null.
+	 */
+	public void updateArrivedShipments() {
+		
+		for (Shipment shipment : getArrivedShipments()) {
+			
+			if (!relationsS.containsKey(shipment.getSupplier().getId())) //java.lang.NullPointerException? See comment of this function
+				Logger.logError("BaseAgent.updateArrivedShipments() in " + getId() + " : relationsS does not contain ID:" + shipment.getSupplier().getId());
+			RelationS relationSupplier = relationsS.get(shipment.getSupplier().getId());
+			relationSupplier.addOtherShipment(shipment.getGoods());
+		}
+	}
+
+	/**
+	 * Updates the arrived orders which are orders from the clients. 
 	 */
 	public void updateArrivedOrders() {
 		
 		for (Order order : getArrivedOrders()) {
 			
-			Relation relationClient = relationOther.get(order.getClient().getId());
-			relationClient.addOrderFromClient(order.getGoods());
+			if (!relationsC.containsKey(order.getClient().getId()))
+				Logger.logError("BaseAgent.updateArrivedOrders() in " + getId() + " : relationsC does not contain ID:" + order.getClient().getId());
+			RelationC relationClient = relationsC.get(order.getClient().getId());
+			relationClient.addOtherOrder(order.getGoods());
 		}
 	}
-	
+
 	/**
 	 * This method is purposely called retrieveTrustLevel and not getTrustLevel, 
 	 * since repast automatically calls functions that start with get... when an
@@ -250,10 +252,12 @@ public class BaseAgent {
 	public double retrieveTrustLevel(int otherId) {
 		//Logger.logInfo("Trust from" + name + id );
 		
-		if (relationOther.containsKey(otherId)) 
-			return relationOther.get(otherId).getTrustLevel();
+		if (relationsS.containsKey(otherId)) 
+			return relationsS.get(otherId).getTrustLevel();
+		else if (relationsC.containsKey(otherId)) 
+			return relationsC.get(otherId).getTrustLevel();
 		
-		Logger.logError("BaseAgent.getTrustLevel " + getNameId() + ": id " + otherId + " not in trust map.");
+		Logger.logError("BaseAgent.getTrustLevel " + getNameId() + ": id " + otherId + " not in relationsS and/or relationsC.");
 		return -1;
 	}
 	
@@ -268,7 +272,7 @@ public class BaseAgent {
 		
 		ArrayList<TrustCompare> sortedSuppliers = new ArrayList<TrustCompare>();
 		for (BaseAgent supplier : getSuppliers()) {
-			Relation relation = relationOther.get(supplier.getId());
+			RelationS relation = relationsS.get(supplier.getId());
 			sortedSuppliers.add(new TrustCompare(SU.getBaseAgent(relation.getId()),
 								relation.getTrustForQuality((byte) quality)));
 		}
@@ -304,9 +308,9 @@ public class BaseAgent {
 	 * when the stock is lower than the craved amount it
 	 * is removed from the Map
 	 */
-	public Map<Byte, Double> findGoodsInStock(Map<Byte, Double> cravedGoods) {
+	public HashMap<Byte, Double> findGoodsInStock(Map<Byte, Double> cravedGoods) {
 
-		Map<Byte, Double> choosenGoods = new HashMap<Byte, Double>();
+		HashMap<Byte, Double> choosenGoods = new HashMap<Byte, Double>();
 		for (Byte quality : cravedGoods.keySet()) {
 			if (stock.containsKey(quality)) {
 				if (stock.get(quality) <= cravedGoods.get(quality)) {
@@ -403,8 +407,12 @@ public class BaseAgent {
 		return stock.toString();
 	}
 	
-	public String getRelationStr() {
-		return relationOther.toString();
+	public String getRelationsSStr() {
+		return relationsS.toString();
+	}
+	
+	public String getRelationsCStr() {
+		return relationsC.toString();
 	}
 	
 	public double getTotalImport() {
@@ -444,7 +452,11 @@ public class BaseAgent {
 	}
 	
 	public String getLabel() {
-		return id + String.format("  $%.0f", money);
+		double totalQuantity = 0;
+		for (Byte quality : stock.keySet()) {
+			totalQuantity += stock.get(quality);
+		}
+		return id + String.format("  $%.0f, s:%.1f", money, totalQuantity);
 	}
 	
 	public String toString() {

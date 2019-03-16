@@ -1,7 +1,6 @@
 package supplyChainModel.agents;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import repast.simphony.context.Context;
 import supplyChainModel.common.Constants;
@@ -27,6 +26,7 @@ public class Agent1Producer extends BaseAgent {
 	 */
 	@Override
 	public void stepProcessArrivedShipments() {
+		
 		for (Shipment shipment : getArrivedShipments()) {
 			money -= shipment.getPrice();
 			addToStock(shipment.getGoods());
@@ -46,9 +46,10 @@ public class Agent1Producer extends BaseAgent {
 		
 		//TODO order the orders based on most important clients
 		for (Order order : getArrivedOrders()) {
-			Map<Byte, Double> goodsToSend = findGoodsInStock(order.getGoods());
+			HashMap<Byte, Double> goodsToSend = findGoodsInStock(order.getGoods());
 			if (!goodsToSend.isEmpty()) {
 				new Shipment(order.getClient(), this, goodsToSend, 2500, RepastParam.getShipmentStep()); //TODO calculate price
+				relationsC.get(order.getClient().getId()).addMyShipment(goodsToSend);
 			}
 			order.remove();
 		}
@@ -62,7 +63,7 @@ public class Agent1Producer extends BaseAgent {
 	public void stepSendOrder() {
 		
 		//TODO make this part of decision with correct values
-		Map<Byte, Double> producedGoods = new HashMap<Byte, Double>();
+		HashMap<Byte, Double> producedGoods = new HashMap<Byte, Double>();
 		producedGoods.put(quality, 20.0);
 		double productionCost = quality * 20.0;
 		new Shipment(this, null, producedGoods, productionCost, RepastParam.getShipmentStep());

@@ -1,7 +1,7 @@
 package supplyChainModel.support;
 
 import java.awt.Color;
-import java.util.Map;
+import java.util.HashMap;
 
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.NdPoint;
@@ -15,7 +15,7 @@ public class Shipment {
 	// State variables
 	private BaseAgent client;
 	private BaseAgent supplier;
-	private Map<Byte, Double> goods;
+	private HashMap<Byte, Double> goods;
 	private int stepsLeft;
 	private double price;
 	//private double seizureChance;
@@ -26,7 +26,7 @@ public class Shipment {
 	private double vsl_size;
 	private Byte vsl_largest_quality;
 
-	public Shipment(BaseAgent client, BaseAgent supplier, Map<Byte, Double> goods, double price, int stepsLeft) {
+	public Shipment(BaseAgent client, BaseAgent supplier, HashMap<Byte, Double> goods, double price, int stepsLeft) {
 
 		SU.getContext().add(this);
 		
@@ -60,7 +60,7 @@ public class Shipment {
 	}
 	
 	// Getters and setters
-	public Map<Byte, Double> getGoods() {
+	public HashMap<Byte, Double> getGoods() {
 		return goods;
 	}
 	
