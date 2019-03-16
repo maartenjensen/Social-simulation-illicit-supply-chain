@@ -49,6 +49,12 @@ public class RelationC {
 		return 0.5;
 	}
 	
+	/**
+	 * Retrieves the previous order (with the given quality) of the previous tick (else return 0.0),
+	 * this is used to estimate how much all the clients want to order
+	 * @param quality
+	 * @return
+	 */
 	public Double getPreviousOtherOrder(Byte quality) {
 		
 		int previousTick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount() - 1;

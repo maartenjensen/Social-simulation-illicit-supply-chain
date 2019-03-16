@@ -13,11 +13,13 @@ public class Agent1Producer extends BaseAgent {
 
 	// State variables
 	private byte quality;
+	private Double previousOrder;
 	
 	public Agent1Producer(final Context<Object> context, CountryAgent country, byte quality) {
 		super(country, SCType.PRODUCER, Constants.PRICE_BUY_FROM_PRODUCER, Constants.SHIPMENT_MAX_1TO2);
 		
 		this.quality = quality;
+		this.previousOrder = 0.0;
 	}
 	
 	/**
@@ -48,7 +50,12 @@ public class Agent1Producer extends BaseAgent {
 		for (Order order : getArrivedOrders()) {
 			HashMap<Byte, Double> goodsToSend = findGoodsInStock(order.getGoods());
 			if (!goodsToSend.isEmpty()) {
-				new Shipment(order.getClient(), this, goodsToSend, 2500, RepastParam.getShipmentStep()); //TODO calculate price
+				
+				double cost = 0;
+				for (Byte goodsQuality : goodsToSend.keySet()) {
+					cost += goodsToSend.get(goodsQuality) * Constants.PRICE_BUY_FROM_PRODUCER;
+				}
+				new Shipment(order.getClient(), this, goodsToSend, cost, RepastParam.getShipmentStep()); //TODO calculate price
 				relationsC.get(order.getClient().getId()).addMyShipment(goodsToSend);
 			}
 			order.remove();
@@ -62,10 +69,23 @@ public class Agent1Producer extends BaseAgent {
 	@Override
 	public void stepSendOrder() {
 		
-		//TODO make this part of decision with correct values
+		double requiredQuantity = securityStockMultiplier * maxPackageSize;
+		for (Integer id : relationsC.keySet()) {
+			requiredQuantity += relationsC.get(id).getPreviousOtherOrder(quality);
+		}
+		
+		if (stock.containsKey(quality))
+			requiredQuantity -= stock.get(quality);
+		
+		double chosenQuantity = Constants.SEND_ORDER_LEARN_RATE * requiredQuantity +
+								(1 - Constants.SEND_ORDER_LEARN_RATE) * previousOrder;
+		chosenQuantity = Math.min(maxPackageSize, Math.max(minPackageSize, chosenQuantity));
+				
 		HashMap<Byte, Double> producedGoods = new HashMap<Byte, Double>();
-		producedGoods.put(quality, 20.0);
-		double productionCost = quality * 20.0;
+		producedGoods.put(quality, chosenQuantity);
+		double productionCost = chosenQuantity * Constants.PRICE_PRODUCTION;
 		new Shipment(this, null, producedGoods, productionCost, RepastParam.getShipmentStep());
+		
+		previousOrder = chosenQuantity;
 	}
 }

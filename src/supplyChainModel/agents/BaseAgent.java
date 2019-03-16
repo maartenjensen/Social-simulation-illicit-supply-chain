@@ -29,7 +29,7 @@ public class BaseAgent {
 	protected double minPackageSize;
 	protected double maxPackageSize;
 	
-	protected double securityStock;
+	protected double securityStockMultiplier;
 	protected Map<Byte, Double> stock;
 	protected double money;
 	
@@ -57,11 +57,11 @@ public class BaseAgent {
 		this.scType = scType;
 		
 		this.sellPrice = sellPrice;
-		this.money = sellPrice * maxPackageSize * 100;
+		this.money = sellPrice * maxPackageSize * Constants.PRICE_MONEY_START_MULT;
 		
 		this.minPackageSize = maxPackageSize * (Constants.SHIPMENT_MIN_PERCENTAGE / 100);
 		this.maxPackageSize = maxPackageSize;
-		this.securityStock = Constants.SECURITY_STOCK;
+		this.securityStockMultiplier = Constants.SECURITY_STOCK;
 		this.stock = new HashMap<Byte, Double>();
 		
 		move();
@@ -71,7 +71,18 @@ public class BaseAgent {
 	 * The main steps of the agents
 	 *====================================*/
 	
+	/**
+	 * Pay standard costs, pay stock costs and remove bankrupt nodes
+	 */
 	public void stepCheckRemoval() {
+		
+		double quantity = 0;
+		for (Byte quality : stock.keySet()) {
+			quantity += stock.get(quality);
+		}
+		
+		money -= (Constants.PRICE_LIVING_MULT + Constants.PRICE_SAVED_STOCK_MULT * quantity) * sellPrice;
+		
 		if (money < 0) {
 			remove();
 		}

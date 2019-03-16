@@ -19,6 +19,9 @@ public class Constants {
 	
 	public static final int PRODUCER_PRODUCE_AMOUNT = 50;
 	
+	public static final double PRICE_LIVING_MULT = 1;
+	public static final double PRICE_SAVED_STOCK_MULT = 0.1;
+	public static final double PRICE_MONEY_START_MULT = 100;
 	public static final double PRICE_PRODUCTION = 0.1; //800; //Leaves then, per kilogram
 	public static final double PRICE_BUY_FROM_PRODUCER = 1; //2147; //Cocaine in brick form, per kilogram
 	public static final double PRICE_BUY_FROM_INTERNATIONAL = 2.5; //34700; //Cocaine in brick form, per kilogram
@@ -34,7 +37,7 @@ public class Constants {
 	
 	public static final double SEND_ORDER_LEARN_RATE = 0.2;
 	
-	public static final double SECURITY_STOCK = 2;
+	public static final double SECURITY_STOCK = 1;
 	
 	// Number of nodes per country
 	public static final int N_PRODUCERS	= 2;
