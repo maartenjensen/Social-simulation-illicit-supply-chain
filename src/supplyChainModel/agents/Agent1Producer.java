@@ -69,7 +69,7 @@ public class Agent1Producer extends BaseAgent {
 	@Override
 	public void stepSendOrder() {
 		
-		double requiredQuantity = securityStockMultiplier * maxPackageSize;
+		double requiredQuantity = securityStockMultiplier * minPackageSize;
 		for (Integer id : relationsC.keySet()) {
 			requiredQuantity += relationsC.get(id).getPreviousOtherOrder(quality);
 		}

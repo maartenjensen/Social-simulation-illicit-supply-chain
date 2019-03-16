@@ -317,7 +317,8 @@ public class BaseAgent {
 	 * Find the given quality and amount in the stock,
 	 * removes it from the stock and returns the amount
 	 * when the stock is lower than the craved amount it
-	 * is removed from the Map
+	 * is put at zero. When the requested quality is not 
+	 * in the stock it is added as a zero to the stock
 	 */
 	public HashMap<Byte, Double> findGoodsInStock(Map<Byte, Double> cravedGoods) {
 
@@ -326,14 +327,15 @@ public class BaseAgent {
 			if (stock.containsKey(quality)) {
 				if (stock.get(quality) <= cravedGoods.get(quality)) {
 					choosenGoods.put(quality, stock.get(quality));
-					stock.remove(quality);
+					stock.put(quality, 0.0);
 				}
 				else {
 					choosenGoods.put(quality, cravedGoods.get(quality));
-					Logger.logInfo("Before:" + stock.toString());
 					stock.put(quality, stock.get(quality) - cravedGoods.get(quality));
-					Logger.logInfo("After:" + stock.toString());
 				}
+			}
+			else { // Adding to the stock will make this agent send orders for this quality
+				stock.put(quality, 0.0);
 			}
 		}
 		return choosenGoods;

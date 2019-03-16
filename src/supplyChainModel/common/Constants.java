@@ -35,14 +35,14 @@ public class Constants {
 	public static final double SHIPMENT_MAX_4TO5 = 20;
 	public static final double SHIPMENT_MIN_PERCENTAGE = 5;
 	
-	public static final double SEND_ORDER_LEARN_RATE = 0.2;
+	public static final double SEND_ORDER_LEARN_RATE = 0.1;
 	
 	public static final double SECURITY_STOCK = 1;
 	
 	// Number of nodes per country
 	public static final int N_PRODUCERS	= 2;
 	public static final int N_INTERNATIONALS = 1;
-	public static final int N_WHOLESALERS = 0;
+	public static final int N_WHOLESALERS = 1;
 	public static final int N_RETAILERS	= 0;
 	public static final int N_CONSUMERS	= 0;
 

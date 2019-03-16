@@ -22,12 +22,12 @@ public class Agent2International extends BaseAgent {
 		
 		updateArrivedShipments();
 		
-		for (Shipment shipment : getArrivedShipments()) { //TODO add payment to supplier
+		for (Shipment shipment : getArrivedShipments()) {
 			money -= shipment.getPrice();
 			shipment.getSupplier().receivePayment(shipment.getPrice());
 			addToStock(shipment.getGoods());
 			shipment.remove();
-			// Add import etc.
+			// Add import etc for DataCollector.
 		}
 	}
 	
@@ -41,6 +41,21 @@ public class Agent2International extends BaseAgent {
 	public void stepSendShipment() {
 		
 		updateArrivedOrders();
+		
+		//TODO order the orders based on most important clients
+		for (Order order : getArrivedOrders()) {
+			HashMap<Byte, Double> goodsToSend = findGoodsInStock(order.getGoods());
+			if (!goodsToSend.isEmpty()) {
+				
+				double cost = 0;
+				for (Byte goodsQuality : goodsToSend.keySet()) {
+					cost += goodsToSend.get(goodsQuality) * Constants.PRICE_BUY_FROM_PRODUCER;
+				}
+				new Shipment(order.getClient(), this, goodsToSend, cost, RepastParam.getShipmentStep()); //TODO calculate price
+				relationsC.get(order.getClient().getId()).addMyShipment(goodsToSend);
+			}
+			order.remove();
+		}
 	}
 	
 	/**
@@ -53,13 +68,12 @@ public class Agent2International extends BaseAgent {
 	public void stepSendOrder() {
 		
 		HashMap<Integer, Order> placedOrders = new HashMap<Integer, Order>();
-		HashMap<Byte, Double> requiredGoods = new HashMap<Byte, Double>();
-		requiredGoods.put((byte) 90, 10.0);
+		HashMap<Byte, Double> requiredGoods = getRequiredGoods();
 		
 		for (Byte quality : requiredGoods.keySet()) {
 				
 			double requiredQuantity = requiredGoods.get(quality);
-			ArrayList<TrustCompare> sortedSuppliers = retrieveSortedSuppliers(90);
+			ArrayList<TrustCompare> sortedSuppliers = retrieveSortedSuppliers(quality);
 			for (TrustCompare sortedSupplier : sortedSuppliers) {
 				
 				BaseAgent supplier = sortedSupplier.getAgent();
@@ -87,5 +101,24 @@ public class Agent2International extends BaseAgent {
 		}
 		
 		addOrdersToRelation(placedOrders);
+	}
+	
+	public HashMap<Byte, Double> getRequiredGoods() {
+		
+		HashMap<Byte, Double> requiredGoods = new HashMap<Byte, Double>();
+		
+		for (Byte quality : stock.keySet()) {
+			
+			double requiredQuantity = securityStockMultiplier * minPackageSize;
+			for (Integer id : relationsC.keySet()) {
+				requiredQuantity += relationsC.get(id).getPreviousOtherOrder(quality);
+			}
+			
+			requiredQuantity -= stock.get(quality);
+			
+			requiredGoods.put(quality, requiredQuantity);
+		}
+		
+		return requiredGoods;
 	}
 }
