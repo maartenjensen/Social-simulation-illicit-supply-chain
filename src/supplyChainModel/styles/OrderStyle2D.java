@@ -14,7 +14,7 @@ public class OrderStyle2D extends DefaultStyleOGL2D {
 	public Color getColor(Object o){
 		
 		if (o instanceof Order)
-			return Color.BLUE;
+			return ((Order) o).getColor();
 		
 		return null;
 	}
@@ -22,7 +22,7 @@ public class OrderStyle2D extends DefaultStyleOGL2D {
 	@Override
 	public float getScale(Object o) {
 		if (o instanceof Order) {
-			return 0.5f;
+			return (float) (0.5 + (((Order)o).getSize() * 0.05));
 		}
 		return 2f;
 	}

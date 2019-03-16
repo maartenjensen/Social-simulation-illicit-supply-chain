@@ -12,26 +12,26 @@ public class Relation {
 	
 	private int otherId;
 	private boolean isSupplier; // If false then the other is a client
-	private double learnRateExpectedOrder;
+	//private double learnRateExpectedOrder;
 	private int supplyTime;
 	
 	protected HashMap<Integer, HashMap<Byte, Double>> orders;
 	protected HashMap<Integer, HashMap<Byte, Double>> shipments;
 	
-	private HashMap<Byte, Double> expectedClientOrders;
+	//private HashMap<Byte, Double> expectedClientOrders;
 	private HashMap<Byte, Double> previousOrders;
 
-	public Relation(int id, boolean isSupplier, double learnRateExpectedOrder, int supplyTime) {
+	public Relation(int id, boolean isSupplier, int supplyTime) {
 		
 		this.otherId = id;
 		this.isSupplier = isSupplier;
-		this.learnRateExpectedOrder = learnRateExpectedOrder;
+		//this.learnRateExpectedOrder = learnRateExpectedOrder;
 		this.supplyTime = supplyTime;
 		
 		orders = new HashMap<Integer, HashMap<Byte, Double>>();
 		shipments = new HashMap<Integer, HashMap<Byte, Double>>();
 		
-		expectedClientOrders = new HashMap<Byte, Double>();
+		//expectedClientOrders = new HashMap<Byte, Double>();
 		previousOrders = new HashMap<Byte, Double>();
 	}
 
@@ -131,12 +131,12 @@ public class Relation {
 	public void addOrderFromClient(HashMap<Byte, Double> orderedGoods) {
 		if (isSupplier)
 			Logger.logError("This relation " + otherId + " is a supplier, not a client");
-		for (Byte quality : expectedClientOrders.keySet()) {
+		/*for (Byte quality : expectedClientOrders.keySet()) {
 			double newExpected = expectedClientOrders.get(quality) * (1 - learnRateExpectedOrder);
 			if (orderedGoods.containsKey(quality))
 				newExpected += learnRateExpectedOrder * orderedGoods.get(quality);
 			expectedClientOrders.put(quality, newExpected);
-		}
+		}*/
 	}
 	
 	public void addShipmentToClient(HashMap<Byte, Double> deliveredGoods) {
@@ -144,7 +144,7 @@ public class Relation {
 			Logger.logError("This relation " + otherId + " is a supplier, not a client");
 	}
 	
-	public HashMap<Byte, Double> getExpectedOrders() {
+	/*public HashMap<Byte, Double> getExpectedOrders() {
 		return expectedClientOrders;
-	}
+	}*/
 }

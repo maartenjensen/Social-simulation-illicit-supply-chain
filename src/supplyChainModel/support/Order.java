@@ -21,6 +21,7 @@ public class Order {
 	// Visualization variables
 	private double vsl_moveSpeed;
 	private double vsl_moveHeading;
+	private double vsl_size;
 	private Byte vsl_largest_quality;
 	
 	public Order(BaseAgent client, BaseAgent supplier, HashMap<Byte, Double> goods, int stepsLeft) {
@@ -76,6 +77,7 @@ public class Order {
 			goods.put(quality, goods.get(quality) + quantity);
 		else
 			goods.put(quality, quantity);
+		setLargestQuality();
 	}
 	
 	public boolean isArrived() {
@@ -92,6 +94,10 @@ public class Order {
 		return supplier;
 	}
 	
+	public double getSize() {
+		return vsl_size;
+	}
+	
 	public String toString() {
 		return "order";
 	}
@@ -101,14 +107,16 @@ public class Order {
 		return "";
 	}
 	
-	/*
-	 * Higher quality means a brighter yellow color for the
-	 * shipments
+	/**
+	 * Higher quality means a brighter yellow color for the shipments
 	 */
 	public Color getColor() {
 		
-		float factor = ((float) vsl_largest_quality / Constants.MAX_GOOD_QUALITY) * 255;
-		return new Color(factor, factor, 0);		
+		float factor = (float) vsl_largest_quality / Constants.MAX_GOOD_QUALITY;
+		if (factor > 1) {
+			Logger.logError("Order.getColor(): factor > 1 =" + factor + ", quality:" + vsl_largest_quality);
+		}
+		return new Color(0, 0, factor);		
 	}
 	
 	// Visualization
@@ -150,5 +158,6 @@ public class Order {
 				quantity = goods.get(quality);
 			}	
 		}
+		vsl_size += goods.get(vsl_largest_quality);
 	}
 }

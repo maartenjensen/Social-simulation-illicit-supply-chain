@@ -34,7 +34,6 @@ public class ShipmentStyle2D extends DefaultStyleOGL2D {
 			final Shipment shipment = (Shipment) object;
 			return shipment.getLabel();
 		}
-		
 		return "Warning label not found for object";
 	}
 

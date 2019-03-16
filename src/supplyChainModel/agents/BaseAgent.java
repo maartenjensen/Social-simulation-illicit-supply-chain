@@ -59,7 +59,7 @@ public class BaseAgent {
 		
 		this.minPackageSize = maxPackageSize * (Constants.SHIPMENT_MIN_PERCENTAGE / 100);
 		this.maxPackageSize = maxPackageSize;
-		this.securityStock = maxPackageSize;
+		this.securityStock = Constants.SECURITY_STOCK;
 		this.stock = new HashMap<Byte, Double>();
 		
 		move();
@@ -98,24 +98,6 @@ public class BaseAgent {
 	/*================================
 	 * Functions (Non-decision making)
 	 *===============================*/
-	/**
-	 * Handles receiving a shipment
-	 * @param size
-	 */
-	/*public void receivePackage(BaseAgent supplier, double size, double price) {
-		// Update trust relation
-		if (trustOther.containsKey(supplier.getId()))
-			trustOther.get(supplier.getId()).addShipmentReceived(size);
-		else
-			Logger.logError("BaseAgent.receivePackage():supplier " + supplier.getId() + " not found in key");
-		// Make payment
-		money -= price;
-		supplier.receivePayment(price);
-		// Change stock
-		stock += size;
-		out_totalImport += size;
-		out_currentImport += size;
-	}*/
 	
 	public void receivePayment(double payment) {
 		money += payment;
@@ -200,7 +182,7 @@ public class BaseAgent {
 		
 		if (!relationOther.keySet().contains(supplier.getId())) {
 			SU.getNetworkSCReversed().addEdge(this, supplier);
-			relationOther.put(supplier.getId(), new Relation(supplier.getId(), true, Constants.EXPECTED_ORDER_LEARN_RATE, RepastParam.getShipmentStep() * 2));
+			relationOther.put(supplier.getId(), new Relation(supplier.getId(), true, RepastParam.getShipmentStep() * 2));
 		}
 		Logger.logInfoId(id, getNameId() + " added supplier: " + supplier.getNameId());
 	}
@@ -209,7 +191,7 @@ public class BaseAgent {
 		
 		if (!relationOther.keySet().contains(client.getId())) {
 			SU.getNetworkSC().addEdge(this, client);
-			relationOther.put(client.getId(), new Relation(client.getId(), false, Constants.EXPECTED_ORDER_LEARN_RATE, RepastParam.getShipmentStep() * 2));
+			relationOther.put(client.getId(), new Relation(client.getId(), false, RepastParam.getShipmentStep() * 2));
 		}
 		
 		Logger.logInfoId(id, getNameId() + " added client: " + client.getNameId());
@@ -230,35 +212,6 @@ public class BaseAgent {
 		}
 		
 		orders.removeAll(orders);
-	}*/
-
-	/**
-	 * Orders have a limit on size, they should be within minPackageSize and maxPackageSize
-	 * TODO Only send order when having enough money to pay
-	 */
-	/*public void sendOrders() {
-				
-		supplyAsked = supplyNeeded * RepastParam.getLearningRate() + (1 - RepastParam.getLearningRate()) * supplyAsked;
-		double tempSupplyAsked = supplyAsked;
-		
-		ArrayList<BaseAgent> suppliers = getSuppliers();
-		for (BaseAgent supplier : suppliers) {
-			
-			double size = Math.min(tempSupplyAsked, supplier.getMaxPackageSize());
-			if (size > 0) {
-				//Ask minimum
-				size = Math.max(size, supplier.getMinPackageSize());
-				if (trustOther.containsKey(supplier.getId())) {
-					trustOther.get(supplier.getId()).addOrderSend(size);
-				}
-				supplier.addUnreceivedOrder(new Order(size, 3, this) ); //TODO make this a parameter
-				// new Shipment(SU.getContext(), size, RepastParam.getShipmentStep(), this, order.getClient(), price, 0.1);
-				new Order(SU.getContext(), );
-			}
-			tempSupplyAsked -= size;
-			if (tempSupplyAsked <= 0)
-				return ;
-		}
 	}*/
 	
 	/**

@@ -25,6 +25,7 @@ public class Agent2International extends BaseAgent {
 			shipment.getSupplier().receivePayment(shipment.getPrice());
 			addToStock(shipment.getGoods());
 			shipment.remove();
+			// Add import etc.
 		}
 	}
 	

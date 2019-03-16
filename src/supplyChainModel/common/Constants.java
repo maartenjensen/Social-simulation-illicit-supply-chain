@@ -33,7 +33,8 @@ public class Constants {
 	public static final double SHIPMENT_MIN_PERCENTAGE = 5;
 	
 	public static final double SEND_ORDER_LEARN_RATE = 0.2;
-	public static final double EXPECTED_ORDER_LEARN_RATE = 1;
+	
+	public static final double SECURITY_STOCK = 2;
 	
 	// Number of nodes per country
 	public static final int N_PRODUCERS	= 2;

@@ -25,7 +25,7 @@ public class Shipment {
 	private double vsl_moveHeading;
 	private double vsl_size;
 	private Byte vsl_largest_quality;
-	
+
 	public Shipment(BaseAgent client, BaseAgent supplier, Map<Byte, Double> goods, double price, int stepsLeft) {
 
 		SU.getContext().add(this);
@@ -94,9 +94,8 @@ public class Shipment {
 		return String.format("%.1f", goods.get(vsl_largest_quality));
 	}
 	
-	/*
-	 * Higher quality means a brighter yellow color for the
-	 * shipments
+	/**
+	 * Higher quality means a brighter yellow color for the shipments
 	 */
 	public Color getColor() {
 		
@@ -148,13 +147,6 @@ public class Shipment {
 				quantity = goods.get(quality);
 			}	
 		}
-	}
-	
-	public void setSize() {
-		
-		vsl_size = 0;
-		for (Byte quality : goods.keySet()) {
-			vsl_size += goods.get(quality);
-		}
+		vsl_size += goods.get(vsl_largest_quality);
 	}
 }
