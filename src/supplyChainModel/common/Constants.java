@@ -35,7 +35,7 @@ public class Constants {
 	public static final double SHIPMENT_MAX_4TO5 = 20;
 	public static final double SHIPMENT_MIN_PERCENTAGE = 5;
 	
-	public static final double SEND_ORDER_LEARN_RATE = 0.1;
+	public static final double SEND_ORDER_LEARN_RATE = 0.05;
 	
 	public static final double SECURITY_STOCK = 1;
 	
@@ -46,7 +46,9 @@ public class Constants {
 	public static final int N_RETAILERS	= 1;
 	public static final int N_CONSUMERS	= 1;
 
-	public static final byte MAX_GOOD_QUALITY = 100;
+	//public static final byte MAX_GOOD_QUALITY = 100;
+	public static final byte QUALITY_MINIMUM = 40;
+	public static final byte QUALITY_MAXIMUM = 60;
 	
 	// Consumer specific
 	public static final int CONSUMER_REMOVE_TICKS = 200;

@@ -99,7 +99,7 @@ public class Shipment {
 	 */
 	public Color getColor() {
 		
-		float factor = (float) vsl_largest_quality / Constants.MAX_GOOD_QUALITY;
+		float factor = (float) vsl_largest_quality / Constants.QUALITY_MAXIMUM;
 		if (factor > 1) {
 			Logger.logError("Shipment.getColor(): factor > 1 =" + factor + ", quality:" + vsl_largest_quality);
 		}

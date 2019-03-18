@@ -88,4 +88,12 @@ public class Agent1Producer extends BaseAgent {
 		
 		previousOrder = chosenQuantity;
 	}
+	
+	/*================================
+	 * Getters and setters
+	 *===============================*/	
+	
+	public byte getQuality() {
+		return quality;
+	}
 }

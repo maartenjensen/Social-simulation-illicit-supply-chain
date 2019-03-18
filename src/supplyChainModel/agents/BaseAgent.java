@@ -5,7 +5,6 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Map;
 
 import frameworkTrust.RelationC;
 import frameworkTrust.RelationS;
@@ -30,15 +29,15 @@ public class BaseAgent {
 	protected double maxPackageSize;
 	
 	protected double securityStockMultiplier;
-	protected Map<Byte, Double> stock;
+	protected HashMap<Byte, Double> stock;
 
 	protected double money;
 
 	protected double supplyNeeded = 0;
 	protected double supplyAsked = 0;
 
-	protected Map<Integer, RelationS> relationsS = new HashMap<Integer, RelationS>(); // Key: node id
-	protected Map<Integer, RelationC> relationsC = new HashMap<Integer, RelationC>(); // Key: node id
+	protected HashMap<Integer, RelationS> relationsS = new HashMap<Integer, RelationS>(); // Key: node id
+	protected HashMap<Integer, RelationC> relationsC = new HashMap<Integer, RelationC>(); // Key: node id
 
 	// Visualization
 	protected double out_currentImport = 0;
@@ -299,7 +298,7 @@ public class BaseAgent {
 	 * same quality, it will be added to that stock
 	 * @param goods
 	 */
-	public void addToStock(Map<Byte, Double> goods) {
+	public void addToStock(HashMap<Byte, Double> goods) {
 
 		Logger.logInfo("Add:" + goods + " to " + stock);
 		for (Byte quality : goods.keySet()) {
@@ -322,7 +321,7 @@ public class BaseAgent {
 	 * in the stock it is added as a zero to the stock
 	 * There is a check on minimum package size
 	 */
-	public HashMap<Byte, Double> findGoodsInStock(Map<Byte, Double> cravedGoods) {
+	public HashMap<Byte, Double> findGoodsInStock(HashMap<Byte, Double> cravedGoods) {
 
 		HashMap<Byte, Double> choosenGoods = new HashMap<Byte, Double>();
 		for (Byte quality : cravedGoods.keySet()) {
@@ -427,7 +426,7 @@ public class BaseAgent {
 		return Color.DARK_GRAY;
 	}
 
-	public Map<Byte, Double> getStock() {
+	public HashMap<Byte, Double> getStock() {
 		return stock;
 	}
 	

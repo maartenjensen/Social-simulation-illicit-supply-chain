@@ -58,6 +58,10 @@ public class ContextDataLoader {
 		Logger.logInfo("Country distance: (" + Constants.GRID_HEIGHT + " - 2) / Consumers = " + stepSize);
 		int transitCountry = 0;
 		int consumerCountry = 1;
+		
+		double qualMin = 41.44; //TODO should be read from file
+		double qualDif = 57.92 - 41.44;
+		
 		// Create countries
 		for (String nodeString : dataC) {
 			
@@ -65,37 +69,40 @@ public class ContextDataLoader {
 			String name = vars.get(0);
 			int layer = Integer.parseInt(vars.get(1));
 			int countryX = Constants.VSL_COUNTRY_X + layer * Constants.VSL_COUNTRY_WIDTH;
+			//double retailPrice = Double.parseDouble(vars.get(2));
+			double avgQuality = Double.parseDouble(vars.get(3));
+			double countryQuality = qualDif - (avgQuality - qualMin);
 			
 			HashMap<SCType, Double> interceptProbability = new HashMap<SCType, Double>();
-			interceptProbability.put(SCType.INTERNATIONAL, Double.parseDouble(vars.get(2)));
-			interceptProbability.put(SCType.WHOLESALER, Double.parseDouble(vars.get(3)));
-			interceptProbability.put(SCType.RETAIL, Double.parseDouble(vars.get(4)));
-			interceptProbability.put(SCType.CONSUMER, Double.parseDouble(vars.get(5)));
+			interceptProbability.put(SCType.INTERNATIONAL, Double.parseDouble(vars.get(4)));
+			interceptProbability.put(SCType.WHOLESALER, Double.parseDouble(vars.get(5)));
+			interceptProbability.put(SCType.RETAIL, Double.parseDouble(vars.get(6)));
+			interceptProbability.put(SCType.CONSUMER, Double.parseDouble(vars.get(7)));
 			
 			ArrayList<SCType> scTypes = new ArrayList<SCType>(); 
 			switch (layer) {
 			case 0: // Producer country
 				scTypes.add(SCType.PRODUCER);
-				new CountryAgent(context, name, scTypes, countryX, Constants.GRID_HEIGHT - 4, Constants.GRID_HEIGHT - 8, interceptProbability); //TODO
+				new CountryAgent(context, name, scTypes, countryX, Constants.GRID_HEIGHT - 4, Constants.GRID_HEIGHT - 8, countryQuality, interceptProbability); //TODO
 				break;
 			case 1: // International country
 				scTypes.add(SCType.INTERNATIONAL);
-				new CountryAgent(context, name, scTypes, countryX, Constants.GRID_HEIGHT - 6, Constants.GRID_HEIGHT - 12, interceptProbability); //TODO
+				new CountryAgent(context, name, scTypes, countryX, Constants.GRID_HEIGHT - 6, Constants.GRID_HEIGHT - 12, countryQuality, interceptProbability); //TODO
 				break;
 			case 2: // Transit country
 				scTypes.add(SCType.WHOLESALER);
 				scTypes.add(SCType.RETAIL);
 				scTypes.add(SCType.CONSUMER);
 				if (transitCountry == 0)
-					new CountryAgent(context, name, scTypes, countryX, Constants.GRID_HEIGHT - 1, stepSize - 1, interceptProbability);
+					new CountryAgent(context, name, scTypes, countryX, Constants.GRID_HEIGHT - 1, stepSize - 1, countryQuality, interceptProbability);
 				else
-					new CountryAgent(context, name, scTypes, countryX, (Constants.GRID_HEIGHT - 1) - stepSize * (consumers - 1), stepSize - 1, interceptProbability);
+					new CountryAgent(context, name, scTypes, countryX, (Constants.GRID_HEIGHT - 1) - stepSize * (consumers - 1), stepSize - 1, countryQuality, interceptProbability);
 				transitCountry ++;
 				break;
 			case 3: // Consumer country
 				scTypes.add(SCType.RETAIL);
 				scTypes.add(SCType.CONSUMER);
-				new CountryAgent(context, name, scTypes, countryX, (Constants.GRID_HEIGHT - 1) - stepSize * consumerCountry, stepSize - 1, interceptProbability);
+				new CountryAgent(context, name, scTypes, countryX, (Constants.GRID_HEIGHT - 1) - stepSize * consumerCountry, stepSize - 1, countryQuality, interceptProbability);
 				consumerCountry ++;
 				break;
 			}

@@ -3,6 +3,7 @@ package frameworkTrust;
 import java.util.HashMap;
 
 import repast.simphony.engine.environment.RunEnvironment;
+import supplyChainModel.common.Constants;
 
 public class RelationS {
 
@@ -60,12 +61,30 @@ public class RelationS {
 	 */
 	public double getTrustLevel() {
 		
-		//TODO makes this a general trust
-		return getTrustForQuality((byte) 90);
+		double trust = 0;
+		double differentQualities = 0;
+
+		double trustMinimum = getTrustForQuality(Constants.QUALITY_MINIMUM);
+		if (trustMinimum >= 0) {
+			trust += trustMinimum;
+			differentQualities ++;
+		}
+		
+		double trustMaximum = getTrustForQuality(Constants.QUALITY_MAXIMUM);
+		if (trustMaximum >= 0) {
+			trust += trustMaximum;
+			differentQualities ++;
+		}
+		
+		if (differentQualities > 0)
+			return trust / differentQualities;
+		else
+			return 0.5;
 	}
 	
 	/**
-	 * Retrieves the trust of deliveries for the given quality
+	 * Retrieves the trust of deliveries for the given quality,
+	 * returns -1 when this quality does not have any orders on it
 	 * @param quality
 	 * @return
 	 */
@@ -77,11 +96,12 @@ public class RelationS {
 		for (Integer step : myOrders.keySet()) {
 
 			// The order step should be smaller than the current step minus the total supply time
-			if (step <= (tick - supplyTime)) {
+			if (step <= (tick - supplyTime) && myOrders.get(step).containsKey(quality)) {
 				amountOrders += myOrders.get(step).get(quality);
 			
 				if (otherShipments.containsKey(step + supplyTime)) {
-					amountShipments += otherShipments.get(step + supplyTime).get(quality);
+					if (otherShipments.get(step + supplyTime).containsKey(quality))
+						amountShipments += otherShipments.get(step + supplyTime).get(quality);
 				}
 			}
 		}
@@ -91,7 +111,7 @@ public class RelationS {
 			return amountShipments / amountOrders;
 		}
 		else {
-			return 0.5;
+			return -1;
 		}
 	}
 }

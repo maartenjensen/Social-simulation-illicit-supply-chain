@@ -158,9 +158,9 @@ public class Agent5Consumer extends BaseAgent {
 	 * Getters and setters
 	 *===============================*/	
 	
-	public String getLabel() {
+	/*public String getLabel() {
 		return id + String.format("  $:%.0f", money);
-	}
+	}*/
 	
 	public Color getColor() {
 		if (satisfied)
@@ -172,5 +172,8 @@ public class Agent5Consumer extends BaseAgent {
 	public boolean getSatisfied() {
 		return satisfied;
 	}
-
+	
+	public byte getQuality() {
+		return quality;
+	}
 }

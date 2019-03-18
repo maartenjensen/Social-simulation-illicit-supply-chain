@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 import repast.simphony.context.Context;
 import repast.simphony.random.RandomHelper;
+import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
 import supplyChainModel.common.RepastParam;
 import supplyChainModel.common.SU;
@@ -20,11 +21,12 @@ public class CountryAgent {
 	private final int x;
 	private int y;
 	private int height;
+	private double lowQualityProb;
 	//private HashMap<SCType, Double> interceptProbability = new HashMap<SCType, Double>();
 	
 	private ArrayList<Integer> countryPoints;
 	
-	public CountryAgent(final Context<Object> context, String countryName, ArrayList<SCType> scTypes, int x, int y, int height, HashMap<SCType, Double> interceptProbability) {
+	public CountryAgent(final Context<Object> context, String countryName, ArrayList<SCType> scTypes, int x, int y, int height, double lowQualityProb, HashMap<SCType, Double> interceptProbability) {
 		
 		context.add(this);
 		name = countryName;
@@ -32,6 +34,7 @@ public class CountryAgent {
 		this.x = x;
 		this.y = y;
 		this.height = height;
+		this.lowQualityProb = lowQualityProb;
 		//this.interceptProbability = interceptProbability;
 		countryPoints = createCountryPoints();
 		move(this.x, this.y);
@@ -50,7 +53,10 @@ public class CountryAgent {
 	public void spawnAgent(SCType scType) {
 		
 		if (containsSCType(SCType.PRODUCER) && scType == SCType.PRODUCER) {
-			new Agent1Producer(SU.getContext(), this, (byte) 90); //TODO randomized quality
+			if (RandomHelper.nextDouble() <= 0.5)
+				new Agent1Producer(SU.getContext(), this, Constants.QUALITY_MINIMUM);
+			else
+				new Agent1Producer(SU.getContext(), this, Constants.QUALITY_MAXIMUM);
 		}
 		
 		if (containsSCType(SCType.INTERNATIONAL) && scType == SCType.INTERNATIONAL) {
@@ -66,7 +72,10 @@ public class CountryAgent {
 		}
 		
 		if (containsSCType(SCType.CONSUMER) && scType == SCType.CONSUMER) {
-			new Agent5Consumer(SU.getContext(), this, (byte) 90); //TODO randomized quality
+			if (RandomHelper.nextDouble() <= lowQualityProb)
+				new Agent5Consumer(SU.getContext(), this, Constants.QUALITY_MINIMUM);
+			else
+				new Agent5Consumer(SU.getContext(), this, Constants.QUALITY_MAXIMUM);
 		}
 	}
 	
