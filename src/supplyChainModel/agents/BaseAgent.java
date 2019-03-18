@@ -31,14 +31,15 @@ public class BaseAgent {
 	
 	protected double securityStockMultiplier;
 	protected Map<Byte, Double> stock;
+
 	protected double money;
-	
+
 	protected double supplyNeeded = 0;
 	protected double supplyAsked = 0;
 
 	protected Map<Integer, RelationS> relationsS = new HashMap<Integer, RelationS>(); // Key: node id
 	protected Map<Integer, RelationC> relationsC = new HashMap<Integer, RelationC>(); // Key: node id
-	
+
 	// Visualization
 	protected double out_currentImport = 0;
 	protected double out_totalImport = 0;
@@ -411,6 +412,17 @@ public class BaseAgent {
 		return allMyOrders;
 	}
 	
+	protected double getMinPackageSizeBoth() {
+		
+		double minPackageSizeBoth = minPackageSize;
+		
+		for (Integer supplierId : relationsS.keySet()) {
+			minPackageSizeBoth = Math.max(minPackageSizeBoth, SU.getBaseAgent(supplierId).getMinPackageSize());
+		}
+		
+		return minPackageSizeBoth;
+	}
+	
 	public Color getColor() {
 		return Color.DARK_GRAY;
 	}
@@ -449,6 +461,10 @@ public class BaseAgent {
 	
 	public SCType getScType() {
 		return scType;
+	}
+	
+	public double getSecurityStockMult() {
+		return securityStockMultiplier;
 	}
 	
 	public int getId() {

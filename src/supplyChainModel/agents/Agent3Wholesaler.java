@@ -109,7 +109,7 @@ public class Agent3Wholesaler extends BaseAgent {
 		
 		for (Byte quality : stock.keySet()) {
 			
-			double requiredQuantity = securityStockMultiplier * minPackageSize;
+			double requiredQuantity = securityStockMultiplier * getMinPackageSizeBoth();
 			for (Integer id : relationsC.keySet()) {
 				requiredQuantity += relationsC.get(id).getPreviousOtherOrder(quality);
 			}

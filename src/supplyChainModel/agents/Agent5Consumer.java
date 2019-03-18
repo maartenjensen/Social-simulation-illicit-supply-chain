@@ -147,7 +147,7 @@ public class Agent5Consumer extends BaseAgent {
 		
 		HashMap<Byte, Double> requiredGoods = new HashMap<Byte, Double>();
 
-		double requiredQuantity = securityStockMultiplier * minPackageSize + baseConsumption;
+		double requiredQuantity = securityStockMultiplier * getMinPackageSizeBoth() + baseConsumption;
 		requiredQuantity -= stock.get(quality);
 		requiredGoods.put(quality, requiredQuantity);
 		
