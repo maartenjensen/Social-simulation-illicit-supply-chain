@@ -1,5 +1,5 @@
 <repast.simphony.data2.engine.DataSetDescriptor simphonyVersion="2.6.0">
-  <name>DataCollector</name>
+  <name>DC Agent Money Average</name>
   <type>AGGREGATE</type>
   <inclTick>true</inclTick>
   <inclBatchRun>false</inclBatchRun>
@@ -11,98 +11,53 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>-2018163360</hashCode>
+    <hashCode>1488353859</hashCode>
   </scheduleParams>
   <atEnd>false</atEnd>
   <methodDataSources class="linked-hash-map">
     <entry>
-      <string>Import The Netherlands</string>
+      <string>Money avg. 1 Producers</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Import The Netherlands</id>
-        <className>supplyChainModel.DataCollector</className>
-        <methodName>getTotalImportNL</methodName>
-        <aggType>SUM</aggType>
+        <id>Money avg. 1 Producers</id>
+        <className>supplyChainModel.agents.Agent1Producer</className>
+        <methodName>getMoney</methodName>
+        <aggType>MEAN</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>Import Spain</string>
+      <string>Money avg. 2 Internationals</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Import Spain</id>
-        <className>supplyChainModel.DataCollector</className>
-        <methodName>getTotalImportES</methodName>
-        <aggType>SUM</aggType>
+        <id>Money avg. 2 Internationals</id>
+        <className>supplyChainModel.agents.Agent2International</className>
+        <methodName>getMoney</methodName>
+        <aggType>MEAN</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>Production Producers</string>
+      <string>Money avg. 3 Wholesalers</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Production Producers</id>
-        <className>supplyChainModel.DataCollector</className>
-        <methodName>getTotalProductionSouthAmerica</methodName>
-        <aggType>SUM</aggType>
+        <id>Money avg. 3 Wholesalers</id>
+        <className>supplyChainModel.agents.Agent3Wholesaler</className>
+        <methodName>getMoney</methodName>
+        <aggType>MEAN</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>Import UK</string>
+      <string>Money avg. 4 Retailers</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Import UK</id>
-        <className>supplyChainModel.DataCollector</className>
-        <methodName>getTotalImportUK</methodName>
-        <aggType>SUM</aggType>
+        <id>Money avg. 4 Retailers</id>
+        <className>supplyChainModel.agents.Agent4Retailer</className>
+        <methodName>getMoney</methodName>
+        <aggType>MEAN</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>Import Germany</string>
+      <string>Money avg. 5 Consumers</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Import Germany</id>
-        <className>supplyChainModel.DataCollector</className>
-        <methodName>getTotalImportD</methodName>
-        <aggType>SUM</aggType>
-      </repast.simphony.data2.engine.MethodDataSourceDefinition>
-    </entry>
-    <entry>
-      <string>Import France</string>
-      <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Import France</id>
-        <className>supplyChainModel.DataCollector</className>
-        <methodName>getTotalImportF</methodName>
-        <aggType>SUM</aggType>
-      </repast.simphony.data2.engine.MethodDataSourceDefinition>
-    </entry>
-    <entry>
-      <string>Import Italy</string>
-      <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Import Italy</id>
-        <className>supplyChainModel.DataCollector</className>
-        <methodName>getTotalImportI</methodName>
-        <aggType>SUM</aggType>
-      </repast.simphony.data2.engine.MethodDataSourceDefinition>
-    </entry>
-    <entry>
-      <string>Import Internationals</string>
-      <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Import Internationals</id>
-        <className>supplyChainModel.DataCollector</className>
-        <methodName>getTotalImportInternational</methodName>
-        <aggType>SUM</aggType>
-      </repast.simphony.data2.engine.MethodDataSourceDefinition>
-    </entry>
-    <entry>
-      <string>Import current NL</string>
-      <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Import current NL</id>
-        <className>supplyChainModel.DataCollector</className>
-        <methodName>getImportCurrentNL</methodName>
-        <aggType>SUM</aggType>
-      </repast.simphony.data2.engine.MethodDataSourceDefinition>
-    </entry>
-    <entry>
-      <string>Import current ES</string>
-      <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Import current ES</id>
-        <className>supplyChainModel.DataCollector</className>
-        <methodName>getImportCurrentES</methodName>
-        <aggType>SUM</aggType>
+        <id>Money avg. 5 Consumers</id>
+        <className>supplyChainModel.agents.Agent5Consumer</className>
+        <methodName>getMoney</methodName>
+        <aggType>MEAN</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
   </methodDataSources>

@@ -61,10 +61,11 @@ public class Agent1Producer extends BaseAgent {
 			order.remove();
 		}
 	}
-	
+
 	/**
 	 * The producer directly creates shipments
-	 * and can freely decide the quantity
+	 * and can freely decide the quantity,
+	 * the max creation size is defined by the RepastParam
 	 */
 	@Override
 	public void stepSendOrder() {
@@ -79,8 +80,13 @@ public class Agent1Producer extends BaseAgent {
 		
 		double chosenQuantity = Constants.SEND_ORDER_LEARN_RATE * requiredQuantity +
 								(1 - Constants.SEND_ORDER_LEARN_RATE) * previousOrder;
-		chosenQuantity = Math.min(maxPackageSize, Math.max(minPackageSize, chosenQuantity));
-				
+		chosenQuantity = Math.max(0, Math.min(RepastParam.getProductionMax(), chosenQuantity));
+		
+		if (chosenQuantity == 0.0) {
+			previousOrder = 0.0;
+			return ;
+		}
+		
 		HashMap<Byte, Double> producedGoods = new HashMap<Byte, Double>();
 		producedGoods.put(quality, chosenQuantity);
 		double productionCost = chosenQuantity * Constants.PRICE_PRODUCTION;

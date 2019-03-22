@@ -55,7 +55,6 @@ public class Shipment {
 	
 	public void remove() {
 		
-		Logger.logInfo("Remove:" + toString());
 		SU.getContext().remove(this);
 	}
 	

@@ -12,17 +12,21 @@ public class Constants {
 	public static final String ID_SC_NETWORK_REVERSED = "sc network reversed";
 	
 	public static final int GRID_WIDTH = 35;
-	public static final int GRID_HEIGHT = 40;
+	public static final int GRID_HEIGHT = 60;
 	public static final int GRID_CELL_SIZE = 25;
 	
 	public static final Font FONT_LABEL = new Font("Tahoma", Font.PLAIN , 10);
+	public static final Font FONT_BIG = new Font("Tahoma", Font.BOLD , 14);
 	
 	public static final int PRODUCER_PRODUCE_AMOUNT = 50;
+	public static final int MAX_NUMBER_OF_ACTIVE_SUPPLIERS = 3;
+	public static final int MAX_NUMBER_OF_ACTIVE_CLIENTS = 3;
+	public static final double TRUST_SWITCH_LEVEL = 0.1;
 	
 	public static final double PRICE_LIVING_MULT = 1;
 	public static final double PRICE_SAVED_STOCK_MULT = 0.1;
-	public static final double PRICE_MONEY_START_MULT = 100;
-	public static final double PRICE_PRODUCTION = 0.1; //800; //Leaves then, per kilogram
+	public static final double PRICE_MONEY_START_MULT = 10;
+	public static final double PRICE_PRODUCTION = 0.2; //800; //Leaves then, per kilogram
 	public static final double PRICE_BUY_FROM_PRODUCER = 1; //2147; //Cocaine in brick form, per kilogram
 	public static final double PRICE_BUY_FROM_INTERNATIONAL = 2.5; //34700; //Cocaine in brick form, per kilogram
 	public static final double PRICE_BUY_FROM_WHOLESALER = 43; //100000; //Cocaine in brick form in Europe, per kilogram (this is not from source)
@@ -40,9 +44,9 @@ public class Constants {
 	public static final double SECURITY_STOCK = 1;
 	
 	// Number of nodes per country
-	public static final int N_PRODUCERS	= 2;
-	public static final int N_INTERNATIONALS = 1;
-	public static final int N_WHOLESALERS = 1;
+	public static final int N_PRODUCERS	= 6;
+	public static final int N_INTERNATIONALS = 4;
+	public static final int N_WHOLESALERS = 2;
 	public static final int N_RETAILERS	= 1;
 	public static final int N_CONSUMERS	= 1;
 

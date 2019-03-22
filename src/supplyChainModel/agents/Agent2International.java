@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import repast.simphony.context.Context;
+import repast.simphony.random.RandomHelper;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
 import supplyChainModel.common.RepastParam;
@@ -44,15 +45,17 @@ public class Agent2International extends BaseAgent {
 		
 		//TODO order the orders based on most important clients
 		for (Order order : getArrivedOrders()) {
-			HashMap<Byte, Double> goodsToSend = findGoodsInStock(order.getGoods());
-			if (!goodsToSend.isEmpty()) {
-				
-				double cost = 0;
-				for (Byte goodsQuality : goodsToSend.keySet()) {
-					cost += goodsToSend.get(goodsQuality) * Constants.PRICE_BUY_FROM_PRODUCER;
+			if (RandomHelper.nextDouble() <= RepastParam.getSendShipmentProbability()) {
+				HashMap<Byte, Double> goodsToSend = findGoodsInStock(order.getGoods());
+				if (!goodsToSend.isEmpty()) {
+					
+					double cost = 0;
+					for (Byte goodsQuality : goodsToSend.keySet()) {
+						cost += goodsToSend.get(goodsQuality) * Constants.PRICE_BUY_FROM_PRODUCER;
+					}
+					new Shipment(order.getClient(), this, goodsToSend, cost, RepastParam.getShipmentStep()); //TODO calculate price
+					relationsC.get(order.getClient().getId()).addMyShipment(goodsToSend);
 				}
-				new Shipment(order.getClient(), this, goodsToSend, cost, RepastParam.getShipmentStep()); //TODO calculate price
-				relationsC.get(order.getClient().getId()).addMyShipment(goodsToSend);
 			}
 			order.remove();
 		}

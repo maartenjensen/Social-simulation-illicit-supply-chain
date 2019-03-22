@@ -8,6 +8,7 @@ public class RelationC {
 
 	private int otherId;
 	private int supplyTime;
+	private boolean active;
 	
 	private HashMap<Integer, HashMap<Byte, Double>> otherOrders;
 	private HashMap<Integer, HashMap<Byte, Double>> myShipments;
@@ -16,6 +17,7 @@ public class RelationC {
 		
 		this.otherId = otherId;
 		this.supplyTime = supplyTime;
+		active = true;
 		
 		otherOrders = new HashMap<Integer, HashMap<Byte, Double>>();
 		myShipments = new HashMap<Integer, HashMap<Byte, Double>>();
@@ -66,5 +68,17 @@ public class RelationC {
 		}
 		else
 			return 0.0;
+	}
+	
+	public boolean isActive() {
+		return active;
+	}
+	
+	public void setInActive() {
+		active = false;
+	}
+	
+	public int getSupplyTime() {
+		return supplyTime;
 	}
 }

@@ -4,7 +4,13 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 import repast.simphony.context.Context;
+import supplyChainModel.agents.Agent1Producer;
+import supplyChainModel.agents.Agent2International;
+import supplyChainModel.agents.Agent3Wholesaler;
+import supplyChainModel.agents.Agent4Retailer;
+import supplyChainModel.agents.Agent5Consumer;
 import supplyChainModel.agents.BaseAgent;
+import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
 import supplyChainModel.common.SU;
 import supplyChainModel.enums.SCType;
@@ -105,12 +111,43 @@ public class DataCollector {
 		return getTotalImport("Italy", SCType.RETAIL);
 	}
 
+	//Agent count methods
+	public int getCountProducers() {
+		return SU.getObjectsCount(Agent1Producer.class);
+	}
+	
+	public int getCountInternationals() {
+		return SU.getObjectsCount(Agent2International.class);
+	}
+	
+	public int getCountWholesalers() {
+		return SU.getObjectsCount(Agent3Wholesaler.class);
+	}
+	
+	public int getCountRetailers() {
+		return SU.getObjectsCount(Agent4Retailer.class);
+	}
+	
+	public int getCountConsumers() {
+		return SU.getObjectsCount(Agent5Consumer.class);
+	}
+	
+	public String getLabel() {
+		
+		if (SU.isInitializing()) {
+			return "DataCollector" + ": INITIALIZATION PHASE";
+		}
+		else {
+			return "DataCollector" + ": running phase";
+		}
+	}
+	
 	/**
 	 * Moves the supply chain agent to the correct location, dependent on the base country
 	 */
 	public void move() {
 
-		Point newPos = new Point(1, 1);
+		Point newPos = new Point(1, Constants.GRID_HEIGHT - 1);
 		Logger.logInfo("DataCollector pos:[" + newPos.x + ", " + newPos.y + "]");
 		
 		SU.getContinuousSpace().moveTo(this, newPos.getX(), newPos.getY());	

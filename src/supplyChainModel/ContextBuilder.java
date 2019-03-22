@@ -125,7 +125,7 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		for (BaseAgent baseAgent : SU.getObjectsAll(BaseAgent.class)) {
 			baseAgent.stepCheckRemoval();
 		}
-		
+
 		Logger.logMain("Step-BaseAgent: reset output parameters");
 		for (BaseAgent baseAgent : SU.getObjectsAll(BaseAgent.class)) {
 			baseAgent.stepResetParameters();

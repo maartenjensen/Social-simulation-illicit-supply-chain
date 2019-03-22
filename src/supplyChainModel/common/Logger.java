@@ -1,6 +1,7 @@
 package supplyChainModel.common;
 
 import repast.simphony.engine.environment.RunEnvironment;
+import supplyChainModel.enums.SCType;
 
 /**
 * Logs stuff
@@ -16,6 +17,7 @@ public final class Logger {
 	private static boolean logRemove = true;
 	private static boolean logInfo = true;
 	private static boolean logId = true;
+	private static boolean logProducer = true;
 	private static int logIdIndex = -1;
 	
 	public static void enableLogger() {
@@ -57,6 +59,18 @@ public final class Logger {
 	public static void logInfo(String output) {
 		if (logInfo)
 			System.out.println(" - " + output);
+	}
+	
+	public static void logSCAgent(SCType scType, String output) {
+		
+		switch (scType) {
+		case PRODUCER:
+			if (logProducer)
+				System.out.println(" - P " + output);
+			break;
+		default:
+			break;
+		}
 	}
 	
 	public static void resetId() {

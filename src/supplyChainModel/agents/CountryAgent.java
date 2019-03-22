@@ -42,6 +42,9 @@ public class CountryAgent {
 	
 	public void stepSpawning() {
 		
+		if (SU.isInitializing())
+			return ;
+		
 		for (SCType scType : scTypes) {
 			if (RandomHelper.nextDouble() < RepastParam.getSpawnRate()) {
 				spawnAgent(scType);
@@ -52,7 +55,7 @@ public class CountryAgent {
 	
 	public void spawnAgent(SCType scType) {
 		
-		if (containsSCType(SCType.PRODUCER) && scType == SCType.PRODUCER) {
+		if (containsSCType(SCType.PRODUCER) && scType == SCType.PRODUCER && SU.getObjectsCount(Agent1Producer.class) < RepastParam.getProducerNumberCap()) {
 			if (RandomHelper.nextDouble() <= 0.5)
 				new Agent1Producer(SU.getContext(), this, Constants.QUALITY_MINIMUM);
 			else

@@ -12,6 +12,7 @@ public class RelationS {
 	
 	private int otherId;
 	private int supplyTime;
+	private boolean active;
 	
 	private HashMap<Integer, HashMap<Byte, Double>> myOrders;
 	private HashMap<Integer, HashMap<Byte, Double>> otherShipments;
@@ -20,6 +21,7 @@ public class RelationS {
 		
 		this.otherId = otherId;
 		this.supplyTime = supplyTime;
+		active = true;
 		
 		myOrders       = new HashMap<Integer, HashMap<Byte, Double>>();
 		otherShipments = new HashMap<Integer, HashMap<Byte, Double>>();
@@ -113,5 +115,13 @@ public class RelationS {
 		else {
 			return -1;
 		}
+	}
+	
+	public boolean isActive() {
+		return active;
+	}
+	
+	public void setInActive() {
+		active = false;
 	}
 }

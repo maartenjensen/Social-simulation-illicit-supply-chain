@@ -72,6 +72,21 @@ public class SU {
 	 * @param clazz (e.g. use as input Human.class)
 	 * @return an ArrayList of objects from the given class
 	 */
+	public static int getObjectsCount(Class<?> clazz) {
+		
+		final Iterable<?> objects = (Iterable<?>) getContext().getObjects(clazz);
+		int count = 0;
+		for (@SuppressWarnings("unused") final Object object : objects) {
+			count ++;
+		}
+		return count;
+	}
+	
+	/**
+	 * Retrieves all the objects within the master context based on the given class.
+	 * @param clazz (e.g. use as input Human.class)
+	 * @return an ArrayList of objects from the given class
+	 */
 	public static <T> ArrayList<T> getObjectsAll(Class<T> clazz) {
 		
 		@SuppressWarnings("unchecked")
@@ -138,6 +153,15 @@ public class SU {
 	
 	public static int getTick() {
 		return (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+	}
+	
+	public static boolean isInitializing() {
+		if (getTick() <= RepastParam.getTicksInitPopulation()) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 	public static Grid<Object> getGrid() {

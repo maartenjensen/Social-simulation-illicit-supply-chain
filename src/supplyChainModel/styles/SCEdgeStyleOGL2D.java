@@ -4,20 +4,25 @@ import java.awt.Color;
 
 import repast.simphony.space.graph.RepastEdge;
 import repast.simphony.visualizationOGL2D.DefaultEdgeStyleOGL2D;
+import supplyChainModel.agents.BaseAgent;
 
 public class SCEdgeStyleOGL2D extends DefaultEdgeStyleOGL2D {
 
 	@Override
 	public Color getColor(RepastEdge<?> edge){
 		
-		/* This is commented because there is not yet a notion of trust from supplier to buyer.
-		Object source = edge.getSource();
-		Object target = edge.getTarget();
-		
-		if (source instanceof BaseAgent && target instanceof BaseAgent) {
-			double trustLevel = ((BaseAgent) source).getTrustLevel( ((BaseAgent) target).getId() );
-			return new Color((float) (1 - trustLevel), (float) trustLevel, 0.0f);
-		}*/
+		if (edge.getSource() instanceof BaseAgent && edge.getTarget() instanceof BaseAgent) {
+			BaseAgent supplier = (BaseAgent) edge.getSource();
+			BaseAgent client   = (BaseAgent) edge.getTarget();
+			
+			if (supplier.retrieveRelationIsActive(client.getId())) {
+				double trustLevel = supplier.retrieveTrustLevel(client.getId());
+				return new Color((float) (1 - trustLevel), (float) trustLevel, 0.0f);
+			}
+			else 
+				return Color.BLACK;
+			
+		}
 		return Color.BLUE;
 	}
 	

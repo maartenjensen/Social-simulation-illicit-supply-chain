@@ -1,9 +1,9 @@
 <repast.simphony.chart2.engine.TimeSeriesChartDescriptor simphonyVersion="2.6.0">
-  <name>Production and import global</name>
-  <dataSet>DataCollector</dataSet>
+  <name>Agent Money Average</name>
+  <dataSet>DC Agent Money Average</dataSet>
   <xAxisLabel>Tick Count</xAxisLabel>
-  <yAxisLabel>Amount in kg</yAxisLabel>
-  <chartTitle>Production and import global</chartTitle>
+  <yAxisLabel>Count</yAxisLabel>
+  <chartTitle>Agent Money Average</chartTitle>
   <type>TIME_SERIES</type>
   <background>
     <red>255</red>
@@ -21,11 +21,47 @@
   <showLegend>true</showLegend>
   <seriesIds>
     <entry>
-      <string>Import Spain</string>
+      <string>Money avg. 1 Producers</string>
       <SeriesData>
-        <label>Import Spain</label>
+        <label>Money avg. 1 Producers</label>
         <color>
-          <red>255</red>
+          <red>153</red>
+          <green>255</green>
+          <blue>255</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+    <entry>
+      <string>Money avg. 2 Internationals</string>
+      <SeriesData>
+        <label>Money avg. 2 Internationals</label>
+        <color>
+          <red>51</red>
+          <green>204</green>
+          <blue>255</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+    <entry>
+      <string>Money avg. 4 Retailers</string>
+      <SeriesData>
+        <label>Money avg. 4 Retailers</label>
+        <color>
+          <red>0</red>
+          <green>0</green>
+          <blue>153</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+    <entry>
+      <string>Money avg. 5 Consumers</string>
+      <SeriesData>
+        <label>Money avg. 5 Consumers</label>
+        <color>
+          <red>0</red>
           <green>0</green>
           <blue>0</blue>
           <alpha>255</alpha>
@@ -33,35 +69,11 @@
       </SeriesData>
     </entry>
     <entry>
-      <string>Production Producers</string>
+      <string>Money avg. 3 Wholesalers</string>
       <SeriesData>
-        <label>Production Producers</label>
+        <label>Money avg. 3 Wholesalers</label>
         <color>
           <red>0</red>
-          <green>255</green>
-          <blue>0</blue>
-          <alpha>255</alpha>
-        </color>
-      </SeriesData>
-    </entry>
-    <entry>
-      <string>Import The Netherlands</string>
-      <SeriesData>
-        <label>Import The Netherlands</label>
-        <color>
-          <red>255</red>
-          <green>204</green>
-          <blue>0</blue>
-          <alpha>255</alpha>
-        </color>
-      </SeriesData>
-    </entry>
-    <entry>
-      <string>Import Internationals</string>
-      <SeriesData>
-        <label>Import Internationals</label>
-        <color>
-          <red>255</red>
           <green>0</green>
           <blue>255</blue>
           <alpha>255</alpha>

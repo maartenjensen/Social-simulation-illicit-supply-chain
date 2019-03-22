@@ -148,8 +148,11 @@ public class BaseAgent {
 	
 	public void searchSuppliers() {
 		
+		if (!getRequireNewSupplier())
+			return ;
+		
 		Network<Object> net = SU.getNetworkSC();
-		if (net.getInDegree(this) == 0) {
+		if (net.getInDegree(this) < Constants.MAX_NUMBER_OF_ACTIVE_SUPPLIERS) { //TODO change this to a search for active suppliers
 			
 			ArrayList<BaseAgent> suppliers = SU.getObjectsAllRandom(BaseAgent.class);
 			for (BaseAgent supplier : suppliers) {
@@ -158,9 +161,9 @@ public class BaseAgent {
 				if (supplier.getScLayer() == (scType.getScLayer() - 1)) {
 					
 					// Countries should match up between retail and consumers
-					if (supplier.getScType() == SCType.RETAIL && !supplier.getCountry().equals(this.getCountry())) {
+					/*if (supplier.getScType() == SCType.RETAIL && !supplier.getCountry().equals(this.getCountry())) {
 						break;
-					}
+					}*/
 					addSupplier(supplier);
 					supplier.addClient(this);
 					break;
@@ -171,18 +174,20 @@ public class BaseAgent {
 
 	public void searchClients() {
 		
-		Network<Object> net = SU.getNetworkSC();
+		if (!getRequireNewClient())
+			return ;
 		
-		if (net.getOutDegree(this) == 0) {
+		Network<Object> net = SU.getNetworkSC();
+		if (net.getOutDegree(this) < Constants.MAX_NUMBER_OF_ACTIVE_CLIENTS) { //TODO change this to a search for active clients
 			
 			ArrayList<BaseAgent> clients = SU.getObjectsAllRandom(BaseAgent.class);
 			for (BaseAgent client : clients) {
 				if (client.getScLayer() == (scType.getScLayer() + 1)) {
 
 					// Countries should match up between retail and consumers
-					if (client.getScType() == SCType.CONSUMER && !client.getCountry().equals(this.getCountry())) {
+					/*if (client.getScType() == SCType.CONSUMER && !client.getCountry().equals(this.getCountry())) {
 						break;
-					}
+					}*/
 					addClient(client);
 					client.addSupplier(this);
 					break;
@@ -197,7 +202,7 @@ public class BaseAgent {
 			SU.getNetworkSCReversed().addEdge(this, supplier);
 			relationsS.put(supplier.getId(), new RelationS(supplier.getId(), RepastParam.getShipmentStep() * 2));
 		}
-		Logger.logInfoId(id, getNameId() + " added supplier: " + supplier.getNameId());
+		Logger.logSCAgent(scType, getNameId() + " added supplier: " + supplier.getNameId());
 	}
 	
 	public void addClient(BaseAgent client) {
@@ -207,7 +212,7 @@ public class BaseAgent {
 			relationsC.put(client.getId(), new RelationC(client.getId(), RepastParam.getShipmentStep() * 2));
 		}
 		
-		Logger.logInfoId(id, getNameId() + " added client: " + client.getNameId());
+		Logger.logSCAgent(scType, getNameId() + " added client: " + client.getNameId());
 	}
 	
 	/**
@@ -261,7 +266,6 @@ public class BaseAgent {
 	 * @return the trust level to that agent
 	 */
 	public double retrieveTrustLevel(int otherId) {
-		//Logger.logInfo("Trust from" + name + id );
 		
 		if (relationsS.containsKey(otherId)) 
 			return relationsS.get(otherId).getTrustLevel();
@@ -272,6 +276,17 @@ public class BaseAgent {
 		return -1;
 	}
 	
+	public boolean retrieveRelationIsActive(int otherId) {
+		
+		if (relationsS.containsKey(otherId))
+			return relationsS.get(otherId).isActive();
+		else if (relationsC.containsKey(otherId)) 
+			return relationsC.get(otherId).isActive();
+		
+		Logger.logError("BaseAgent.getTrustLevel " + getNameId() + ": id " + otherId + " not in relationsS and/or relationsC.");
+		return false;
+	}
+
 	/**
 	 * This function retrieves all the suppliers, then converts them to
 	 * TrustCompare objects who can easily be sorted according to their 
@@ -300,14 +315,14 @@ public class BaseAgent {
 	 */
 	public void addToStock(HashMap<Byte, Double> goods) {
 
-		Logger.logInfo("Add:" + goods + " to " + stock);
+		Logger.logSCAgent(scType, "Add:" + goods + " to " + stock);
 		for (Byte quality : goods.keySet()) {
 			if (stock.keySet().contains(quality))
 				stock.put(quality, stock.get(quality) + goods.get(quality));
 			else 
 				stock.put(quality, goods.get(quality));
 		}
-		Logger.logInfo("New stock: " + stock);
+		Logger.logSCAgent(scType, "New stock: " + stock);
 		
 		//out_totalImport += size; TODO correctly add it as history
 		//out_currentImport += size;
@@ -337,20 +352,29 @@ public class BaseAgent {
 					stock.put(quality, stock.get(quality) - cravedGoods.get(quality));
 				}
 			}
-			else { // Adding to the stock will make this agent send orders for this quality
+			else { // This quality is added to the stock to make the agent send orders for this quality
 				stock.put(quality, 0.0);
 			}
 		}
 		return choosenGoods;
 	}
 
+	public void removeRelation(int id) {
+		if (relationsS.containsKey(id)) {
+			relationsS.remove(id);
+		}
+		else if (relationsC.containsKey(id)) {
+			relationsC.remove(id);
+		}
+	}
+	
 	/**
 	 * Removes this object from the simulation
 	 * This removes the edges, reversed edges, shipments and orders
 	 */
 	public void remove() {
 		
-		Logger.logInfo("Remove " + getNameId() + " " + baseCountry.getName());
+		Logger.logSCAgent(scType, "Remove " + getNameId() + " " + baseCountry.getName());
 		final Iterable<RepastEdge<Object>> edges = (Iterable<RepastEdge<Object>>) SU.getNetworkSC().getEdges(this);
 		for (final RepastEdge<Object> edge : edges) {
 			SU.getNetworkSC().removeEdge(edge);
@@ -359,6 +383,13 @@ public class BaseAgent {
 		for (final RepastEdge<Object> edge : edgesRev) {
 			SU.getNetworkSCReversed().removeEdge(edge);
 		}
+		for (int supplierId : relationsS.keySet()) {
+			SU.getBaseAgent(supplierId).removeRelation(id);
+		}
+		for (int clientId : relationsC.keySet()) {
+			SU.getBaseAgent(clientId).removeRelation(id);
+		}
+		
 		for (Shipment shipment : getAllMyShipments()) {
 			shipment.remove();
 		}
@@ -416,10 +447,32 @@ public class BaseAgent {
 		double minPackageSizeBoth = minPackageSize;
 		
 		for (Integer supplierId : relationsS.keySet()) {
-			minPackageSizeBoth = Math.max(minPackageSizeBoth, SU.getBaseAgent(supplierId).getMinPackageSize());
+			if (SU.getBaseAgent(supplierId) != null)
+				minPackageSizeBoth = Math.max(minPackageSizeBoth, SU.getBaseAgent(supplierId).getMinPackageSize());
+			else
+				Logger.logError("BaseAgent.getMinPackageSizeBoth(): " + id + " supplierId " + supplierId + " not retrievable.");
 		}
 		
 		return minPackageSizeBoth;
+	}
+	
+	public boolean getRequireNewSupplier() {
+		return true; //TODO make this based on something
+	}
+	
+	/**
+	 * Require a new client if the stock quantity for all qualities is higher than
+	 * the security stock
+	 * @return
+	 */
+	public boolean getRequireNewClient() {
+		
+		double securityStock = securityStockMultiplier * minPackageSize;
+		for (Byte quality : stock.keySet()) {
+			if (securityStock < stock.get(quality))
+				return false;
+		}
+		return true;
 	}
 	
 	public Color getColor() {
@@ -466,6 +519,10 @@ public class BaseAgent {
 		return securityStockMultiplier;
 	}
 	
+	public double getMoney() {
+		return money;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -482,6 +539,29 @@ public class BaseAgent {
 		return scType.getScCharacter() + id;
 	}
 	
+	public String getTrustInRelationsS() {
+		String trustStr = "<";
+		for (Integer supplierId : relationsS.keySet()) {
+			if (!trustStr.equals("<"))
+				trustStr += ", ";
+			trustStr += supplierId + ":" + String.format("%.1f", relationsS.get(supplierId).getTrustLevel());
+		}
+		trustStr += ">";
+		return trustStr;
+	}
+	
+	public String getTrustInRelationsC() {
+		String trustStr = "<";
+		for (Integer supplierId : relationsC.keySet()) {
+			if (!trustStr.equals("<"))
+				trustStr += ", ";
+			trustStr += supplierId + ":" + String.format("%.1f", relationsC.get(supplierId).getTrustLevel());
+		}
+		trustStr += ">";
+		return trustStr;
+	}
+		
+	
 	public String getLabel() {
 		double totalQuantity = 0;
 		for (Byte quality : stock.keySet()) {
@@ -493,18 +573,18 @@ public class BaseAgent {
 	public String toString() {
 		return id + ", stock " + stock.toString();//String.format("%.0f", stock);
 	}
-	
+
 	/*================================
 	 * Visualization
 	 *===============================*/
-	
+
 	/**
 	 * Moves the supply chain agent to the correct location, dependent on the base country
 	 */
 	public void move() {
 
 		Point newPos = baseCountry.getFreePosition(this, scType);
-		Logger.logInfo(getNameId() + " " + baseCountry.getName() + " pos:[" + newPos.x + ", " + newPos.y + "]");
+		Logger.logSCAgent(scType, getNameId() + " " + baseCountry.getName() + " pos:[" + newPos.x + ", " + newPos.y + "]");
 		
 		SU.getContinuousSpace().moveTo(this, newPos.getX(), newPos.getY());	
 		SU.getGrid().moveTo(this, newPos.x, newPos.y);
