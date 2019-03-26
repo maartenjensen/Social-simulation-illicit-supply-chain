@@ -18,6 +18,10 @@ public final class Logger {
 	private static boolean logInfo = true;
 	private static boolean logId = true;
 	private static boolean logProducer = true;
+	private static boolean logInternational = true;
+	private static boolean logWholesaler = true;
+	private static boolean logRetail = true;
+	private static boolean logConsumer = true;
 	private static int logIdIndex = -1;
 	
 	public static void enableLogger() {
@@ -67,6 +71,22 @@ public final class Logger {
 		case PRODUCER:
 			if (logProducer)
 				System.out.println(" - P " + output);
+			break;
+		case INTERNATIONAL:
+			if (logInternational)
+				System.out.println(" - I " + output);
+			break;
+		case WHOLESALER:
+			if (logWholesaler)
+				System.out.println(" - W " + output);
+			break;
+		case RETAIL:
+			if (logRetail)
+				System.out.println(" - R " + output);
+			break;
+		case CONSUMER:
+			if (logConsumer)
+				System.out.println(" - C " + output);
 			break;
 		default:
 			break;

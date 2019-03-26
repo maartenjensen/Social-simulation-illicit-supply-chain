@@ -6,7 +6,6 @@ import java.util.HashMap;
 import repast.simphony.context.Context;
 import repast.simphony.random.RandomHelper;
 import supplyChainModel.common.Constants;
-import supplyChainModel.common.Logger;
 import supplyChainModel.common.RepastParam;
 import supplyChainModel.enums.SCType;
 import supplyChainModel.support.Order;
@@ -16,6 +15,8 @@ public class Agent2International extends BaseAgent {
 	
 	public Agent2International(final Context<Object> context, CountryAgent country) {
 		super(country, SCType.INTERNATIONAL, Constants.PRICE_BUY_FROM_INTERNATIONAL, Constants.SHIPMENT_MAX_2TO3);
+		
+		setStartingStock();
 	}
 		
 	@Override
@@ -42,22 +43,31 @@ public class Agent2International extends BaseAgent {
 	public void stepSendShipment() {
 		
 		updateArrivedOrders();
-		
-		//TODO order the orders based on most important clients
-		for (Order order : getArrivedOrders()) {
-			if (RandomHelper.nextDouble() <= RepastParam.getSendShipmentProbability()) {
-				HashMap<Byte, Double> goodsToSend = findGoodsInStock(order.getGoods());
+			
+		ArrayList<TrustCompare> sortedClients = retrieveSortedClients();
+		for (TrustCompare client : sortedClients) {
+			//Logger.logSCAgent(scType, "stepSendShipment(): " + id + " other id: " + client.getAgent().getId() + ", " + client.getTrust());
+			Order clientOrder = null;
+			for (Order order : getArrivedOrders()) {
+				if (order.getClient().getId() == client.getAgent().getId()) {
+					clientOrder = order;
+				}
+			}
+			
+			if (clientOrder != null && RandomHelper.nextDouble() <= RepastParam.getSendShipmentProbability()) {
+				
+				HashMap<Byte, Double> goodsToSend = findGoodsInStock(clientOrder.getGoods());
 				if (!goodsToSend.isEmpty()) {
 					
 					double cost = 0;
 					for (Byte goodsQuality : goodsToSend.keySet()) {
-						cost += goodsToSend.get(goodsQuality) * Constants.PRICE_BUY_FROM_PRODUCER;
+						cost += goodsToSend.get(goodsQuality) * sellPrice;
 					}
-					new Shipment(order.getClient(), this, goodsToSend, cost, RepastParam.getShipmentStep()); //TODO calculate price
-					relationsC.get(order.getClient().getId()).addMyShipment(goodsToSend);
+					new Shipment(clientOrder.getClient(), this, goodsToSend, cost, RepastParam.getShipmentStep()); //TODO calculate price
+					relationsC.get(clientOrder.getClient().getId()).addMyShipment(goodsToSend);
 				}
+				clientOrder.remove();
 			}
-			order.remove();
 		}
 	}
 	
@@ -80,7 +90,7 @@ public class Agent2International extends BaseAgent {
 			for (TrustCompare sortedSupplier : sortedSuppliers) {
 				
 				BaseAgent supplier = sortedSupplier.getAgent();
-				Logger.logInfo("Required:" + requiredQuantity + ", min package size:" + supplier.getMinPackageSize());
+				//Logger.logInfo("Required:" + requiredQuantity + ", min package size:" + supplier.getMinPackageSize());
 				if (requiredQuantity >= supplier.getMinPackageSize()) {
 					
 					double oldQuantity = relationsS.get(supplier.getId()).getPreviousMyOrder(quality);
@@ -123,5 +133,14 @@ public class Agent2International extends BaseAgent {
 		}
 		
 		return requiredGoods;
+	}
+	
+	@Override
+	protected void setStartingStock() {
+		
+		if (RandomHelper.nextDouble() <= 0.5)
+			stock.put(Constants.QUALITY_MINIMUM, securityStockMultiplier * minPackageSize);
+		else
+			stock.put(Constants.QUALITY_MAXIMUM, securityStockMultiplier * minPackageSize);
 	}
 }

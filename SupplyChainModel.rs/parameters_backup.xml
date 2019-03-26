@@ -24,6 +24,12 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
+				<parameter name="pProducerNumberCap" displayName="Producer Number Maximum" type="int" 
+						defaultValue="8" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
+									
+		/>
 				<parameter name="pSendShipmentProbability" displayName="Send Shipment Probability" type="double" 
 						defaultValue="1.0" 
 						isReadOnly="false" 
@@ -31,7 +37,7 @@
 									
 		/>
 				<parameter name="pSpawnRate" displayName="Spawn rate" type="double" 
-						defaultValue="0.05" 
+						defaultValue="0.01" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									

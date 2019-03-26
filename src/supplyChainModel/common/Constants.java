@@ -23,14 +23,14 @@ public class Constants {
 	public static final int MAX_NUMBER_OF_ACTIVE_CLIENTS = 3;
 	public static final double TRUST_SWITCH_LEVEL = 0.1;
 	
-	public static final double PRICE_LIVING_MULT = 1;
-	public static final double PRICE_SAVED_STOCK_MULT = 0.1;
-	public static final double PRICE_MONEY_START_MULT = 10;
-	public static final double PRICE_PRODUCTION = 0.2; //800; //Leaves then, per kilogram
+	public static final double PRICE_LIVING_COST_MULT = 0.01;
+	public static final double PRICE_SAVED_STOCK_MULT = 0.025;
+	public static final double PRICE_MONEY_START_MULT = 5;
+	public static final double PRICE_PRODUCTION = 0.35; //800; //Leaves then, per kilogram
 	public static final double PRICE_BUY_FROM_PRODUCER = 1; //2147; //Cocaine in brick form, per kilogram
-	public static final double PRICE_BUY_FROM_INTERNATIONAL = 2.5; //34700; //Cocaine in brick form, per kilogram
-	public static final double PRICE_BUY_FROM_WHOLESALER = 43; //100000; //Cocaine in brick form in Europe, per kilogram (this is not from source)
-	public static final double PRICE_BUY_FROM_RETAIL = 125; //120000; //Street level cocaine, per kilogram
+	public static final double PRICE_BUY_FROM_INTERNATIONAL = 16; //34700; //Cocaine in brick form, per kilogram
+	public static final double PRICE_BUY_FROM_WHOLESALER = 47; //100000; //Cocaine in brick form in Europe, per kilogram (this is not from source)
+	public static final double PRICE_BUY_FROM_RETAIL = 56; //120000; //Street level cocaine, per kilogram
 	public static final double PRICE_CONSUMER_INCOME = 1500; //120000;
 	
 	public static final double SHIPMENT_MAX_1TO2 = 100;
@@ -40,8 +40,15 @@ public class Constants {
 	public static final double SHIPMENT_MIN_PERCENTAGE = 5;
 	
 	public static final double SEND_ORDER_LEARN_RATE = 0.05;
+	public static final double LATE_SHIPMENT_PENALIZE_MULT = 0.5;
 	
-	public static final double SECURITY_STOCK = 1;
+	public static final double STOCK_SECURITY_MULT_MIN = 1; //Security stock is dependent on the minimum package size
+	public static final double STOCK_SECURITY_MULT_MAX = 1;
+	public static final double STOCK_SEARCH_NEW_SUPPLIER = 0.1;
+	
+	public static final double PROB_POSSIBLE_NEW_MIN = 0.1;
+	public static final double PROB_POSSIBLE_NEW_MULT = 0.5;
+	public static final int    NEW_CONNECTION_COOLDOWN = 10;
 	
 	// Number of nodes per country
 	public static final int N_PRODUCERS	= 6;

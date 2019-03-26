@@ -40,19 +40,6 @@ public class CountryAgent {
 		move(this.x, this.y);
 	}
 	
-	public void stepSpawning() {
-		
-		if (SU.isInitializing())
-			return ;
-		
-		for (SCType scType : scTypes) {
-			if (RandomHelper.nextDouble() < RepastParam.getSpawnRate()) {
-				spawnAgent(scType);
-			}
-		}
-		
-	}
-	
 	public void spawnAgent(SCType scType) {
 		
 		if (containsSCType(SCType.PRODUCER) && scType == SCType.PRODUCER && SU.getObjectsCount(Agent1Producer.class) < RepastParam.getProducerNumberCap()) {

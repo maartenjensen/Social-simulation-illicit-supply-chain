@@ -6,18 +6,23 @@ import repast.simphony.engine.environment.RunEnvironment;
 
 public class RelationC {
 
+	// State variables
 	private int otherId;
 	private int supplyTime;
 	private boolean active;
-	
+
 	private HashMap<Integer, HashMap<Byte, Double>> otherOrders;
 	private HashMap<Integer, HashMap<Byte, Double>> myShipments;
+	
+	// Can also be derived from the otherOrders variables therefore it is not a state variable
+	private int firstOrder;
 	
 	public RelationC(int otherId, int supplyTime) {
 		
 		this.otherId = otherId;
 		this.supplyTime = supplyTime;
 		active = true;
+		firstOrder = -1;
 		
 		otherOrders = new HashMap<Integer, HashMap<Byte, Double>>();
 		myShipments = new HashMap<Integer, HashMap<Byte, Double>>();
@@ -27,6 +32,10 @@ public class RelationC {
 		
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		otherOrders.put(tick, otherOrder);
+		
+		if (firstOrder == -1) {
+			firstOrder = tick;
+		}
 	}
 	
 	public void addMyShipment(HashMap<Byte, Double> myShipment) {
@@ -43,12 +52,18 @@ public class RelationC {
 	
 	/**
 	 * Trust is defined differently with a client than with a supplier
-	 * therefore we don't look at the order shipment ratio here
+	 * it is dependent on the time they know each other (received an order),
+	 * higher firstOrder difference from tick is a higher trust
 	 */
 	public double getTrustLevel() {
-		
-		//TODO makes this a general trust
-		return 0.5;
+
+		if (firstOrder > -1) {
+			int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+			return (tick - (double) firstOrder) / tick;
+		}
+		else {
+			return 0;
+		}
 	}
 	
 	/**

@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 import frameworkTrust.RelationC;
 import frameworkTrust.RelationS;
+import repast.simphony.random.RandomHelper;
 import repast.simphony.space.graph.Network;
 import repast.simphony.space.graph.RepastEdge;
 import supplyChainModel.common.Constants;
@@ -35,10 +36,16 @@ public class BaseAgent {
 
 	protected double supplyNeeded = 0;
 	protected double supplyAsked = 0;
+	
+	protected int newSupplierCooldown = 0;
+	protected int newClientCooldown = 0;
 
 	protected HashMap<Integer, RelationS> relationsS = new HashMap<Integer, RelationS>(); // Key: node id
 	protected HashMap<Integer, RelationC> relationsC = new HashMap<Integer, RelationC>(); // Key: node id
 
+	protected ArrayList<Integer> possibleNewSuppliers = new ArrayList<Integer>();
+	protected ArrayList<Integer> possibleNewClients   = new ArrayList<Integer>();
+	
 	// Visualization
 	protected double out_currentImport = 0;
 	protected double out_totalImport = 0;
@@ -61,10 +68,12 @@ public class BaseAgent {
 		
 		this.minPackageSize = maxPackageSize * (Constants.SHIPMENT_MIN_PERCENTAGE / 100);
 		this.maxPackageSize = maxPackageSize;
-		this.securityStockMultiplier = Constants.SECURITY_STOCK;
+		this.securityStockMultiplier = RandomHelper.nextDoubleFromTo(Constants.STOCK_SECURITY_MULT_MIN, Constants.STOCK_SECURITY_MULT_MAX);
 		this.stock = new HashMap<Byte, Double>();
 		
 		move();
+		if (!SU.getIsInitializing()) //When initializing this function is called manually for each agent in the ContextBuilder
+			setPossibleNewSuppliersAndClients();
 	}
 
 	/*====================================
@@ -81,7 +90,7 @@ public class BaseAgent {
 			quantity += stock.get(quality);
 		}
 		
-		money -= (Constants.PRICE_LIVING_MULT + Constants.PRICE_SAVED_STOCK_MULT * quantity) * sellPrice;
+		money -= ((Constants.PRICE_LIVING_COST_MULT * maxPackageSize) + Constants.PRICE_SAVED_STOCK_MULT * quantity) * sellPrice;
 		
 		if (money < 0) {
 			remove();
@@ -90,6 +99,9 @@ public class BaseAgent {
 	
 	public void stepResetParameters() {
 		out_currentImport = 0;
+	
+		newSupplierCooldown = Math.max(0, newSupplierCooldown - 1);
+		newClientCooldown   = Math.max(0, newClientCooldown - 1);
 	}
 	
 	public void stepProcessArrivedShipments() {
@@ -112,6 +124,13 @@ public class BaseAgent {
 	 * Functions (Non-decision making)
 	 *===============================*/
 	
+	/**
+	 * Is Overriden by the agents, should give half of the minimum stock.
+	 */
+	protected void setStartingStock() {
+		
+	}
+	
 	public void receivePayment(double payment) {
 		money += payment;
 	}
@@ -120,7 +139,7 @@ public class BaseAgent {
 	 * Retrieve clients that are connected to this supplier
 	 * @return the ArrayList of clients
 	 */
-	public ArrayList<BaseAgent> myBuyers() {
+	public ArrayList<BaseAgent> getClients() {
 	
 		final Iterable<RepastEdge<Object>> objects = (Iterable<RepastEdge<Object>>) SU.getNetworkSC().getOutEdges(this);
 		final ArrayList<BaseAgent> objectList = new ArrayList<BaseAgent>();
@@ -146,6 +165,11 @@ public class BaseAgent {
 		return objectList;
 	}
 	
+	/**
+	 * Search for a new supplier if the agent requires a new supplier,
+	 * if there is one available that is looking for a new client
+	 * returns when it found a new supplier (to only add one at a time)
+	 */
 	public void searchSuppliers() {
 		
 		if (!getRequireNewSupplier())
@@ -158,20 +182,22 @@ public class BaseAgent {
 			for (BaseAgent supplier : suppliers) {
 				
 				// Condition for layer
-				if (supplier.getScLayer() == (scType.getScLayer() - 1)) {
+				if (supplier.getScLayer() == (scType.getScLayer() - 1) && possibleNewSuppliers.contains(supplier.getId()) && supplier.getRequireNewClient()) {
 					
-					// Countries should match up between retail and consumers
-					/*if (supplier.getScType() == SCType.RETAIL && !supplier.getCountry().equals(this.getCountry())) {
-						break;
-					}*/
 					addSupplier(supplier);
 					supplier.addClient(this);
-					break;
+					newSupplierCooldown = Constants.NEW_CONNECTION_COOLDOWN;
+					return ;
 				}
 			}
 		}
 	}
 
+	/**
+	 * Search for a new client if the agent requires a new client,
+	 * if there is one available that is looking for a new supplier
+	 * returns when it found a new client (to only add one at a time)
+	 */
 	public void searchClients() {
 		
 		if (!getRequireNewClient())
@@ -182,15 +208,12 @@ public class BaseAgent {
 			
 			ArrayList<BaseAgent> clients = SU.getObjectsAllRandom(BaseAgent.class);
 			for (BaseAgent client : clients) {
-				if (client.getScLayer() == (scType.getScLayer() + 1)) {
+				if (client.getScLayer() == (scType.getScLayer() + 1) && possibleNewClients.contains(client.getId()) && client.getRequireNewSupplier()) {
 
-					// Countries should match up between retail and consumers
-					/*if (client.getScType() == SCType.CONSUMER && !client.getCountry().equals(this.getCountry())) {
-						break;
-					}*/
 					addClient(client);
 					client.addSupplier(this);
-					break;
+					newClientCooldown = Constants.NEW_CONNECTION_COOLDOWN;
+					return ;
 				}
 			}
 		}
@@ -309,6 +332,25 @@ public class BaseAgent {
 	}
 	
 	/**
+	 * This function retrieves all the clients, then converts them to
+	 * TrustCompare objects who can easily be sorted according to their 
+	 * trust. The suppliers are sorted with higher trust levels first.
+	 * @return
+	 */
+	public ArrayList<TrustCompare> retrieveSortedClients() {
+		
+		ArrayList<TrustCompare> sortedClients = new ArrayList<TrustCompare>();
+		for (BaseAgent client : getClients()) {
+			RelationC relation = relationsC.get(client.getId());
+			sortedClients.add( new TrustCompare(SU.getBaseAgent(relation.getId()), relation.getTrustLevel()) );
+		}
+		
+		Collections.sort(sortedClients);
+		Collections.reverse(sortedClients);
+		return sortedClients;
+	}
+	
+	/**
 	 * Add the goods to the stock, if there is already stock of the
 	 * same quality, it will be added to that stock
 	 * @param goods
@@ -391,17 +433,120 @@ public class BaseAgent {
 		}
 		
 		for (Shipment shipment : getAllMyShipments()) {
+			SU.getDataCollector().addDeletedStock(shipment.getGoods());
 			shipment.remove();
 		}
 		for (Order order : getAllMyOrders()) {
 			order.remove();
 		}
+		
+		SU.getDataCollector().addDeletedStock(stock);
+		
 		SU.getContext().remove(this);
 	}
 
 	/*================================
 	 * Getters and setters
-	 *===============================*/	
+	 *===============================*/
+	
+	/**
+	 * First adds the closest suppplier or client (dependent on the integer)
+	 * Find possible new suppliers, if the other agent can be a supplier of this agent, it is added if
+	 * No limit on suppliers (legal supply chain) OR probability is high enough
+	 * To prevent overlap, the addPossibleNewClient and addPossibleNewSupplier functions are NOT executed when the program is initializing
+	 */
+	public void setPossibleNewSuppliersAndClients() {
+		
+		addClosestSupplierOrClient(-1); // To add suppliers
+		addClosestSupplierOrClient(1); // To add clients
+		for (BaseAgent agent : SU.getObjectsAllRandom(BaseAgent.class)) {
+		
+			if (agent.getScLayer() == (scType.getScLayer() - 1)) { //Agent == a supplier
+				if (!RepastParam.getLimitedSuppliersClients() || agent.checkCanKnowAgent(SU.getGrid().getLocation(this).getY())) {
+					if (!possibleNewSuppliers.contains(agent.getId()))
+						possibleNewSuppliers.add(agent.getId());
+				}
+				
+				if (!SU.getIsInitializing())
+					agent.addPossibleNewClient(this);
+			}
+			else if (agent.getScLayer() == (scType.getScLayer() + 1)) { //Agent == a client
+				if (!RepastParam.getLimitedSuppliersClients() || agent.checkCanKnowAgent(SU.getGrid().getLocation(this).getY())) {
+					if (!possibleNewClients.contains(agent.getId()))
+						possibleNewClients.add(agent.getId());
+				}
+				
+				if (!SU.getIsInitializing())
+					agent.addPossibleNewSupplier(this);
+			}
+		}
+	}
+	
+	/**
+	 * 
+	 * @param scLayerDifference should be -1 (for a supplier) and 1 (for a client)
+	 */
+	public void addClosestSupplierOrClient(int scLayerDifference) {
+		
+		int y_distance = Constants.GRID_HEIGHT;
+		int agent_id = -1;
+		for (BaseAgent agent : SU.getObjectsAllRandom(BaseAgent.class)) {
+			
+			if (agent.getScLayer() == (scType.getScLayer() + scLayerDifference)) {
+				int new_y_distance = Math.abs(SU.getGrid().getLocation(this).getY() - SU.getGrid().getLocation(agent).getY());
+				if (y_distance > new_y_distance) {
+					agent_id = agent.getId();
+					y_distance = new_y_distance;
+				}
+			}
+		}
+		if (agent_id >= 0) {
+			if (scLayerDifference == -1 && !possibleNewSuppliers.contains(agent_id))
+				possibleNewSuppliers.add(agent_id);
+			else if (scLayerDifference == 1 && !possibleNewClients.contains(agent_id))
+				possibleNewClients.add(agent_id);
+		}
+	}
+	
+	public void addPossibleNewSupplier(BaseAgent supplier) {
+		
+		if (!RepastParam.getLimitedSuppliersClients() || supplier.checkCanKnowAgent(SU.getGrid().getLocation(this).getY()) || possibleNewSuppliers.isEmpty()) {
+			if (!possibleNewSuppliers.contains(supplier.getId()))
+				possibleNewSuppliers.add(supplier.getId());
+		}
+	}
+	
+	public void addPossibleNewClient(BaseAgent client) {
+		
+		if (!RepastParam.getLimitedSuppliersClients() || client.checkCanKnowAgent(SU.getGrid().getLocation(this).getY()) || possibleNewClients.isEmpty()) {
+			if (!possibleNewClients.contains(client.getId()))
+				possibleNewClients.add(client.getId());
+		}
+	}
+	
+	/**
+	 * The closer the agents are to each other, the higher the chance they know each other
+	 * with a min and max so it will be excluded that there is a probability of 0 or a probability of 1
+	 * @param y
+	 * @return
+	 */
+	public boolean checkCanKnowAgent(int y) {
+		
+		double probability = Math.max( Constants.PROB_POSSIBLE_NEW_MIN, (1.0 - Math.min(1.0, (double) Math.abs(SU.getGrid().getLocation(this).getY() - y) / (Constants.GRID_HEIGHT * Constants.PROB_POSSIBLE_NEW_MULT))) );
+		if (RandomHelper.nextDouble() <= probability) 
+			return true;
+		else
+			return false;
+	}
+	
+	public String getPossibleNewSuppliersStr() {
+		return possibleNewSuppliers.toString();
+	}
+	
+	public String getPossibleNewClientsStr() {
+		return possibleNewClients.toString();
+	}
+	
 	protected ArrayList<Shipment> getArrivedShipments() {
 		
 		ArrayList<Shipment> arrivedShipments = new ArrayList<Shipment>();
@@ -456,17 +601,31 @@ public class BaseAgent {
 		return minPackageSizeBoth;
 	}
 	
+	/**
+	 * Require a new supplier when stock is zero for any of the qualities
+	 * @return
+	 */
 	public boolean getRequireNewSupplier() {
-		return true; //TODO make this based on something
+		
+		if (newSupplierCooldown > 0)
+			return false;
+		
+		for (Byte quality : stock.keySet()) {
+			if (stock.get(quality) == 0)
+				return true;
+		}
+		return false;
 	}
 	
 	/**
-	 * Require a new client if the stock quantity for all qualities is higher than
-	 * the security stock
+	 * Require a client when all of the stocks are above security level
 	 * @return
 	 */
 	public boolean getRequireNewClient() {
 		
+		if (newClientCooldown > 0)
+			return false;
+			
 		double securityStock = securityStockMultiplier * minPackageSize;
 		for (Byte quality : stock.keySet()) {
 			if (securityStock < stock.get(quality))
@@ -571,7 +730,7 @@ public class BaseAgent {
 	}
 	
 	public String toString() {
-		return id + ", stock " + stock.toString();//String.format("%.0f", stock);
+		return "" + id;//String.format("%.0f", stock);
 	}
 
 	/*================================
@@ -584,7 +743,7 @@ public class BaseAgent {
 	public void move() {
 
 		Point newPos = baseCountry.getFreePosition(this, scType);
-		Logger.logSCAgent(scType, getNameId() + " " + baseCountry.getName() + " pos:[" + newPos.x + ", " + newPos.y + "]");
+		Logger.logSCAgent(scType, getId() + " spawned in " + baseCountry.getName() + " pos:[" + newPos.x + ", " + newPos.y + "]");
 		
 		SU.getContinuousSpace().moveTo(this, newPos.getX(), newPos.getY());	
 		SU.getGrid().moveTo(this, newPos.x, newPos.y);

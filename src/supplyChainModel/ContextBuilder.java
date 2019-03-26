@@ -8,6 +8,7 @@ import repast.simphony.context.space.graph.NetworkBuilder;
 import repast.simphony.context.space.grid.GridFactoryFinder;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.schedule.ScheduledMethod;
+import repast.simphony.random.RandomHelper;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.continuous.RandomCartesianAdder;
 import repast.simphony.space.graph.Network;
@@ -44,7 +45,7 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		
 		RepastParam.setRepastParameters();
 		
-		new DataCollector(context);
+		DataCollector dataCollector = new DataCollector(context);
 
 		// Create the supply chain
 		ContextDataLoader countryLoader = new ContextDataLoader();
@@ -57,6 +58,8 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 			double endAt = RepastParam.getRunLength();
 			RunEnvironment.getInstance().endAt(endAt);
 		}
+		
+		dataCollector.addAllCurrentStock();
 		
 		return context;
 	}
@@ -101,6 +104,11 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 				}
 			}
 		}	
+		
+		// Set possible new suppliers and clients
+		for (BaseAgent agent : SU.getObjectsAll(BaseAgent.class)) {
+			agent.setPossibleNewSuppliersAndClients();
+		}
 	}
 
 	/*====================================
@@ -113,8 +121,11 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 	@ScheduledMethod(start = 1, interval = 1, priority = 0, shuffle=false)
 	public void step() {
 		
+		
+		
 		Logger.logMain("----------------------------------");
 		Logger.logMain("Step " + SU.getTick());
+		Logger.logMain("----------------------------------");
 		
 		/*Logger.logMain("Step-Shipment: police intervention on shipments");
 		for (Shipment shipment : SU.getObjectsAll(Shipment.class)) {
@@ -131,10 +142,8 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 			baseAgent.stepResetParameters();
 		}
 		
-		Logger.logMain("Step-CountryAgent: spawning of new agents");
-		for (CountryAgent country : SU.getObjectsAll(CountryAgent.class)) {
-			country.stepSpawning();
-		}
+		Logger.logMain("Step-ContextBuilder: spawning of new agents");
+		stepSpawning();
 		
 		Logger.logMain("Step-Shipment: shipments advancements");
 		for (Shipment shipment : SU.getObjectsAll(Shipment.class)) {
@@ -171,8 +180,34 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		for (BaseAgent baseAgent : SU.getObjectsAll(BaseAgent.class)) {
 			baseAgent.stepSendOrder();
 		}
+		
+		if (SU.getTick() == RepastParam.getRunLength()) {
+			RunEnvironment.getInstance().pauseRun();
+			Logger.logMain("Simulation ended at : " + SU.getTick());
+			Logger.logMain("------------------------------------------------------------------------------");
+		}
 	}
 
+	public void stepSpawning() {
+		
+		if (SU.isInitializing())
+			return ;
+		
+		for (SCType scType : SCType.values()) {
+			
+			if (RandomHelper.nextDouble() <= RepastParam.getSpawnRate()) {
+				
+				for (CountryAgent country : SU.getObjectsAllRandom(CountryAgent.class)) {
+					if (country.containsSCType(scType)) {
+						country.spawnAgent(scType);
+						break;
+					}
+				}
+			}
+			
+		}
+	}
+	
 	/**
 	 * Create continuous space space for the given context
 	 * @param context

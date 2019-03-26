@@ -15,6 +15,7 @@ public final class RepastParam {
 	private static int ticksInitPopulation = 100;
 	private static double sendShipmentProbability = 1;
 	private static int producerNumberCap = 8;
+	private static boolean limitedSuppliersClients = false;
 	
 	public static void setRepastParameters() {
 		
@@ -28,6 +29,7 @@ public final class RepastParam {
 		ticksInitPopulation = p.getInteger("pTicksInitPopulation");
 		sendShipmentProbability = p.getDouble("pSendShipmentProbability");
 		producerNumberCap = p.getInteger("pProducerNumberCap");
+		limitedSuppliersClients = p.getBoolean("pLimitedSuppliersClients");
 	}
 
 	public static double getRunLength() {
@@ -64,5 +66,9 @@ public final class RepastParam {
 	
 	public static int getProducerNumberCap() {
 		return producerNumberCap;
+	}
+	
+	public static boolean getLimitedSuppliersClients() {
+		return limitedSuppliersClients;
 	}
 }

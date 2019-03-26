@@ -17,6 +17,7 @@ public class Order {
 	private BaseAgent supplier;
 	private HashMap<Byte, Double> goods;
 	private int stepsLeft;
+	private boolean savedOrder;
 	
 	// Visualization variables
 	private double vsl_moveSpeed;
@@ -32,8 +33,9 @@ public class Order {
 		this.supplier = supplier;
 		this.goods = goods;
 		this.stepsLeft = stepsLeft;
+		savedOrder = false;
 		
-		System.out.println("New order: " + client.getId() + " to " + supplier.getId() + " : " + goods.toString());
+		//Logger.logInfo("New order: " + client.getId() + " to " + supplier.getId() + " : " + goods.toString());
 		setStartPosition();
 		setLargestQuality();
 	}
@@ -42,6 +44,9 @@ public class Order {
 	 * Decreases the steps, gives an error if there are less than zero steps and moves the order
 	 */
 	public void stepAdvanceOrder() {
+		
+		if (savedOrder)
+			return ;
 		
 		this.stepsLeft -= 1;
 		if (this.stepsLeft <= -1) {
@@ -63,6 +68,10 @@ public class Order {
 	public String getGoodsStr() {
 		return goods.toString();
 	}
+	
+	public void setSavedOrder() {
+		savedOrder = true;
+	}
 
 	/**
 	 * This function should only be allowed at initialization of
@@ -71,7 +80,7 @@ public class Order {
 	 * @param quantity
 	 */
 	public void addToGoods(Byte quality, Double quantity) {
-		System.out.println(" Added to order: " + client.getId() + " to " + supplier.getId() + " : Q:" + quality + ", " + quantity );
+		//Logger.logInfo(" Added to order: " + client.getId() + " to " + supplier.getId() + " : Q:" + quality + ", " + quantity );
 		if (goods.containsKey(quality))
 			goods.put(quality, goods.get(quality) + quantity);
 		else

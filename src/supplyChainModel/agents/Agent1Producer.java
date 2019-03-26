@@ -1,10 +1,13 @@
 package supplyChainModel.agents;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import repast.simphony.context.Context;
+import repast.simphony.random.RandomHelper;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.RepastParam;
+import supplyChainModel.common.SU;
 import supplyChainModel.enums.SCType;
 import supplyChainModel.support.Order;
 import supplyChainModel.support.Shipment;
@@ -20,6 +23,8 @@ public class Agent1Producer extends BaseAgent {
 		
 		this.quality = quality;
 		this.previousOrder = 0.0;
+		
+		setStartingStock();
 	}
 	
 	/**
@@ -46,19 +51,37 @@ public class Agent1Producer extends BaseAgent {
 		
 		updateArrivedOrders();
 		
-		//TODO order the orders based on most important clients
-		for (Order order : getArrivedOrders()) {
-			HashMap<Byte, Double> goodsToSend = findGoodsInStock(order.getGoods());
-			if (!goodsToSend.isEmpty()) {
-				
-				double cost = 0;
-				for (Byte goodsQuality : goodsToSend.keySet()) {
-					cost += goodsToSend.get(goodsQuality) * Constants.PRICE_BUY_FROM_PRODUCER;
+		ArrayList<TrustCompare> sortedClients = retrieveSortedClients();
+		for (TrustCompare client : sortedClients) {
+			//Logger.logSCAgent(scType, "stepSendShipment(): " + id + " other id: " + client.getAgent().getId() + ", " + client.getTrust());
+			Order clientOrder = null;
+			for (Order order : getArrivedOrders()) {
+				if (order.getClient().getId() == client.getAgent().getId()) {
+					clientOrder = order;
 				}
-				new Shipment(order.getClient(), this, goodsToSend, cost, RepastParam.getShipmentStep()); //TODO calculate price
-				relationsC.get(order.getClient().getId()).addMyShipment(goodsToSend);
 			}
-			order.remove();
+			
+			if (clientOrder != null) {
+				
+				if (RandomHelper.nextDouble() <= RepastParam.getSendShipmentProbability()) {
+				
+					HashMap<Byte, Double> goodsToSend = findGoodsInStock(clientOrder.getGoods());
+					if (!goodsToSend.isEmpty()) {
+						
+						double cost = 0;
+						for (Byte goodsQuality : goodsToSend.keySet()) {
+							cost += goodsToSend.get(goodsQuality) * sellPrice;
+						}
+						new Shipment(clientOrder.getClient(), this, goodsToSend, cost, RepastParam.getShipmentStep()); //TODO calculate price
+						relationsC.get(clientOrder.getClient().getId()).addMyShipment(goodsToSend);
+					}
+					clientOrder.remove();
+				}
+				else {
+					
+					clientOrder.setSavedOrder();
+				}
+			}
 		}
 	}
 
@@ -92,12 +115,19 @@ public class Agent1Producer extends BaseAgent {
 		double productionCost = chosenQuantity * Constants.PRICE_PRODUCTION;
 		new Shipment(this, null, producedGoods, productionCost, RepastParam.getShipmentStep());
 		
+		SU.getDataCollector().addProducedStock(producedGoods);
+		
 		previousOrder = chosenQuantity;
 	}
 	
 	/*================================
 	 * Getters and setters
 	 *===============================*/	
+	
+	@Override
+	protected void setStartingStock() {
+		stock.put(quality, securityStockMultiplier * minPackageSize);
+	}
 	
 	public byte getQuality() {
 		return quality;

@@ -9,6 +9,7 @@ import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.graph.Network;
 import repast.simphony.space.grid.Grid;
 import repast.simphony.util.SimUtilities;
+import supplyChainModel.DataCollector;
 import supplyChainModel.agents.BaseAgent;
 
 // Simulation Utils class
@@ -46,6 +47,15 @@ public class SU {
 			Logger.logError("SimUtils.getContext(): context returned null");
 		}
 		return masterContext;
+	}
+	
+	public static DataCollector getDataCollector() {
+		ArrayList<DataCollector> dataCollectors = getObjectsAll(DataCollector.class);
+		for (DataCollector dataCollector : dataCollectors) {
+			return dataCollector;
+		}
+		Logger.logError("SU.getDataCollector(): no data collectors found");
+		return null;
 	}
 	
 	/**

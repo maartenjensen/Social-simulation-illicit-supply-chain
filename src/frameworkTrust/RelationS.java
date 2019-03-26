@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import repast.simphony.engine.environment.RunEnvironment;
 import supplyChainModel.common.Constants;
+import supplyChainModel.common.Logger;
 
 public class RelationS {
 
@@ -36,9 +37,31 @@ public class RelationS {
 		myOrders.put(tick, orderedGoods);
 	}
 	
+	/**
+	 * If there is too much shipment send the trust is updated but with a penalized amount
+	 * this represents penalization when shipments are later
+	 * @param shippedGoods
+	 */
 	public void addOtherShipment(HashMap<Byte, Double> shippedGoods) {
+		
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
-		otherShipments.put(tick, shippedGoods);
+		if (myOrders.containsKey(tick - supplyTime)) {
+			
+			HashMap<Byte, Double> orderedGoods = myOrders.get(tick - supplyTime);
+			HashMap<Byte, Double> penalizedGoods = new HashMap<Byte, Double>();
+			// Penalize received goods (only in trust relation not for real)
+			for (Byte quality : shippedGoods.keySet()) {
+				double penalizedQuantity = Math.min(shippedGoods.get(quality), orderedGoods.get(quality));
+				if (shippedGoods.get(quality) > orderedGoods.get(quality))
+					penalizedQuantity += (shippedGoods.get(quality) - orderedGoods.get(quality)) * Constants.LATE_SHIPMENT_PENALIZE_MULT;
+				penalizedGoods.put(quality, penalizedQuantity);		
+			}
+			Logger.logInfo("addOtherShipment: Ordered:" + orderedGoods.toString() + ", shipped:" + shippedGoods.toString() + ", penalized:" + penalizedGoods.toString());
+			otherShipments.put(tick, penalizedGoods);
+		}
+		else {
+			Logger.logError("RelationS.addOtherShipment(): Order on tick " + (tick - supplyTime) + " does not exist");
+		}
 	}
 	
 	// Getters
@@ -81,7 +104,7 @@ public class RelationS {
 		if (differentQualities > 0)
 			return trust / differentQualities;
 		else
-			return 0.5;
+			return 0;
 	}
 	
 	/**

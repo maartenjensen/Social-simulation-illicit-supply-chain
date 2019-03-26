@@ -2,6 +2,7 @@ package supplyChainModel;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import repast.simphony.context.Context;
 import supplyChainModel.agents.Agent1Producer;
@@ -17,11 +18,106 @@ import supplyChainModel.enums.SCType;
 
 public class DataCollector {
 
+	//private HashMap<SCType, Integer> removedAgents = ;
+	private HashMap<Byte, Double> createdStock = new HashMap<Byte, Double>();
+	private HashMap<Byte, Double> deletedStock = new HashMap<Byte, Double>();
+	private HashMap<Byte, Double> consumedStock = new HashMap<Byte, Double>();
 	
 	public DataCollector(final Context<Object> context) {
 		context.add(this);
 		move();
 	}
+	
+	/*================================
+	 * Stock analyzing
+	 *===============================*/	
+	
+	public void addAllCurrentStock() {
+		
+		ArrayList<BaseAgent> agents = SU.getObjectsAll(BaseAgent.class);
+		for (BaseAgent agent : agents) {
+			
+			for (Byte quality : agent.getStock().keySet()) {
+				if (createdStock.containsKey(quality))
+					createdStock.put(quality, createdStock.get(quality) + agent.getStock().get(quality));
+				else
+					createdStock.put(quality, agent.getStock().get(quality));
+			}
+		}
+	}
+	
+	public void addProducedStock(HashMap<Byte, Double> producedGoods) {
+		
+		for (Byte quality : producedGoods.keySet()) {
+			if (createdStock.containsKey(quality))
+				createdStock.put(quality, createdStock.get(quality) + producedGoods.get(quality));
+			else
+				createdStock.put(quality, producedGoods.get(quality));
+		}
+	}
+
+	public void addConsumedStock(HashMap<Byte, Double> consumedGoods) {
+		
+		for (Byte quality : consumedGoods.keySet()) {
+			if (consumedStock.containsKey(quality))
+				consumedStock.put(quality, consumedStock.get(quality) + consumedGoods.get(quality));
+			else
+				consumedStock.put(quality, consumedGoods.get(quality));
+		}
+	}
+	
+	public void addDeletedStock(HashMap<Byte, Double> deletedGoods) {
+		
+		for (Byte quality : deletedGoods.keySet()) {
+			if (deletedStock.containsKey(quality))
+				deletedStock.put(quality, deletedStock.get(quality) + deletedGoods.get(quality));
+			else
+				deletedStock.put(quality, deletedGoods.get(quality));
+		}
+	}
+	
+	public double getStockCreatedTot() {
+		if (createdStock.containsKey(Constants.QUALITY_MINIMUM)) {
+			if (createdStock.containsKey(Constants.QUALITY_MINIMUM))
+				return createdStock.get(Constants.QUALITY_MINIMUM) + createdStock.get(Constants.QUALITY_MAXIMUM);
+			else
+				return createdStock.get(Constants.QUALITY_MINIMUM);
+		}
+		else if (createdStock.containsKey(Constants.QUALITY_MAXIMUM))
+			return createdStock.get(Constants.QUALITY_MAXIMUM);
+		else
+			return 0.0;
+	}
+	
+	public double getStockConsumedTot() {
+		if (consumedStock.containsKey(Constants.QUALITY_MINIMUM)) {
+			if (consumedStock.containsKey(Constants.QUALITY_MINIMUM))
+				return consumedStock.get(Constants.QUALITY_MINIMUM) + consumedStock.get(Constants.QUALITY_MAXIMUM);
+			else
+				return consumedStock.get(Constants.QUALITY_MINIMUM);
+		}
+		else if (consumedStock.containsKey(Constants.QUALITY_MAXIMUM))
+			return consumedStock.get(Constants.QUALITY_MAXIMUM);
+		else
+			return 0.0;
+	}
+	
+	public double getStockDeletedTot() {
+		if (deletedStock.containsKey(Constants.QUALITY_MINIMUM)) {
+			if (deletedStock.containsKey(Constants.QUALITY_MAXIMUM))
+				return deletedStock.get(Constants.QUALITY_MINIMUM) + deletedStock.get(Constants.QUALITY_MAXIMUM);
+			else
+				return deletedStock.get(Constants.QUALITY_MINIMUM);
+		}
+		else if (deletedStock.containsKey(Constants.QUALITY_MAXIMUM))
+			return deletedStock.get(Constants.QUALITY_MAXIMUM);
+		else
+			return 0.0;
+	}
+	
+	/*================================
+	 * Other
+	 *===============================*/	
 	
 	public double getStockCurrent(String countryName) {
 		
@@ -36,11 +132,11 @@ public class DataCollector {
 		
 		return stock;
 	}
-	
+
 	public double getStockCurrentNL() {
 		return getStockCurrent("The Netherlands");
 	}
-	
+
 	public double getStockCurrentES() {
 		return getStockCurrent("Spain");
 	}

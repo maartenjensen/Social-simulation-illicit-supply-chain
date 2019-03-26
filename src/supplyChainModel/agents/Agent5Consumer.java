@@ -20,21 +20,24 @@ public class Agent5Consumer extends BaseAgent {
 	private byte quality;
 	public double baseConsumption;
 	public boolean satisfied;
-	public int ticksUntilRemoved;
+	//public int ticksUntilRemoved;
 	public int ticksWithoutSatisfaction;
 	
 	public Agent5Consumer(final Context<Object> context, CountryAgent country, byte quality) {
+		
 		super(country, SCType.CONSUMER, 0, 0);
 		
 		this.quality = quality;
 		baseConsumption = RandomHelper.nextDoubleFromTo(RepastParam.getConsumptionMin(), RepastParam.getConsumptionMax());
 		satisfied = false;
-		ticksUntilRemoved = Constants.CONSUMER_REMOVE_TICKS;
+		//ticksUntilRemoved = Constants.CONSUMER_REMOVE_TICKS;
 		ticksWithoutSatisfaction = 0;
 		
 		stock.put(quality, 0.0);
+		
+		setStartingStock();
 	}
-	
+
 	/*====================================
 	 * The main steps of the agents
 	 *====================================*/
@@ -46,9 +49,9 @@ public class Agent5Consumer extends BaseAgent {
 	@Override
 	public void stepCheckRemoval() {
 		
-		ticksUntilRemoved -= 1;
+		//ticksUntilRemoved -= 1;
 		
-		if (!SU.getIsInitializing() && (ticksUntilRemoved == 0 || ticksWithoutSatisfaction >= Constants.CONSUMER_LIMIT_WITHOUT_SATISFACTION)) {
+		if (!SU.getIsInitializing() && ticksWithoutSatisfaction >= Constants.CONSUMER_LIMIT_WITHOUT_SATISFACTION) { // (ticksUntilRemoved == 0 || 
 			remove();
 		}
 	}
@@ -84,17 +87,24 @@ public class Agent5Consumer extends BaseAgent {
 	@Override
 	public void stepSendShipment() {
 		
-		
 		if (stock.get(quality) >= baseConsumption) {
 			Logger.logInfoId(id, getNameId() + ":" + stock.get(quality) + " - " + baseConsumption + " = " + (stock.get(quality) - baseConsumption));
 			stock.put(quality, stock.get(quality) - baseConsumption);
 			ticksWithoutSatisfaction = 0;
 			satisfied = true;
+			HashMap<Byte, Double> consumedGoods = new HashMap<Byte, Double>();
+			consumedGoods.put(quality, baseConsumption);
+			SU.getDataCollector().addConsumedStock(consumedGoods);
 		}
 		else {
+			HashMap<Byte, Double> consumedGoods = new HashMap<Byte, Double>();
+			consumedGoods.put(quality, stock.get(quality));
+			
 			stock.put(quality, 0.0);
 			ticksWithoutSatisfaction ++;
 			satisfied = false;
+			
+			SU.getDataCollector().addConsumedStock(consumedGoods);
 		}
 	}
 	
@@ -117,7 +127,7 @@ public class Agent5Consumer extends BaseAgent {
 			for (TrustCompare sortedSupplier : sortedSuppliers) {
 				
 				BaseAgent supplier = sortedSupplier.getAgent();
-				Logger.logInfo("Required:" + requiredQuantity + ", min package size:" + supplier.getMinPackageSize());
+				//Logger.logInfo("Required:" + requiredQuantity + ", min package size:" + supplier.getMinPackageSize());
 				if (requiredQuantity >= supplier.getMinPackageSize()) {
 					
 					double oldQuantity = relationsS.get(supplier.getId()).getPreviousMyOrder(quality);
@@ -154,6 +164,12 @@ public class Agent5Consumer extends BaseAgent {
 		return requiredGoods;
 	}
 
+	@Override
+	protected void setStartingStock() {
+		
+		stock.put(quality, securityStockMultiplier * minPackageSize);
+	}
+	
 	/*================================
 	 * Getters and setters
 	 *===============================*/	
