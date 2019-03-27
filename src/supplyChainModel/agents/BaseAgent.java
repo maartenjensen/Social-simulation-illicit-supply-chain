@@ -223,7 +223,7 @@ public class BaseAgent {
 		
 		if (!relationsS.keySet().contains(supplier.getId())) {
 			SU.getNetworkSCReversed().addEdge(this, supplier);
-			relationsS.put(supplier.getId(), new RelationS(supplier.getId(), RepastParam.getShipmentStep() * 2));
+			relationsS.put(supplier.getId(), new RelationS(supplier.getId(), RepastParam.getShipmentStep() * 2, id + " -> " + supplier.getId()));
 		}
 		Logger.logSCAgent(scType, getNameId() + " added supplier: " + supplier.getNameId());
 	}
@@ -232,7 +232,7 @@ public class BaseAgent {
 		
 		if (!relationsC.keySet().contains(client.getId())) {
 			SU.getNetworkSC().addEdge(this, client);
-			relationsC.put(client.getId(), new RelationC(client.getId(), RepastParam.getShipmentStep() * 2));
+			relationsC.put(client.getId(), new RelationC(client.getId(), RepastParam.getShipmentStep() * 2, id + " -> " + client.getId()));
 		}
 		
 		Logger.logSCAgent(scType, getNameId() + " added client: " + client.getNameId());
@@ -399,6 +399,26 @@ public class BaseAgent {
 			}
 		}
 		return choosenGoods;
+	}
+	
+	/**
+	 * Combines the goods by addition from the given orders to a single HashMap
+	 * @param orders
+	 * @return
+	 */
+	public HashMap<Byte, Double> combineOrderedGoods(ArrayList<Order> orders) {
+		
+		HashMap<Byte, Double> orderedGoods = new HashMap<Byte, Double>();
+		for (Order order : orders) {
+			Logger.logSCAgent(scType, "combineOrderedGoods(): " + id + " add order:" + order.getGoodsStr());
+			for (Byte quality : order.getGoods().keySet()) {
+				if (!orderedGoods.containsKey(quality))
+					orderedGoods.put(quality, order.getGoods().get(quality));
+				else
+					orderedGoods.put(quality, order.getGoods().get(quality) + orderedGoods.get(quality));
+			}
+		}
+		return orderedGoods;
 	}
 
 	public void removeRelation(int id) {

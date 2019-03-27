@@ -6,6 +6,12 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
+				<parameter name="pLimitedSuppliersClients" displayName="Limited suppliers and clients" type="boolean" 
+						defaultValue="false" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$BooleanConverter"
+									
+		/>
 				<parameter name="pTicksInitPopulation" displayName="Ticks Init Population" type="int" 
 						defaultValue="100" 
 						isReadOnly="false" 

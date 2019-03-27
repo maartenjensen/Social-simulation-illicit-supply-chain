@@ -46,6 +46,10 @@ public class Agent1Producer extends BaseAgent {
 		searchClients();
 	}
 	
+	/**
+	 * Only send shipments when the probability check is done and you have received a new order
+	 * The new order is combined with the old orders to know how much to send
+	 */
 	@Override
 	public void stepSendShipment() {
 		
@@ -53,33 +57,39 @@ public class Agent1Producer extends BaseAgent {
 		
 		ArrayList<TrustCompare> sortedClients = retrieveSortedClients();
 		for (TrustCompare client : sortedClients) {
+			boolean gotANewOrder = false;
 			//Logger.logSCAgent(scType, "stepSendShipment(): " + id + " other id: " + client.getAgent().getId() + ", " + client.getTrust());
-			Order clientOrder = null;
+			ArrayList<Order> clientOrders = new ArrayList<Order>();
 			for (Order order : getArrivedOrders()) {
 				if (order.getClient().getId() == client.getAgent().getId()) {
-					clientOrder = order;
+					clientOrders.add(order);
+					if (!order.isSaved())
+						gotANewOrder = true;
 				}
 			}
 			
-			if (clientOrder != null) {
+			//Look for all the orders that are arrived and then combine them
+			
+			if (!clientOrders.isEmpty()) {
+				if (RandomHelper.nextDouble() <= RepastParam.getSendShipmentProbability() && gotANewOrder) {
 				
-				if (RandomHelper.nextDouble() <= RepastParam.getSendShipmentProbability()) {
-				
-					HashMap<Byte, Double> goodsToSend = findGoodsInStock(clientOrder.getGoods());
+					HashMap<Byte, Double> orderedGoodsCombined = combineOrderedGoods(clientOrders);
+					HashMap<Byte, Double> goodsToSend = findGoodsInStock(orderedGoodsCombined);
 					if (!goodsToSend.isEmpty()) {
 						
 						double cost = 0;
 						for (Byte goodsQuality : goodsToSend.keySet()) {
-							cost += goodsToSend.get(goodsQuality) * sellPrice;
+							cost += goodsToSend.get(goodsQuality) * sellPrice; //TODO calculate price
 						}
-						new Shipment(clientOrder.getClient(), this, goodsToSend, cost, RepastParam.getShipmentStep()); //TODO calculate price
-						relationsC.get(clientOrder.getClient().getId()).addMyShipment(goodsToSend);
+						new Shipment(clientOrders.get(0).getClient(), this, goodsToSend, cost, RepastParam.getShipmentStep()); 
+						relationsC.get(clientOrders.get(0).getClient().getId()).addMyShipment(goodsToSend);
 					}
-					clientOrder.remove();
+					for (Order order : clientOrders) 
+						order.remove();
 				}
 				else {
-					
-					clientOrder.setSavedOrder();
+					for (Order order : clientOrders) 
+						order.setSavedOrder();
 				}
 			}
 		}

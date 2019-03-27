@@ -94,6 +94,10 @@ public class Order {
 		return false;
 	}
 	
+	public boolean isSaved() {
+		return savedOrder;
+	}
+	
 	public BaseAgent getClient() {
 		return client;
 	}

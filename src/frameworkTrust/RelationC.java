@@ -16,11 +16,13 @@ public class RelationC {
 	
 	// Can also be derived from the otherOrders variables therefore it is not a state variable
 	private int firstOrder;
+	private String label;
 	
-	public RelationC(int otherId, int supplyTime) {
+	public RelationC(int otherId, int supplyTime, String label) {
 		
 		this.otherId = otherId;
 		this.supplyTime = supplyTime;
+		this.label = label;
 		active = true;
 		firstOrder = -1;
 		
@@ -48,6 +50,10 @@ public class RelationC {
 	
 	public int getId() {
 		return otherId;
+	}
+	
+	public String getLabel() {
+		return label;
 	}
 	
 	/**

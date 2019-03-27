@@ -18,10 +18,14 @@ public class RelationS {
 	private HashMap<Integer, HashMap<Byte, Double>> myOrders;
 	private HashMap<Integer, HashMap<Byte, Double>> otherShipments;
 
-	public RelationS(int otherId, int supplyTime) {
+	// Visualization parameters
+	private String label;
+	
+	public RelationS(int otherId, int supplyTime, String label) {
 		
 		this.otherId = otherId;
 		this.supplyTime = supplyTime;
+		this.label = label;
 		active = true;
 		
 		myOrders       = new HashMap<Integer, HashMap<Byte, Double>>();
@@ -38,7 +42,7 @@ public class RelationS {
 	}
 	
 	/**
-	 * If there is too much shipment send the trust is updated but with a penalized amount
+	 * If there is an excess of shipment send, the trust is updated but with a penalized amount
 	 * this represents penalization when shipments are later
 	 * @param shippedGoods
 	 */
@@ -49,18 +53,23 @@ public class RelationS {
 			
 			HashMap<Byte, Double> orderedGoods = myOrders.get(tick - supplyTime);
 			HashMap<Byte, Double> penalizedGoods = new HashMap<Byte, Double>();
-			// Penalize received goods (only in trust relation not for real)
+			// Penalize received goods (this happens only in the trust relation not for real)
 			for (Byte quality : shippedGoods.keySet()) {
-				double penalizedQuantity = Math.min(shippedGoods.get(quality), orderedGoods.get(quality));
-				if (shippedGoods.get(quality) > orderedGoods.get(quality))
-					penalizedQuantity += (shippedGoods.get(quality) - orderedGoods.get(quality)) * Constants.LATE_SHIPMENT_PENALIZE_MULT;
+				
+				double orderedGoodsQuantity = 0; //Ordered goods is zero unless it exists in the order
+				if (orderedGoods.containsKey(quality))
+					orderedGoodsQuantity = orderedGoods.get(quality);
+				
+				double penalizedQuantity = Math.min(shippedGoods.get(quality), orderedGoodsQuantity);
+				if (shippedGoods.get(quality) > orderedGoodsQuantity)
+					penalizedQuantity += (shippedGoods.get(quality) - orderedGoodsQuantity) * Constants.LATE_SHIPMENT_PENALIZE_MULT;
 				penalizedGoods.put(quality, penalizedQuantity);		
 			}
-			Logger.logInfo("addOtherShipment: Ordered:" + orderedGoods.toString() + ", shipped:" + shippedGoods.toString() + ", penalized:" + penalizedGoods.toString());
+			Logger.logInfo("RelationS.addOtherShipment(): " + label + " ordered:" + orderedGoods.toString() + ", shipped:" + shippedGoods.toString() + ", penalized:" + penalizedGoods.toString());
 			otherShipments.put(tick, penalizedGoods);
 		}
 		else {
-			Logger.logError("RelationS.addOtherShipment(): Order on tick " + (tick - supplyTime) + " does not exist");
+			Logger.logError("RelationS.addOtherShipment(): " + label + " order on tick " + (tick - supplyTime) + " does not exist");
 		}
 	}
 	

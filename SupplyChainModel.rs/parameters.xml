@@ -37,7 +37,7 @@
 									
 		/>
 				<parameter name="pSendShipmentProbability" displayName="Send Shipment Probability" type="double" 
-						defaultValue="1.0" 
+						defaultValue="0.5" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									

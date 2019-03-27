@@ -63,7 +63,7 @@ public class Constants {
 	
 	// Consumer specific
 	public static final int CONSUMER_REMOVE_TICKS = 200;
-	public static final int CONSUMER_LIMIT_WITHOUT_SATISFACTION = 10;
+	public static final int CONSUMER_LIMIT_WITHOUT_SATISFACTION = 20;
 	
 	public static final int COUNTRY_CONSUMERS_MAX = 2;
 	
