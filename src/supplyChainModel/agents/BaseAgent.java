@@ -178,19 +178,46 @@ public class BaseAgent {
 		Network<Object> net = SU.getNetworkSC();
 		if (net.getInDegree(this) < Constants.MAX_NUMBER_OF_ACTIVE_SUPPLIERS) { //TODO change this to a search for active suppliers
 			
-			ArrayList<BaseAgent> suppliers = SU.getObjectsAllRandom(BaseAgent.class);
-			for (BaseAgent supplier : suppliers) {
+			ArrayList<TrustCompare> allPossibleSuppliersSorted = sortAverageTrustInSuppliers(possibleNewSuppliers);
+			for (TrustCompare sCompare : allPossibleSuppliersSorted) {
 				
 				// Condition for layer
-				if (supplier.getScLayer() == (scType.getScLayer() - 1) && possibleNewSuppliers.contains(supplier.getId()) && supplier.getRequireNewClient()) {
+				if (sCompare.getAgent().getScLayer() == (scType.getScLayer() - 1) && possibleNewSuppliers.contains(sCompare.getAgent().getId()) && sCompare.getAgent().getRequireNewClient()) {
 					
-					addSupplier(supplier);
-					supplier.addClient(this);
-					newSupplierCooldown = Constants.NEW_CONNECTION_COOLDOWN;
+					addSupplier(sCompare.getAgent());
+					sCompare.getAgent().addClient(this);
 					return ;
 				}
 			}
 		}
+	}
+	
+	public ArrayList<TrustCompare> sortAverageTrustInSuppliers(ArrayList<Integer> possibleSuppliers) {
+		
+		ArrayList<TrustCompare> unsorted = new ArrayList<TrustCompare>();
+		for (Integer supplierId : possibleSuppliers) {
+			BaseAgent supplier = SU.getBaseAgent(supplierId);
+			if (supplier != null) {
+				double sumTrust = 0;
+				int sumCount = 0;
+				for (BaseAgent client : SU.getObjectsAllExcludeRandom(BaseAgent.class, this)) {
+					double trustInSupplier = client.retrieveSupplierTrust(supplier.getId());
+					if (trustInSupplier >= 0) {
+						sumTrust += trustInSupplier;
+						sumCount ++;
+					}
+				}
+				
+				if (sumCount > 0)
+					unsorted.add(new TrustCompare(supplier, sumTrust / sumCount));
+				else
+					unsorted.add(new TrustCompare(supplier, 0));
+			}
+		}
+
+		Collections.sort(unsorted);
+		Collections.reverse(unsorted);
+		return unsorted;
 	}
 
 	/**
@@ -206,17 +233,44 @@ public class BaseAgent {
 		Network<Object> net = SU.getNetworkSC();
 		if (net.getOutDegree(this) < Constants.MAX_NUMBER_OF_ACTIVE_CLIENTS) { //TODO change this to a search for active clients
 			
-			ArrayList<BaseAgent> clients = SU.getObjectsAllRandom(BaseAgent.class);
-			for (BaseAgent client : clients) {
-				if (client.getScLayer() == (scType.getScLayer() + 1) && possibleNewClients.contains(client.getId()) && client.getRequireNewSupplier()) {
+			ArrayList<TrustCompare> allPossibleClientsSorted = sortAverageTrustInClients(possibleNewClients);
+			for (TrustCompare cCompare : allPossibleClientsSorted) {
+				if (cCompare.getAgent().getScLayer() == (scType.getScLayer() + 1) && possibleNewClients.contains(cCompare.getAgent().getId()) && cCompare.getAgent().getRequireNewSupplier()) {
 
-					addClient(client);
-					client.addSupplier(this);
-					newClientCooldown = Constants.NEW_CONNECTION_COOLDOWN;
+					addClient(cCompare.getAgent());
+					cCompare.getAgent().addSupplier(this);
 					return ;
 				}
 			}
 		}
+	}
+	
+	public ArrayList<TrustCompare> sortAverageTrustInClients(ArrayList<Integer> possibleClients) {
+		
+		ArrayList<TrustCompare> unsorted = new ArrayList<TrustCompare>();
+		for (Integer clientId : possibleClients) {
+			BaseAgent client = SU.getBaseAgent(clientId);
+			if (client != null) {
+				double sumTrust = 0;
+				int sumCount = 0;
+				for (BaseAgent supplier : SU.getObjectsAllExcludeRandom(BaseAgent.class, this)) {
+					double trustInClient = supplier.retrieveSupplierTrust(client.getId());
+					if (trustInClient >= 0) {
+						sumTrust += trustInClient;
+						sumCount ++;
+					}
+				}
+				
+				if (sumCount > 0)
+					unsorted.add(new TrustCompare(client, sumTrust / sumCount));
+				else
+					unsorted.add(new TrustCompare(client, 0));
+			}
+		}
+
+		Collections.sort(unsorted);
+		Collections.reverse(unsorted);
+		return unsorted;
 	}
 
 	public void addSupplier(BaseAgent supplier) {
@@ -224,8 +278,10 @@ public class BaseAgent {
 		if (!relationsS.keySet().contains(supplier.getId())) {
 			SU.getNetworkSCReversed().addEdge(this, supplier);
 			relationsS.put(supplier.getId(), new RelationS(supplier.getId(), RepastParam.getShipmentStep() * 2, id + " -> " + supplier.getId()));
+			newSupplierCooldown = Constants.NEW_CONNECTION_COOLDOWN;
+			Logger.logSCAgent(scType, getNameId() + " added supplier: " + supplier.getNameId());
 		}
-		Logger.logSCAgent(scType, getNameId() + " added supplier: " + supplier.getNameId());
+		
 	}
 	
 	public void addClient(BaseAgent client) {
@@ -233,9 +289,9 @@ public class BaseAgent {
 		if (!relationsC.keySet().contains(client.getId())) {
 			SU.getNetworkSC().addEdge(this, client);
 			relationsC.put(client.getId(), new RelationC(client.getId(), RepastParam.getShipmentStep() * 2, id + " -> " + client.getId()));
+			newClientCooldown = Constants.NEW_CONNECTION_COOLDOWN;
+			Logger.logSCAgent(scType, getNameId() + " added client: " + client.getNameId());
 		}
-		
-		Logger.logSCAgent(scType, getNameId() + " added client: " + client.getNameId());
 	}
 	
 	/**
@@ -297,6 +353,30 @@ public class BaseAgent {
 		
 		Logger.logError("BaseAgent.getTrustLevel " + getNameId() + ": id " + otherId + " not in relationsS and/or relationsC.");
 		return -1;
+	}
+	
+	/**
+	 * This function does not have an error check
+	 * @param otherId
+	 * @return
+	 */
+	public double retrieveSupplierTrust(int otherId) {
+		if (relationsS.containsKey(otherId)) 
+			return relationsS.get(otherId).getTrustLevel();
+		else
+			return -1;
+	}
+	
+	/**
+	 * This function does not have an error check
+	 * @param otherId
+	 * @return
+	 */
+	public double retrieveClientTrust(int otherId) {
+		if (relationsC.containsKey(otherId)) 
+			return relationsC.get(otherId).getTrustLevel();
+		else
+			return -1;
 	}
 	
 	public boolean retrieveRelationIsActive(int otherId) {

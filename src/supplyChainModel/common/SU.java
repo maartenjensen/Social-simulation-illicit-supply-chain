@@ -109,6 +109,19 @@ public class SU {
 	}
 	
 	/**
+	 * Same as getObjectsAll but uses SimUtilities.shuffle to randomize
+	 * the ArrayList of objects
+	 * @param clazz (e.g. use as input Human.class)
+	 * @return an ArrayList of objects from the given class
+	 */
+	public static <T> ArrayList<T> getObjectsAllRandom(Class<T> clazz) {
+		
+		ArrayList<T> objectList = getObjectsAll(clazz);
+		SimUtilities.shuffle(objectList, RandomHelper.getUniform());
+		return objectList;
+	}
+	
+	/**
 	 * Retrieves all the objects within the master context based on the given class, excluding the given Object.
 	 * @param clazz (e.g. use as input Human.class)
 	 * @return an ArrayList of objects from the given class
@@ -131,9 +144,9 @@ public class SU {
 	 * @param clazz (e.g. use as input Human.class)
 	 * @return an ArrayList of objects from the given class
 	 */
-	public static <T> ArrayList<T> getObjectsAllRandom(Class<T> clazz) {
+	public static <T> ArrayList<T> getObjectsAllExcludeRandom(Class<T> clazz, Object exclude) {
 		
-		ArrayList<T> objectList = getObjectsAll(clazz);
+		ArrayList<T> objectList = getObjectsAllExclude(clazz, exclude);
 		SimUtilities.shuffle(objectList, RandomHelper.getUniform());
 		return objectList;
 	}

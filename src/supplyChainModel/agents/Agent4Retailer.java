@@ -6,7 +6,6 @@ import java.util.HashMap;
 import repast.simphony.context.Context;
 import repast.simphony.random.RandomHelper;
 import supplyChainModel.common.Constants;
-import supplyChainModel.common.Logger;
 import supplyChainModel.common.RepastParam;
 import supplyChainModel.enums.SCType;
 import supplyChainModel.support.Order;

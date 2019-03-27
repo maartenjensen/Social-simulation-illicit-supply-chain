@@ -29,4 +29,8 @@ public class TrustCompare implements Comparable<TrustCompare> {
 	public double getTrust() {
 		return trust;
 	}
+	
+	public String toString() {
+		return agent.getId() + ":" + trust;
+	}
 }

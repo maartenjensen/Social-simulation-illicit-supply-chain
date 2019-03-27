@@ -60,6 +60,7 @@ public class Constants {
 	//public static final byte MAX_GOOD_QUALITY = 100;
 	public static final byte QUALITY_MINIMUM = 40;
 	public static final byte QUALITY_MAXIMUM = 60;
+	public static final double QUALITY_MAX_EXTRA_COST = 1.2;
 	
 	// Consumer specific
 	public static final int CONSUMER_REMOVE_TICKS = 200;
