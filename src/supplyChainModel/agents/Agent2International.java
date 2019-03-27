@@ -66,11 +66,7 @@ public class Agent2International extends BaseAgent {
 					HashMap<Byte, Double> goodsToSend = findGoodsInStock(orderedGoodsCombined);
 					if (!goodsToSend.isEmpty()) {
 						
-						double cost = 0;
-						for (Byte goodsQuality : goodsToSend.keySet()) {
-							cost += goodsToSend.get(goodsQuality) * sellPrice; //TODO calculate price
-						}
-						new Shipment(clientOrders.get(0).getClient(), this, goodsToSend, cost, RepastParam.getShipmentStep()); 
+						new Shipment(clientOrders.get(0).getClient(), this, goodsToSend, calculateCostOfGoods(goodsToSend, sellPrice), RepastParam.getShipmentStep()); 
 						relationsC.get(clientOrders.get(0).getClient().getId()).addMyShipment(goodsToSend);
 					}
 					for (Order order : clientOrders) 

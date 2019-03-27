@@ -77,11 +77,7 @@ public class Agent1Producer extends BaseAgent {
 					HashMap<Byte, Double> goodsToSend = findGoodsInStock(orderedGoodsCombined);
 					if (!goodsToSend.isEmpty()) {
 						
-						double cost = 0;
-						for (Byte goodsQuality : goodsToSend.keySet()) {
-							cost += goodsToSend.get(goodsQuality) * sellPrice; //TODO calculate price
-						}
-						new Shipment(clientOrders.get(0).getClient(), this, goodsToSend, cost, RepastParam.getShipmentStep()); 
+						new Shipment(clientOrders.get(0).getClient(), this, goodsToSend, calculateCostOfGoods(goodsToSend, sellPrice), RepastParam.getShipmentStep()); 
 						relationsC.get(clientOrders.get(0).getClient().getId()).addMyShipment(goodsToSend);
 					}
 					for (Order order : clientOrders) 
@@ -122,7 +118,7 @@ public class Agent1Producer extends BaseAgent {
 		
 		HashMap<Byte, Double> producedGoods = new HashMap<Byte, Double>();
 		producedGoods.put(quality, chosenQuantity);
-		double productionCost = chosenQuantity * Constants.PRICE_PRODUCTION;
+		double productionCost = calculateCostOfGoods(producedGoods, Constants.PRICE_PRODUCTION);
 		new Shipment(this, null, producedGoods, productionCost, RepastParam.getShipmentStep());
 		
 		SU.getDataCollector().addProducedStock(producedGoods);

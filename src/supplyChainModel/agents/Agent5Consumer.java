@@ -61,7 +61,10 @@ public class Agent5Consumer extends BaseAgent {
 	 */
 	public void stepReceiveIncome() {
 		
-		money += baseConsumption * Constants.PRICE_BUY_FROM_RETAIL;
+		if (quality == Constants.QUALITY_MAXIMUM)
+			money += baseConsumption * Constants.PRICE_BUY_FROM_RETAIL * Constants.QUALITY_MAX_EXTRA_COST;
+		else
+			money += baseConsumption * Constants.PRICE_BUY_FROM_RETAIL;
 	}
 	
 	@Override

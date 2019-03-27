@@ -390,6 +390,18 @@ public class BaseAgent {
 		return false;
 	}
 
+	public double calculateCostOfGoods(HashMap<Byte, Double> goodsToSend, double sellPrice) {
+		
+		double cost = 0;
+		for (Byte goodsQuality : goodsToSend.keySet()) {
+			if (goodsToSend.get(goodsQuality) == Constants.QUALITY_MAXIMUM)
+				cost += goodsToSend.get(goodsQuality) * sellPrice * Constants.QUALITY_MAX_EXTRA_COST;
+			else
+				cost += goodsToSend.get(goodsQuality) * sellPrice;
+		}
+		return cost;
+	}
+	
 	/**
 	 * This function retrieves all the suppliers, then converts them to
 	 * TrustCompare objects who can easily be sorted according to their 
