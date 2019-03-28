@@ -1,5 +1,5 @@
 <repast.simphony.visualization.engine.CartesianDisplayDescriptor simphonyVersion="2.6.0">
-  <name>Full Display</name>
+  <name>Display Only Shipment Edges</name>
   <type>2D</type>
   <styles>
     <entry>
@@ -56,11 +56,11 @@
   <netStyles>
     <entry>
       <string>sc network reversed</string>
-      <string>supplyChainModel.styles.SCReversedEdgeStyleOGL2D2</string>
+      <string>supplyChainModel.styles.SCReversedEdgeStyleOGL2D2_SHIPMENT</string>
     </entry>
     <entry>
       <string>sc network</string>
-      <string>supplyChainModel.styles.SCEdgeStyleOGL2D</string>
+      <string>supplyChainModel.styles.SCEdgeStyleOGL2D_SHIPMENT</string>
     </entry>
   </netStyles>
   <editedNetStyles>
@@ -81,7 +81,7 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>-221977343</hashCode>
+    <hashCode>434401946</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>continuous space</layoutProjection>
@@ -93,7 +93,7 @@
     </entry>
     <entry>
       <string>supplyChainModel.support.Shipment</string>
-      <int>3</int>
+      <int>2</int>
     </entry>
     <entry>
       <string>supplyChainModel.agents.BaseAgent</string>
@@ -105,7 +105,7 @@
     </entry>
     <entry>
       <string>supplyChainModel.support.Order</string>
-      <int>2</int>
+      <int>3</int>
     </entry>
     <entry>
       <string>supplyChainModel.agents.CountryAgent</string>
@@ -163,7 +163,7 @@
               </entry>
               <entry>
                 <string>SHOW</string>
-                <boolean>false</boolean>
+                <boolean>true</boolean>
               </entry>
             </map>
           </entry>

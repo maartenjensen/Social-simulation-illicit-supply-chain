@@ -91,6 +91,18 @@ public class RelationC {
 			return 0.0;
 	}
 	
+	public boolean isOrderActive() {
+		if (!otherOrders.isEmpty())
+			return true;
+		return false;
+	}
+	
+	public boolean isShipmentActive() {
+		if (!myShipments.isEmpty())
+			return true;
+		return false;
+	}
+	
 	public boolean isActive() {
 		return active;
 	}

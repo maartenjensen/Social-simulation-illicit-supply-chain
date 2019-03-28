@@ -1,5 +1,5 @@
 <repast.simphony.visualization.engine.CartesianDisplayDescriptor simphonyVersion="2.6.0">
-  <name>Full Display</name>
+  <name>Display Only Order Edges</name>
   <type>2D</type>
   <styles>
     <entry>
@@ -56,11 +56,11 @@
   <netStyles>
     <entry>
       <string>sc network reversed</string>
-      <string>supplyChainModel.styles.SCReversedEdgeStyleOGL2D2</string>
+      <string>supplyChainModel.styles.SCReversedEdgeStyleOGL2D2_ORDER</string>
     </entry>
     <entry>
       <string>sc network</string>
-      <string>supplyChainModel.styles.SCEdgeStyleOGL2D</string>
+      <string>supplyChainModel.styles.SCEdgeStyleOGL2D_ORDER</string>
     </entry>
   </netStyles>
   <editedNetStyles>
@@ -81,7 +81,7 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>-221977343</hashCode>
+    <hashCode>434401946</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>continuous space</layoutProjection>
@@ -163,7 +163,7 @@
               </entry>
               <entry>
                 <string>SHOW</string>
-                <boolean>false</boolean>
+                <boolean>true</boolean>
               </entry>
             </map>
           </entry>

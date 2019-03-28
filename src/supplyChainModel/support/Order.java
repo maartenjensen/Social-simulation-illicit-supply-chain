@@ -72,6 +72,14 @@ public class Order {
 	public void setSavedOrder() {
 		savedOrder = true;
 	}
+	
+	public int getSupplierId() {
+		return supplier.getId();
+	}
+	
+	public int getClientId() {
+		return client.getId();
+	}
 
 	/**
 	 * This function should only be allowed at initialization of

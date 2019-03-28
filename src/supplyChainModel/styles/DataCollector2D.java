@@ -14,7 +14,7 @@ public class DataCollector2D extends DefaultStyleOGL2D {
 	@Override
 	public Color getColor(Object o){
 		
-		return Color.BLACK;
+		return Color.WHITE;
 	}
 	
 	@Override
@@ -27,7 +27,7 @@ public class DataCollector2D extends DefaultStyleOGL2D {
 	public String getLabel(Object object) {
 		
 		if (object instanceof DataCollector)
-			return ((DataCollector) object).getLabel();
+			return "";((DataCollector) object).getLabel();
 		return "no label";
 	}
 

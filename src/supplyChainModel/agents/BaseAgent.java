@@ -557,6 +557,26 @@ public class BaseAgent {
 		SU.getContext().remove(this);
 	}
 
+	public boolean edgeHasSendOrder(int otherId) {
+		if (relationsC.containsKey(otherId)) {
+			return relationsC.get(otherId).isOrderActive();
+		}
+		else if (relationsS.containsKey(otherId)) {
+			return relationsS.get(otherId).isOrderActive();
+		}
+		return false;
+	}
+	
+	public boolean edgeHasSendShipment(int otherId) {
+		if (relationsC.containsKey(otherId)) {
+			return relationsC.get(otherId).isShipmentActive();
+		}
+		else if (relationsS.containsKey(otherId)) {
+			return relationsS.get(otherId).isShipmentActive();
+		}
+		return false;
+	}
+	
 	/*================================
 	 * Getters and setters
 	 *===============================*/
@@ -750,6 +770,12 @@ public class BaseAgent {
 		return Color.DARK_GRAY;
 	}
 
+	public boolean isConnected() {
+		if (!relationsC.isEmpty() && !relationsS.isEmpty())
+			return true;
+		return false;
+	}
+	
 	public HashMap<Byte, Double> getStock() {
 		return stock;
 	}

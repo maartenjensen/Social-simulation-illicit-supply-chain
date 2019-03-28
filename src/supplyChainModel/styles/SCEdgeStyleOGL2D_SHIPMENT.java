@@ -6,7 +6,7 @@ import repast.simphony.space.graph.RepastEdge;
 import repast.simphony.visualizationOGL2D.DefaultEdgeStyleOGL2D;
 import supplyChainModel.agents.BaseAgent;
 
-public class SCEdgeStyleOGL2D extends DefaultEdgeStyleOGL2D {
+public class SCEdgeStyleOGL2D_SHIPMENT extends DefaultEdgeStyleOGL2D {
 
 	@Override
 	public Color getColor(RepastEdge<?> edge){
@@ -15,7 +15,10 @@ public class SCEdgeStyleOGL2D extends DefaultEdgeStyleOGL2D {
 			BaseAgent supplier = (BaseAgent) edge.getSource();
 			BaseAgent client   = (BaseAgent) edge.getTarget();
 			
-			if (supplier.retrieveRelationIsActive(client.getId())) {
+			if (!supplier.edgeHasSendShipment(client.getId())) {
+				return Color.WHITE;
+			}
+			else if (supplier.retrieveRelationIsActive(client.getId())) {
 				double trustLevel = supplier.retrieveTrustLevel(client.getId());
 				return new Color((float) (1 - trustLevel), (float) trustLevel, 0.0f);
 			}
@@ -29,15 +32,6 @@ public class SCEdgeStyleOGL2D extends DefaultEdgeStyleOGL2D {
 	@Override
 	public int getLineWidth(RepastEdge<?> edge) {
 		
-		if (edge.getSource() instanceof BaseAgent && edge.getTarget() instanceof BaseAgent) {
-			BaseAgent supplier = (BaseAgent) edge.getSource();
-			BaseAgent client   = (BaseAgent) edge.getTarget();
-			
-			if (supplier.edgeHasSendOrder(client.getId()))
-				return 1;
-			else 
-				return 0;
-		}
-		return 2;
+		return 1;
 	}
 }

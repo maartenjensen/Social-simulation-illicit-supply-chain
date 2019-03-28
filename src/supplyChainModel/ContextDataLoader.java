@@ -94,15 +94,15 @@ public class ContextDataLoader {
 				scTypes.add(SCType.RETAIL);
 				scTypes.add(SCType.CONSUMER);
 				if (transitCountry == 0)
-					new CountryAgent(context, name, scTypes, countryX, Constants.GRID_HEIGHT - 1, stepSize - 1, countryQuality, interceptProbability);
+					new CountryAgent(context, name, scTypes, countryX, Constants.GRID_HEIGHT - 3, stepSize - 1, countryQuality, interceptProbability);
 				else
-					new CountryAgent(context, name, scTypes, countryX, (Constants.GRID_HEIGHT - 1) - stepSize * (consumers - 1), stepSize - 1, countryQuality, interceptProbability);
+					new CountryAgent(context, name, scTypes, countryX, (Constants.GRID_HEIGHT - 3) - stepSize * (consumers - 1), stepSize - 1, countryQuality, interceptProbability);
 				transitCountry ++;
 				break;
 			case 3: // Consumer country
 				scTypes.add(SCType.RETAIL);
 				scTypes.add(SCType.CONSUMER);
-				new CountryAgent(context, name, scTypes, countryX, (Constants.GRID_HEIGHT - 1) - stepSize * consumerCountry, stepSize - 1, countryQuality, interceptProbability);
+				new CountryAgent(context, name, scTypes, countryX, (Constants.GRID_HEIGHT - 3) - stepSize * consumerCountry, stepSize - 1, countryQuality, interceptProbability);
 				consumerCountry ++;
 				break;
 			}

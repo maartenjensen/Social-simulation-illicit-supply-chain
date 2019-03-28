@@ -90,6 +90,18 @@ public class RelationS {
 			return 0.0;
 	}
 	
+	public boolean isOrderActive() {
+		if (!myOrders.isEmpty())
+			return true;
+		return false;
+	}
+	
+	public boolean isShipmentActive() {
+		if (!otherShipments.isEmpty())
+			return true;
+		return false;
+	}
+	
 	/**
 	 * Returns the trust in the agent with given id
 	 */

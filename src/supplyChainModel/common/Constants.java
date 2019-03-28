@@ -16,7 +16,8 @@ public class Constants {
 	public static final int GRID_CELL_SIZE = 25;
 	
 	public static final Font FONT_LABEL = new Font("Tahoma", Font.PLAIN , 10);
-	public static final Font FONT_BIG = new Font("Tahoma", Font.BOLD , 14);
+	public static final Font FONT_BIG   = new Font("Tahoma", Font.BOLD , 14);
+	public static final Font FONT_HUGE  = new Font("Tahoma", Font.BOLD , 28);
 	
 	public static final int PRODUCER_PRODUCE_AMOUNT = 50;
 	public static final int MAX_NUMBER_OF_ACTIVE_SUPPLIERS = 10;

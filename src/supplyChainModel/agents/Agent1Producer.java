@@ -147,6 +147,12 @@ public class Agent1Producer extends BaseAgent {
 	 * Getters and setters
 	 *===============================*/	
 	
+	public boolean isConnected() {
+		if (!relationsC.isEmpty())
+			return true;
+		return false;
+	}
+	
 	@Override
 	public String getLabel() {
 		String stockStr = ",s:";

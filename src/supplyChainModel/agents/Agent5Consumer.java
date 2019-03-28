@@ -181,6 +181,12 @@ public class Agent5Consumer extends BaseAgent {
 		return id + String.format("  $:%.0f", money);
 	}*/
 	
+	public boolean isConnected() {
+		if (!relationsS.isEmpty())
+			return true;
+		return false;
+	}
+	
 	@Override
 	public String getLabel() {
 		String stockStr = ",s:";

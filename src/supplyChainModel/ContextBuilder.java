@@ -18,6 +18,7 @@ import repast.simphony.space.grid.SimpleGridAdder;
 import supplyChainModel.agents.Agent5Consumer;
 import supplyChainModel.agents.BaseAgent;
 import supplyChainModel.agents.CountryAgent;
+import supplyChainModel.agents.LayerAgent;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
 import supplyChainModel.common.RepastParam;
@@ -51,6 +52,10 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		ContextDataLoader countryLoader = new ContextDataLoader();
 		countryLoader.readFullFile(context,"./input","contextBuildInformation");
 		supplyChainCreation(context);
+		
+		for (SCType scType : SCType.values()) {
+			new LayerAgent(scType);
+		}
 		
 		// If running in batch mode, tell the scheduler when to end each run.
 		if (RunEnvironment.getInstance().isBatch()) {

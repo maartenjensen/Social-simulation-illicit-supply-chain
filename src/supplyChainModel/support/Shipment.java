@@ -85,6 +85,14 @@ public class Shipment {
 		return client;
 	}
 	
+	public int getSupplierId() {
+		return supplier.getId();
+	}
+	
+	public int getClientId() {
+		return client.getId();
+	}
+	
 	public double getSize() {
 		return vsl_size;
 	}
