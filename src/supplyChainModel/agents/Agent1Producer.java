@@ -131,6 +131,25 @@ public class Agent1Producer extends BaseAgent {
 	 *===============================*/	
 	
 	@Override
+	public String getLabel() {
+		String stockStr = ",s:";
+		for (Byte quality : stock.keySet()) {
+			if (!stockStr.equals(",s:"))
+				stockStr += ",";
+			if (quality == Constants.QUALITY_MINIMUM)
+				stockStr += String.format("L%.1f", stock.get(quality));
+			else if (quality == Constants.QUALITY_MAXIMUM)
+				stockStr += String.format("H%.1f", stock.get(quality));
+		}
+		return id + String.format(" $%.0f", money) + stockStr + String.format(",[%.1f", (securityStockMultiplier * minPackageSize));
+	}
+	
+	@Override
+	public double getSecurityStock() {
+		return securityStockMultiplier * minPackageSize;
+	}
+	
+	@Override
 	protected void setStartingStock() {
 		stock.put(quality, securityStockMultiplier * minPackageSize);
 	}

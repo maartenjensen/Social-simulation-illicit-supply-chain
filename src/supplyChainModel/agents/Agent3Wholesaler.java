@@ -6,6 +6,7 @@ import java.util.HashMap;
 import repast.simphony.context.Context;
 import repast.simphony.random.RandomHelper;
 import supplyChainModel.common.Constants;
+import supplyChainModel.common.Logger;
 import supplyChainModel.common.RepastParam;
 import supplyChainModel.enums.SCType;
 import supplyChainModel.support.Order;
@@ -63,7 +64,7 @@ public class Agent3Wholesaler extends BaseAgent {
 				if (RandomHelper.nextDouble() <= RepastParam.getSendShipmentProbability() && gotANewOrder) {
 				
 					HashMap<Byte, Double> orderedGoodsCombined = combineOrderedGoods(clientOrders);
-					HashMap<Byte, Double> goodsToSend = findGoodsInStock(orderedGoodsCombined);
+					HashMap<Byte, Double> goodsToSend = findGoodsInStockWholesaler(orderedGoodsCombined);
 					if (!goodsToSend.isEmpty()) {
 						
 						new Shipment(clientOrders.get(0).getClient(), this, goodsToSend, calculateCostOfGoods(goodsToSend, sellPrice), RepastParam.getShipmentStep()); 
@@ -78,6 +79,69 @@ public class Agent3Wholesaler extends BaseAgent {
 				}
 			}
 		}
+	}
+	
+	/**
+	 * Find the given quality and amount in the stock,
+	 * removes it from the stock and returns the amount
+	 * when the stock is lower than the craved amount it
+	 * is put at zero. When the requested quality is not 
+	 * in the stock it is added as a zero to the stock
+	 * There is a check on minimum package size
+	 * This function is adapted for the wholesaler, as the wholesaler
+	 * can convert high quality to low quality. //TODO change package size to total package
+	 */
+	public HashMap<Byte, Double> findGoodsInStockWholesaler(HashMap<Byte, Double> cravedGoods) {
+
+		double extraLowQualityNeeded = 0.0;
+		HashMap<Byte, Double> choosenGoods = new HashMap<Byte, Double>();
+		for (Byte quality : cravedGoods.keySet()) {
+			if (stock.containsKey(quality)) {
+				if (stock.get(quality) <= cravedGoods.get(quality)) {
+					if (stock.get(quality) >= minPackageSize) {
+						choosenGoods.put(quality, stock.get(quality));
+						stock.put(quality, 0.0);
+						if (quality == Constants.QUALITY_MINIMUM)
+							extraLowQualityNeeded = cravedGoods.get(quality) - choosenGoods.get(quality);						
+					}
+					else { // Stock is not sufficient for minPackageSize, maybe with convertion from high quality it is
+						if (quality == Constants.QUALITY_MINIMUM)
+							extraLowQualityNeeded = cravedGoods.get(quality) - stock.get(quality);
+					}
+				}
+				else { // Stock is sufficient
+					choosenGoods.put(quality, cravedGoods.get(quality));
+					stock.put(quality, stock.get(quality) - cravedGoods.get(quality));
+				}
+			}
+			else { // This quality is added to the stock to make the agent send orders for this quality
+				stock.put(quality, 0.0);
+				if (quality == Constants.QUALITY_MINIMUM)
+					extraLowQualityNeeded = cravedGoods.get(quality);
+			}
+		}
+		
+		//Convert high quality to low quality
+		if (extraLowQualityNeeded > 0 && stock.containsKey(Constants.QUALITY_MAXIMUM)) {
+			Logger.logSCAgent(scType, id + " Step 1: extraLowQualityNeeded:" + extraLowQualityNeeded + ", stock:" + stock.toString() + ", choosenGoods:" + choosenGoods.toString());
+			double availableLowQuality = Math.min(extraLowQualityNeeded, 1.5 * stock.get(Constants.QUALITY_MAXIMUM));
+			if (choosenGoods.containsKey(Constants.QUALITY_MINIMUM)) {
+				
+				choosenGoods.put(Constants.QUALITY_MINIMUM, availableLowQuality + choosenGoods.get(Constants.QUALITY_MINIMUM) );
+				stock.put(Constants.QUALITY_MAXIMUM, Math.max(0.0, stock.get(Constants.QUALITY_MAXIMUM) - availableLowQuality * (2.0/3.0))); //Used Math.min because of rounding errors to keep it at least 0.0
+			}
+			else {
+				if (availableLowQuality + stock.get(Constants.QUALITY_MAXIMUM) >= minPackageSize) {
+					
+					choosenGoods.put(Constants.QUALITY_MINIMUM, availableLowQuality + stock.get(Constants.QUALITY_MINIMUM) );
+					stock.put(Constants.QUALITY_MAXIMUM, Math.max(0.0, stock.get(Constants.QUALITY_MAXIMUM) - availableLowQuality * (2.0/3.0))); //Used Math.min because of rounding errors to keep it at least 0.0
+					stock.put(Constants.QUALITY_MINIMUM, 0.0);
+				}
+			}
+			Logger.logSCAgent(scType, id + " Step 2: availableLowQuality:" + availableLowQuality + ", stock:" + stock.toString() + ", choosenGoods:" + choosenGoods.toString());
+		}
+		
+		return choosenGoods;
 	}
 	
 	/**

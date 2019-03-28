@@ -834,11 +834,20 @@ public class BaseAgent {
 		
 	
 	public String getLabel() {
-		double totalQuantity = 0;
+		String stockStr = ",s:";
 		for (Byte quality : stock.keySet()) {
-			totalQuantity += stock.get(quality);
+			if (!stockStr.equals(",s:"))
+				stockStr += ",";
+			if (quality == Constants.QUALITY_MINIMUM)
+				stockStr += String.format("L%.1f", stock.get(quality));
+			else if (quality == Constants.QUALITY_MAXIMUM)
+				stockStr += String.format("H%.1f", stock.get(quality));
 		}
-		return id + String.format("  $%.0f, s:%.1f", money, totalQuantity);
+		return id + String.format(" $%.0f", money) + stockStr + String.format(",[%.0f", (securityStockMultiplier * getMinPackageSizeBoth()));
+	}
+	
+	public double getSecurityStock() {
+		return securityStockMultiplier * getMinPackageSizeBoth();
 	}
 	
 	public String toString() {

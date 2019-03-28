@@ -181,6 +181,25 @@ public class Agent5Consumer extends BaseAgent {
 		return id + String.format("  $:%.0f", money);
 	}*/
 	
+	@Override
+	public String getLabel() {
+		String stockStr = ",s:";
+		for (Byte quality : stock.keySet()) {
+			if (!stockStr.equals(",s:"))
+				stockStr += ",";
+			if (quality == Constants.QUALITY_MINIMUM)
+				stockStr += String.format("L%.1f", stock.get(quality));
+			else if (quality == Constants.QUALITY_MAXIMUM)
+				stockStr += String.format("H%.1f", stock.get(quality));
+		}
+		return id + String.format(" $%.0f", money) + stockStr + String.format(",[%.1f", (securityStockMultiplier * getMinPackageSizeBoth() + baseConsumption));
+	}
+	
+	@Override
+	public double getSecurityStock() {
+		return securityStockMultiplier * getMinPackageSizeBoth() + baseConsumption;
+	}
+	
 	public Color getColor() {
 		if (satisfied)
 			return Color.GREEN;
