@@ -7,7 +7,7 @@
 									
 		/>
 				<parameter name="pLimitedSuppliersClients" displayName="Limited suppliers and clients" type="boolean" 
-						defaultValue="true" 
+						defaultValue="false" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$BooleanConverter"
 									
@@ -37,7 +37,7 @@
 									
 		/>
 				<parameter name="pSendShipmentProbability" displayName="Send Shipment Probability" type="double" 
-						defaultValue="0.5" 
+						defaultValue="1.0" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									

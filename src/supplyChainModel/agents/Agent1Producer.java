@@ -126,6 +126,23 @@ public class Agent1Producer extends BaseAgent {
 		previousOrder = chosenQuantity;
 	}
 	
+	/**
+	 * Require a client when all of the stocks are above security level
+	 * @return
+	 */
+	public boolean getRequireNewClient() {
+		
+		if (newClientCooldown > 0)
+			return false;
+			
+		double securityStock = securityStockMultiplier * minPackageSize;
+		if (stock.containsKey(quality)) {
+			if (securityStock < stock.get(quality))
+				return false;
+		}
+		return true;
+	}
+	
 	/*================================
 	 * Getters and setters
 	 *===============================*/	
