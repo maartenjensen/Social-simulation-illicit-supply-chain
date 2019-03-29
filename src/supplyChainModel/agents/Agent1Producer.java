@@ -137,7 +137,7 @@ public class Agent1Producer extends BaseAgent {
 			
 		double securityStock = securityStockMultiplier * minPackageSize;
 		if (stock.containsKey(quality)) {
-			if (securityStock < stock.get(quality))
+			if (stock.get(quality) < securityStock)
 				return false;
 		}
 		return true;

@@ -743,7 +743,7 @@ public class BaseAgent {
 			return false;
 		
 		for (Byte quality : stock.keySet()) {
-			if (stock.get(quality) == 0)
+			if (stock.get(quality) < minPackageSize)
 				return true;
 		}
 		return false;
@@ -760,7 +760,7 @@ public class BaseAgent {
 			
 		double securityStock = securityStockMultiplier * minPackageSize;
 		for (Byte quality : stock.keySet()) {
-			if (securityStock < stock.get(quality))
+			if (stock.get(quality) < securityStock)
 				return false;
 		}
 		return true;

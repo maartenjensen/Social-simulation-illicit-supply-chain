@@ -173,6 +173,23 @@ public class Agent5Consumer extends BaseAgent {
 		stock.put(quality, securityStockMultiplier * minPackageSize);
 	}
 	
+	/**
+	 * Require a new supplier when stock is zero for any of the qualities
+	 * @return
+	 */
+	@Override
+	public boolean getRequireNewSupplier() {
+		
+		if (newSupplierCooldown > 0)
+			return false;
+		
+		for (Byte quality : stock.keySet()) {
+			if (stock.get(quality) == 0)
+				return true;
+		}
+		return false;
+	}
+	
 	/*================================
 	 * Getters and setters
 	 *===============================*/	

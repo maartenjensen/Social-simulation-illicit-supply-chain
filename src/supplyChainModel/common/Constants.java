@@ -43,7 +43,7 @@ public class Constants {
 	public static final double SEND_ORDER_LEARN_RATE = 0.05;
 	public static final double LATE_SHIPMENT_PENALIZE_MULT = 0.5;
 	
-	public static final double STOCK_SECURITY_MULT_MIN = 0.5; //Security stock is dependent on the minimum package size
+	public static final double STOCK_SECURITY_MULT_MIN = 1; //Security stock is dependent on the minimum package size
 	public static final double STOCK_SECURITY_MULT_MAX = 1.5;
 	public static final double STOCK_SEARCH_NEW_SUPPLIER = 0.1;
 	
