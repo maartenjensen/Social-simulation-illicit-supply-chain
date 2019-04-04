@@ -69,7 +69,6 @@ public class Agent1Producer extends BaseAgent {
 			}
 			
 			//Look for all the orders that are arrived and then combine them
-			
 			if (!clientOrders.isEmpty()) {
 				if (RandomHelper.nextDouble() <= RepastParam.getSendShipmentProbability() && gotANewOrder) {
 				

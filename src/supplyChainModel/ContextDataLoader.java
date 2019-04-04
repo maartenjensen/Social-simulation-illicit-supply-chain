@@ -83,7 +83,7 @@ public class ContextDataLoader {
 			switch (layer) {
 			case 0: // Producer country
 				scTypes.add(SCType.PRODUCER);
-				new CountryAgent(context, name, scTypes, countryX, Constants.GRID_HEIGHT - 4, Constants.GRID_HEIGHT - 8, countryQuality, interceptProbability); //TODO
+				new CountryAgent(context, name, scTypes, countryX, Constants.GRID_HEIGHT - 4, Constants.GRID_HEIGHT - 8, countryQuality, interceptProbability); //TODO 
 				break;
 			case 1: // International country
 				scTypes.add(SCType.INTERNATIONAL);

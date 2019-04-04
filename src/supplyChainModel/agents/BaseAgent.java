@@ -33,9 +33,6 @@ public class BaseAgent {
 	protected HashMap<Byte, Double> stock;
 
 	protected double money;
-
-	protected double supplyNeeded = 0;
-	protected double supplyAsked = 0;
 	
 	protected int newSupplierCooldown = 0;
 	protected int newClientCooldown = 0;
@@ -732,7 +729,7 @@ public class BaseAgent {
 		
 		return minPackageSizeBoth;
 	}
-	
+
 	/**
 	 * Require a new supplier when stock is zero for any of the qualities
 	 * @return
@@ -841,7 +838,7 @@ public class BaseAgent {
 		for (Integer supplierId : relationsS.keySet()) {
 			if (!trustStr.equals("<"))
 				trustStr += ", ";
-			trustStr += supplierId + ":" + String.format("%.1f", relationsS.get(supplierId).getTrustLevel());
+			trustStr += supplierId + ":" + String.format("%.3f", relationsS.get(supplierId).getTrustLevel());
 		}
 		trustStr += ">";
 		return trustStr;
@@ -852,7 +849,7 @@ public class BaseAgent {
 		for (Integer supplierId : relationsC.keySet()) {
 			if (!trustStr.equals("<"))
 				trustStr += ", ";
-			trustStr += supplierId + ":" + String.format("%.1f", relationsC.get(supplierId).getTrustLevel());
+			trustStr += supplierId + ":" + String.format("%.3f", relationsC.get(supplierId).getTrustLevel());
 		}
 		trustStr += ">";
 		return trustStr;

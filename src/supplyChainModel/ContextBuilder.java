@@ -186,10 +186,10 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 			baseAgent.stepSendOrder();
 		}
 		
-		if (SU.getTick() == RepastParam.getRunLength()) {
+		if (SU.getTick() >= RepastParam.getRunLength()) {
 			RunEnvironment.getInstance().pauseRun();
-			Logger.logMain("Simulation ended at : " + SU.getTick());
-			Logger.logMain("------------------------------------------------------------------------------");
+			//Logger.logMain("Simulation ended at : " + SU.getTick());
+			//Logger.logMain("------------------------------------------------------------------------------");
 		}
 	}
 

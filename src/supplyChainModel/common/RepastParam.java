@@ -6,7 +6,7 @@ import repast.simphony.parameter.Parameters;
 public final class RepastParam {
 
 	// Default settings
-	private static int runLength = 1000;
+	//private static int runLength = 1000;
 	private static double consumptionMin = 0.5;
 	private static double consumptionMax = 5;
 	private static double productionMax = 10;
@@ -20,7 +20,7 @@ public final class RepastParam {
 	public static void setRepastParameters() {
 		
 		Parameters p = RunEnvironment.getInstance().getParameters();
-		runLength = p.getInteger("pRunLength");
+		//runLength = p.getInteger("pRunLength");
 		consumptionMin = p.getDouble("pConMin");
 		consumptionMax = p.getDouble("pConMax");
 		productionMax = p.getDouble("pProdMax");
@@ -32,8 +32,14 @@ public final class RepastParam {
 		limitedSuppliersClients = p.getBoolean("pLimitedSuppliersClients");
 	}
 
+	/**
+	 * Run length is just taken from the parameters each time,
+	 * so it can be changed during a run by the user
+	 * @return
+	 */
 	public static double getRunLength() {
-		return runLength;
+		Parameters p = RunEnvironment.getInstance().getParameters();
+		return p.getInteger("pRunLength");
 	}
 	
 	public static double getConsumptionMin() {
