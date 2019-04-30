@@ -126,8 +126,6 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 	@ScheduledMethod(start = 1, interval = 1, priority = 0, shuffle=false)
 	public void step() {
 		
-		
-		
 		Logger.logMain("----------------------------------");
 		Logger.logMain("Step " + SU.getTick());
 		Logger.logMain("----------------------------------");
@@ -188,8 +186,8 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		
 		if (SU.getTick() >= RepastParam.getRunLength()) {
 			RunEnvironment.getInstance().pauseRun();
-			//Logger.logMain("Simulation ended at : " + SU.getTick());
-			//Logger.logMain("------------------------------------------------------------------------------");
+			Logger.logMain("Simulation ended at : " + SU.getTick());
+			Logger.logMain("------------------------------------------------------------------------------");
 		}
 	}
 

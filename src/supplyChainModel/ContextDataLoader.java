@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 import repast.simphony.context.Context;
@@ -35,32 +34,35 @@ public class ContextDataLoader {
 		}
 		
 		Logger.logInfo("ContextDataLoader.readFullFile() generate country");
-		generateCountry(context, dataC);
+		generateCountries(context, dataC);
 	}
 
 	/**
-	 * Function to generate a supply chain based on the data
+	 * Function to generate the plain countries based on the data file.
+	 * It creates the countries on locations dependent on the type of country
+	 * (with countries at the beginning of the supply chain more to the left)
+	 * and ordered on height.
 	 * @param context
 	 * @param dataSC
 	 */
-	public void generateCountry(final Context<Object> context, List<String> dataC) {
+	public void generateCountries(final Context<Object> context, List<String> dataC) {
 		
-		int consumers = Constants.COUNTRY_CONSUMERS_MAX;
+		int vslTotalConsumers = Constants.COUNTRY_CONSUMERS_MAX;
 		// Count countries
 		for (String nodeString : dataC) {
 			
 			List<String> vars = Arrays.asList(nodeString.split(","));			
 			if (Integer.parseInt(vars.get(1)) == 3)
-				consumers ++;
+				vslTotalConsumers ++;
 		}
 		
-		int stepSize = (Constants.GRID_HEIGHT - 2) / consumers;
-		Logger.logInfo("Country distance: (" + Constants.GRID_HEIGHT + " - 2) / Consumers = " + stepSize);
-		int transitCountry = 0;
-		int consumerCountry = 1;
-		
-		double qualMin = 41.44; //TODO should be read from file
-		double qualDif = 57.92 - 41.44;
+		int vslStepSize = (Constants.GRID_HEIGHT - 2) / vslTotalConsumers;
+		Logger.logInfo("Country distance: (" + Constants.GRID_HEIGHT + " - 2) / Consumers = " + vslStepSize);
+		int vslTransitCountry = 0; //Assuming there are two transit countries
+		int vslConsumerCountry = 1; //The current count of consumer countries
+	
+		double qualMin = getCountryQualityMin(dataC);
+		double qualDif = getCountryQualityMax(dataC) - qualMin;
 		
 		// Create countries
 		for (String nodeString : dataC) {
@@ -68,67 +70,87 @@ public class ContextDataLoader {
 			List<String> vars = Arrays.asList(nodeString.split(","));
 			String name = vars.get(0);
 			int layer = Integer.parseInt(vars.get(1));
-			int countryX = Constants.VSL_COUNTRY_X + layer * Constants.VSL_COUNTRY_WIDTH;
+			
 			//double retailPrice = Double.parseDouble(vars.get(2));
 			double avgQuality = Double.parseDouble(vars.get(3));
 			double countryQuality = qualDif - (avgQuality - qualMin);
 			
-			HashMap<SCType, Double> interceptProbability = new HashMap<SCType, Double>();
-			interceptProbability.put(SCType.INTERNATIONAL, Double.parseDouble(vars.get(4)));
-			interceptProbability.put(SCType.WHOLESALER, Double.parseDouble(vars.get(5)));
-			interceptProbability.put(SCType.RETAIL, Double.parseDouble(vars.get(6)));
-			interceptProbability.put(SCType.CONSUMER, Double.parseDouble(vars.get(7)));
+			int vslCountryX = Constants.VSL_COUNTRY_X + layer * Constants.VSL_COUNTRY_WIDTH;
 			
 			ArrayList<SCType> scTypes = new ArrayList<SCType>(); 
 			switch (layer) {
 			case 0: // Producer country
 				scTypes.add(SCType.PRODUCER);
-				new CountryAgent(context, name, scTypes, countryX, Constants.GRID_HEIGHT - 4, Constants.GRID_HEIGHT - 8, countryQuality, interceptProbability); //TODO 
+				new CountryAgent(context, name, scTypes, vslCountryX, Constants.GRID_HEIGHT - 4, Constants.GRID_HEIGHT - 8, countryQuality); 
 				break;
 			case 1: // International country
 				scTypes.add(SCType.INTERNATIONAL);
-				new CountryAgent(context, name, scTypes, countryX, Constants.GRID_HEIGHT - 6, Constants.GRID_HEIGHT - 12, countryQuality, interceptProbability); //TODO
+				new CountryAgent(context, name, scTypes, vslCountryX, Constants.GRID_HEIGHT - 6, Constants.GRID_HEIGHT - 12, countryQuality);
 				break;
 			case 2: // Transit country
 				scTypes.add(SCType.WHOLESALER);
 				scTypes.add(SCType.RETAIL);
 				scTypes.add(SCType.CONSUMER);
-				if (transitCountry == 0)
-					new CountryAgent(context, name, scTypes, countryX, Constants.GRID_HEIGHT - 3, stepSize - 1, countryQuality, interceptProbability);
+				if (vslTransitCountry == 0)
+					new CountryAgent(context, name, scTypes, vslCountryX, Constants.GRID_HEIGHT - 3, vslStepSize - 1, countryQuality);
 				else
-					new CountryAgent(context, name, scTypes, countryX, (Constants.GRID_HEIGHT - 3) - stepSize * (consumers - 1), stepSize - 1, countryQuality, interceptProbability);
-				transitCountry ++;
+					new CountryAgent(context, name, scTypes, vslCountryX, (Constants.GRID_HEIGHT - 3) - vslStepSize * (vslTotalConsumers - 1), vslStepSize - 1, countryQuality);
+				vslTransitCountry ++;
 				break;
 			case 3: // Consumer country
 				scTypes.add(SCType.RETAIL);
 				scTypes.add(SCType.CONSUMER);
-				new CountryAgent(context, name, scTypes, countryX, (Constants.GRID_HEIGHT - 3) - stepSize * consumerCountry, stepSize - 1, countryQuality, interceptProbability);
-				consumerCountry ++;
+				new CountryAgent(context, name, scTypes, vslCountryX, (Constants.GRID_HEIGHT - 3) - vslStepSize * vslConsumerCountry, vslStepSize - 1, countryQuality);
+				vslConsumerCountry ++;
 				break;
 			}
 		}
 	}
 	
 	/**
-	 * Function to generate a supply chain based on the data
-	 * @param context
-	 * @param dataSC
+	 * Return the minimum quality value of all countries.
+	 * This variable is found at position 3 in the string.
+	 * @param dataC
+	 * @return
 	 */
-	public void generateSupplyChain(final Context<Object> context, List<String> dataSC) {
+	public double getCountryQualityMin(List<String> dataC) {
 		
-		for (String nodeString : dataSC) {
+		double minQuality = Double.MAX_VALUE;
+		for (String nodeString : dataC) {
 			
 			List<String> vars = Arrays.asList(nodeString.split(","));
-			int layer = Integer.parseInt(vars.get(0));
-
-			switch (layer) {
-			case 0:
-				//new AgentProducer(context, SCType.PRODUCER, Country.SOUTH_AMERICA);
-				break;
-			}
+			double countryQuality = Double.parseDouble(vars.get(3));
+			if (countryQuality < minQuality)
+				minQuality = countryQuality;
 		}
+		return minQuality;
 	}
 	
+	/**
+	 * Return the maximum quality value of all countries.
+	 * This variable is found at position 3 in the string.
+	 * @param dataC
+	 * @return
+	 */
+	public double getCountryQualityMax(List<String> dataC) {
+		
+		double maxQuality = Double.MIN_VALUE;
+		for (String nodeString : dataC) {
+			
+			List<String> vars = Arrays.asList(nodeString.split(","));
+			double countryQuality = Double.parseDouble(vars.get(3));
+			if (countryQuality > maxQuality)
+				maxQuality = countryQuality;
+		}
+		return maxQuality;
+	}
+	
+	/**
+	 * Technical function that converts a text file (given with the filePathAndName) to 
+	 * a list of strings where each element in the list is a line in the text file
+	 * @param filePathAndName
+	 * @return
+	 */
 	public List<String> readFile(String filePathAndName) {
 		BufferedReader reader;
 		List<String> data = new ArrayList<String>();
