@@ -1,6 +1,8 @@
 package supplyChainModel.common;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import repast.simphony.context.Context;
 import repast.simphony.engine.environment.RunEnvironment;
@@ -222,4 +224,11 @@ public class SU {
 		}
 		return network;
 	}
+	
+	public static String getCurrentDateTime() {
+		SimpleDateFormat formatter= new SimpleDateFormat(".yyyy.MMM.dd.HH_mm_ss");  
+		Date date = new Date(System.currentTimeMillis());
+		return formatter.format(date);
+	}
+	
 }

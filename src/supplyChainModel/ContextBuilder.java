@@ -1,6 +1,10 @@
 package supplyChainModel;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.List;
 
 import repast.simphony.context.Context;
 import repast.simphony.context.space.continuous.ContinuousSpaceFactoryFinder;
@@ -184,13 +188,47 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 			baseAgent.stepSendOrder();
 		}
 		
+		Logger.logMain("Step-BaseAgent: add to data");
+		for (BaseAgent baseAgent : SU.getObjectsAll(BaseAgent.class)) {
+			baseAgent.stepAddToData();
+		}
+		
 		if (SU.getTick() >= RepastParam.getRunLength()) {
+			
+			Logger.logMain("------------------------------------------------------------------------------");
+			saveRelations();
 			RunEnvironment.getInstance().pauseRun();
 			Logger.logMain("Simulation ended at : " + SU.getTick());
 			Logger.logMain("------------------------------------------------------------------------------");
 		}
 	}
+	
+	public void saveRelations() {
+		
+		String filePathAndName = "D:/Work/Output/SimulationOutput22-03-2019/RelationsData" + SU.getCurrentDateTime() + ".txt";
+		Logger.logMain("Relations information saved in: " + filePathAndName);
+		List<String> data = new ArrayList<String>();
+		data = SU.getDataCollector().getRelationsData();
+		writeToFile(filePathAndName, data);
+	}
 
+	public void writeToFile(String filePathAndName, List<String> data) {
+		PrintWriter writer;
+		try {
+			writer = new PrintWriter(filePathAndName, "UTF-8");
+			for (String datum : data) {
+				writer.println(datum);
+			}
+			writer.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public void stepSpawning() {
 		
 		if (SU.isInitializing())

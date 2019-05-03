@@ -1,9 +1,9 @@
 <repast.simphony.chart2.engine.TimeSeriesChartDescriptor simphonyVersion="2.6.0">
-  <name>Stock</name>
-  <dataSet>DC All</dataSet>
+  <name>Agent Count</name>
+  <dataSet>DC Agent Count</dataSet>
   <xAxisLabel>Tick Count</xAxisLabel>
-  <yAxisLabel>Amount</yAxisLabel>
-  <chartTitle>Stock</chartTitle>
+  <yAxisLabel>Count</yAxisLabel>
+  <chartTitle>Agent Count</chartTitle>
   <type>TIME_SERIES</type>
   <background>
     <red>255</red>
@@ -21,37 +21,61 @@
   <showLegend>true</showLegend>
   <seriesIds>
     <entry>
-      <string>Stock created tot</string>
+      <string>Count 1 Producers</string>
       <SeriesData>
-        <label>Stock created tot</label>
+        <label>Count 1 Producers</label>
         <color>
-          <red>0</red>
-          <green>0</green>
+          <red>153</red>
+          <green>255</green>
           <blue>255</blue>
           <alpha>255</alpha>
         </color>
       </SeriesData>
     </entry>
     <entry>
-      <string>Stock deleted tot</string>
+      <string>Count 4 Retailers</string>
       <SeriesData>
-        <label>Stock deleted tot</label>
+        <label>Count 4 Retailers</label>
         <color>
-          <red>255</red>
+          <red>0</red>
           <green>0</green>
-          <blue>0</blue>
+          <blue>153</blue>
           <alpha>255</alpha>
         </color>
       </SeriesData>
     </entry>
     <entry>
-      <string>Stock consumed tot</string>
+      <string>Count 3 Wholesalers</string>
       <SeriesData>
-        <label>Stock consumed tot</label>
+        <label>Count 3 Wholesalers</label>
         <color>
           <red>51</red>
-          <green>255</green>
-          <blue>51</blue>
+          <green>51</green>
+          <blue>255</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+    <entry>
+      <string>Count 2 Internationals</string>
+      <SeriesData>
+        <label>Count 2 Internationals</label>
+        <color>
+          <red>51</red>
+          <green>204</green>
+          <blue>255</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+    <entry>
+      <string>Count 5 Consumers</string>
+      <SeriesData>
+        <label>Count 5 Consumers</label>
+        <color>
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
           <alpha>255</alpha>
         </color>
       </SeriesData>

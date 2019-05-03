@@ -1,5 +1,5 @@
 <repast.simphony.data2.engine.DataSetDescriptor simphonyVersion="2.6.0">
-  <name>DC Agent Money Average</name>
+  <name>DC Agent Count</name>
   <type>AGGREGATE</type>
   <inclTick>true</inclTick>
   <inclBatchRun>false</inclBatchRun>
@@ -16,48 +16,48 @@
   <atEnd>false</atEnd>
   <methodDataSources class="linked-hash-map">
     <entry>
-      <string>Money avg. 1 Producers</string>
+      <string>Count 1 Producers</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Money avg. 1 Producers</id>
-        <className>supplyChainModel.agents.Agent1Producer</className>
-        <methodName>getMoney</methodName>
-        <aggType>MEAN</aggType>
+        <id>Count 1 Producers</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getCountProducers</methodName>
+        <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>Money avg. 2 Internationals</string>
+      <string>Count 2 Internationals</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Money avg. 2 Internationals</id>
-        <className>supplyChainModel.agents.Agent2International</className>
-        <methodName>getMoney</methodName>
-        <aggType>MEAN</aggType>
+        <id>Count 2 Internationals</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getCountInternationals</methodName>
+        <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>Money avg. 3 Wholesalers</string>
+      <string>Count 3 Wholesalers</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Money avg. 3 Wholesalers</id>
-        <className>supplyChainModel.agents.Agent3Wholesaler</className>
-        <methodName>getMoney</methodName>
-        <aggType>MEAN</aggType>
+        <id>Count 3 Wholesalers</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getCountWholesalers</methodName>
+        <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>Money avg. 4 Retailers</string>
+      <string>Count 4 Retailers</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Money avg. 4 Retailers</id>
-        <className>supplyChainModel.agents.Agent4Retailer</className>
-        <methodName>getMoney</methodName>
-        <aggType>MEAN</aggType>
+        <id>Count 4 Retailers</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getCountRetailers</methodName>
+        <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>Money avg. 5 Consumers</string>
+      <string>Count 5 Consumers</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Money avg. 5 Consumers</id>
-        <className>supplyChainModel.agents.Agent5Consumer</className>
-        <methodName>getMoney</methodName>
-        <aggType>MEAN</aggType>
+        <id>Count 5 Consumers</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getCountConsumers</methodName>
+        <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
   </methodDataSources>

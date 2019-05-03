@@ -117,6 +117,20 @@ public class BaseAgent {
 		// sendOrders();
 	}
 	
+	public void stepAddToData() {
+		
+		int tick = SU.getTick();
+		for (Integer id : relationsS.keySet()) {
+			RelationS relationS = relationsS.get(id);
+			SU.getDataCollector().addRelationData(tick + "," + relationS.getStateString());
+		}
+		
+		for (Integer id : relationsC.keySet()) {
+			RelationC relationC = relationsC.get(id);
+			SU.getDataCollector().addRelationData(tick + "," + relationC.getStateString());
+		}
+	}
+	
 	/*================================
 	 * Functions (Non-decision making)
 	 *===============================*/
@@ -188,7 +202,7 @@ public class BaseAgent {
 			}
 		}
 	}
-	
+
 	public ArrayList<TrustCompare> sortAverageTrustInSuppliers(ArrayList<Integer> possibleSuppliers) {
 		
 		ArrayList<TrustCompare> unsorted = new ArrayList<TrustCompare>();
@@ -274,7 +288,7 @@ public class BaseAgent {
 		
 		if (!relationsS.keySet().contains(supplier.getId())) {
 			SU.getNetworkSCReversed().addEdge(this, supplier);
-			relationsS.put(supplier.getId(), new RelationS(supplier.getId(), RepastParam.getShipmentStep() * 2, id + " -> " + supplier.getId()));
+			relationsS.put(supplier.getId(), new RelationS(getId(), supplier.getId(), RepastParam.getShipmentStep() * 2, id + " -> " + supplier.getId()));
 			newSupplierCooldown = Constants.NEW_CONNECTION_COOLDOWN;
 			Logger.logSCAgent(scType, getNameId() + " added supplier: " + supplier.getNameId());
 		}
@@ -285,7 +299,7 @@ public class BaseAgent {
 		
 		if (!relationsC.keySet().contains(client.getId())) {
 			SU.getNetworkSC().addEdge(this, client);
-			relationsC.put(client.getId(), new RelationC(client.getId(), RepastParam.getShipmentStep() * 2, id + " -> " + client.getId()));
+			relationsC.put(client.getId(), new RelationC(getId(), client.getId(), RepastParam.getShipmentStep() * 2, id + " -> " + client.getId()));
 			newClientCooldown = Constants.NEW_CONNECTION_COOLDOWN;
 			Logger.logSCAgent(scType, getNameId() + " added client: " + client.getNameId());
 		}
@@ -411,7 +425,7 @@ public class BaseAgent {
 		ArrayList<TrustCompare> sortedSuppliers = new ArrayList<TrustCompare>();
 		for (BaseAgent supplier : getSuppliers()) {
 			RelationS relation = relationsS.get(supplier.getId());
-			sortedSuppliers.add(new TrustCompare(SU.getBaseAgent(relation.getId()),
+			sortedSuppliers.add(new TrustCompare(SU.getBaseAgent(relation.getOtherId()),
 								relation.getTrustForQuality((byte) quality)));
 		}
 		
@@ -431,7 +445,7 @@ public class BaseAgent {
 		ArrayList<TrustCompare> sortedClients = new ArrayList<TrustCompare>();
 		for (BaseAgent client : getClients()) {
 			RelationC relation = relationsC.get(client.getId());
-			sortedClients.add( new TrustCompare(SU.getBaseAgent(relation.getId()), relation.getTrustLevel()) );
+			sortedClients.add( new TrustCompare(SU.getBaseAgent(relation.getOtherId()), relation.getTrustLevel()) );
 		}
 		
 		Collections.sort(sortedClients);
@@ -875,6 +889,22 @@ public class BaseAgent {
 	
 	public String toString() {
 		return "" + id;//String.format("%.0f", stock);
+	}
+	
+	public int getLocationX() {
+		return SU.getGrid().getLocation(this).getX();
+	}
+	
+	public int getLocationY() {
+		return SU.getGrid().getLocation(this).getY();
+	}
+	
+	public String getLocationString() {
+		return SU.getGrid().getLocation(this).getX() + "," + SU.getGrid().getLocation(this).getY();
+	}
+	
+	public String toStateString() {
+		return id + "," + getLocationString() + "," + money;
 	}
 
 	/*================================

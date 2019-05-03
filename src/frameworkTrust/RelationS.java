@@ -11,6 +11,7 @@ public class RelationS {
 	// This is a container that should be used in a map, linked to buyers or sellers
 	// This object will contain the history on which trust is calculated
 	
+	private int thisId;
 	private int otherId;
 	private int supplyTime;
 	private boolean active;
@@ -21,8 +22,9 @@ public class RelationS {
 	// Visualization parameters
 	private String label;
 	
-	public RelationS(int otherId, int supplyTime, String label) {
+	public RelationS(int thisId, int otherId, int supplyTime, String label) {
 		
+		this.thisId = thisId;
 		this.otherId = otherId;
 		this.supplyTime = supplyTime;
 		this.label = label;
@@ -74,7 +76,11 @@ public class RelationS {
 	}
 	
 	// Getters
-	public int getId() {
+	public int getThisId() {
+		return thisId;
+	}
+	
+	public int getOtherId() {
 		return otherId;
 	}
 	
@@ -167,5 +173,9 @@ public class RelationS {
 	
 	public void setInActive() {
 		active = false;
+	}
+	
+	public String getStateString() {
+		return thisId + "," + otherId + ",S," + getTrustLevel();
 	}
 }

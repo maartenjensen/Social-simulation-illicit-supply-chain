@@ -1,5 +1,5 @@
 <repast.simphony.visualization.engine.CartesianDisplayDescriptor simphonyVersion="2.6.0">
-  <name>Display Only Active Agents</name>
+  <name>Display Only Order Edges</name>
   <type>2D</type>
   <styles>
     <entry>
@@ -12,7 +12,7 @@
     </entry>
     <entry>
       <string>supplyChainModel.agents.BaseAgent</string>
-      <string>supplyChainModel.styles.AgentStyle2D2_ACTIVE</string>
+      <string>supplyChainModel.styles.AgentStyle2D</string>
     </entry>
     <entry>
       <string>supplyChainModel.agents.LayerAgent</string>
@@ -56,11 +56,11 @@
   <netStyles>
     <entry>
       <string>sc network reversed</string>
-      <string>supplyChainModel.styles.SCReversedEdgeStyleOGL2D2_SHIPMENT</string>
+      <string>supplyChainModel.styles.SCReversedEdgeStyleOGL2D2_ORDER</string>
     </entry>
     <entry>
       <string>sc network</string>
-      <string>supplyChainModel.styles.SCEdgeStyleOGL2D_SHIPMENT</string>
+      <string>supplyChainModel.styles.SCEdgeStyleOGL2D_ORDER</string>
     </entry>
   </netStyles>
   <editedNetStyles>

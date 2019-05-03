@@ -7,6 +7,7 @@ import repast.simphony.engine.environment.RunEnvironment;
 public class RelationC {
 
 	// State variables
+	private int thisId;
 	private int otherId;
 	private int supplyTime;
 	private boolean active;
@@ -18,8 +19,9 @@ public class RelationC {
 	private int firstOrder;
 	private String label;
 	
-	public RelationC(int otherId, int supplyTime, String label) {
+	public RelationC(int thisId, int otherId, int supplyTime, String label) {
 		
+		this.thisId = thisId;
 		this.otherId = otherId;
 		this.supplyTime = supplyTime;
 		this.label = label;
@@ -47,8 +49,11 @@ public class RelationC {
 	}
 	
 	// Getters
+	public int getThisId() {
+		return thisId;
+	}
 	
-	public int getId() {
+	public int getOtherId() {
 		return otherId;
 	}
 	
@@ -113,5 +118,9 @@ public class RelationC {
 	
 	public int getSupplyTime() {
 		return supplyTime;
+	}
+	
+	public String getStateString() {
+		return thisId + "," + otherId + ",C," + getTrustLevel();
 	}
 }

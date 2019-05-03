@@ -1,5 +1,5 @@
 <repast.simphony.data2.engine.DataSetDescriptor simphonyVersion="2.6.0">
-  <name>DC Agent Money Average</name>
+  <name>DC All</name>
   <type>AGGREGATE</type>
   <inclTick>true</inclTick>
   <inclBatchRun>false</inclBatchRun>
@@ -11,53 +11,35 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>1488353859</hashCode>
+    <hashCode>270020845</hashCode>
   </scheduleParams>
   <atEnd>false</atEnd>
   <methodDataSources class="linked-hash-map">
     <entry>
-      <string>Money avg. 1 Producers</string>
+      <string>Stock consumed tot</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Money avg. 1 Producers</id>
-        <className>supplyChainModel.agents.Agent1Producer</className>
-        <methodName>getMoney</methodName>
-        <aggType>MEAN</aggType>
+        <id>Stock consumed tot</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getStockConsumedTot</methodName>
+        <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>Money avg. 2 Internationals</string>
+      <string>Stock created tot</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Money avg. 2 Internationals</id>
-        <className>supplyChainModel.agents.Agent2International</className>
-        <methodName>getMoney</methodName>
-        <aggType>MEAN</aggType>
+        <id>Stock created tot</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getStockCreatedTot</methodName>
+        <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>Money avg. 3 Wholesalers</string>
+      <string>Stock deleted tot</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Money avg. 3 Wholesalers</id>
-        <className>supplyChainModel.agents.Agent3Wholesaler</className>
-        <methodName>getMoney</methodName>
-        <aggType>MEAN</aggType>
-      </repast.simphony.data2.engine.MethodDataSourceDefinition>
-    </entry>
-    <entry>
-      <string>Money avg. 4 Retailers</string>
-      <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Money avg. 4 Retailers</id>
-        <className>supplyChainModel.agents.Agent4Retailer</className>
-        <methodName>getMoney</methodName>
-        <aggType>MEAN</aggType>
-      </repast.simphony.data2.engine.MethodDataSourceDefinition>
-    </entry>
-    <entry>
-      <string>Money avg. 5 Consumers</string>
-      <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Money avg. 5 Consumers</id>
-        <className>supplyChainModel.agents.Agent5Consumer</className>
-        <methodName>getMoney</methodName>
-        <aggType>MEAN</aggType>
+        <id>Stock deleted tot</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getStockDeletedTot</methodName>
+        <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
   </methodDataSources>
