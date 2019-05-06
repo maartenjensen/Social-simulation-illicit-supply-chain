@@ -17,6 +17,12 @@ import supplyChainModel.common.Logger;
 import supplyChainModel.common.SU;
 import supplyChainModel.enums.SCType;
 
+/**
+ * Collects data from objects, to make it easy to write the data
+ * to plots and filesinks.
+ * @author Maarten Jensen
+ *
+ */
 public class DataCollector {
 
 	//private HashMap<SCType, Integer> removedAgents = ;

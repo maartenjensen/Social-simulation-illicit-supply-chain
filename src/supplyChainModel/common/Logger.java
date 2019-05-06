@@ -7,7 +7,6 @@ import supplyChainModel.enums.SCType;
 * Logs stuff
 *
 * @author Maarten Jensen
-* @since 2018-02-20
 */
 public final class Logger {
 

@@ -11,6 +11,12 @@ import supplyChainModel.enums.SCType;
 import supplyChainModel.support.Order;
 import supplyChainModel.support.Shipment;
 
+/**
+ * This agent buys from the producers and ships the
+ * goods overseas to the wholesalers.
+ * @author Maarten
+ *
+ */
 public class Agent2International extends BaseAgent {
 	
 	public Agent2International(final Context<Object> context, CountryAgent country) {

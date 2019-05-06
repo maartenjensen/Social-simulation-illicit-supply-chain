@@ -12,6 +12,12 @@ import supplyChainModel.enums.SCType;
 import supplyChainModel.support.Order;
 import supplyChainModel.support.Shipment;
 
+/**
+ * Imports goods bought from the internationals,
+ * the goods are then sold to retailers.
+ * @author Maarten Jensen
+ *
+ */
 public class Agent3Wholesaler extends BaseAgent {
 	
 	public Agent3Wholesaler(final Context<Object> context, CountryAgent country) {
@@ -25,7 +31,7 @@ public class Agent3Wholesaler extends BaseAgent {
 		
 		updateArrivedShipments();
 		
-		for (Shipment shipment : getArrivedShipments()) { //TODO add payment to supplier
+		for (Shipment shipment : getArrivedShipments()) {
 			money -= shipment.getPrice();
 			shipment.getSupplier().receivePayment(shipment.getPrice());
 			addToStock(shipment.getGoods());

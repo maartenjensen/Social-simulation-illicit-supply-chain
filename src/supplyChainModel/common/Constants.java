@@ -2,6 +2,13 @@ package supplyChainModel.common;
 
 import java.awt.Font;
 
+/**
+ * Contains all the parameters that are used in the simulation, 
+ * except for the parameters that are influencable by the repast HUD.
+ * This class should be used for parameters instead of hard-coding them.
+ * @author Maarten Jensen
+ *
+ */
 public class Constants {
 	
 	// See SupplyChainModel.rs/context.xml

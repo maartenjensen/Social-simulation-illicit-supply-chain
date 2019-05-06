@@ -14,6 +14,12 @@ import supplyChainModel.enums.SCType;
 import supplyChainModel.support.Order;
 import supplyChainModel.support.Shipment;
 
+/**
+ * The consumer class buys from the retailers
+ * and consumes the goods.
+ * @author Maarten
+ *
+ */
 public class Agent5Consumer extends BaseAgent {
 
 	// State variables
@@ -72,7 +78,7 @@ public class Agent5Consumer extends BaseAgent {
 		
 		updateArrivedShipments();
 		
-		for (Shipment shipment : getArrivedShipments()) { //TODO add payment to supplier
+		for (Shipment shipment : getArrivedShipments()) {
 			money -= shipment.getPrice();
 			shipment.getSupplier().receivePayment(shipment.getPrice());
 			addToStock(shipment.getGoods());

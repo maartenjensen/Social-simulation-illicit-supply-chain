@@ -7,15 +7,14 @@ import java.io.IOException;
 import repast.simphony.visualizationOGL2D.DefaultStyleOGL2D;
 import saf.v3d.scene.Position;
 import saf.v3d.scene.VSpatial;
-import supplyChainModel.agents.LayerAgent;
 import supplyChainModel.common.Constants;
 
-public class LayerStyle2D extends DefaultStyleOGL2D {
+public class SCTypeStyle2D extends DefaultStyleOGL2D {
 
 	@Override
 	public Color getColor(Object o){
 		
-		if (o instanceof LayerAgent) {
+		if (o instanceof VisualSCType) {
 			return new Color(0.9f, 0.9f, 0.9f);	
 		}
 
@@ -41,8 +40,8 @@ public class LayerStyle2D extends DefaultStyleOGL2D {
 	@Override
 	public String getLabel(Object object) {
 
-		if (object instanceof LayerAgent) {
-			final LayerAgent agent = (LayerAgent) object;
+		if (object instanceof VisualSCType) {
+			final VisualSCType agent = (VisualSCType) object;
 			return agent.getLabel();
 		}
 		

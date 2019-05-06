@@ -12,6 +12,11 @@ import supplyChainModel.enums.SCType;
 import supplyChainModel.support.Order;
 import supplyChainModel.support.Shipment;
 
+/**
+ * Producer agent, the first in the supply chain.
+ * @author Maarten Jensen
+ *
+ */
 public class Agent1Producer extends BaseAgent {
 
 	// State variables

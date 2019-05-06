@@ -1,4 +1,4 @@
-package supplyChainModel.agents;
+package supplyChainModel.styles;
 
 import java.awt.Point;
 
@@ -7,11 +7,16 @@ import supplyChainModel.common.Logger;
 import supplyChainModel.common.SU;
 import supplyChainModel.enums.SCType;
 
-public class LayerAgent {
+/**
+ * This class is only used for visualization purposes
+ * @author Maarten Jensen
+ *
+ */
+public class VisualSCType {
 
 	private SCType scType;
 	
-	public LayerAgent(SCType scType) {
+	public VisualSCType(SCType scType) {
 		
 		SU.getContext().add(this);
 		

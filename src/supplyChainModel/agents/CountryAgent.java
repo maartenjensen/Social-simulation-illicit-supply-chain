@@ -12,6 +12,13 @@ import supplyChainModel.common.RepastParam;
 import supplyChainModel.common.SU;
 import supplyChainModel.enums.SCType;
 
+/**
+ * Class is used to spawn nodes at the correct country,
+ * country objects contain their position, possible spawn locations (countryPoints)
+ * and quality. This class can be outfitted with police interventions.
+ * @author Maarten Jensen
+ *
+ */
 public class CountryAgent {
 
 	private String name = "none";
@@ -36,7 +43,7 @@ public class CountryAgent {
 		countryPoints = createCountryPoints();
 		move(this.x, this.y);
 	}
-	
+
 	public void spawnAgent(SCType scType) {
 		
 		if (containsSCType(SCType.PRODUCER) && scType == SCType.PRODUCER && SU.getObjectsCount(Agent1Producer.class) < RepastParam.getProducerNumberCap()) {
@@ -65,7 +72,7 @@ public class CountryAgent {
 				new Agent5Consumer(SU.getContext(), this, Constants.QUALITY_MAXIMUM);
 		}
 	}
-	
+
 	/**
 	 * Moves the supply chain agent to the correct location, dependent on the base country
 	 */
@@ -130,5 +137,4 @@ public class CountryAgent {
 	public int getHeight() {
 		return height;
 	}
-	
 }

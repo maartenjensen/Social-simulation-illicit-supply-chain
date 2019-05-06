@@ -1,5 +1,12 @@
 package supplyChainModel.agents;
 
+/**
+ * Compare class used to sort agents based on their trust level.
+ * Sorting is useful for agents so that they can select the highest
+ * trust agent to cooperate with.
+ * @author Maarten Jensen
+ *
+ */
 public class TrustCompare implements Comparable<TrustCompare> {
 
 	BaseAgent agent;

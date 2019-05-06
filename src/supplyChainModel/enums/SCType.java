@@ -3,6 +3,11 @@ package supplyChainModel.enums;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
 
+/**
+ * Enum for the supply chain type.
+ * @author Maarten
+ *
+ */
 public enum SCType {
 
 	PRODUCER(0), INTERNATIONAL(1), WHOLESALER(2), RETAIL(3), CONSUMER(4);

@@ -3,6 +3,10 @@
   <type>2D</type>
   <styles>
     <entry>
+      <string>supplyChainModel.styles.VisualSCType</string>
+      <string>supplyChainModel.styles.SCTypeStyle2D</string>
+    </entry>
+    <entry>
       <string>supplyChainModel.DataCollector</string>
       <string>supplyChainModel.styles.DataCollector2D</string>
     </entry>
@@ -13,10 +17,6 @@
     <entry>
       <string>supplyChainModel.agents.BaseAgent</string>
       <string>supplyChainModel.styles.AgentStyle2D2_ACTIVE</string>
-    </entry>
-    <entry>
-      <string>supplyChainModel.agents.LayerAgent</string>
-      <string>supplyChainModel.styles.LayerStyle2D</string>
     </entry>
     <entry>
       <string>supplyChainModel.support.Order</string>

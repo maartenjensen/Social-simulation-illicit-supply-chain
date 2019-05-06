@@ -3,6 +3,13 @@ package supplyChainModel.common;
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.parameter.Parameters;
 
+/**
+ * Class that upon running setRepastParameters() saves the
+ * parameters that are set in the Repast HUD. The code can 
+ * retrieve these parameters through this class.
+ * @author Maarten Jensen
+ *
+ */
 public final class RepastParam {
 
 	// Default settings

@@ -11,6 +11,12 @@ import supplyChainModel.enums.SCType;
 import supplyChainModel.support.Order;
 import supplyChainModel.support.Shipment;
 
+/**
+ * This agent buys from the wholesaler and
+ * sells to the consumers.
+ * @author Maarten Jensen
+ *
+ */
 public class Agent4Retailer extends BaseAgent {
 	
 	public Agent4Retailer(final Context<Object> context, CountryAgent country) {
@@ -24,7 +30,7 @@ public class Agent4Retailer extends BaseAgent {
 		
 		updateArrivedShipments();
 		
-		for (Shipment shipment : getArrivedShipments()) { //TODO add payment to supplier
+		for (Shipment shipment : getArrivedShipments()) {
 			money -= shipment.getPrice();
 			shipment.getSupplier().receivePayment(shipment.getPrice());
 			addToStock(shipment.getGoods());

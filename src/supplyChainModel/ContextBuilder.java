@@ -1,8 +1,5 @@
 package supplyChainModel;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,15 +19,22 @@ import repast.simphony.space.grid.SimpleGridAdder;
 import supplyChainModel.agents.Agent5Consumer;
 import supplyChainModel.agents.BaseAgent;
 import supplyChainModel.agents.CountryAgent;
-import supplyChainModel.agents.LayerAgent;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
 import supplyChainModel.common.RepastParam;
 import supplyChainModel.common.SU;
 import supplyChainModel.enums.SCType;
+import supplyChainModel.styles.VisualSCType;
 import supplyChainModel.support.Order;
 import supplyChainModel.support.Shipment;
 
+/**
+ * The ContextBuilder is the main class of the simulation program.
+ * The function build is run upon pressing the start button in the 
+ * repast HUD.
+ * @author Maarten Jensen
+ *
+ */
 public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder<Object> {
 	
 	/**
@@ -58,7 +62,7 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		supplyChainCreation(context);
 		
 		for (SCType scType : SCType.values()) {
-			new LayerAgent(scType);
+			new VisualSCType(scType);
 		}
 		
 		// If running in batch mode, tell the scheduler when to end each run.
@@ -209,24 +213,7 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		Logger.logMain("Relations information saved in: " + filePathAndName);
 		List<String> data = new ArrayList<String>();
 		data = SU.getDataCollector().getRelationsData();
-		writeToFile(filePathAndName, data);
-	}
-
-	public void writeToFile(String filePathAndName, List<String> data) {
-		PrintWriter writer;
-		try {
-			writer = new PrintWriter(filePathAndName, "UTF-8");
-			for (String datum : data) {
-				writer.println(datum);
-			}
-			writer.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		SU.writeToFile(filePathAndName, data);
 	}
 	
 	public void stepSpawning() {

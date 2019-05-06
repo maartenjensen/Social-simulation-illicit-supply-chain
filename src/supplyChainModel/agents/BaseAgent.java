@@ -19,6 +19,11 @@ import supplyChainModel.enums.SCType;
 import supplyChainModel.support.Order;
 import supplyChainModel.support.Shipment;
 
+/**
+ * The Base Agent is the parent of all the supply chain agents
+ * @author Maarten Jensen
+ *
+ */
 public class BaseAgent {
 
 	// State variables

@@ -1,8 +1,12 @@
 package supplyChainModel.common;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import repast.simphony.context.Context;
 import repast.simphony.engine.environment.RunEnvironment;
@@ -14,7 +18,13 @@ import repast.simphony.util.SimUtilities;
 import supplyChainModel.DataCollector;
 import supplyChainModel.agents.BaseAgent;
 
-// Simulation Utils class
+/**
+ * Simulation utility class. This class contains useful functions
+ * such as retrieving specific objects in the simulation and getting
+ * the IDs of the context, grids and networks.
+ * @author Maarten Jensen
+ *
+ */
 public class SU {
 
 	private static Context<Object> masterContext = null; // MasterContext is saved because the SU class cannot call the context
@@ -231,4 +241,18 @@ public class SU {
 		return formatter.format(date);
 	}
 	
+	public static void writeToFile(String filePathAndName, List<String> data) {
+		PrintWriter writer;
+		try {
+			writer = new PrintWriter(filePathAndName, "UTF-8");
+			for (String datum : data) {
+				writer.println(datum);
+			}
+			writer.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+	}
 }
