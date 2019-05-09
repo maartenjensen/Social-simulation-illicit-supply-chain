@@ -15,7 +15,6 @@ import supplyChainModel.agents.BaseAgent;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
 import supplyChainModel.common.SU;
-import supplyChainModel.enums.SCType;
 
 /**
  * Collects data from objects, to make it easy to write the data
@@ -42,6 +41,10 @@ public class DataCollector {
 	 * Stock analyzing
 	 *===============================*/	
 	
+	/**
+	 * Is called after initializing of the agents to save their
+	 * initialized stock. //TODO add the stock when a new agent is created
+	 */
 	public void addAllCurrentStock() {
 		
 		ArrayList<BaseAgent> agents = SU.getObjectsAll(BaseAgent.class);
@@ -56,6 +59,10 @@ public class DataCollector {
 		}
 	}
 	
+	/**
+	 * Called by Agent1Producers.addProducedStock() //TODO add this at wholesaler level
+	 * @param producedGoods
+	 */
 	public void addProducedStock(HashMap<Byte, Double> producedGoods) {
 		
 		for (Byte quality : producedGoods.keySet()) {
@@ -66,6 +73,10 @@ public class DataCollector {
 		}
 	}
 
+	/**
+	 * Called by Agent5Consumer.stepSendShipment(), this function represents the consumed goods
+	 * @param consumedGoods
+	 */
 	public void addConsumedStock(HashMap<Byte, Double> consumedGoods) {
 		
 		for (Byte quality : consumedGoods.keySet()) {
@@ -76,6 +87,10 @@ public class DataCollector {
 		}
 	}
 	
+	/**
+	 * Called by BaseAgent.remove(), this represents goods that got lost
+	 * @param deletedGoods
+	 */
 	public void addDeletedStock(HashMap<Byte, Double> deletedGoods) {
 		
 		for (Byte quality : deletedGoods.keySet()) {
@@ -134,94 +149,6 @@ public class DataCollector {
 	
 	public List<String> getRelationsData() {
 		return relationsInfo;
-	}
-	
-	public double getStockCurrent(String countryName) {
-		
-		double stock = 0;
-		ArrayList<BaseAgent> agents = SU.getObjectsAll(BaseAgent.class);
-		for (BaseAgent agent : agents) {
-			
-			if (agent.getCountry().getName().equals(countryName)) {
-				stock += 0; //TODO get the right information agent.getStock();
-			}
-		}
-		
-		return stock;
-	}
-
-	public double getStockCurrentNL() {
-		return getStockCurrent("The Netherlands");
-	}
-
-	public double getStockCurrentES() {
-		return getStockCurrent("Spain");
-	}
-	
-	public double getCurrentImport(String countryName, SCType importLayer) {
-		
-		double stock = 0;
-		ArrayList<BaseAgent> agents = SU.getObjectsAll(BaseAgent.class);
-		for (BaseAgent agent : agents) {
-			
-			if (agent.getCountry().getName().equals(countryName) && agent.getScType() == importLayer) {
-				stock += agent.getCurrentImport();
-			}
-		}
-		return stock;
-	}
-	
-	public double getImportCurrentNL() {
-		return getCurrentImport("The Netherlands", SCType.WHOLESALER);
-	}
-	
-	public double getImportCurrentES() {
-		return getCurrentImport("Spain", SCType.WHOLESALER);
-	}
-	
-	public double getTotalImport(String countryName, SCType importLayer) {
-		
-		double stock = 0;
-		ArrayList<BaseAgent> agents = SU.getObjectsAll(BaseAgent.class);
-		for (BaseAgent agent : agents) {
-			
-			if (agent.getCountry().getName().equals(countryName) && agent.getScType() == importLayer) {
-				stock += agent.getTotalImport();
-			}
-		}
-		return stock;
-	}
-	
-	public double getTotalProductionSouthAmerica() {
-		return getTotalImport("South America", SCType.PRODUCER);
-	}
-	
-	public double getTotalImportInternational() {
-		return getTotalImport("International", SCType.INTERNATIONAL);
-	}
-	
-	public double getTotalImportNL() {
-		return getTotalImport("The Netherlands", SCType.WHOLESALER);
-	}
-	
-	public double getTotalImportES() {
-		return getTotalImport("Spain", SCType.WHOLESALER);
-	}
-	
-	public double getTotalImportUK() {
-		return getTotalImport("United Kingdom", SCType.RETAIL);
-	}
-	
-	public double getTotalImportD() {
-		return getTotalImport("Germany", SCType.RETAIL);
-	}
-	
-	public double getTotalImportF() {
-		return getTotalImport("France", SCType.RETAIL);
-	}
-	
-	public double getTotalImportI() {
-		return getTotalImport("Italy", SCType.RETAIL);
 	}
 
 	//Agent count methods

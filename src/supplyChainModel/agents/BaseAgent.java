@@ -48,9 +48,9 @@ public class BaseAgent {
 	protected ArrayList<Integer> possibleNewSuppliers = new ArrayList<Integer>();
 	protected ArrayList<Integer> possibleNewClients   = new ArrayList<Integer>();
 	
-	// Visualization
-	protected double out_currentImport = 0;
-	protected double out_totalImport = 0;
+	// Visualization or data
+	protected HashMap<Byte, Double> vsl_stock_current = new HashMap<Byte, Double>();
+	protected HashMap<Byte, Double> vsl_stock_total = new HashMap<Byte, Double>();
 
 	/**
 	 * Constructor
@@ -64,7 +64,7 @@ public class BaseAgent {
 		this.id = SU.getNewId();
 		this.baseCountry = baseCountry;
 		this.scType = scType;
-		
+
 		this.sellPrice = sellPrice;
 		this.money = sellPrice * maxPackageSize * Constants.PRICE_MONEY_START_MULT;
 		
@@ -79,29 +79,27 @@ public class BaseAgent {
 	}
 
 	/*====================================
-	 * The main steps of the agents
+	 * The main steps of the agents, called by ContextBuilder
 	 *====================================*/
-	
+
 	/**
-	 * Pay standard costs, pay stock costs and remove bankrupt nodes
+	 * Pay the cost for stock saving, standard living cost and remove bankrupt nodes
 	 */
 	public void stepCheckRemoval() {
 		
-		double quantity = 0;
-		for (Byte quality : stock.keySet()) {
-			quantity += stock.get(quality);
-		}
-		
-		money -= ((Constants.PRICE_LIVING_COST_MULT * maxPackageSize) + Constants.PRICE_SAVED_STOCK_MULT * quantity) * sellPrice;
+		money -= ((Constants.PRICE_LIVING_COST_MULT * maxPackageSize) + Constants.PRICE_SAVED_STOCK_MULT * getTotalGoodsQuantity(stock)) * sellPrice;
 		
 		if (money < 0) {
 			remove();
 		}
 	}
-	
+
+	/**
+	 * Reset current stock for data, and decrease cooldowns
+	 */
 	public void stepResetParameters() {
-		out_currentImport = 0;
-	
+		
+		vsl_stock_current.clear();
 		newSupplierCooldown = Math.max(0, newSupplierCooldown - 1);
 		newClientCooldown   = Math.max(0, newClientCooldown - 1);
 	}
@@ -121,7 +119,10 @@ public class BaseAgent {
 	public void stepSendOrder() {
 		// sendOrders();
 	}
-	
+
+	/**
+	 * Step for data collection, add current relations to data output
+	 */
 	public void stepAddToData() {
 		
 		int tick = SU.getTick();
@@ -140,51 +141,14 @@ public class BaseAgent {
 	 * Functions (Non-decision making)
 	 *===============================*/
 	
-	/**
-	 * Is Overriden by the agents, should give half of the minimum stock.
-	 */
-	protected void setStartingStock() {
-		
-	}
-	
 	public void receivePayment(double payment) {
 		money += payment;
-	}
-
-	/**
-	 * Retrieve clients that are connected to this supplier
-	 * @return the ArrayList of clients
-	 */
-	public ArrayList<BaseAgent> getClients() {
-	
-		final Iterable<RepastEdge<Object>> objects = (Iterable<RepastEdge<Object>>) SU.getNetworkSC().getOutEdges(this);
-		final ArrayList<BaseAgent> objectList = new ArrayList<BaseAgent>();
-		for (final RepastEdge<Object> edge : objects) {
-			objectList.add((BaseAgent) edge.getTarget());
-		}
-		Collections.shuffle(objectList);
-		return objectList;
-	}
-
-	/**
-	 * Retrieve suppliers that are connected to this client
-	 * @return the ArrayList of suppliers
-	 */
-	public ArrayList<BaseAgent> getSuppliers() {
-		
-		final Iterable<RepastEdge<Object>> objects = (Iterable<RepastEdge<Object>>) SU.getNetworkSC().getInEdges(this);
-		final ArrayList<BaseAgent> objectList = new ArrayList<BaseAgent>();
-		for (final RepastEdge<Object> edge : objects) {
-			objectList.add((BaseAgent) edge.getSource());
-		}
-		Collections.shuffle(objectList);
-		return objectList;
 	}
 	
 	/**
 	 * Search for a new supplier if the agent requires a new supplier,
-	 * if there is one available that is looking for a new client
-	 * returns when it found a new supplier (to only add one at a time)
+	 * if there is one available, who is also looking for a new client,
+	 * then the function returns and adds the new supplier (only one supplier is added)
 	 */
 	public void searchSuppliers() {
 		
@@ -208,6 +172,12 @@ public class BaseAgent {
 		}
 	}
 
+	/**
+	 * Sort the ArrayList of suppliers, based on the trust in those suppliers
+	 * 
+	 * @param possibleSuppliers
+	 * @return The supplier with the highest trust will be the first one in the returned ArrayList
+	 */
 	public ArrayList<TrustCompare> sortAverageTrustInSuppliers(ArrayList<Integer> possibleSuppliers) {
 		
 		ArrayList<TrustCompare> unsorted = new ArrayList<TrustCompare>();
@@ -261,6 +231,12 @@ public class BaseAgent {
 		}
 	}
 	
+	/**
+	 * Sort the ArrayList of clients, based on the trust in those suppliers
+	 * 
+	 * @param possibleSuppliers
+	 * @return The client with the highest trust will be the first one in the returned ArrayList
+	 */
 	public ArrayList<TrustCompare> sortAverageTrustInClients(ArrayList<Integer> possibleClients) {
 		
 		ArrayList<TrustCompare> unsorted = new ArrayList<TrustCompare>();
@@ -299,7 +275,7 @@ public class BaseAgent {
 		}
 		
 	}
-	
+
 	public void addClient(BaseAgent client) {
 		
 		if (!relationsC.keySet().contains(client.getId())) {
@@ -309,7 +285,7 @@ public class BaseAgent {
 			Logger.logSCAgent(scType, getNameId() + " added client: " + client.getNameId());
 		}
 	}
-	
+
 	/**
 	 * Adds the orders who are placed by this agent to the relationsS
 	 * @param placedOrders
@@ -594,8 +570,38 @@ public class BaseAgent {
 	}
 	
 	/*================================
-	 * Getters and setters
+	 * Extensive getter and setter functions
 	 *===============================*/
+	
+	/**
+	 * Retrieve clients that are connected to this supplier
+	 * @return the ArrayList of clients
+	 */
+	public ArrayList<BaseAgent> getClients() {
+	
+		final Iterable<RepastEdge<Object>> objects = (Iterable<RepastEdge<Object>>) SU.getNetworkSC().getOutEdges(this);
+		final ArrayList<BaseAgent> objectList = new ArrayList<BaseAgent>();
+		for (final RepastEdge<Object> edge : objects) {
+			objectList.add((BaseAgent) edge.getTarget());
+		}
+		Collections.shuffle(objectList);
+		return objectList;
+	}
+
+	/**
+	 * Retrieve suppliers that are connected to this client
+	 * @return the ArrayList of suppliers
+	 */
+	public ArrayList<BaseAgent> getSuppliers() {
+		
+		final Iterable<RepastEdge<Object>> objects = (Iterable<RepastEdge<Object>>) SU.getNetworkSC().getInEdges(this);
+		final ArrayList<BaseAgent> objectList = new ArrayList<BaseAgent>();
+		for (final RepastEdge<Object> edge : objects) {
+			objectList.add((BaseAgent) edge.getSource());
+		}
+		Collections.shuffle(objectList);
+		return objectList;
+	}
 	
 	/**
 	 * First adds the closest suppplier or client (dependent on the integer)
@@ -687,14 +693,6 @@ public class BaseAgent {
 			return false;
 	}
 	
-	public String getPossibleNewSuppliersStr() {
-		return possibleNewSuppliers.toString();
-	}
-	
-	public String getPossibleNewClientsStr() {
-		return possibleNewClients.toString();
-	}
-	
 	protected ArrayList<Shipment> getArrivedShipments() {
 		
 		ArrayList<Shipment> arrivedShipments = new ArrayList<Shipment>();
@@ -765,6 +763,10 @@ public class BaseAgent {
 		return false;
 	}
 	
+	/*====================================
+	 * Simple getter and setter functions
+	 *====================================*/
+	
 	/**
 	 * Require a client when all of the stocks are above security level
 	 * @return
@@ -782,10 +784,31 @@ public class BaseAgent {
 		return true;
 	}
 	
+	public Double getTotalGoodsQuantity(HashMap<Byte, Double> pGoods) {
+		double quantity = 0;
+		for (Byte quality : pGoods.keySet()) {
+			quantity += pGoods.get(quality);
+		}
+		return quantity;
+	}
+	
+	public String getPossibleNewSuppliersStr() {
+		return possibleNewSuppliers.toString();
+	}
+	
+	public String getPossibleNewClientsStr() {
+		return possibleNewClients.toString();
+	}
+	
 	public Color getColor() {
 		return Color.DARK_GRAY;
 	}
 
+	/**
+	 * Returns true if it has at least one connection with a
+	 * supplier AND with a client.
+	 * @return 
+	 */
 	public boolean isConnected() {
 		if (!relationsC.isEmpty() && !relationsS.isEmpty())
 			return true;
@@ -809,11 +832,28 @@ public class BaseAgent {
 	}
 	
 	public double getTotalImport() {
-		return out_totalImport;
+		return getTotalGoodsQuantity(vsl_stock_total);
+	}
+
+	public double getCurrentImport() {
+		return getTotalGoodsQuantity(vsl_stock_current);
 	}
 	
-	public double getCurrentImport() {
-		return out_currentImport;
+	/**
+	 * This is actually a getter function, however it has a parameter so repast
+	 * will give an error in the repast HUD when the function name starts with get
+	 * @return
+	 */
+	public double retrieveTotalImportQuality(byte quality) {
+		if (vsl_stock_total.containsKey(quality))
+			return vsl_stock_total.get(quality);
+		return 0;
+	}
+	
+	public double retrieveCurrentImportQuality(byte quality) {
+		if (vsl_stock_current.containsKey(quality))
+			return vsl_stock_current.get(quality);
+		return 0;
 	}
 
 	public CountryAgent getCountry() {

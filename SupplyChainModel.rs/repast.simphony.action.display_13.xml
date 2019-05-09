@@ -1,5 +1,5 @@
 <repast.simphony.visualization.engine.CartesianDisplayDescriptor simphonyVersion="2.6.0">
-  <name>Display Only Active Agents</name>
+  <name>Display 4 - Only Show Active Agents</name>
   <type>2D</type>
   <styles>
     <entry>
@@ -29,6 +29,10 @@
   </styles>
   <editedStyles>
     <entry>
+      <string>supplyChainModel.styles.VisualSCType</string>
+      <null/>
+    </entry>
+    <entry>
       <string>supplyChainModel.DataCollector</string>
       <null/>
     </entry>
@@ -38,10 +42,6 @@
     </entry>
     <entry>
       <string>supplyChainModel.agents.BaseAgent</string>
-      <null/>
-    </entry>
-    <entry>
-      <string>supplyChainModel.agents.LayerAgent</string>
       <null/>
     </entry>
     <entry>
@@ -81,35 +81,35 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>434401946</hashCode>
+    <hashCode>-1650634587</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>continuous space</layoutProjection>
   <layoutInterval>0</layoutInterval>
   <layerOrder>
     <entry>
-      <string>supplyChainModel.DataCollector</string>
+      <string>supplyChainModel.styles.VisualSCType</string>
       <int>1</int>
     </entry>
     <entry>
+      <string>supplyChainModel.DataCollector</string>
+      <int>0</int>
+    </entry>
+    <entry>
       <string>supplyChainModel.support.Shipment</string>
-      <int>3</int>
+      <int>4</int>
     </entry>
     <entry>
       <string>supplyChainModel.agents.BaseAgent</string>
       <int>5</int>
     </entry>
     <entry>
-      <string>supplyChainModel.agents.LayerAgent</string>
-      <int>0</int>
-    </entry>
-    <entry>
       <string>supplyChainModel.support.Order</string>
-      <int>2</int>
+      <int>3</int>
     </entry>
     <entry>
       <string>supplyChainModel.agents.CountryAgent</string>
-      <int>4</int>
+      <int>2</int>
     </entry>
   </layerOrder>
   <projections>
@@ -155,7 +155,7 @@
             <map>
               <entry>
                 <string>COLOR</string>
-                <int>-986896</int>
+                <int>-6697729</int>
               </entry>
               <entry>
                 <string>UNIT_SIZE</string>

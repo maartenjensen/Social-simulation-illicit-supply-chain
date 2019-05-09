@@ -6,6 +6,13 @@ import repast.simphony.engine.environment.RunEnvironment;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
 
+/**
+ * This class represents the Relation in a Supplier, it can calculate the trustLevel.
+ * Suppliers create an object of this class when they add a new Supplier (addClient(BaseAgent supplier))
+ * 
+ * @author Maarten Jensen
+ *
+ */
 public class RelationS {
 
 	// This is a container that should be used in a map, linked to buyers or sellers

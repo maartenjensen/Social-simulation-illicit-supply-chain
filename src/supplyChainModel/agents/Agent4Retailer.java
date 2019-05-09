@@ -150,7 +150,6 @@ public class Agent4Retailer extends BaseAgent {
 		return requiredGoods;
 	}
 	
-	@Override
 	protected void setStartingStock() {
 		
 		if (RandomHelper.nextDouble() <= 0.5)

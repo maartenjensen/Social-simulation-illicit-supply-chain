@@ -4,6 +4,13 @@ import java.util.HashMap;
 
 import repast.simphony.engine.environment.RunEnvironment;
 
+/**
+ * This class represents the Relation in a Client, it can calculate the trustLevel.
+ * Suppliers create an object of this class when they add a new Client (addClient(BaseAgent client))
+ * 
+ * @author Maarten Jensen
+ *
+ */
 public class RelationC {
 
 	// State variables

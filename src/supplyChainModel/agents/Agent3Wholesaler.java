@@ -214,7 +214,6 @@ public class Agent3Wholesaler extends BaseAgent {
 		return requiredGoods;
 	}
 	
-	@Override
 	protected void setStartingStock() {
 		
 		if (RandomHelper.nextDouble() <= 0.5)

@@ -150,7 +150,6 @@ public class Agent2International extends BaseAgent {
 		return requiredGoods;
 	}
 	
-	@Override
 	protected void setStartingStock() {
 		
 		if (RandomHelper.nextDouble() <= 0.5)

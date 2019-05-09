@@ -147,6 +147,10 @@ public class Agent1Producer extends BaseAgent {
 		return true;
 	}
 	
+	protected void setStartingStock() {
+		stock.put(quality, securityStockMultiplier * minPackageSize);
+	}
+	
 	/*================================
 	 * Getters and setters
 	 *===============================*/	
@@ -174,11 +178,6 @@ public class Agent1Producer extends BaseAgent {
 	@Override
 	public double getSecurityStock() {
 		return securityStockMultiplier * minPackageSize;
-	}
-	
-	@Override
-	protected void setStartingStock() {
-		stock.put(quality, securityStockMultiplier * minPackageSize);
 	}
 	
 	public byte getQuality() {

@@ -173,7 +173,6 @@ public class Agent5Consumer extends BaseAgent {
 		return requiredGoods;
 	}
 
-	@Override
 	protected void setStartingStock() {
 		
 		stock.put(quality, securityStockMultiplier * minPackageSize);
