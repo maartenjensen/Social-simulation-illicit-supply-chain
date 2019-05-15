@@ -1,5 +1,5 @@
 <repast.simphony.visualization.engine.CartesianDisplayDescriptor simphonyVersion="2.6.0">
-  <name>Display 3 - Only Show Edges With Shipments</name>
+  <name>Display 2 - Only Show Edges With Arrived Orders</name>
   <type>2D</type>
   <styles>
     <entry>
@@ -56,11 +56,11 @@
   <netStyles>
     <entry>
       <string>sc network reversed</string>
-      <string>supplyChainModel.styles.SCReversedEdgeStyleOGL2D2_SHIPMENT</string>
+      <string>supplyChainModel.styles.SCReversedEdgeStyleOGL2D2_ORDER</string>
     </entry>
     <entry>
       <string>sc network</string>
-      <string>supplyChainModel.styles.SCEdgeStyleOGL2D_SHIPMENT</string>
+      <string>supplyChainModel.styles.SCEdgeStyleOGL2D_ORDER</string>
     </entry>
   </netStyles>
   <editedNetStyles>
@@ -155,7 +155,7 @@
             <map>
               <entry>
                 <string>COLOR</string>
-                <int>-10040065</int>
+                <int>-6697729</int>
               </entry>
               <entry>
                 <string>UNIT_SIZE</string>

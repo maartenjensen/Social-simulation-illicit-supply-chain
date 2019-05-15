@@ -13,23 +13,37 @@ setwd("D://Work//WorkspaceR")
 source("usefull_functions.R")
 
 #Data formatted as: "tick","Id","LocationX","LocationY","Money"
-agentData <- getDataFromFile("AgentStateTest")
-relationsData <- getDataFromFile("RelationsData")
+agentData     <- getDataFromFile("Legal_100_AgentState") 	#Load 'AgentState.YYYY.MMM.DD.HH_MM_SS.txt' here
+relationsData <- getDataFromFile("Legal_100_RelationsData") #Load 'RelationsData.YYYY.MMM.DD.HH_MM_SS.txt' here
+orderData 	  <- getDataFromFile("Legal_100_OrderState")	#Load 'OrderState.YYYY.MMM.DD.HH_MM_SS.txt' here
+shipmentData <- getDataFromFile("Legal_100_ShipmentState")	#Load 'ShipmentState.YYYY.MMM.DD.HH_MM_SS.txt' here
 
 relationsData <- addCoordinatesToRelations(agentData, relationsData);
 
-plotSupplyChain(agentData[agentData$tick==50, ], relationsData[relationsData$tick==50, ]);
+timeTicks <- c(1,3,5,7,9,11,13,15,20,25,30,40,60,80,100); #The time ticks you want to make plots from
 
+for (i in timeTicks) {
+	tTitle <- paste("Legal Supply Chain - Tick", i, sep = "")
+	plotSupplyChain(agentData[agentData$tick==i, ],
+					relationsData[relationsData$tick==i, ],
+					orderData[orderData$tick==i, ],
+					shipmentData[shipmentData$tick==i, ],
+					tTitle);
+}
 
 #=====================================
 # Functions: Build first
 #=====================================
-plotSupplyChain <- function(pAgentData, pRelationsData) {
-	plot(pAgentData$LocationX, pAgentData$LocationY, xlab = "", ylab = "", xaxt="n", yaxt="n", xlim=c(0,58), ylim=c(0,50))
+plotSupplyChain <- function(pAgentData, pRelationsData, pOrderData, pShipmentData, pTitle) {
+	
+	plot(pAgentData$LocationX, pAgentData$LocationY, main = pTitle, xlab = "", ylab = "", xaxt="n", yaxt="n", xlim=c(0,58), ylim=c(0,50))
 
 	points(pAgentData$LocationX, pAgentData$LocationY, col="black", pch=16)
 	
 	segments(x0=pRelationsData$x, y0=pRelationsData$y, x1=pRelationsData$otherX, y1=pRelationsData$otherY, col=pRelationsData$color);
+	
+	points(pOrderData$LocationX, pOrderData$LocationY, col="blue", pch=16)
+	points(pShipmentData$LocationX, pShipmentData$LocationY, col="yellow", pch=16)
 	
 	axis(1, at=c(5,17,29,41,53),labels=c("P","I","W","R","C"), col.axis="black", las=0)
 	

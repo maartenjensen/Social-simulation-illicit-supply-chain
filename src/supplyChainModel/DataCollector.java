@@ -29,11 +29,11 @@ public class DataCollector {
 	private HashMap<Byte, Double> deletedStock = new HashMap<Byte, Double>();
 	private HashMap<Byte, Double> consumedStock = new HashMap<Byte, Double>();
 	
-	protected List<String> relationsInfo = new ArrayList<String>();
+	protected List<String> relationsData = new ArrayList<String>();
 	
 	public DataCollector(final Context<Object> context) {
 		context.add(this);
-		relationsInfo.add("\"tick\",\"Id\",\"OtherId\",\"Type\",\"Trust\"");
+		relationsData.add("\"tick\",\"Id\",\"OtherId\",\"Type\",\"Trust\"");
 		move();
 	}
 	
@@ -144,11 +144,11 @@ public class DataCollector {
 	 * Other
 	 *===============================*/
 	public void addRelationData(String relationInfo) {
-		relationsInfo.add(relationInfo);
+		relationsData.add(relationInfo);
 	}
 	
 	public List<String> getRelationsData() {
-		return relationsInfo;
+		return relationsData;
 	}
 
 	//Agent count methods

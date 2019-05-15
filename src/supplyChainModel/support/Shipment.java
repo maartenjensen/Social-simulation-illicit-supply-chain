@@ -85,11 +85,18 @@ public class Shipment {
 		return client;
 	}
 	
-	public int getSupplierId() {
-		return supplier.getId();
+	/**
+	 * This function returns the 
+	 * @return
+	 */
+	public int getIdSupplier() {
+		if (supplier == null && client != null)
+			return client.getId();
+		else
+			return supplier.getId();
 	}
 	
-	public int getClientId() {
+	public int getIdClient() {
 		return client.getId();
 	}
 	
@@ -99,6 +106,14 @@ public class Shipment {
 	
 	public String getLabel() {
 		return String.format("%.1f", goods.get(vsl_largest_quality));
+	}
+	
+	public double getLocationX() {
+		return SU.getContinuousSpace().getLocation(this).getX();
+	}
+	
+	public double getLocationY() {
+		return SU.getContinuousSpace().getLocation(this).getY();
 	}
 	
 	/**

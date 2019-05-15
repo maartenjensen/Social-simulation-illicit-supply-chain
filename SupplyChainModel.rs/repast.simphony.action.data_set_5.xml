@@ -1,6 +1,7 @@
 <repast.simphony.data2.engine.DataSetDescriptor simphonyVersion="2.6.0">
-  <name>DC Agent Money Average</name>
-  <type>AGGREGATE</type>
+  <name>Order Data</name>
+  <type>NON_AGGREGATE</type>
+  <sourceType>supplyChainModel.support.Order</sourceType>
   <inclTick>true</inclTick>
   <inclBatchRun>false</inclBatchRun>
   <inclRandomSeed>false</inclRandomSeed>
@@ -11,53 +12,48 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>1488353859</hashCode>
+    <hashCode>547365103</hashCode>
   </scheduleParams>
   <atEnd>false</atEnd>
   <methodDataSources class="linked-hash-map">
     <entry>
-      <string>Money avg. 1 Producers</string>
+      <string>IdClient</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Money avg. 1 Producers</id>
-        <className>supplyChainModel.agents.Agent1Producer</className>
-        <methodName>getMoney</methodName>
-        <aggType>MEAN</aggType>
+        <id>IdClient</id>
+        <className>supplyChainModel.support.Order</className>
+        <methodName>getIdClient</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>Money avg. 2 Internationals</string>
+      <string>IdSupplier</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Money avg. 2 Internationals</id>
-        <className>supplyChainModel.agents.Agent2International</className>
-        <methodName>getMoney</methodName>
-        <aggType>MEAN</aggType>
+        <id>IdSupplier</id>
+        <className>supplyChainModel.support.Order</className>
+        <methodName>getIdSupplier</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>Money avg. 3 Wholesalers</string>
+      <string>LocationX</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Money avg. 3 Wholesalers</id>
-        <className>supplyChainModel.agents.Agent3Wholesaler</className>
-        <methodName>getMoney</methodName>
-        <aggType>MEAN</aggType>
+        <id>LocationX</id>
+        <className>supplyChainModel.support.Order</className>
+        <methodName>getLocationX</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>Money avg. 4 Retailers</string>
+      <string>LocationY</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Money avg. 4 Retailers</id>
-        <className>supplyChainModel.agents.Agent4Retailer</className>
-        <methodName>getMoney</methodName>
-        <aggType>MEAN</aggType>
+        <id>LocationY</id>
+        <className>supplyChainModel.support.Order</className>
+        <methodName>getLocationY</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>Money avg. 5 Consumers</string>
+      <string>Size</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Money avg. 5 Consumers</id>
-        <className>supplyChainModel.agents.Agent5Consumer</className>
-        <methodName>getMoney</methodName>
-        <aggType>MEAN</aggType>
+        <id>Size</id>
+        <className>supplyChainModel.support.Order</className>
+        <methodName>getSize</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
   </methodDataSources>

@@ -127,6 +127,22 @@ public class Order {
 		return "";
 	}
 	
+	public int getIdClient() {
+		return client.getId();
+	}
+	
+	public int getIdSupplier() {
+		return supplier.getId();
+	}
+	
+	public double getLocationX() {
+		return SU.getContinuousSpace().getLocation(this).getX();
+	}
+	
+	public double getLocationY() {
+		return SU.getContinuousSpace().getLocation(this).getY();
+	}
+	
 	/**
 	 * Higher quality means a brighter yellow color for the shipments
 	 */
