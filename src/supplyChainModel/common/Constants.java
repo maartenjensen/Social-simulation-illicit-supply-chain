@@ -18,7 +18,7 @@ public class Constants {
 	public static final String ID_SC_NETWORK = "sc network";
 	public static final String ID_SC_NETWORK_REVERSED = "sc network reversed";
 	
-	public static final int GRID_WIDTH = 58;
+	public static final int GRID_WIDTH = 100;
 	public static final int GRID_HEIGHT = 50;
 	public static final int GRID_CELL_SIZE = 25;
 	
@@ -26,14 +26,15 @@ public class Constants {
 	public static final Font FONT_BIG   = new Font("Tahoma", Font.BOLD , 14);
 	public static final Font FONT_HUGE  = new Font("Tahoma", Font.BOLD , 28);
 	
+	// Simulation parameters
 	public static final int PRODUCER_PRODUCE_AMOUNT = 50;
 	public static final int MAX_NUMBER_OF_ACTIVE_SUPPLIERS = 10;
 	public static final int MAX_NUMBER_OF_ACTIVE_CLIENTS = 10;
-	public static final double TRUST_SWITCH_LEVEL = 0.1;
 	
 	public static final double PRICE_LIVING_COST_MULT = 0.01;
 	public static final double PRICE_SAVED_STOCK_MULT = 0.01;
 	public static final double PRICE_MONEY_START_MULT = 5;
+	
 	public static final double PRICE_PRODUCTION = 0.35; //800; //Leaves then, per kilogram
 	public static final double PRICE_BUY_FROM_PRODUCER = 1; //2147; //Cocaine in brick form, per kilogram
 	public static final double PRICE_BUY_FROM_INTERNATIONAL = 16; //34700; //Cocaine in brick form, per kilogram
@@ -62,8 +63,8 @@ public class Constants {
 	public static final int N_PRODUCERS	= 6;
 	public static final int N_INTERNATIONALS = 4;
 	public static final int N_WHOLESALERS = 2;
-	public static final int N_RETAILERS	= 1;
-	public static final int N_CONSUMERS	= 1;
+	public static final int N_RETAILERS	= 4;
+	public static final int N_CONSUMERS	= 4;
 
 	//public static final byte MAX_GOOD_QUALITY = 100;
 	public static final byte QUALITY_MINIMUM = 40;
@@ -77,8 +78,15 @@ public class Constants {
 	public static final int COUNTRY_CONSUMERS_MAX = 2;
 	
 	// Visualization constants
+	public static final double VSL_RAD_CONVERT = 180/Math.PI;
+	public static final double VSL_EUROPEAN_MAP_SCALE = GRID_HEIGHT/1000.0 * 1.25;
+	public static final double VSL_EUROPEAN_MAP_X_ADD = 600 * VSL_EUROPEAN_MAP_SCALE;
+	public static final double VSL_N_AGENT_RADIUS = 12;
+	
 	public static final int VSL_COUNTRY_X = 4;
 	public static final int VSL_COUNTRY_WIDTH = 12;
+	public static final int VSL_N_AGENTS_CIRCULAR = 8;
+	public static final int VSL_N_AGENTS_LAYERS = 2;
 	public static final double VSL_ORD_SHP_DIF_Y = 0.2;
 	public static final double VSL_ORD_SHP_DIF_MOVE = 0.2;
 }

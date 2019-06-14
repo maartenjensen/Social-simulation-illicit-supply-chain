@@ -23,6 +23,7 @@ public final class RepastParam {
 	private static double sendShipmentProbability = 1;
 	private static int producerNumberCap = 8;
 	private static boolean limitedSuppliersClients = false;
+	private static boolean realisticMap = false;
 	
 	public static void setRepastParameters() {
 		
@@ -37,6 +38,7 @@ public final class RepastParam {
 		sendShipmentProbability = p.getDouble("pSendShipmentProbability");
 		producerNumberCap = p.getInteger("pProducerNumberCap");
 		limitedSuppliersClients = p.getBoolean("pLimitedSuppliersClients");
+		realisticMap = p.getBoolean("pRealisticMap");
 	}
 
 	/**
@@ -83,5 +85,9 @@ public final class RepastParam {
 	
 	public static boolean getLimitedSuppliersClients() {
 		return limitedSuppliersClients;
+	}
+	
+	public static boolean getRealisticMap() {
+		return realisticMap;
 	}
 }

@@ -1,7 +1,7 @@
 <repast.simphony.data2.engine.DataSetDescriptor simphonyVersion="2.6.0">
-  <name>Shipment Data</name>
+  <name>Agent Data</name>
   <type>NON_AGGREGATE</type>
-  <sourceType>supplyChainModel.support.Shipment</sourceType>
+  <sourceType>supplyChainModel.agents.BaseAgent</sourceType>
   <inclTick>true</inclTick>
   <inclBatchRun>false</inclBatchRun>
   <inclRandomSeed>false</inclRandomSeed>
@@ -12,31 +12,23 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>547365103</hashCode>
+    <hashCode>214488370</hashCode>
   </scheduleParams>
   <atEnd>false</atEnd>
   <methodDataSources class="linked-hash-map">
     <entry>
-      <string>IdSupplier</string>
+      <string>Id</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>IdSupplier</id>
-        <className>supplyChainModel.support.Shipment</className>
-        <methodName>getIdSupplier</methodName>
-      </repast.simphony.data2.engine.MethodDataSourceDefinition>
-    </entry>
-    <entry>
-      <string>IdClient</string>
-      <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>IdClient</id>
-        <className>supplyChainModel.support.Shipment</className>
-        <methodName>getIdClient</methodName>
+        <id>Id</id>
+        <className>supplyChainModel.agents.BaseAgent</className>
+        <methodName>getId</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
       <string>LocationX</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
         <id>LocationX</id>
-        <className>supplyChainModel.support.Shipment</className>
+        <className>supplyChainModel.agents.BaseAgent</className>
         <methodName>getLocationX</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
@@ -44,16 +36,16 @@
       <string>LocationY</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
         <id>LocationY</id>
-        <className>supplyChainModel.support.Shipment</className>
+        <className>supplyChainModel.agents.BaseAgent</className>
         <methodName>getLocationY</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>Size</string>
+      <string>Money</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Size</id>
-        <className>supplyChainModel.support.Shipment</className>
-        <methodName>getSize</methodName>
+        <id>Money</id>
+        <className>supplyChainModel.agents.BaseAgent</className>
+        <methodName>getMoney</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
   </methodDataSources>

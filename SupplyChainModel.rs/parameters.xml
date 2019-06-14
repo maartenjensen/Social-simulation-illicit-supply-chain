@@ -18,6 +18,12 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
+				<parameter name="pRealisticMap" displayName="Realistic Map" type="boolean" 
+						defaultValue="false" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$BooleanConverter"
+									
+		/>
 				<parameter name="pProdMax" displayName="Production max" type="double" 
 						defaultValue="10.0" 
 						isReadOnly="false" 

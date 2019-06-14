@@ -39,7 +39,7 @@ public class DataCollector {
 	
 	/*================================
 	 * Stock analyzing
-	 *===============================*/	
+	 *===============================*/
 	
 	/**
 	 * Is called after initializing of the agents to save their
@@ -103,7 +103,7 @@ public class DataCollector {
 	
 	public double getStockCreatedTot() {
 		if (createdStock.containsKey(Constants.QUALITY_MINIMUM)) {
-			if (createdStock.containsKey(Constants.QUALITY_MINIMUM))
+			if (createdStock.containsKey(Constants.QUALITY_MAXIMUM))
 				return createdStock.get(Constants.QUALITY_MINIMUM) + createdStock.get(Constants.QUALITY_MAXIMUM);
 			else
 				return createdStock.get(Constants.QUALITY_MINIMUM);
@@ -116,7 +116,7 @@ public class DataCollector {
 	
 	public double getStockConsumedTot() {
 		if (consumedStock.containsKey(Constants.QUALITY_MINIMUM)) {
-			if (consumedStock.containsKey(Constants.QUALITY_MINIMUM))
+			if (consumedStock.containsKey(Constants.QUALITY_MAXIMUM))
 				return consumedStock.get(Constants.QUALITY_MINIMUM) + consumedStock.get(Constants.QUALITY_MAXIMUM);
 			else
 				return consumedStock.get(Constants.QUALITY_MINIMUM);

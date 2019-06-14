@@ -24,7 +24,6 @@ import supplyChainModel.common.Logger;
 import supplyChainModel.common.RepastParam;
 import supplyChainModel.common.SU;
 import supplyChainModel.enums.SCType;
-import supplyChainModel.styles.VisualSCType;
 import supplyChainModel.support.Order;
 import supplyChainModel.support.Shipment;
 
@@ -57,13 +56,8 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		DataCollector dataCollector = new DataCollector(context);
 
 		// Create the supply chain
-		ContextDataLoader countryLoader = new ContextDataLoader();
-		countryLoader.readFullFile(context,"./input","contextBuildInformation");
+		countryCreation(context);
 		supplyChainCreation(context);
-		
-		for (SCType scType : SCType.values()) {
-			new VisualSCType(scType);
-		}
 		
 		// If running in batch mode, tell the scheduler when to end each run.
 		if (RunEnvironment.getInstance().isBatch()) {
@@ -77,11 +71,19 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		return context;
 	}
 
+	private void countryCreation(final Context<Object> context) {
+		
+		ContextDataLoader countryLoader = new ContextDataLoader();
+		if (RepastParam.getRealisticMap())
+			countryLoader.readFullFile(context,"./input", "inputDataCountryRealistic.csv", "inputDataBorders.csv");
+		else
+			countryLoader.readFullFile(context, "./input", "inputDataCountryBetterView.csv", "inputDataBorders.csv");
+	}
+	
 	private void supplyChainCreation(final Context<Object> context) {
 		
 		if (SCType.getScLayers() <= 2)
 			Logger.logError("To few supply chain layers, minimum of 3 required:" + SCType.getScLayers());
-		
 		
 		ArrayList<CountryAgent> countryAgents = SU.getObjectsAll(CountryAgent.class);
 		

@@ -1,7 +1,7 @@
 <repast.simphony.data2.engine.DataSetDescriptor simphonyVersion="2.6.0">
-  <name>Order Data</name>
+  <name>Shipment Data</name>
   <type>NON_AGGREGATE</type>
-  <sourceType>supplyChainModel.support.Order</sourceType>
+  <sourceType>supplyChainModel.support.Shipment</sourceType>
   <inclTick>true</inclTick>
   <inclBatchRun>false</inclBatchRun>
   <inclRandomSeed>false</inclRandomSeed>
@@ -17,26 +17,26 @@
   <atEnd>false</atEnd>
   <methodDataSources class="linked-hash-map">
     <entry>
-      <string>IdClient</string>
-      <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>IdClient</id>
-        <className>supplyChainModel.support.Order</className>
-        <methodName>getIdClient</methodName>
-      </repast.simphony.data2.engine.MethodDataSourceDefinition>
-    </entry>
-    <entry>
       <string>IdSupplier</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
         <id>IdSupplier</id>
-        <className>supplyChainModel.support.Order</className>
+        <className>supplyChainModel.support.Shipment</className>
         <methodName>getIdSupplier</methodName>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>IdClient</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>IdClient</id>
+        <className>supplyChainModel.support.Shipment</className>
+        <methodName>getIdClient</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
       <string>LocationX</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
         <id>LocationX</id>
-        <className>supplyChainModel.support.Order</className>
+        <className>supplyChainModel.support.Shipment</className>
         <methodName>getLocationX</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
@@ -44,7 +44,7 @@
       <string>LocationY</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
         <id>LocationY</id>
-        <className>supplyChainModel.support.Order</className>
+        <className>supplyChainModel.support.Shipment</className>
         <methodName>getLocationY</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
@@ -52,7 +52,7 @@
       <string>Size</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
         <id>Size</id>
-        <className>supplyChainModel.support.Order</className>
+        <className>supplyChainModel.support.Shipment</className>
         <methodName>getSize</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>

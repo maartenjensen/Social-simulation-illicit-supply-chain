@@ -1,5 +1,7 @@
 package supplyChainModel.enums;
 
+import java.awt.Color;
+
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
 
@@ -10,15 +12,17 @@ import supplyChainModel.common.Logger;
  */
 public enum SCType {
 
-	PRODUCER(0), INTERNATIONAL(1), WHOLESALER(2), RETAIL(3), CONSUMER(4);
+	PRODUCER(0, Color.BLACK), INTERNATIONAL(1, Color.BLACK), WHOLESALER(2, Color.MAGENTA), RETAIL(3, Color.BLACK), CONSUMER(4, Color.RED);
 	
 	static int scLayers = 5;
 	
 	private int scLayer;
+	private Color color;
 	
-	private SCType(int scLayer) {
+	private SCType(int scLayer, Color color) {
 		
 		this.scLayer = scLayer;
+		this.color = color;
 	}
 
 	public int getX() {
@@ -31,6 +35,10 @@ public enum SCType {
 	
 	public int getScLayer() {
 		return scLayer;
+	}
+	
+	public Color getColor() {
+		return color;
 	}
 	
 	public String getScCharacter() {

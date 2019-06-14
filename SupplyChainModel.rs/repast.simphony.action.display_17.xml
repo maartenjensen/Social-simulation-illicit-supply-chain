@@ -3,10 +3,6 @@
   <type>2D</type>
   <styles>
     <entry>
-      <string>supplyChainModel.styles.VisualSCType</string>
-      <string>supplyChainModel.styles.SCTypeStyle2D</string>
-    </entry>
-    <entry>
       <string>supplyChainModel.DataCollector</string>
       <string>supplyChainModel.styles.DataCollector2D</string>
     </entry>
@@ -28,10 +24,6 @@
     </entry>
   </styles>
   <editedStyles>
-    <entry>
-      <string>supplyChainModel.styles.VisualSCType</string>
-      <null/>
-    </entry>
     <entry>
       <string>supplyChainModel.DataCollector</string>
       <null/>
@@ -81,35 +73,31 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>-1650634587</hashCode>
+    <hashCode>2049223991</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>continuous space</layoutProjection>
   <layoutInterval>0</layoutInterval>
   <layerOrder>
     <entry>
-      <string>supplyChainModel.styles.VisualSCType</string>
-      <int>1</int>
-    </entry>
-    <entry>
       <string>supplyChainModel.DataCollector</string>
       <int>0</int>
     </entry>
     <entry>
       <string>supplyChainModel.support.Shipment</string>
-      <int>4</int>
-    </entry>
-    <entry>
-      <string>supplyChainModel.agents.BaseAgent</string>
-      <int>5</int>
-    </entry>
-    <entry>
-      <string>supplyChainModel.support.Order</string>
       <int>3</int>
     </entry>
     <entry>
-      <string>supplyChainModel.agents.CountryAgent</string>
+      <string>supplyChainModel.agents.BaseAgent</string>
+      <int>4</int>
+    </entry>
+    <entry>
+      <string>supplyChainModel.support.Order</string>
       <int>2</int>
+    </entry>
+    <entry>
+      <string>supplyChainModel.agents.CountryAgent</string>
+      <int>1</int>
     </entry>
   </layerOrder>
   <projections>

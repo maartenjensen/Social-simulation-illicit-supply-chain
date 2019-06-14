@@ -62,11 +62,14 @@ public class Agent1Producer extends BaseAgent {
 		
 		ArrayList<TrustCompare> sortedClients = retrieveSortedClients();
 		for (TrustCompare client : sortedClients) {
+			
 			boolean gotANewOrder = false;
 			//Logger.logSCAgent(scType, "stepSendShipment(): " + id + " other id: " + client.getAgent().getId() + ", " + client.getTrust());
 			ArrayList<Order> clientOrders = new ArrayList<Order>();
 			for (Order order : getArrivedOrders()) {
 				if (order.getClient().getId() == client.getAgent().getId()) {
+					
+					// Create a collection of orders for this client
 					clientOrders.add(order);
 					if (!order.isSaved())
 						gotANewOrder = true;

@@ -19,7 +19,7 @@ public class Shipment {
 	private int stepsLeft;
 	private double price;
 	//private double seizureChance;
-	
+
 	// Visualization variables
 	private double vsl_moveSpeed;
 	private double vsl_moveHeading;

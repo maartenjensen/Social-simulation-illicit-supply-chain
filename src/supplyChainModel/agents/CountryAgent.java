@@ -1,11 +1,13 @@
 package supplyChainModel.agents;
 
-import java.awt.Point;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 import repast.simphony.context.Context;
 import repast.simphony.random.RandomHelper;
+import repast.simphony.space.continuous.NdPoint;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
 import supplyChainModel.common.RepastParam;
@@ -17,31 +19,38 @@ import supplyChainModel.enums.SCType;
  * country objects contain their position, possible spawn locations (countryPoints)
  * and quality. This class can be outfitted with police interventions.
  * @author Maarten Jensen
- *
  */
 public class CountryAgent {
 
 	private String name = "none";
 	private ArrayList<SCType> scTypes = new ArrayList<SCType>();
 
-	private final int x;
-	private int y;
-	private int height;
+	private double x;
+	private double y;
+	private double radius;
 	private double lowQualityProb;
 	
 	private ArrayList<Integer> countryPoints;
+	private ArrayList<NdPoint> countryPointsInner;
+	private ArrayList<NdPoint> countryPointsOuter;
+	private HashMap<String,Integer> countryBorders = new HashMap<String,Integer>();
 	
-	public CountryAgent(final Context<Object> context, String countryName, ArrayList<SCType> scTypes, int x, int y, int height, double lowQualityProb) {
+	private Color vsl_color;
+	
+	public CountryAgent(final Context<Object> context, String countryName, ArrayList<SCType> scTypes, HashMap<String, Integer> countryBorders, double x, double y, double radius, double lowQualityProb) {
 		
 		context.add(this);
 		name = countryName;
 		this.scTypes = scTypes;
+		this.countryBorders = countryBorders;
 		this.x = x;
 		this.y = y;
-		this.height = height;
+		this.radius = radius;
 		this.lowQualityProb = lowQualityProb;
-		countryPoints = createCountryPoints();
+		createCountryPoints();
 		move(this.x, this.y);
+		
+		vsl_color = new Color(230 + RandomHelper.nextIntFromTo(0, 20), 230 + RandomHelper.nextIntFromTo(0, 20), 230 + RandomHelper.nextIntFromTo(0, 20));
 	}
 
 	public void spawnAgent(SCType scType) {
@@ -76,47 +85,125 @@ public class CountryAgent {
 	/**
 	 * Moves the supply chain agent to the correct location, dependent on the base country
 	 */
-	public void move(int x, int y) {
+	public void move(double x, double y) {
 
-		Point newPos = new Point(x, y);
-		Logger.logInfo(name + " new pos:[" + newPos.x + ", " + newPos.y + "]");
+		NdPoint newPos = new NdPoint(x, y);
+		Logger.logInfo(name + " new pos:[" + newPos.getX() + ", " + newPos.getY() + "]");
 		
 		SU.getContinuousSpace().moveTo(this, newPos.getX(), newPos.getY());	
-		SU.getGrid().moveTo(this, newPos.x, (int) newPos.y);
+		SU.getGrid().moveTo(this, (int) newPos.getX(), (int) newPos.getY());
 	}
 	
 	public String getLabel()  {
 		return name;
 	}
 	
-	private ArrayList<Integer> createCountryPoints() {
+	private void createCountryPoints() {
 
-		ArrayList<Integer> emptyCountryPoints = new ArrayList<Integer>();
-		for (int y = this.y; y > this.y - height; y --) {
-				emptyCountryPoints.add(y);
+		// Create straight down country points
+		countryPoints = new ArrayList<Integer>();
+		for (int y = (int) (this.y + radius); y > this.y - radius; y --) {
+			countryPoints.add(y);
 		}
-		return emptyCountryPoints;
-	}
-	
-	public Point getFreePosition(Object toExclude, SCType scType) {
 		
-		boolean free = false;
+		// Create inner country points, for retailer level
+		countryPointsInner = new ArrayList<NdPoint>();
+		double distance = 0.4 * radius;
+		double degreesDif = (360.0/Constants.VSL_RAD_CONVERT)/(Constants.VSL_N_AGENT_RADIUS + 1);
+		for (int i = 0; i < Constants.VSL_N_AGENT_RADIUS; i ++) {
+			NdPoint countryPoint = new NdPoint(x + Math.cos(i * degreesDif) * distance, y - Math.sin(i * degreesDif) * distance);
+			countryPointsInner.add(countryPoint);
+		}
+		
+		// Create outer country points, for consumer level
+		countryPointsOuter = new ArrayList<NdPoint>();
+		distance = 0.8 * radius;
+		for (int i = 0; i < Constants.VSL_N_AGENT_RADIUS; i ++) {
+			NdPoint countryPoint = new NdPoint(x + Math.cos(i * degreesDif) * distance, y - Math.sin(i * degreesDif) * distance);
+			countryPointsOuter.add(countryPoint);
+		}
+	}
+
+	public NdPoint getFreePosition(Object toExclude, SCType scType) {
+		
+		switch(scType) {
+		case PRODUCER:
+			return getFreePositionStandard(toExclude, scType);
+		case INTERNATIONAL:
+			return getFreePositionStandard(toExclude, scType);
+		case WHOLESALER:
+			return getFreePositionStandard(toExclude, scType);
+		case RETAIL:
+			return getFreePositionInner(toExclude, scType);
+		case CONSUMER:
+			return getFreePositionOuter(toExclude, scType);
+		default:
+			return new NdPoint(this.x, this.y - radius/2.0);
+		}
+	}
+
+	public NdPoint getFreePositionStandard(Object toExclude, SCType scType) {
+		
+		double xAdjust = 0;
+		if (scType == SCType.WHOLESALER)
+			xAdjust = radius;
+			
 		Collections.shuffle(countryPoints);
 		for (Integer y : countryPoints) {
 		
-				free = true;
-				for (Object o: SU.getGrid().getObjectsAt(scType.getX(), y)) {
-					if (o != toExclude)
-						free = false;
-				}
-				
-				if (free) {
-					return new Point(scType.getX(),y);
+				if (pointFree(new NdPoint(this.x - xAdjust, y), toExclude)) {
+					return new NdPoint(this.x - xAdjust, y);
 				}
 		}
 		Logger.logInfo("No free point in " + name);
-		return new Point(scType.getX(), this.y - height/2);
+		return new NdPoint(this.x - xAdjust, this.y - radius/2);
 	}
+	
+	public NdPoint getFreePositionInner(Object toExclude, SCType scType) {
+
+		Collections.shuffle(countryPointsInner);
+		for (NdPoint point : countryPointsInner) {
+		
+				if (pointFree(new NdPoint(point.getX(), point.getY()), toExclude)) {
+					return new NdPoint(point.getX(), point.getY());
+				}
+		}
+		return countryPointsInner.get(0);
+	}
+	
+	public NdPoint getFreePositionOuter(Object toExclude, SCType scType) {
+
+		Collections.shuffle(countryPointsOuter);
+		for (NdPoint point : countryPointsOuter) {
+			
+			if (pointFree(new NdPoint(point.getX(), point.getY()), toExclude)) {
+				return new NdPoint(point.getX(), point.getY());
+			}
+		}
+		return countryPointsOuter.get(0);
+	}
+	
+	/**
+	 * Check if the point is free of BaseAgents, return true when it is free
+	 * @param point
+	 * @param toExclude
+	 * @return
+	 */
+	public boolean pointFree(NdPoint point, Object toExclude) {
+		
+		for (Object o: SU.getContinuousSpace().getObjectsAt(point.getX(), point.getY())) {
+			Logger.logInfo("Found object of class: " + o.getClass());
+			if (o instanceof BaseAgent)
+				Logger.logInfo("Found agent: " + ((BaseAgent)o).getId());
+			if (o != toExclude && o instanceof BaseAgent)
+				return false;
+		}
+		return true;
+	}
+	
+	/*================================
+	 * Getters and setters
+	 *===============================*/
 	
 	public boolean containsSCType(SCType scType) {
 
@@ -124,6 +211,10 @@ public class CountryAgent {
 			return true;
 		else
 			return false;
+	}
+	
+	public HashMap<String, Integer> getCountryBorders() {
+		return countryBorders;
 	}
 	
 	public String getName() {
@@ -134,7 +225,11 @@ public class CountryAgent {
 		return lowQualityProb;
 	}
 	
-	public int getHeight() {
-		return height;
+	public double getRadius() {
+		return radius;
+	}
+	
+	public Color getColor() {
+		return vsl_color;
 	}
 }

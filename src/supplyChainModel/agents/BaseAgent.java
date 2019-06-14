@@ -1,14 +1,15 @@
 package supplyChainModel.agents;
 
 import java.awt.Color;
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Set;
 
 import frameworkTrust.RelationC;
 import frameworkTrust.RelationS;
 import repast.simphony.random.RandomHelper;
+import repast.simphony.space.continuous.NdPoint;
 import repast.simphony.space.graph.Network;
 import repast.simphony.space.graph.RepastEdge;
 import supplyChainModel.common.Constants;
@@ -315,7 +316,7 @@ public class BaseAgent {
 	}
 
 	/**
-	 * Updates the arrived orders which are orders from the clients. 
+	 * Adds all the arrived orders to the relation with the client (RelationC). 
 	 */
 	public void updateArrivedOrders() {
 		
@@ -416,9 +417,10 @@ public class BaseAgent {
 	}
 	
 	/**
+	 * Sorts the clients with higher trust levels first.
 	 * This function retrieves all the clients, then converts them to
 	 * TrustCompare objects who can easily be sorted according to their 
-	 * trust. The suppliers are sorted with higher trust levels first.
+	 * trust. 
 	 * @return
 	 */
 	public ArrayList<TrustCompare> retrieveSortedClients() {
@@ -460,7 +462,7 @@ public class BaseAgent {
 	 * when the stock is lower than the craved amount it
 	 * is put at zero. When the requested quality is not 
 	 * in the stock it is added as a zero to the stock
-	 * There is a check on minimum package size
+	 * There is a check on minimum package size and (TODO maximum package size)
 	 */
 	public HashMap<Byte, Double> findGoodsInStock(HashMap<Byte, Double> cravedGoods) {
 
@@ -763,6 +765,17 @@ public class BaseAgent {
 		return false;
 	}
 	
+	public static ArrayList<Byte> shuffleSet(Set<Byte> set) {
+		
+		ArrayList<Byte> array = new ArrayList<Byte>();
+		if (set.isEmpty())
+			return array;
+		
+		array.addAll(set);
+		Collections.shuffle(array);
+		return array;
+	}
+	
 	/*====================================
 	 * Simple getter and setter functions
 	 *====================================*/
@@ -801,7 +814,7 @@ public class BaseAgent {
 	}
 	
 	public Color getColor() {
-		return Color.DARK_GRAY;
+		return scType.getColor();
 	}
 
 	/**
@@ -961,10 +974,10 @@ public class BaseAgent {
 	 */
 	public void move() {
 
-		Point newPos = baseCountry.getFreePosition(this, scType);
-		Logger.logSCAgent(scType, getId() + " spawned in " + baseCountry.getName() + " pos:[" + newPos.x + ", " + newPos.y + "]");
+		NdPoint newPos = baseCountry.getFreePosition(this, scType);
+		Logger.logSCAgent(scType, getId() + " spawned in " + baseCountry.getName() + " pos:[" + newPos.getX() + ", " + newPos.getY() + "]");
 		
 		SU.getContinuousSpace().moveTo(this, newPos.getX(), newPos.getY());	
-		SU.getGrid().moveTo(this, newPos.x, newPos.y);
+		SU.getGrid().moveTo(this, (int) newPos.getX(), (int) newPos.getY());
 	}
 }

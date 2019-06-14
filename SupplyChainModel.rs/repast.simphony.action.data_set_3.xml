@@ -1,7 +1,6 @@
 <repast.simphony.data2.engine.DataSetDescriptor simphonyVersion="2.6.0">
-  <name>Agent Data</name>
-  <type>NON_AGGREGATE</type>
-  <sourceType>supplyChainModel.agents.BaseAgent</sourceType>
+  <name>DC All</name>
+  <type>AGGREGATE</type>
   <inclTick>true</inclTick>
   <inclBatchRun>false</inclBatchRun>
   <inclRandomSeed>false</inclRandomSeed>
@@ -12,40 +11,35 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>214488370</hashCode>
+    <hashCode>270020845</hashCode>
   </scheduleParams>
   <atEnd>false</atEnd>
   <methodDataSources class="linked-hash-map">
     <entry>
-      <string>Id</string>
+      <string>Stock consumed tot</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Id</id>
-        <className>supplyChainModel.agents.BaseAgent</className>
-        <methodName>getId</methodName>
+        <id>Stock consumed tot</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getStockConsumedTot</methodName>
+        <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>LocationX</string>
+      <string>Stock created tot</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>LocationX</id>
-        <className>supplyChainModel.agents.BaseAgent</className>
-        <methodName>getLocationX</methodName>
+        <id>Stock created tot</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getStockCreatedTot</methodName>
+        <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>LocationY</string>
+      <string>Stock deleted tot</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>LocationY</id>
-        <className>supplyChainModel.agents.BaseAgent</className>
-        <methodName>getLocationY</methodName>
-      </repast.simphony.data2.engine.MethodDataSourceDefinition>
-    </entry>
-    <entry>
-      <string>Money</string>
-      <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Money</id>
-        <className>supplyChainModel.agents.BaseAgent</className>
-        <methodName>getMoney</methodName>
+        <id>Stock deleted tot</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getStockDeletedTot</methodName>
+        <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
   </methodDataSources>

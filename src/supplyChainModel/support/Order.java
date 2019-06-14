@@ -102,6 +102,12 @@ public class Order {
 		return false;
 	}
 	
+	/**
+	 * Returns true if the order has been put on hold,
+	 * due to not being able to send it in previous ticks.
+	 * False if the order has just arrived.
+	 * @return
+	 */
 	public boolean isSaved() {
 		return savedOrder;
 	}
