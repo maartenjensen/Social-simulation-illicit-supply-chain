@@ -1,6 +1,7 @@
 package supplyChainModel.common;
 
 import java.awt.Font;
+import java.util.HashMap;
 
 /**
  * Contains all the parameters that are used in the simulation, 
@@ -59,12 +60,21 @@ public class Constants {
 	public static final double PROB_POSSIBLE_NEW_MULT = 0.5;
 	public static final int    NEW_CONNECTION_COOLDOWN = 10;
 	
+	//public static final int HashMap<Integer, Double> = ;
+	private static final HashMap<Integer, Double> BORDERS_CONNECT_P = new HashMap<Integer, Double>() {
+		private static final long serialVersionUID = 1L;
+		{
+			put(0, 0.4); put(1, 0.3); put(2, 0.2); put(3, 0.1); put(4, 0.05); put(5, 0.025); put(6, 0.0125); put(7, 0.00625);
+			//put(0, 0.6); put(1, 0.5); put(2, 0.4); put(3, 0.3);	put(4, 0.2); put(5, 0.1); put(6, 0.05); put(7, 0.025);
+		}
+	};
+	
 	// Number of nodes per country
 	public static final int N_PRODUCERS	= 6;
 	public static final int N_INTERNATIONALS = 4;
 	public static final int N_WHOLESALERS = 2;
-	public static final int N_RETAILERS	= 4;
-	public static final int N_CONSUMERS	= 4;
+	public static final int N_RETAILERS	= 2;
+	public static final int N_CONSUMERS	= 2;
 
 	//public static final byte MAX_GOOD_QUALITY = 100;
 	public static final byte QUALITY_MINIMUM = 40;
@@ -89,4 +99,14 @@ public class Constants {
 	public static final int VSL_N_AGENTS_LAYERS = 2;
 	public static final double VSL_ORD_SHP_DIF_Y = 0.2;
 	public static final double VSL_ORD_SHP_DIF_MOVE = 0.2;
+	
+	public static double getBordersConnectP(int borders) {
+		if (BORDERS_CONNECT_P.containsKey(borders)) {
+			return BORDERS_CONNECT_P.get(borders);
+		}
+		else {
+			Logger.logError("Constants.getBordersConnectP didn't find border number:" + borders);
+			return 0.0;
+		}
+	}
 }

@@ -37,7 +37,8 @@ public class BaseAgent {
 	
 	protected double securityStockMultiplier;
 	protected HashMap<Byte, Double> stock;
-
+	protected HashMap<Byte, Double> reservedStock;
+	
 	protected double money;
 	
 	protected int newSupplierCooldown = 0;
@@ -618,7 +619,7 @@ public class BaseAgent {
 		for (BaseAgent agent : SU.getObjectsAllRandom(BaseAgent.class)) {
 		
 			if (agent.getScLayer() == (scType.getScLayer() - 1)) { //Agent == a supplier
-				if (!RepastParam.getLimitedSuppliersClients() || agent.checkCanKnowAgent(SU.getGrid().getLocation(this).getY())) {
+				if (!RepastParam.getLimitedSuppliersClients() || agent.checkCanKnowAgent(getCountry())) {
 					if (!possibleNewSuppliers.contains(agent.getId()))
 						possibleNewSuppliers.add(agent.getId());
 				}
@@ -627,7 +628,7 @@ public class BaseAgent {
 					agent.addPossibleNewClient(this);
 			}
 			else if (agent.getScLayer() == (scType.getScLayer() + 1)) { //Agent == a client
-				if (!RepastParam.getLimitedSuppliersClients() || agent.checkCanKnowAgent(SU.getGrid().getLocation(this).getY())) {
+				if (!RepastParam.getLimitedSuppliersClients() || agent.checkCanKnowAgent(getCountry())) {
 					if (!possibleNewClients.contains(agent.getId()))
 						possibleNewClients.add(agent.getId());
 				}
@@ -666,7 +667,7 @@ public class BaseAgent {
 	
 	public void addPossibleNewSupplier(BaseAgent supplier) {
 		
-		if (!RepastParam.getLimitedSuppliersClients() || supplier.checkCanKnowAgent(SU.getGrid().getLocation(this).getY()) || possibleNewSuppliers.isEmpty()) {
+		if (!RepastParam.getLimitedSuppliersClients() || supplier.checkCanKnowAgent(supplier.getCountry()) || possibleNewSuppliers.isEmpty()) {
 			if (!possibleNewSuppliers.contains(supplier.getId()))
 				possibleNewSuppliers.add(supplier.getId());
 		}
@@ -674,7 +675,7 @@ public class BaseAgent {
 	
 	public void addPossibleNewClient(BaseAgent client) {
 		
-		if (!RepastParam.getLimitedSuppliersClients() || client.checkCanKnowAgent(SU.getGrid().getLocation(this).getY()) || possibleNewClients.isEmpty()) {
+		if (!RepastParam.getLimitedSuppliersClients() || client.checkCanKnowAgent(client.getCountry()) || possibleNewClients.isEmpty()) {
 			if (!possibleNewClients.contains(client.getId()))
 				possibleNewClients.add(client.getId());
 		}
@@ -686,9 +687,10 @@ public class BaseAgent {
 	 * @param y
 	 * @return
 	 */
-	public boolean checkCanKnowAgent(int y) {
+	public boolean checkCanKnowAgent(CountryAgent otherCountry) {
 		
-		double probability = Math.max( Constants.PROB_POSSIBLE_NEW_MIN, (1.0 - Math.min(1.0, (double) Math.abs(SU.getGrid().getLocation(this).getY() - y) / (Constants.GRID_HEIGHT * Constants.PROB_POSSIBLE_NEW_MULT))) );
+		int borders = baseCountry.retrieveBordersN(otherCountry.getName());
+		double probability = Constants.getBordersConnectP(borders);
 		if (RandomHelper.nextDouble() <= probability) 
 			return true;
 		else

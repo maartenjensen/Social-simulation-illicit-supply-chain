@@ -33,7 +33,7 @@ public class CountryAgent {
 	private ArrayList<Integer> countryPoints;
 	private ArrayList<NdPoint> countryPointsInner;
 	private ArrayList<NdPoint> countryPointsOuter;
-	private HashMap<String,Integer> countryBorders = new HashMap<String,Integer>();
+	private HashMap<String, Integer> countryBorders = new HashMap<String, Integer>();
 	
 	private Color vsl_color;
 	
@@ -204,7 +204,6 @@ public class CountryAgent {
 	/*================================
 	 * Getters and setters
 	 *===============================*/
-	
 	public boolean containsSCType(SCType scType) {
 
 		if (scTypes.contains(scType))
@@ -213,8 +212,22 @@ public class CountryAgent {
 			return false;
 	}
 	
+	public int retrieveBordersN(String otherCountry) {
+		if (countryBorders.containsKey(otherCountry)) {
+			return countryBorders.get(otherCountry);
+		}
+		else {
+			Logger.logError("CountryAgent.retrieveBordersN(): countryBorders for country:" + name + " does not contain country:" + otherCountry);
+			return -1;
+		}
+	}
+	
 	public HashMap<String, Integer> getCountryBorders() {
 		return countryBorders;
+	}
+	
+	public String getCountryBordersStr() {
+		return countryBorders.toString();
 	}
 	
 	public String getName() {
