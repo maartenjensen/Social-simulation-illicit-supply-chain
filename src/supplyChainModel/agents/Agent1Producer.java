@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import repast.simphony.context.Context;
 import repast.simphony.random.RandomHelper;
+import repast.simphony.space.continuous.NdPoint;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.RepastParam;
 import supplyChainModel.common.SU;
@@ -32,6 +33,18 @@ public class Agent1Producer extends BaseAgent {
 		setStartingStock();
 	}
 	
+	public Agent1Producer(final Context<Object> context, int id, CountryAgent country, NdPoint newPos, double money, double sellPrice, double averageBuyCost, double profitPercentage,
+						  double maxPackageSize, double securityStockMultipier, double personalRisk, double personalRiskThreshold, double desperation, int inactivityTimer, byte quality) {
+		
+		super(id, country, SCType.PRODUCER, newPos, money, sellPrice, averageBuyCost, profitPercentage, maxPackageSize,
+			  securityStockMultipier, personalRisk, personalRiskThreshold, desperation, inactivityTimer);
+
+		this.quality = quality;
+		this.previousOrder = 0.0;
+		
+		setStartingStock();
+	}
+
 	/**
 	 * The producer receives shipments it has made itself,
 	 * the money is the trade in for raw materials and production costs
@@ -41,11 +54,12 @@ public class Agent1Producer extends BaseAgent {
 		
 		for (Shipment shipment : getArrivedShipments()) {
 			money -= shipment.getPrice();
+			updateAverageBuyCost(shipment.getPrice(), getTotalGoodsQuantity(shipment.getGoods()));
 			addToStock(shipment.getGoods());
 			shipment.remove();
 		}
 	}
-	
+
 	@Override
 	public void stepChooseSuppliersAndClients() {
 		searchClients();
@@ -78,13 +92,13 @@ public class Agent1Producer extends BaseAgent {
 			
 			//Look for all the orders that are arrived and then combine them
 			if (!clientOrders.isEmpty()) {
-				if (RandomHelper.nextDouble() <= RepastParam.getSendShipmentProbability() && gotANewOrder) {
+				if (RandomHelper.nextDouble() <= RepastParam.getSendShipmentProbability() && gotANewOrder && daringAndAction(Constants.PS_SEND_SHIPMENT)) {
 				
 					HashMap<Byte, Double> orderedGoodsCombined = combineOrderedGoods(clientOrders);
 					HashMap<Byte, Double> goodsToSend = findGoodsInStock(orderedGoodsCombined);
 					if (!goodsToSend.isEmpty()) {
 						
-						new Shipment(clientOrders.get(0).getClient(), this, goodsToSend, calculateCostOfGoods(goodsToSend, sellPrice), RepastParam.getShipmentStep()); 
+						new Shipment(clientOrders.get(0).getClient(), this, goodsToSend, calculateCostOfGoods(goodsToSend, getBaseSellPrice()), Constants.SHIPMENT_STEP); 
 						relationsC.get(clientOrders.get(0).getClient().getId()).addMyShipment(goodsToSend);
 					}
 					for (Order order : clientOrders) 
@@ -126,7 +140,7 @@ public class Agent1Producer extends BaseAgent {
 		HashMap<Byte, Double> producedGoods = new HashMap<Byte, Double>();
 		producedGoods.put(quality, chosenQuantity);
 		double productionCost = calculateCostOfGoods(producedGoods, Constants.PRICE_PRODUCTION);
-		new Shipment(this, null, producedGoods, productionCost, RepastParam.getShipmentStep());
+		new Shipment(this, null, producedGoods, productionCost, Constants.SHIPMENT_STEP);
 		
 		SU.getDataCollector().addProducedStock(producedGoods);
 		

@@ -5,9 +5,11 @@ import java.util.HashMap;
 
 import repast.simphony.context.Context;
 import repast.simphony.random.RandomHelper;
+import repast.simphony.space.continuous.NdPoint;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
 import supplyChainModel.common.RepastParam;
+import supplyChainModel.common.SU;
 import supplyChainModel.enums.SCType;
 import supplyChainModel.support.Order;
 import supplyChainModel.support.Shipment;
@@ -25,6 +27,15 @@ public class Agent3Wholesaler extends BaseAgent {
 		
 		setStartingStock();
 	}
+	
+	public Agent3Wholesaler(final Context<Object> context, int id, CountryAgent country, NdPoint newPos, double money, double sellPrice, double averageBuyCost, double profitPercentage,
+			   				double maxPackageSize, double securityStockMultipier, double personalRisk, double personalRiskThreshold, double desperation, int inactivityTimer) {
+		
+		super(id, country, SCType.WHOLESALER, newPos, money, sellPrice, averageBuyCost, profitPercentage, maxPackageSize,
+		securityStockMultipier, personalRisk, personalRiskThreshold, desperation, inactivityTimer);
+		
+		setStartingStock();
+	}
 
 	@Override
 	public void stepProcessArrivedShipments() {
@@ -34,6 +45,7 @@ public class Agent3Wholesaler extends BaseAgent {
 		for (Shipment shipment : getArrivedShipments()) {
 			money -= shipment.getPrice();
 			shipment.getSupplier().receivePayment(shipment.getPrice());
+			updateAverageBuyCost(shipment.getPrice(), getTotalGoodsQuantity(shipment.getGoods()));
 			addToStock(shipment.getGoods());
 			shipment.remove();
 			// Add import etc for DataCollector.
@@ -67,13 +79,13 @@ public class Agent3Wholesaler extends BaseAgent {
 			//Look for all the orders that are arrived and then combine them
 			
 			if (!clientOrders.isEmpty()) {
-				if (RandomHelper.nextDouble() <= RepastParam.getSendShipmentProbability() && gotANewOrder) {
+				if (RandomHelper.nextDouble() <= RepastParam.getSendShipmentProbability() && gotANewOrder && daringAndAction(Constants.PS_SEND_SHIPMENT)) {
 				
 					HashMap<Byte, Double> orderedGoodsCombined = combineOrderedGoods(clientOrders);
 					HashMap<Byte, Double> goodsToSend = findGoodsInStockWholesaler(orderedGoodsCombined);
 					if (!goodsToSend.isEmpty()) {
 						
-						new Shipment(clientOrders.get(0).getClient(), this, goodsToSend, calculateCostOfGoods(goodsToSend, sellPrice), RepastParam.getShipmentStep()); 
+						new Shipment(clientOrders.get(0).getClient(), this, goodsToSend, calculateCostOfGoods(goodsToSend, getBaseSellPrice()), Constants.SHIPMENT_STEP); 
 						relationsC.get(clientOrders.get(0).getClient().getId()).addMyShipment(goodsToSend);
 					}
 					for (Order order : clientOrders) 
@@ -131,17 +143,19 @@ public class Agent3Wholesaler extends BaseAgent {
 		if (extraLowQualityNeeded > 0 && stock.containsKey(Constants.QUALITY_MAXIMUM)) {
 			Logger.logSCAgent(scType, id + " Step 1: extraLowQualityNeeded:" + extraLowQualityNeeded + ", stock:" + stock.toString() + ", choosenGoods:" + choosenGoods.toString());
 			double availableLowQuality = Math.min(extraLowQualityNeeded, 1.5 * stock.get(Constants.QUALITY_MAXIMUM));
-			if (choosenGoods.containsKey(Constants.QUALITY_MINIMUM)) {
+			if (choosenGoods.containsKey(Constants.QUALITY_MINIMUM)) { //If there was already some low quality in choosenGoods
 				
 				choosenGoods.put(Constants.QUALITY_MINIMUM, availableLowQuality + choosenGoods.get(Constants.QUALITY_MINIMUM) );
-				stock.put(Constants.QUALITY_MAXIMUM, Math.max(0.0, stock.get(Constants.QUALITY_MAXIMUM) - availableLowQuality * (2.0/3.0))); //Used Math.min because of rounding errors to keep it at least 0.0
+				stock.put(Constants.QUALITY_MAXIMUM, Math.max(0.0, stock.get(Constants.QUALITY_MAXIMUM) - availableLowQuality * (2.0/3.0))); //Used Math.max because of rounding errors to keep it at least 0.0
+				SU.getDataCollector().addCuttingStock(availableLowQuality, availableLowQuality * (2.0/3.0));
 			}
 			else {
 				if (availableLowQuality + stock.get(Constants.QUALITY_MAXIMUM) >= minPackageSize) {
 					
 					choosenGoods.put(Constants.QUALITY_MINIMUM, availableLowQuality + stock.get(Constants.QUALITY_MINIMUM) );
-					stock.put(Constants.QUALITY_MAXIMUM, Math.max(0.0, stock.get(Constants.QUALITY_MAXIMUM) - availableLowQuality * (2.0/3.0))); //Used Math.min because of rounding errors to keep it at least 0.0
+					stock.put(Constants.QUALITY_MAXIMUM, Math.max(0.0, stock.get(Constants.QUALITY_MAXIMUM) - availableLowQuality * (2.0/3.0))); //Used Math.max because of rounding errors to keep it at least 0.0
 					stock.put(Constants.QUALITY_MINIMUM, 0.0);
+					SU.getDataCollector().addCuttingStock(availableLowQuality, availableLowQuality * (2.0/3.0));
 				}
 			}
 			Logger.logSCAgent(scType, id + " Step 2: availableLowQuality:" + availableLowQuality + ", stock:" + stock.toString() + ", choosenGoods:" + choosenGoods.toString());
@@ -186,7 +200,7 @@ public class Agent3Wholesaler extends BaseAgent {
 					else {
 						HashMap<Byte, Double> chosenGoods = new HashMap<Byte, Double>();
 						chosenGoods.put(quality, chosenQuantity);
-						placedOrders.put(supplier.getId(), new Order(this, supplier, chosenGoods, RepastParam.getShipmentStep()));
+						placedOrders.put(supplier.getId(), new Order(this, supplier, chosenGoods, Constants.SHIPMENT_STEP));
 					}
 				}
 			}

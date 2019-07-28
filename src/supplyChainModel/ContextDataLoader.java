@@ -1,8 +1,5 @@
 package supplyChainModel;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -12,6 +9,7 @@ import repast.simphony.context.Context;
 import supplyChainModel.agents.CountryAgent;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
+import supplyChainModel.common.SU;
 import supplyChainModel.enums.SCType;
 
 /**
@@ -31,7 +29,7 @@ public class ContextDataLoader {
 	public void readFullFile(final Context<Object> context, String filePath, String fileName, String fileName2) {
 		
 		Logger.logInfo("ContextDataLoader.readFullFile() file path and name: " + filePath + "/" + fileName);
-		List<String> dataAll = readFile(filePath + "/" + fileName);
+		List<String> dataAll = SU.readFile(filePath + "/" + fileName);
 		List<String> dataC = new ArrayList<String>();
 		
 		for (String datum : dataAll) {
@@ -41,7 +39,7 @@ public class ContextDataLoader {
 		}
 		
 		Logger.logInfo("ContextDataLoader.readFullFile() read another file: " + filePath + "/" + fileName2);
-		List<String> dataBorders = readFile(filePath + "/" + fileName2);
+		List<String> dataBorders = SU.readFile(filePath + "/" + fileName2);
 		HashMap<String, String> dataB = new HashMap<String, String>();
 		for (String datum : dataBorders) {
 			if (!datum.startsWith("%")) {
@@ -110,7 +108,6 @@ public class ContextDataLoader {
 			}
 			else
 				Logger.logError("generateCountries: dataB does not contain the key:\"Countries\" or \"" + name + "\"");
-			
 		}
 	}
 
@@ -167,28 +164,5 @@ public class ContextDataLoader {
 		}
 		
 		return countryBorders;
-	}
-	
-	/**
-	 * Technical function that converts a text file (given with the filePathAndName) to 
-	 * a list of strings where each element in the list is a line in the text file
-	 * @param filePathAndName
-	 * @return
-	 */
-	public List<String> readFile(String filePathAndName) {
-		BufferedReader reader;
-		List<String> data = new ArrayList<String>();
-		try {
-			reader = new BufferedReader(new FileReader(filePathAndName));
-			String line = reader.readLine();
-			while (line != null) {
-				data.add(line);
-				line = reader.readLine();
-			}
-			reader.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return data;
 	}
 }

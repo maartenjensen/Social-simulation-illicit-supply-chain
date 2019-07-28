@@ -1,6 +1,9 @@
 package supplyChainModel.common;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
@@ -17,6 +20,7 @@ import repast.simphony.space.grid.Grid;
 import repast.simphony.util.SimUtilities;
 import supplyChainModel.DataCollector;
 import supplyChainModel.agents.BaseAgent;
+import supplyChainModel.agents.CountryAgent;
 
 /**
  * Simulation utility class. This class contains useful functions
@@ -47,6 +51,10 @@ public class SU {
 			Logger.logError("SU.getNewId(): agentId == -1, resetId() not called");
 			return -1;
 		}
+	}
+	
+	public static void setHigherId(int newId) {
+		agentId = Math.max(agentId, newId);
 	}
 	
 	/**
@@ -84,6 +92,25 @@ public class SU {
 			if (object instanceof BaseAgent) {
 				if ( ((BaseAgent) object).getId() == id)
 					return (BaseAgent) object;
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * Retrieves the country agent based on the name
+	 * @param clazz (e.g. use as input Human.class)
+	 * @return an ArrayList of objects from the given class
+	 */
+	public static CountryAgent getCountryAgent(String countryName) {
+		
+		//@SuppressWarnings("unchecked")
+		final Iterable<Object> objects = (Iterable<Object>) getContext().getObjects(CountryAgent.class);
+		for (final Object object : objects) {
+			
+			if (object instanceof CountryAgent) {
+				if ( ((CountryAgent) object).getName().equals(countryName))
+					return (CountryAgent) object;
 			}
 		}
 		return null;
@@ -180,7 +207,7 @@ public class SU {
 	}
 	
 	public static boolean getIsInitializing() {
-		if (getTick() <= RepastParam.getTicksInitPopulation()) 
+		if (getTick() <= Constants.INITIALIZE_TICKS) 
 			return true;
 		else
 			return false;
@@ -191,7 +218,7 @@ public class SU {
 	}
 	
 	public static boolean isInitializing() {
-		if (getTick() <= RepastParam.getTicksInitPopulation()) {
+		if (getTick() <= Constants.INITIALIZE_TICKS) {
 			return true;
 		}
 		else {
@@ -254,5 +281,28 @@ public class SU {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Technical function that converts a text file (given with the filePathAndName) to 
+	 * a list of strings where each element in the list is a line in the text file
+	 * @param filePathAndName
+	 * @return
+	 */
+	public static List<String> readFile(String filePathAndName) {
+		BufferedReader reader;
+		List<String> data = new ArrayList<String>();
+		try {
+			reader = new BufferedReader(new FileReader(filePathAndName));
+			String line = reader.readLine();
+			while (line != null) {
+				data.add(line);
+				line = reader.readLine();
+			}
+			reader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return data;
 	}
 }

@@ -1,0 +1,2 @@
+"run","pLimitedSuppliersClients","pDesperation","pSettingLoadPopulationFile","pSendShipmentProbability","pEnableSupplierOnPriceSelection","pInterceptionClientId","pDesperationOnOrder","pConMax","randomSeed","pRealisticMap","pInterceptionFromStep","pInterceptionSupplierId","pProdMax","pRunLength","pInterceptionCount","pProducerNumberCap","pConMin","pEnablePersonalRisk","pInterceptionType"
+1,"true","true","false",1.0,"true",-1,"true",5.0,790796845,"false",0,-1,10.0,10,1,8,1.0,"true","none"

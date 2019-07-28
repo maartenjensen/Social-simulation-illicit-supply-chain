@@ -1,0 +1,1 @@
+"run","tick","Id","LocationX","LocationY","Money"

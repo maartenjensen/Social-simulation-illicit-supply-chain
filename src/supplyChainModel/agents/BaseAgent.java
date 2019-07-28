@@ -31,7 +31,8 @@ public class BaseAgent {
 	protected int id;
 	protected CountryAgent baseCountry;
 	protected SCType scType;
-	protected double sellPrice;
+	
+	
 	protected double minPackageSize;
 	protected double maxPackageSize;
 	
@@ -39,10 +40,20 @@ public class BaseAgent {
 	protected HashMap<Byte, Double> stock;
 	protected HashMap<Byte, Double> reservedStock;
 	
+	protected double personalRisk;
+	protected double personalRiskThreshold;
+	
+	protected double desperation;
+	
 	protected double money;
+	protected double sellPrice;
+	protected double averageBuyCost = -1;
+	protected double profitPercentage = Constants.PROFIT_PERC_START;
 	
 	protected int newSupplierCooldown = 0;
 	protected int newClientCooldown = 0;
+	
+	protected int inactivityTimer = 0;
 
 	protected HashMap<Integer, RelationS> relationsS = new HashMap<Integer, RelationS>(); // Key: node id
 	protected HashMap<Integer, RelationC> relationsC = new HashMap<Integer, RelationC>(); // Key: node id
@@ -55,7 +66,7 @@ public class BaseAgent {
 	protected HashMap<Byte, Double> vsl_stock_total = new HashMap<Byte, Double>();
 
 	/**
-	 * Constructor
+	 * Constructor for new agents
 	 * - Adds the agent to the context
 	 * - Moves the agent to an appropriate location
 	 */
@@ -68,6 +79,7 @@ public class BaseAgent {
 		this.scType = scType;
 
 		this.sellPrice = sellPrice;
+		this.averageBuyCost = this.sellPrice;
 		this.money = sellPrice * maxPackageSize * Constants.PRICE_MONEY_START_MULT;
 		
 		this.minPackageSize = maxPackageSize * (Constants.SHIPMENT_MIN_PERCENTAGE / 100);
@@ -75,23 +87,60 @@ public class BaseAgent {
 		this.securityStockMultiplier = RandomHelper.nextDoubleFromTo(Constants.STOCK_SECURITY_MULT_MIN, Constants.STOCK_SECURITY_MULT_MAX);
 		this.stock = new HashMap<Byte, Double>();
 		
+		this.personalRisk = 0;
+		this.personalRiskThreshold = RandomHelper.nextDoubleFromTo(Constants.PERSONAL_RISK_THRESHOLD_MIN, Constants.PERSONAL_RISK_THRESHOLD_MAX);
+		this.desperation = Constants.DESPERATION_RESET;
+		
 		move();
 		if (!SU.getIsInitializing()) //When initializing this function is called manually for each agent in the ContextBuilder
 			setPossibleNewSuppliersAndClients();
 	}
 
+	public BaseAgent(	int id, CountryAgent baseCountry, SCType scType, NdPoint newPos, double money, double sellPrice, double averageBuyCost, double profitPercentage,
+						double maxPackageSize, double securityStockMultipier, double personalRisk, double personalRiskThreshold, double desperation, int inactivityTimer) {
+		
+		SU.getContext().add(this);
+		
+		this.id = id;
+		this.baseCountry = baseCountry;
+		this.scType = scType;
+		
+		this.money = money;
+		this.sellPrice = sellPrice;
+		this.averageBuyCost = averageBuyCost;
+		this.profitPercentage = profitPercentage;
+		
+		this.minPackageSize = maxPackageSize * (Constants.SHIPMENT_MIN_PERCENTAGE / 100);
+		this.maxPackageSize = maxPackageSize;
+		this.securityStockMultiplier = securityStockMultipier;
+		this.stock = new HashMap<Byte, Double>();
+		
+		this.personalRisk = personalRisk;
+		this.personalRiskThreshold = personalRiskThreshold;
+		this.desperation = desperation;
+		
+		this.inactivityTimer = inactivityTimer;
+		
+		move(newPos);
+	}
+
 	/*========================================================
 	 * The main steps of the agents, called by ContextBuilder
 	 *========================================================*/
-
 	/**
 	 * Pay the cost for stock saving, standard living cost and remove bankrupt nodes
+	 * also remove inactive nodes
 	 */
 	public void stepCheckRemoval() {
 		
 		money -= ((Constants.PRICE_LIVING_COST_MULT * maxPackageSize) + Constants.PRICE_SAVED_STOCK_MULT * getTotalGoodsQuantity(stock)) * sellPrice;
 		
-		if (money < 0) {
+		if (getAllMyShipments().size() >= 1)
+			inactivityTimer = 0;
+		else
+			inactivityTimer ++;
+		
+		if (money < 0 || inactivityTimer > Constants.INACTIVITY_REMOVAL) {
 			remove();
 		}
 	}
@@ -104,8 +153,25 @@ public class BaseAgent {
 		vsl_stock_current.clear();
 		newSupplierCooldown = Math.max(0, newSupplierCooldown - 1);
 		newClientCooldown   = Math.max(0, newClientCooldown - 1);
+		personalRisk = Math.max(0, personalRisk - Constants.PERSONAL_RISK_DRAIN);
+		
+		//Calculate desperation
+		if (isDesperationIncrease()) {
+			desperation = Math.max(Constants.DESPERATION_RESET, Math.min(1, desperation + Constants.DESPERATION_INCREASE));
+			if (desperation == 1) {
+				profitPercentage = Math.max(Constants.PROFIT_PERC_MIN, profitPercentage - Constants.PROFIT_PERC_CHANGE);
+				desperation = Constants.DESPERATION_RESET;
+			}
+		}
+		else {
+			desperation = Math.min(Constants.DESPERATION_RESET, Math.max(0, desperation - Constants.DESPERATION_INCREASE));
+			if (desperation == 0) {
+				profitPercentage = Math.min(Constants.PROFIT_PERC_MAX, profitPercentage + Constants.PROFIT_PERC_CHANGE);
+				desperation = Constants.DESPERATION_RESET;
+			}
+		}
 	}
-	
+
 	public void stepProcessArrivedShipments() {
 		// handle shipments
 	}
@@ -157,18 +223,22 @@ public class BaseAgent {
 		if (!getRequireNewSupplier())
 			return ;
 		
-		Network<Object> net = SU.getNetworkSC();
-		if (net.getInDegree(this) < Constants.MAX_NUMBER_OF_ACTIVE_SUPPLIERS) { //TODO change this to a search for active suppliers
-			
-			ArrayList<TrustCompare> allPossibleSuppliersSorted = sortAverageTrustInSuppliers(possibleNewSuppliers);
-			for (TrustCompare sCompare : allPossibleSuppliersSorted) {
+		if (daringAndAction(Constants.PS_SEARCH_CONNECTION)) {
+			Network<Object> net = SU.getNetworkSC();
+			if (net.getInDegree(this) < Constants.MAX_NUMBER_OF_ACTIVE_SUPPLIERS) { //TODO change this to a search for active suppliers
 				
-				// Condition for layer
-				if (sCompare.getAgent().getScLayer() == (scType.getScLayer() - 1) && possibleNewSuppliers.contains(sCompare.getAgent().getId()) && sCompare.getAgent().getRequireNewClient()) {
+				ArrayList<TrustCompare> allPossibleSuppliersSorted = sortAverageTrustInSuppliers(possibleNewSuppliers);
+				for (TrustCompare sCompare : allPossibleSuppliersSorted) {
 					
-					addSupplier(sCompare.getAgent());
-					sCompare.getAgent().addClient(this);
-					return ;
+					// Condition for layer
+					if (sCompare.getAgent().getScLayer() == (scType.getScLayer() - 1) && possibleNewSuppliers.contains(sCompare.getAgent().getId()) && sCompare.getAgent().getRequireNewClient()) {
+						
+						if (isDaring()) {
+							addSupplier(sCompare.getAgent());
+							sCompare.getAgent().addClient(this);
+							return ;
+						}
+					}
 				}
 			}
 		}
@@ -217,17 +287,22 @@ public class BaseAgent {
 		
 		if (!getRequireNewClient())
 			return ;
-		
-		Network<Object> net = SU.getNetworkSC();
-		if (net.getOutDegree(this) < Constants.MAX_NUMBER_OF_ACTIVE_CLIENTS) { //TODO change this to a search for active clients
+	
+		if (daringAndAction(Constants.PS_SEARCH_CONNECTION)) {
 			
-			ArrayList<TrustCompare> allPossibleClientsSorted = sortAverageTrustInClients(possibleNewClients);
-			for (TrustCompare cCompare : allPossibleClientsSorted) {
-				if (cCompare.getAgent().getScLayer() == (scType.getScLayer() + 1) && possibleNewClients.contains(cCompare.getAgent().getId()) && cCompare.getAgent().getRequireNewSupplier()) {
-
-					addClient(cCompare.getAgent());
-					cCompare.getAgent().addSupplier(this);
-					return ;
+			Network<Object> net = SU.getNetworkSC();
+			if (net.getOutDegree(this) < Constants.MAX_NUMBER_OF_ACTIVE_CLIENTS) { //TODO change this to a search for active clients
+				
+				ArrayList<TrustCompare> allPossibleClientsSorted = sortAverageTrustInClients(possibleNewClients);
+				for (TrustCompare cCompare : allPossibleClientsSorted) {
+					if (cCompare.getAgent().getScLayer() == (scType.getScLayer() + 1) && possibleNewClients.contains(cCompare.getAgent().getId()) && cCompare.getAgent().getRequireNewSupplier()) {
+	
+						if (isDaring()) {
+							addClient(cCompare.getAgent());
+							cCompare.getAgent().addSupplier(this);
+							return ;
+						}
+					}
 				}
 			}
 		}
@@ -270,8 +345,9 @@ public class BaseAgent {
 	public void addSupplier(BaseAgent supplier) {
 		
 		if (!relationsS.keySet().contains(supplier.getId())) {
+			increaseRisk(Constants.PS_NEW_CONNECTION);
 			SU.getNetworkSCReversed().addEdge(this, supplier);
-			relationsS.put(supplier.getId(), new RelationS(getId(), supplier.getId(), RepastParam.getShipmentStep() * 2, id + " -> " + supplier.getId()));
+			relationsS.put(supplier.getId(), new RelationS(getId(), supplier.getId(), Constants.SHIPMENT_STEP * 2, id + " -> " + supplier.getId()));
 			newSupplierCooldown = Constants.NEW_CONNECTION_COOLDOWN;
 			Logger.logSCAgent(scType, getNameId() + " added supplier: " + supplier.getNameId());
 		}
@@ -281,8 +357,10 @@ public class BaseAgent {
 	public void addClient(BaseAgent client) {
 		
 		if (!relationsC.keySet().contains(client.getId())) {
+			resetDesperation();
+			increaseRisk(Constants.PS_NEW_CONNECTION);
 			SU.getNetworkSC().addEdge(this, client);
-			relationsC.put(client.getId(), new RelationC(getId(), client.getId(), RepastParam.getShipmentStep() * 2, id + " -> " + client.getId()));
+			relationsC.put(client.getId(), new RelationC(getId(), client.getId(), Constants.SHIPMENT_STEP * 2, id + " -> " + client.getId()));
 			newClientCooldown = Constants.NEW_CONNECTION_COOLDOWN;
 			Logger.logSCAgent(scType, getNameId() + " added client: " + client.getNameId());
 		}
@@ -298,7 +376,7 @@ public class BaseAgent {
 			relationsS.get(supplierId).addMyOrder(placedOrders.get(supplierId).getGoods());
 		}
 	}
-	
+
 	/**
 	 * Updates the arrived shipments which are shipments from the suppliers.
 	 * This function should not be called from the Agent1Producer, since he is
@@ -384,6 +462,12 @@ public class BaseAgent {
 		return false;
 	}
 
+	public double getBaseSellPrice() {
+		
+		double expectedCost = averageBuyCost;
+		return expectedCost * (1 + (profitPercentage / (1 - profitPercentage)));
+	}
+	
 	public double calculateCostOfGoods(HashMap<Byte, Double> goodsToSend, double sellPrice) {
 		
 		double cost = 0;
@@ -429,11 +513,18 @@ public class BaseAgent {
 		ArrayList<TrustCompare> sortedClients = new ArrayList<TrustCompare>();
 		for (BaseAgent client : getClients()) {
 			RelationC relation = relationsC.get(client.getId());
-			sortedClients.add( new TrustCompare(SU.getBaseAgent(relation.getOtherId()), relation.getTrustLevel()) );
+			if (!RepastParam.getEnableSupplierOnPriceSelection()) {
+				sortedClients.add( new TrustCompare(SU.getBaseAgent(relation.getOtherId()), relation.getTrustLevel()) ); // Check Trust
+			}
+			else {
+				sortedClients.add( new TrustCompare(SU.getBaseAgent(relation.getOtherId()), SU.getBaseAgent(relation.getOtherId()).getBaseSellPrice()) ); // Check base sell price
+			}
 		}
 		
 		Collections.sort(sortedClients);
-		Collections.reverse(sortedClients);
+		if (!RepastParam.getEnableSupplierOnPriceSelection()) {
+			Collections.reverse(sortedClients); // Trust needs to be reversed, as we want the highest trust first
+		}
 		return sortedClients;
 	}
 	
@@ -514,6 +605,22 @@ public class BaseAgent {
 		}
 		else if (relationsC.containsKey(id)) {
 			relationsC.remove(id);
+		}
+	}
+	
+	/**
+	 * Update the average buy cost
+	 * @param price
+	 * @param quantity
+	 */
+	public void updateAverageBuyCost(double price, double quantity) {
+		
+		double costPerUnit = price / quantity;
+		if (averageBuyCost >= 0) {
+			averageBuyCost = (1 - Constants.AVERAGE_COST_LEARNING_RATE) * averageBuyCost + Constants.AVERAGE_COST_LEARNING_RATE * costPerUnit;
+		}
+		else {
+			averageBuyCost = costPerUnit;
 		}
 	}
 	
@@ -624,8 +731,8 @@ public class BaseAgent {
 						possibleNewSuppliers.add(agent.getId());
 				}
 				
-				if (!SU.getIsInitializing())
-					agent.addPossibleNewClient(this);
+				//if (!SU.getIsInitializing())
+				agent.addPossibleNewClient(this);
 			}
 			else if (agent.getScLayer() == (scType.getScLayer() + 1)) { //Agent == a client
 				if (!RepastParam.getLimitedSuppliersClients() || agent.checkCanKnowAgent(getCountry())) {
@@ -633,8 +740,8 @@ public class BaseAgent {
 						possibleNewClients.add(agent.getId());
 				}
 				
-				if (!SU.getIsInitializing())
-					agent.addPossibleNewSupplier(this);
+				//if (!SU.getIsInitializing())
+				agent.addPossibleNewSupplier(this);
 			}
 		}
 	}
@@ -644,7 +751,7 @@ public class BaseAgent {
 	 * @param scLayerDifference should be -1 (for a supplier) and 1 (for a client)
 	 */
 	public void addClosestSupplierOrClient(int scLayerDifference) {
-		
+
 		int y_distance = Constants.GRID_HEIGHT;
 		int agent_id = -1;
 		for (BaseAgent agent : SU.getObjectsAllRandom(BaseAgent.class)) {
@@ -672,7 +779,7 @@ public class BaseAgent {
 				possibleNewSuppliers.add(supplier.getId());
 		}
 	}
-	
+
 	public void addPossibleNewClient(BaseAgent client) {
 		
 		if (!RepastParam.getLimitedSuppliersClients() || client.checkCanKnowAgent(client.getCountry()) || possibleNewClients.isEmpty()) {
@@ -680,7 +787,7 @@ public class BaseAgent {
 				possibleNewClients.add(client.getId());
 		}
 	}
-	
+
 	/**
 	 * The closer the agents are to each other, the higher the chance they know each other
 	 * with a min and max so it will be excluded that there is a probability of 0 or a probability of 1
@@ -723,7 +830,7 @@ public class BaseAgent {
 		for (Shipment shipment : SU.getObjectsAll(Shipment.class)) {
 			if (shipment.getClient() == this || shipment.getSupplier() == this)
 				allMyShipments.add(shipment);
-		}
+		}		
 		return allMyShipments;
 	}
 	
@@ -842,8 +949,16 @@ public class BaseAgent {
 		return relationsS.toString();
 	}
 	
+	public HashMap<Integer, RelationS> getRelationsS() {
+		return relationsS;
+	}
+	
 	public String getRelationsCStr() {
 		return relationsC.toString();
+	}
+	
+	public HashMap<Integer, RelationC> getRelationsC() {
+		return relationsC;
 	}
 	
 	public double getTotalImport() {
@@ -881,6 +996,10 @@ public class BaseAgent {
 	
 	public SCType getScType() {
 		return scType;
+	}
+	
+	public String getScTypeName() {
+		return scType.name();
 	}
 	
 	public double getSecurityStockMult() {
@@ -960,17 +1079,110 @@ public class BaseAgent {
 	}
 	
 	public String getLocationString() {
-		return SU.getGrid().getLocation(this).getX() + "," + SU.getGrid().getLocation(this).getY();
+		return SU.getContinuousSpace().getLocation(this).getX() + "," + SU.getContinuousSpace().getLocation(this).getY();
 	}
 	
 	public String toStateString() {
 		return id + "," + getLocationString() + "," + money;
 	}
+	
+	public double getAverageBuyCost() {
+		return averageBuyCost;
+	}
+	
+	public double getProfitPercentage() {
+		return profitPercentage;
+	}
+	
+	public double getPersonalRisk() {
+		return personalRisk;
+	}
+	
+	public double getPersonalRiskThreshold() {
+		return personalRiskThreshold;
+	}
+	
+	public double getDesperation() {
+		return desperation;
+	}
+	
+	public boolean isDesperate() {
+		if (desperation == 1.0)
+			return true;
+		return false;
+	}
+	
+	/**
+	 * Desperation depends on shipment active and larger than nothing stock
+	 * @return
+	 */
+	public boolean isDesperationIncrease()
+	{
+		if (getTotalGoodsQuantity(stock) == 0.0)
+			return false;
+		for (Shipment shipment : getAllMyShipments()) {
+			if (shipment.getIdSupplier() == id)
+				return false;
+		}
+		return true;
+	}
+	
+	public void resetDesperation() {
+		desperation = Constants.DESPERATION_RESET;
+	}
+	
+	/**
+	 * Retrieves the following state variables from the BaseAgent: id, countryName, scTypeChar, x, y, money
+	 * @return
+	 * double maxPackageSize, double securityStockMultiplier, double personalRisk, double personalRiskThreshold, byte quality
+	 */
+	public String getVarsAsString() {
+		String str = id + "," + baseCountry.getName() + "," + scType.getScCharacter() + "," + getLocationString() + "," + money + "," + sellPrice + "," + averageBuyCost + "," + profitPercentage
+					+ "," + maxPackageSize + "," + securityStockMultiplier + "," + personalRisk + "," + personalRiskThreshold + "," + desperation + "," + inactivityTimer;
+		if (this instanceof Agent1Producer) {
+			str += "," + ((Agent1Producer) this).getQuality() + ",0";
+		}
+		else if (this instanceof Agent5Consumer) {
+			str += "," + ((Agent5Consumer) this).getQuality() + "," + ((Agent5Consumer) this).getSpendableMoney();
+		}
+		else {
+			str += ",0,0";
+		}
+		return str;
+	}
+	
+	/**
+	 * Returns false when the agent has a higher risk than the threshold and when risk is enabled
+	 * otherwise returns true
+	 * @return
+	 */
+	public boolean isDaring() {
+		if (personalRisk >= personalRiskThreshold && RepastParam.getEnablePersonalRisk()) {
+			return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * Returns false when the agent has a higher risk than the threshold and when risk is enabled
+	 * otherwise returns true, it also adds to the personal risk
+	 * @return
+	 */
+	public boolean daringAndAction(double riskAdd) {
+		if (personalRisk >= personalRiskThreshold && RepastParam.getEnablePersonalRisk()) {
+			return false;
+		} 
+		personalRisk = Math.min(1, personalRisk + riskAdd);
+		return true;
+	}
+	
+	public void increaseRisk(double riskAdd) {
+		personalRisk = Math.min(1, personalRisk + riskAdd);
+	}
 
 	/*================================
 	 * Visualization
 	 *===============================*/
-
 	/**
 	 * Moves the supply chain agent to the correct location, dependent on the base country
 	 */
@@ -979,6 +1191,13 @@ public class BaseAgent {
 		NdPoint newPos = baseCountry.getFreePosition(this, scType);
 		Logger.logSCAgent(scType, getId() + " spawned in " + baseCountry.getName() + " pos:[" + newPos.getX() + ", " + newPos.getY() + "]");
 		
+		SU.getContinuousSpace().moveTo(this, newPos.getX(), newPos.getY());	
+		SU.getGrid().moveTo(this, (int) newPos.getX(), (int) newPos.getY());
+	}
+	
+	public void move(NdPoint newPos) {
+		
+		Logger.logSCAgent(scType, getId() + " spawned in " + baseCountry.getName() + " pos:[" + newPos.getX() + ", " + newPos.getY() + "]");
 		SU.getContinuousSpace().moveTo(this, newPos.getX(), newPos.getY());	
 		SU.getGrid().moveTo(this, (int) newPos.getX(), (int) newPos.getY());
 	}

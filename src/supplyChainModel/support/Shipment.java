@@ -104,6 +104,10 @@ public class Shipment {
 		return vsl_size;
 	}
 	
+	public String toString() {
+		return "S" + getIdSupplier() + " C" + getIdClient() + ", $" + price + "," + getLabel();
+	}
+	
 	public String getLabel() {
 		return String.format("%.1f", goods.get(vsl_largest_quality));
 	}

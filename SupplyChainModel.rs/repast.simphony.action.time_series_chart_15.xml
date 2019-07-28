@@ -1,0 +1,122 @@
+<repast.simphony.chart2.engine.TimeSeriesChartDescriptor simphonyVersion="2.6.0">
+  <name>Selling Price and Margins</name>
+  <dataSet>Agent Data Selling Price</dataSet>
+  <xAxisLabel>Tick Count</xAxisLabel>
+  <yAxisLabel>Price per Unit</yAxisLabel>
+  <chartTitle>Selling Price</chartTitle>
+  <type>TIME_SERIES</type>
+  <background>
+    <red>255</red>
+    <green>255</green>
+    <blue>255</blue>
+    <alpha>255</alpha>
+  </background>
+  <gridLineColor>
+    <red>204</red>
+    <green>204</green>
+    <blue>204</blue>
+    <alpha>255</alpha>
+  </gridLineColor>
+  <showGrid>true</showGrid>
+  <showLegend>true</showLegend>
+  <seriesIds>
+    <entry>
+      <string>I Avg Buy</string>
+      <SeriesData>
+        <label>I Avg Buy</label>
+        <color>
+          <red>153</red>
+          <green>255</green>
+          <blue>102</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+    <entry>
+      <string>I Sell Price</string>
+      <SeriesData>
+        <label>I Sell Price</label>
+        <color>
+          <red>0</red>
+          <green>153</green>
+          <blue>0</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+    <entry>
+      <string>R Avg Buy</string>
+      <SeriesData>
+        <label>R Avg Buy</label>
+        <color>
+          <red>255</red>
+          <green>153</green>
+          <blue>102</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+    <entry>
+      <string>W Sell Price</string>
+      <SeriesData>
+        <label>W Sell Price</label>
+        <color>
+          <red>204</red>
+          <green>0</green>
+          <blue>204</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+    <entry>
+      <string>P Sell Price</string>
+      <SeriesData>
+        <label>P Sell Price</label>
+        <color>
+          <red>0</red>
+          <green>0</green>
+          <blue>255</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+    <entry>
+      <string>P Avg Buy</string>
+      <SeriesData>
+        <label>P Avg Buy</label>
+        <color>
+          <red>51</red>
+          <green>255</green>
+          <blue>255</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+    <entry>
+      <string>W Avg Buy</string>
+      <SeriesData>
+        <label>W Avg Buy</label>
+        <color>
+          <red>255</red>
+          <green>153</green>
+          <blue>255</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+    <entry>
+      <string>R Sell Price</string>
+      <SeriesData>
+        <label>R Sell Price</label>
+        <color>
+          <red>153</red>
+          <green>0</green>
+          <blue>0</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+  </seriesIds>
+  <dataValueIds/>
+  <plotRangeLength>-1</plotRangeLength>
+</repast.simphony.chart2.engine.TimeSeriesChartDescriptor>

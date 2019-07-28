@@ -17,13 +17,20 @@ public final class RepastParam {
 	private static double consumptionMin = 0.5;
 	private static double consumptionMax = 5;
 	private static double productionMax = 10;
-	private static int shipmentStep = 3;
-	private static double spawnRate = 0.01;
-	private static int ticksInitPopulation = 100;
 	private static double sendShipmentProbability = 1;
+	private static boolean enablePersonalRisk = true;
+	private static boolean enableDesperation = true;
+	private static boolean enableSupplierOnPriceSelection = true;
+	private static boolean enableDesperationOnOrder = true;
 	private static int producerNumberCap = 8;
 	private static boolean limitedSuppliersClients = false;
 	private static boolean realisticMap = false;
+	private static boolean settingLoadPopulationFile = false;
+	private static String interceptionType = "none";
+	private static int interceptionSupplierId = -1;
+	private static int interceptionClientId = -1;
+	private static int interceptionFromStep = -1;
+	private static int interceptionCount = 1;
 	
 	public static void setRepastParameters() {
 		
@@ -32,13 +39,21 @@ public final class RepastParam {
 		consumptionMin = p.getDouble("pConMin");
 		consumptionMax = p.getDouble("pConMax");
 		productionMax = p.getDouble("pProdMax");
-		shipmentStep = p.getInteger("pShipmentStep");
-		spawnRate = p.getDouble("pSpawnRate");
-		ticksInitPopulation = p.getInteger("pTicksInitPopulation");
 		sendShipmentProbability = p.getDouble("pSendShipmentProbability");
 		producerNumberCap = p.getInteger("pProducerNumberCap");
 		limitedSuppliersClients = p.getBoolean("pLimitedSuppliersClients");
 		realisticMap = p.getBoolean("pRealisticMap");
+		enablePersonalRisk = p.getBoolean("pEnablePersonalRisk");
+		enableDesperation = p.getBoolean("pDesperation");
+		enableSupplierOnPriceSelection = p.getBoolean("pEnableSupplierOnPriceSelection");
+		enableDesperationOnOrder = p.getBoolean("pDesperationOnOrder");
+		settingLoadPopulationFile = p.getBoolean("pSettingLoadPopulationFile");
+		
+		interceptionType 		= p.getString("pInterceptionType");
+		interceptionSupplierId	= p.getInteger("pInterceptionSupplierId");
+		interceptionClientId   	= p.getInteger("pInterceptionClientId");
+		interceptionFromStep  	= p.getInteger("pInterceptionFromStep");
+		interceptionCount	   	= p.getInteger("pInterceptionCount");
 	}
 
 	/**
@@ -63,18 +78,6 @@ public final class RepastParam {
 		return productionMax;
 	}	
 	
-	public static int getShipmentStep() {
-		return shipmentStep;
-	}
-	
-	public static double getSpawnRate() {
-		return spawnRate;
-	}
-	
-	public static int getTicksInitPopulation() {
-		return ticksInitPopulation;
-	}
-	
 	public static double getSendShipmentProbability() {
 		return sendShipmentProbability;
 	}
@@ -89,5 +92,55 @@ public final class RepastParam {
 	
 	public static boolean getRealisticMap() {
 		return realisticMap;
+	}
+	
+	public static boolean getEnablePersonalRisk() {
+		return enablePersonalRisk;
+	}
+	
+	public static boolean getEnableDesperation() {
+		return enableDesperation;
+	}
+	
+	public static boolean enableDesperationOnOrder() {
+		return enableDesperationOnOrder;
+	}
+	
+	public static boolean getSettingLoadPopulationFile() {
+		return settingLoadPopulationFile;
+	}
+	
+	public static boolean getEnableSupplierOnPriceSelection() {
+		return enableSupplierOnPriceSelection;
+	}
+	
+	public static String getInterceptionType() {
+		return interceptionType;
+	}
+	
+	public static int getInterceptionSupplierId() {
+		return interceptionSupplierId;
+	}
+	
+	public static int getInterceptionClientId() {
+		return interceptionClientId;
+	}
+	
+	public static int getInterceptionFromStep() {
+		return interceptionFromStep;
+	}
+	
+	public static int getInterceptionCount() {
+		return interceptionCount;
+	}
+	
+	public static boolean canIntercept() {
+		if (interceptionCount > 0)
+			return true;
+		return false;
+	}
+	
+	public static void interceptionCountUpdate() {
+		interceptionCount -= 1;
 	}
 }

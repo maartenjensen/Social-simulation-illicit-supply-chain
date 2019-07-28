@@ -24,7 +24,7 @@ public class CountryAgent {
 
 	private String name = "none";
 	private ArrayList<SCType> scTypes = new ArrayList<SCType>();
-
+	
 	private double x;
 	private double y;
 	private double radius;
@@ -40,7 +40,7 @@ public class CountryAgent {
 	public CountryAgent(final Context<Object> context, String countryName, ArrayList<SCType> scTypes, HashMap<String, Integer> countryBorders, double x, double y, double radius, double lowQualityProb) {
 		
 		context.add(this);
-		name = countryName;
+		name = countryName; 
 		this.scTypes = scTypes;
 		this.countryBorders = countryBorders;
 		this.x = x;
@@ -53,33 +53,30 @@ public class CountryAgent {
 		vsl_color = new Color(230 + RandomHelper.nextIntFromTo(0, 20), 230 + RandomHelper.nextIntFromTo(0, 20), 230 + RandomHelper.nextIntFromTo(0, 20));
 	}
 
-	public void spawnAgent(SCType scType) {
+	public BaseAgent spawnAgent(SCType scType) {
 		
 		if (containsSCType(SCType.PRODUCER) && scType == SCType.PRODUCER && SU.getObjectsCount(Agent1Producer.class) < RepastParam.getProducerNumberCap()) {
 			if (RandomHelper.nextDouble() <= 0.5)
-				new Agent1Producer(SU.getContext(), this, Constants.QUALITY_MINIMUM);
+				return new Agent1Producer(SU.getContext(), this, Constants.QUALITY_MINIMUM);
 			else
-				new Agent1Producer(SU.getContext(), this, Constants.QUALITY_MAXIMUM);
+				return new Agent1Producer(SU.getContext(), this, Constants.QUALITY_MAXIMUM);
 		}
-		
-		if (containsSCType(SCType.INTERNATIONAL) && scType == SCType.INTERNATIONAL) {
-			new Agent2International(SU.getContext(), this);
+		else if (containsSCType(SCType.INTERNATIONAL) && scType == SCType.INTERNATIONAL) {
+			return new Agent2International(SU.getContext(), this);
 		}
-		
-		if (containsSCType(SCType.WHOLESALER) && scType == SCType.WHOLESALER) {
-			new Agent3Wholesaler(SU.getContext(), this);
+		else if (containsSCType(SCType.WHOLESALER) && scType == SCType.WHOLESALER) {
+			return new Agent3Wholesaler(SU.getContext(), this);
 		}
-		
-		if (containsSCType(SCType.RETAIL) && scType == SCType.RETAIL) {
-			new Agent4Retailer(SU.getContext(), this);
+		else if (containsSCType(SCType.RETAIL) && scType == SCType.RETAIL) {
+			return new Agent4Retailer(SU.getContext(), this);
 		}
-		
-		if (containsSCType(SCType.CONSUMER) && scType == SCType.CONSUMER) {
+		else if (containsSCType(SCType.CONSUMER) && scType == SCType.CONSUMER) {
 			if (RandomHelper.nextDouble() <= lowQualityProb)
-				new Agent5Consumer(SU.getContext(), this, Constants.QUALITY_MINIMUM);
+				return new Agent5Consumer(SU.getContext(), this, Constants.QUALITY_MINIMUM, RandomHelper.nextDoubleFromTo(Constants.PRICE_CONSUMER_BUY_MIN, Constants.PRICE_CONSUMER_BUY_MAX));
 			else
-				new Agent5Consumer(SU.getContext(), this, Constants.QUALITY_MAXIMUM);
+				return new Agent5Consumer(SU.getContext(), this, Constants.QUALITY_MAXIMUM, RandomHelper.nextDoubleFromTo(Constants.PRICE_CONSUMER_BUY_MIN, Constants.PRICE_CONSUMER_BUY_MAX));
 		}
+		return null;
 	}
 
 	/**
@@ -192,9 +189,7 @@ public class CountryAgent {
 	public boolean pointFree(NdPoint point, Object toExclude) {
 		
 		for (Object o: SU.getContinuousSpace().getObjectsAt(point.getX(), point.getY())) {
-			Logger.logInfo("Found object of class: " + o.getClass());
-			if (o instanceof BaseAgent)
-				Logger.logInfo("Found agent: " + ((BaseAgent)o).getId());
+			//Logger.logInfo("Found object of class: " + o.getClass());
 			if (o != toExclude && o instanceof BaseAgent)
 				return false;
 		}

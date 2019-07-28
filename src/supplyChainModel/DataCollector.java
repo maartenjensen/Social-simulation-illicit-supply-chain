@@ -25,9 +25,14 @@ import supplyChainModel.common.SU;
 public class DataCollector {
 
 	//private HashMap<SCType, Integer> removedAgents = ;
-	private HashMap<Byte, Double> createdStock = new HashMap<Byte, Double>();
-	private HashMap<Byte, Double> deletedStock = new HashMap<Byte, Double>();
-	private HashMap<Byte, Double> consumedStock = new HashMap<Byte, Double>();
+	private HashMap<Byte, Double> producedStock   = new HashMap<Byte, Double>();
+	private Double cutSourceStock  = 0.0;
+	private Double cutProductStock = 0.0;
+	private HashMap<Byte, Double> deletedStock    = new HashMap<Byte, Double>();
+	private HashMap<Byte, Double> consumedStock   = new HashMap<Byte, Double>();
+	
+	private HashMap<Byte, Double> wholesalerSendNL = new HashMap<Byte, Double>();
+	private HashMap<Byte, Double> wholesalerSendES = new HashMap<Byte, Double>();
 	
 	protected List<String> relationsData = new ArrayList<String>();
 	
@@ -36,26 +41,36 @@ public class DataCollector {
 		relationsData.add("\"tick\",\"Id\",\"OtherId\",\"Type\",\"Trust\"");
 		move();
 	}
-	
+
 	/*================================
 	 * Stock analyzing
 	 *===============================*/
-	
+
 	/**
-	 * Is called after initializing of the agents to save their
-	 * initialized stock. //TODO add the stock when a new agent is created
+	 * Is called after initializing of the agents to save their initialized stock.
 	 */
 	public void addAllCurrentStock() {
 		
 		ArrayList<BaseAgent> agents = SU.getObjectsAll(BaseAgent.class);
 		for (BaseAgent agent : agents) {
-			
-			for (Byte quality : agent.getStock().keySet()) {
-				if (createdStock.containsKey(quality))
-					createdStock.put(quality, createdStock.get(quality) + agent.getStock().get(quality));
-				else
-					createdStock.put(quality, agent.getStock().get(quality));
-			}
+			addIdCurrentStock(agent.getId());			
+		}
+	}
+	
+	/**
+	 * Add stock for the specific agent ID
+	 */
+	public void addIdCurrentStock(int id) {
+		BaseAgent agent = SU.getBaseAgent(id);
+		if (agent == null) {
+			Logger.logError("DataCollector.addCurrentStock: Agent with id " + id + " does not exist");
+			return ;
+		}
+		for (Byte quality : agent.getStock().keySet()) {
+			if (producedStock.containsKey(quality))
+				producedStock.put(quality, producedStock.get(quality) + agent.getStock().get(quality));
+			else
+				producedStock.put(quality, agent.getStock().get(quality));
 		}
 	}
 	
@@ -66,10 +81,10 @@ public class DataCollector {
 	public void addProducedStock(HashMap<Byte, Double> producedGoods) {
 		
 		for (Byte quality : producedGoods.keySet()) {
-			if (createdStock.containsKey(quality))
-				createdStock.put(quality, createdStock.get(quality) + producedGoods.get(quality));
+			if (producedStock.containsKey(quality))
+				producedStock.put(quality, producedStock.get(quality) + producedGoods.get(quality));
 			else
-				createdStock.put(quality, producedGoods.get(quality));
+				producedStock.put(quality, producedGoods.get(quality));
 		}
 	}
 
@@ -101,15 +116,20 @@ public class DataCollector {
 		}
 	}
 	
-	public double getStockCreatedTot() {
-		if (createdStock.containsKey(Constants.QUALITY_MINIMUM)) {
-			if (createdStock.containsKey(Constants.QUALITY_MAXIMUM))
-				return createdStock.get(Constants.QUALITY_MINIMUM) + createdStock.get(Constants.QUALITY_MAXIMUM);
+	public void addCuttingStock(double lowQuality, double highQuality) {
+		cutSourceStock += highQuality;
+		cutProductStock += lowQuality;
+	}
+	
+	public double getStockProducedTot() {
+		if (producedStock.containsKey(Constants.QUALITY_MINIMUM)) {
+			if (producedStock.containsKey(Constants.QUALITY_MAXIMUM))
+				return producedStock.get(Constants.QUALITY_MINIMUM) + producedStock.get(Constants.QUALITY_MAXIMUM);
 			else
-				return createdStock.get(Constants.QUALITY_MINIMUM);
+				return producedStock.get(Constants.QUALITY_MINIMUM);
 		}
-		else if (createdStock.containsKey(Constants.QUALITY_MAXIMUM))
-			return createdStock.get(Constants.QUALITY_MAXIMUM);
+		else if (producedStock.containsKey(Constants.QUALITY_MAXIMUM))
+			return producedStock.get(Constants.QUALITY_MAXIMUM);
 		else
 			return 0.0;
 	}
@@ -138,6 +158,14 @@ public class DataCollector {
 			return deletedStock.get(Constants.QUALITY_MAXIMUM);
 		else
 			return 0.0;
+	}
+	
+	public double getStockCutSourceTot() {
+		return cutSourceStock;
+	}
+	
+	public double getStockCutProductTot() {
+		return cutProductStock;
 	}
 	
 	/*================================

@@ -31,7 +31,14 @@ public class Constants {
 	public static final int PRODUCER_PRODUCE_AMOUNT = 50;
 	public static final int MAX_NUMBER_OF_ACTIVE_SUPPLIERS = 10;
 	public static final int MAX_NUMBER_OF_ACTIVE_CLIENTS = 10;
+	public static final int INITIALIZE_TICKS = 50;
+	public static final double SPAWN_RATE = 0.015;
+	public static final double SPAWN_RATE_CONSUMERS = 0.06;
+	public static final int INACTIVITY_REMOVAL = 104; //Represents two years
 	
+	public static final int SHIPMENT_STEP = 3;
+	
+	// Pricing parameters	
 	public static final double PRICE_LIVING_COST_MULT = 0.01;
 	public static final double PRICE_SAVED_STOCK_MULT = 0.01;
 	public static final double PRICE_MONEY_START_MULT = 5;
@@ -41,7 +48,8 @@ public class Constants {
 	public static final double PRICE_BUY_FROM_INTERNATIONAL = 16; //34700; //Cocaine in brick form, per kilogram
 	public static final double PRICE_BUY_FROM_WHOLESALER = 47; //100000; //Cocaine in brick form in Europe, per kilogram (this is not from source)
 	public static final double PRICE_BUY_FROM_RETAIL = 56; //120000; //Street level cocaine, per kilogram
-	public static final double PRICE_CONSUMER_INCOME = 1500; //120000;
+	public static final double PRICE_CONSUMER_BUY_MIN = 1; // +- 2150 per kilo, 2$ per gram
+	public static final double PRICE_CONSUMER_BUY_MAX = 158; // +- 330.000 per kilo, 330 per gram
 	
 	public static final double SHIPMENT_MAX_1TO2 = 100;
 	public static final double SHIPMENT_MAX_2TO3 = 500;
@@ -60,12 +68,41 @@ public class Constants {
 	public static final double PROB_POSSIBLE_NEW_MULT = 0.5;
 	public static final int    NEW_CONNECTION_COOLDOWN = 10;
 	
+	// Risk concepts	
+	public static final double PERSONAL_RISK_DRAIN = 0.1;
+	public static final double PERSONAL_RISK_THRESHOLD_MIN = 0.5;
+	public static final double PERSONAL_RISK_THRESHOLD_MAX = 0.5;
+	
+	// Desperation concepts
+	public static final double DESPERATION_INCREASE = 0.025;
+	public static final double DESPERATION_RESET = 0.5;
+	
+	public static final double AVERAGE_COST_LEARNING_RATE = 0.2;
+	
+	public static final double PROFIT_PERC_START = 0.5;
+	public static final double PROFIT_PERC_MIN = 0.1;
+	public static final double PROFIT_PERC_MAX = 0.9;
+	public static final double PROFIT_PERC_CHANGE = 0.025;
+	
+	public static final double PS_SEARCH_CONNECTION = 0.05;
+	public static final double PS_NEW_CONNECTION = 0.05;
+	public static final double PS_SEND_ORDER = 0.01;
+	public static final double PS_SEND_SHIPMENT = 0.05;
+	
 	//public static final int HashMap<Integer, Double> = ;
 	private static final HashMap<Integer, Double> BORDERS_CONNECT_P = new HashMap<Integer, Double>() {
 		private static final long serialVersionUID = 1L;
 		{
 			put(0, 0.4); put(1, 0.3); put(2, 0.2); put(3, 0.1); put(4, 0.05); put(5, 0.025); put(6, 0.0125); put(7, 0.00625);
 			//put(0, 0.6); put(1, 0.5); put(2, 0.4); put(3, 0.3);	put(4, 0.2); put(5, 0.1); put(6, 0.05); put(7, 0.025);
+		}
+	};
+	
+	//public static final int HashMap<Integer, Double> = ;
+	private static final HashMap<Integer, Integer> BORDERS_COST = new HashMap<Integer, Integer>() {
+		private static final long serialVersionUID = 1L;
+		{
+			put(0, 100); put(1, 250); put(2, 550); put(3, 1000); put(4, 1600); put(5, 2350); put(6, 3250); put(7, 4300);
 		}
 	};
 	
@@ -83,8 +120,7 @@ public class Constants {
 	
 	// Consumer specific
 	public static final int CONSUMER_REMOVE_TICKS = 200;
-	public static final int CONSUMER_LIMIT_WITHOUT_SATISFACTION = 20;
-	
+	public static final int CONSUMER_LIMIT_WITHOUT_SATISFACTION = 52;
 	public static final int COUNTRY_CONSUMERS_MAX = 2;
 	
 	// Visualization constants
@@ -106,6 +142,16 @@ public class Constants {
 		}
 		else {
 			Logger.logError("Constants.getBordersConnectP didn't find border number:" + borders);
+			return 0.0;
+		}
+	}
+	
+	public static double getBordersCost(int borders) {
+		if (BORDERS_COST.containsKey(borders)) {
+			return BORDERS_COST.get(borders);
+		}
+		else {
+			Logger.logError("Constants.getBordersCost didn't find border number:" + borders);
 			return 0.0;
 		}
 	}

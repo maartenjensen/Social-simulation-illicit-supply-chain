@@ -1,5 +1,5 @@
 <repast.simphony.visualization.engine.CartesianDisplayDescriptor simphonyVersion="2.6.0">
-  <name>Display 2 - Only Show Edges With Arrived Orders</name>
+  <name>Display 1</name>
   <type>2D</type>
   <styles>
     <entry>
@@ -48,11 +48,11 @@
   <netStyles>
     <entry>
       <string>sc network reversed</string>
-      <string>supplyChainModel.styles.SCReversedEdgeStyleOGL2D2_ORDER</string>
+      <string>supplyChainModel.styles.SCReversedEdgeStyleOGL2D2</string>
     </entry>
     <entry>
       <string>sc network</string>
-      <string>supplyChainModel.styles.SCEdgeStyleOGL2D_ORDER</string>
+      <string>supplyChainModel.styles.SCEdgeStyleOGL2D</string>
     </entry>
   </netStyles>
   <editedNetStyles>
@@ -73,7 +73,7 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>2049223991</hashCode>
+    <hashCode>-1839282446</hashCode>
   </schedParams>
   <layoutClassName>foo.bar.baz</layoutClassName>
   <layoutProjection>continuous space</layoutProjection>

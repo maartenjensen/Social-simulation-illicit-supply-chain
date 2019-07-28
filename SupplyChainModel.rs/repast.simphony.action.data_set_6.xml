@@ -1,7 +1,6 @@
 <repast.simphony.data2.engine.DataSetDescriptor simphonyVersion="2.6.0">
-  <name>Order Data</name>
-  <type>NON_AGGREGATE</type>
-  <sourceType>supplyChainModel.support.Order</sourceType>
+  <name>DC Stock</name>
+  <type>AGGREGATE</type>
   <inclTick>true</inclTick>
   <inclBatchRun>false</inclBatchRun>
   <inclRandomSeed>false</inclRandomSeed>
@@ -12,48 +11,53 @@
     <pType>LAST</pType>
     <duration>-1.0</duration>
     <frequency>REPEAT</frequency>
-    <hashCode>547365103</hashCode>
+    <hashCode>714399245</hashCode>
   </scheduleParams>
   <atEnd>false</atEnd>
   <methodDataSources class="linked-hash-map">
     <entry>
-      <string>IdClient</string>
+      <string>Produced Tot</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>IdClient</id>
-        <className>supplyChainModel.support.Order</className>
-        <methodName>getIdClient</methodName>
+        <id>Produced Tot</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getStockProducedTot</methodName>
+        <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>IdSupplier</string>
+      <string>Deleted Tot</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>IdSupplier</id>
-        <className>supplyChainModel.support.Order</className>
-        <methodName>getIdSupplier</methodName>
+        <id>Deleted Tot</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getStockDeletedTot</methodName>
+        <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>LocationX</string>
+      <string>Consumed Tot</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>LocationX</id>
-        <className>supplyChainModel.support.Order</className>
-        <methodName>getLocationX</methodName>
+        <id>Consumed Tot</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getStockConsumedTot</methodName>
+        <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>LocationY</string>
+      <string>Cut Source Tot</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>LocationY</id>
-        <className>supplyChainModel.support.Order</className>
-        <methodName>getLocationY</methodName>
+        <id>Cut Source Tot</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getStockCutSourceTot</methodName>
+        <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
     <entry>
-      <string>Size</string>
+      <string>Cut Product Tot</string>
       <repast.simphony.data2.engine.MethodDataSourceDefinition>
-        <id>Size</id>
-        <className>supplyChainModel.support.Order</className>
-        <methodName>getSize</methodName>
+        <id>Cut Product Tot</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getStockCutProductTot</methodName>
+        <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
   </methodDataSources>

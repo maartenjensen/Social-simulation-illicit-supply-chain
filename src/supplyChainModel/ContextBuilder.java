@@ -36,6 +36,8 @@ import supplyChainModel.support.Shipment;
  */
 public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder<Object> {
 	
+	private ContextPopulationLoader populationLoader;
+	
 	/**
 	 * This function builds the simulation, loading text files should be done in here.
 	 */
@@ -53,11 +55,11 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		
 		RepastParam.setRepastParameters();
 		
-		DataCollector dataCollector = new DataCollector(context);
+		new DataCollector(context);
 
 		// Create the supply chain
 		countryCreation(context);
-		supplyChainCreation(context);
+		agentsCreation(context);
 		
 		// If running in batch mode, tell the scheduler when to end each run.
 		if (RunEnvironment.getInstance().isBatch()) {
@@ -65,8 +67,6 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 			double endAt = RepastParam.getRunLength();
 			RunEnvironment.getInstance().endAt(endAt);
 		}
-		
-		dataCollector.addAllCurrentStock();
 		
 		return context;
 	}
@@ -80,56 +80,22 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 			countryLoader.readFullFile(context, "./input", "inputDataCountryBetterView.csv", "inputDataBorders.csv");
 	}
 	
-	private void supplyChainCreation(final Context<Object> context) {
+	private void agentsCreation(final Context<Object> context) {
 		
-		if (SCType.getScLayers() <= 2)
-			Logger.logError("To few supply chain layers, minimum of 3 required:" + SCType.getScLayers());
+		populationLoader = new ContextPopulationLoader();
 		
-		ArrayList<CountryAgent> countryAgents = SU.getObjectsAll(CountryAgent.class);
-		
-		for (CountryAgent country : countryAgents) {
-			
-			if (country.containsSCType(SCType.PRODUCER)) {
-				for (int i = 0; i < Constants.N_PRODUCERS; i++) {
-					country.spawnAgent(SCType.PRODUCER);
-				}
-			}
-			
-			if (country.containsSCType(SCType.INTERNATIONAL)) {
-				for (int i = 0; i < Constants.N_INTERNATIONALS; i++) {
-					country.spawnAgent(SCType.INTERNATIONAL);
-				}
-			}
-			
-			if (country.containsSCType(SCType.WHOLESALER)) {
-				for (int i = 0; i < Constants.N_WHOLESALERS; i++) {
-					country.spawnAgent(SCType.WHOLESALER);
-				}
-			}
-			
-			if (country.containsSCType(SCType.RETAIL)) {
-				for (int i = 0; i < Constants.N_RETAILERS; i++) {
-					country.spawnAgent(SCType.RETAIL);
-				}
-			}
-			
-			if (country.containsSCType(SCType.CONSUMER)) {
-				for (int i = 0; i < Constants.N_CONSUMERS; i++) {
-					country.spawnAgent(SCType.CONSUMER);
-				}
-			}
-		}	
-		
-		// Set possible new suppliers and clients
-		for (BaseAgent agent : SU.getObjectsAll(BaseAgent.class)) {
-			agent.setPossibleNewSuppliersAndClients();
+		if (!RepastParam.getSettingLoadPopulationFile()) {
+			populationLoader.generatePopulation();
 		}
+		else {
+			populationLoader.generatePopulation("./input/population.txt");
+		}		
 	}
 
 	/*====================================
 	 * Step method
 	 *====================================*/
-	
+
 	/**
 	 * Step method, called from ContextBuilder to have more control
 	 */
@@ -189,6 +155,9 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 			baseAgent.stepSendShipment();
 		}
 		
+		Logger.logMain("Step-ContextBuilder: step intervention on shipment");
+		stepInterventionOnShipment();
+		
 		Logger.logMain("Step-BaseAgent: send order");
 		for (BaseAgent baseAgent : SU.getObjectsAll(BaseAgent.class)) {
 			baseAgent.stepSendOrder();
@@ -199,10 +168,13 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 			baseAgent.stepAddToData();
 		}
 		
-		if (SU.getTick() >= RepastParam.getRunLength()) {
+		if (SU.getTick() == RepastParam.getRunLength()) {
 			
 			Logger.logMain("------------------------------------------------------------------------------");
 			saveRelations();
+			if (!RepastParam.getSettingLoadPopulationFile())
+				populationLoader.savePopulation("./input/population.txt");
+
 			RunEnvironment.getInstance().pauseRun();
 			Logger.logMain("Simulation ended at : " + SU.getTick());
 			Logger.logMain("------------------------------------------------------------------------------");
@@ -225,17 +197,51 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		
 		for (SCType scType : SCType.values()) {
 			
-			if (RandomHelper.nextDouble() <= RepastParam.getSpawnRate()) {
+			if ((RandomHelper.nextDouble() <= Constants.SPAWN_RATE && scType != SCType.CONSUMER) || 
+				(RandomHelper.nextDouble() <= Constants.SPAWN_RATE_CONSUMERS && scType == SCType.CONSUMER)) {
 				
 				for (CountryAgent country : SU.getObjectsAllRandom(CountryAgent.class)) {
 					if (country.containsSCType(scType)) {
-						country.spawnAgent(scType);
+						BaseAgent agent = country.spawnAgent(scType);
+						if (agent != null)
+							SU.getDataCollector().addIdCurrentStock(agent.getId());
 						break;
 					}
 				}
 			}
-			
 		}
+	}
+
+	public void stepInterventionOnShipment() {
+		
+		if (!RepastParam.canIntercept() || RepastParam.getInterceptionType().equals("none"))
+			return ;
+		
+		if (SU.getTick() >= RepastParam.getInterceptionFromStep()) {
+			if (SU.getTick() == RepastParam.getInterceptionFromStep()) 
+				Logger.logInfo("Intercept:stepInterventionOnShipment on this tick (" + RepastParam.canIntercept() + ")");
+			else
+				Logger.logInfo("Intercept:stepInterventionOnShipment on a > tick (" + RepastParam.canIntercept() + ")");
+			
+			if (intercept(RepastParam.getInterceptionSupplierId(), RepastParam.getInterceptionClientId())) {
+				
+				RepastParam.interceptionCountUpdate();
+			}
+		}
+	}
+	
+	public boolean intercept(int supplierId, int clientId) {
+		
+		for (Shipment shipment : SU.getObjectsAll(Shipment.class)) {
+			if (shipment.getIdSupplier() == supplierId && shipment.getIdClient() == clientId) {
+				SU.getDataCollector().addDeletedStock(shipment.getGoods());
+				shipment.remove();
+				Logger.logInfo("Intercept:intercept(" + supplierId + "," + clientId + ") shipment:" + shipment.toString());
+				return true;
+			}				
+		}
+		Logger.logInfo("Intercept:intercept(" + supplierId + "," + clientId + ") not performed, no possible shipments");
+		return false;
 	}
 	
 	/**

@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 import repast.simphony.context.Context;
 import repast.simphony.random.RandomHelper;
+import repast.simphony.space.continuous.NdPoint;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
 import supplyChainModel.common.RepastParam;
@@ -18,7 +19,6 @@ import supplyChainModel.support.Shipment;
  * The consumer class buys from the retailers
  * and consumes the goods.
  * @author Maarten
- *
  */
 public class Agent5Consumer extends BaseAgent {
 
@@ -28,13 +28,34 @@ public class Agent5Consumer extends BaseAgent {
 	public boolean satisfied;
 	//public int ticksUntilRemoved;
 	public int ticksWithoutSatisfaction;
-	
-	public Agent5Consumer(final Context<Object> context, CountryAgent country, byte quality) {
+	public double spendableMoney;
+
+	public Agent5Consumer(final Context<Object> context, CountryAgent country, byte quality, double spendableMoney) {
 		
 		super(country, SCType.CONSUMER, 0, 0);
 		
 		this.quality = quality;
-		baseConsumption = RandomHelper.nextDoubleFromTo(RepastParam.getConsumptionMin(), RepastParam.getConsumptionMax());
+		this.baseConsumption = RandomHelper.nextDoubleFromTo(RepastParam.getConsumptionMin(), RepastParam.getConsumptionMax());
+		this.spendableMoney = spendableMoney;
+		satisfied = false;
+		//ticksUntilRemoved = Constants.CONSUMER_REMOVE_TICKS;
+		ticksWithoutSatisfaction = 0;
+		
+	
+		stock.put(quality, 0.0);
+		
+		setStartingStock();
+	}
+
+	public Agent5Consumer(final Context<Object> context, int id, CountryAgent country, NdPoint newPos, double money, double sellPrice, double averageBuyCost, double profitPercentage,
+			   double maxPackageSize, double securityStockMultipier, double personalRisk, double personalRiskThreshold, double desperation, int inactivityTimer, byte quality, double spendableMoney) {
+		
+		super(id, country, SCType.CONSUMER, newPos, money, sellPrice, averageBuyCost, profitPercentage, maxPackageSize,
+					securityStockMultipier, personalRisk, personalRiskThreshold, desperation, inactivityTimer);
+		
+		this.quality = quality;
+		this.baseConsumption = RandomHelper.nextDoubleFromTo(RepastParam.getConsumptionMin(), RepastParam.getConsumptionMax());
+		this.spendableMoney = spendableMoney;
 		satisfied = false;
 		//ticksUntilRemoved = Constants.CONSUMER_REMOVE_TICKS;
 		ticksWithoutSatisfaction = 0;
@@ -56,8 +77,11 @@ public class Agent5Consumer extends BaseAgent {
 	public void stepCheckRemoval() {
 		
 		//ticksUntilRemoved -= 1;
+		//if (money < 0) {
+		//	remove();
+		//}
 		
-		if (!SU.getIsInitializing() && ticksWithoutSatisfaction >= Constants.CONSUMER_LIMIT_WITHOUT_SATISFACTION) { // (ticksUntilRemoved == 0 || 
+		if (ticksWithoutSatisfaction >= Constants.CONSUMER_LIMIT_WITHOUT_SATISFACTION) { // (ticksUntilRemoved == 0 ||  !SU.getIsInitializing() && 
 			remove();
 		}
 	}
@@ -66,11 +90,11 @@ public class Agent5Consumer extends BaseAgent {
 	 * Gain money
 	 */
 	public void stepReceiveIncome() {
-		
+		/*
 		if (quality == Constants.QUALITY_MAXIMUM)
 			money += baseConsumption * Constants.PRICE_BUY_FROM_RETAIL * Constants.QUALITY_MAX_EXTRA_COST;
 		else
-			money += baseConsumption * Constants.PRICE_BUY_FROM_RETAIL;
+			money += baseConsumption * Constants.PRICE_BUY_FROM_RETAIL;*/
 	}
 	
 	@Override
@@ -79,8 +103,9 @@ public class Agent5Consumer extends BaseAgent {
 		updateArrivedShipments();
 		
 		for (Shipment shipment : getArrivedShipments()) {
-			money -= shipment.getPrice();
+			//money -= shipment.getPrice();
 			shipment.getSupplier().receivePayment(shipment.getPrice());
+			updateAverageBuyCost(shipment.getPrice(), getTotalGoodsQuantity(shipment.getGoods()));
 			addToStock(shipment.getGoods());
 			shipment.remove();
 			ticksWithoutSatisfaction = 0;
@@ -137,7 +162,7 @@ public class Agent5Consumer extends BaseAgent {
 				
 				BaseAgent supplier = sortedSupplier.getAgent();
 				//Logger.logInfo("Required:" + requiredQuantity + ", min package size:" + supplier.getMinPackageSize());
-				if (requiredQuantity >= supplier.getMinPackageSize()) {
+				if (requiredQuantity >= supplier.getMinPackageSize() && supplier.getBaseSellPrice() <= spendableMoney) {
 					
 					double oldQuantity = relationsS.get(supplier.getId()).getPreviousMyOrder(quality);
 					double chosenQuantity = Constants.SEND_ORDER_LEARN_RATE * requiredQuantity +
@@ -153,7 +178,7 @@ public class Agent5Consumer extends BaseAgent {
 					else {
 						HashMap<Byte, Double> chosenGoods = new HashMap<Byte, Double>();
 						chosenGoods.put(quality, chosenQuantity);
-						placedOrders.put(supplier.getId(), new Order(this, supplier, chosenGoods, RepastParam.getShipmentStep()));
+						placedOrders.put(supplier.getId(), new Order(this, supplier, chosenGoods, Constants.SHIPMENT_STEP));
 					}
 				}
 			}
@@ -203,6 +228,10 @@ public class Agent5Consumer extends BaseAgent {
 		return id + String.format("  $:%.0f", money);
 	}*/
 	
+	public double getSpendableMoney() {
+		return spendableMoney;
+	}
+	
 	public boolean isConnected() {
 		if (!relationsS.isEmpty())
 			return true;
@@ -220,7 +249,7 @@ public class Agent5Consumer extends BaseAgent {
 			else if (quality == Constants.QUALITY_MAXIMUM)
 				stockStr += String.format("H%.1f", stock.get(quality));
 		}
-		return id + String.format(" $%.0f", money) + stockStr + String.format(",[%.1f", (securityStockMultiplier * getMinPackageSizeBoth() + baseConsumption));
+		return id + String.format(" $ <= %.0f", spendableMoney) + stockStr + ",T:" + (Constants.CONSUMER_LIMIT_WITHOUT_SATISFACTION - ticksWithoutSatisfaction);//String.format(",[%.1f", (securityStockMultiplier * getMinPackageSizeBoth() + baseConsumption));
 	}
 	
 	@Override

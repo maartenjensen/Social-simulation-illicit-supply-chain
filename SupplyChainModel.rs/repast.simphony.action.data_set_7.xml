@@ -1,0 +1,94 @@
+<repast.simphony.data2.engine.DataSetDescriptor simphonyVersion="2.6.0">
+  <name>Agent Data Selling Price</name>
+  <type>AGGREGATE</type>
+  <inclTick>true</inclTick>
+  <inclBatchRun>false</inclBatchRun>
+  <inclRandomSeed>false</inclRandomSeed>
+  <scheduleParams>
+    <start>1.0</start>
+    <interval>1.0</interval>
+    <priority>-Infinity</priority>
+    <pType>LAST</pType>
+    <duration>-1.0</duration>
+    <frequency>REPEAT</frequency>
+    <hashCode>-1524152779</hashCode>
+  </scheduleParams>
+  <atEnd>false</atEnd>
+  <methodDataSources class="linked-hash-map">
+    <entry>
+      <string>P Sell Price</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>P Sell Price</id>
+        <className>supplyChainModel.agents.Agent1Producer</className>
+        <methodName>getBaseSellPrice</methodName>
+        <aggType>MEAN</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>P Avg Buy</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>P Avg Buy</id>
+        <className>supplyChainModel.agents.Agent1Producer</className>
+        <methodName>getAverageBuyCost</methodName>
+        <aggType>MEAN</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>I Sell Price</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>I Sell Price</id>
+        <className>supplyChainModel.agents.Agent2International</className>
+        <methodName>getBaseSellPrice</methodName>
+        <aggType>MEAN</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>I Avg Buy</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>I Avg Buy</id>
+        <className>supplyChainModel.agents.Agent2International</className>
+        <methodName>getAverageBuyCost</methodName>
+        <aggType>MEAN</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>W Sell Price</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>W Sell Price</id>
+        <className>supplyChainModel.agents.Agent3Wholesaler</className>
+        <methodName>getBaseSellPrice</methodName>
+        <aggType>MEAN</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>W Avg Buy</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>W Avg Buy</id>
+        <className>supplyChainModel.agents.Agent3Wholesaler</className>
+        <methodName>getAverageBuyCost</methodName>
+        <aggType>MEAN</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>R Sell Price</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>R Sell Price</id>
+        <className>supplyChainModel.agents.Agent4Retailer</className>
+        <methodName>getBaseSellPrice</methodName>
+        <aggType>MEAN</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>R Avg Buy</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>R Avg Buy</id>
+        <className>supplyChainModel.agents.Agent4Retailer</className>
+        <methodName>getAverageBuyCost</methodName>
+        <aggType>MEAN</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+  </methodDataSources>
+  <countSources class="linked-hash-map"/>
+  <customNADataSources class="linked-hash-map"/>
+  <customAggDataSources class="linked-hash-map"/>
+</repast.simphony.data2.engine.DataSetDescriptor>
