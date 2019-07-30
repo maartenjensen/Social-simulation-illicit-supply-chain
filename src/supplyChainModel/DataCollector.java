@@ -31,8 +31,8 @@ public class DataCollector {
 	private HashMap<Byte, Double> deletedStock    = new HashMap<Byte, Double>();
 	private HashMap<Byte, Double> consumedStock   = new HashMap<Byte, Double>();
 	
-	private HashMap<Byte, Double> wholesalerSendNL = new HashMap<Byte, Double>();
-	private HashMap<Byte, Double> wholesalerSendES = new HashMap<Byte, Double>();
+	//private HashMap<Byte, Double> wholesalerSendNL = new HashMap<Byte, Double>();
+	//private HashMap<Byte, Double> wholesalerSendES = new HashMap<Byte, Double>();
 	
 	protected List<String> relationsData = new ArrayList<String>();
 	

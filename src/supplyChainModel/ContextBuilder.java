@@ -19,6 +19,7 @@ import repast.simphony.space.grid.SimpleGridAdder;
 import supplyChainModel.agents.Agent5Consumer;
 import supplyChainModel.agents.BaseAgent;
 import supplyChainModel.agents.CountryAgent;
+import supplyChainModel.common.BatchRunDataSave;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
 import supplyChainModel.common.RepastParam;
@@ -44,6 +45,9 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 	@Override
 	public Context<Object> build(Context<Object> context) {
 		
+		Logger.logMain("------------------------------------------------------------------------------");
+		Logger.logMain("Running ContextBuilder.build");
+		Logger.logMain("------------------------------------------------------------------------------");
 		createContinuousSpace(context);
 		createGrid(context);
 		createNetwork(context);
@@ -56,14 +60,14 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		RepastParam.setRepastParameters();
 		
 		new DataCollector(context);
-
+		//BatchRunDataSave.resetData();
+		
 		// Create the supply chain
 		countryCreation(context);
 		agentsCreation(context);
 		
 		// If running in batch mode, tell the scheduler when to end each run.
 		if (RunEnvironment.getInstance().isBatch()) {
-			
 			double endAt = RepastParam.getRunLength();
 			RunEnvironment.getInstance().endAt(endAt);
 		}
@@ -95,7 +99,6 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 	/*====================================
 	 * Step method
 	 *====================================*/
-
 	/**
 	 * Step method, called from ContextBuilder to have more control
 	 */
@@ -175,6 +178,10 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 			if (!RepastParam.getSettingLoadPopulationFile())
 				populationLoader.savePopulation("./input/population.txt");
 
+			if (RunEnvironment.getInstance().isBatch()) {
+				BatchRunDataSave.saveData(Constants.DATA_PATH + "/BatchRunData.txt", RepastParam.getEnablePersonalRisk(), SU.getDataCollector().getStockConsumedTot());
+			}
+			
 			RunEnvironment.getInstance().pauseRun();
 			Logger.logMain("Simulation ended at : " + SU.getTick());
 			Logger.logMain("------------------------------------------------------------------------------");
@@ -183,7 +190,7 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 	
 	public void saveRelations() {
 		
-		String filePathAndName = "D:/Work/Output/SimulationOutput22-03-2019/RelationsData" + SU.getCurrentDateTime() + ".txt";
+		String filePathAndName = Constants.DATA_PATH + "/RelationsData" + SU.getCurrentDateTime() + ".txt";
 		Logger.logMain("Relations information saved in: " + filePathAndName);
 		List<String> data = new ArrayList<String>();
 		data = SU.getDataCollector().getRelationsData();

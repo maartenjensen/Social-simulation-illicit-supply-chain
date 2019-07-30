@@ -1,577 +1,400 @@
-INFO  [Thread-2] 2019-07-26 16:19:14,041 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-26 16:19:14,041 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-26 16:19:14,041 repast.simphony.batch.ssh.LocalSession - Step 10
-INFO  [Thread-2] 2019-07-26 16:19:14,041 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-26 16:19:14,041 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-26 16:19:14,042 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-26 16:19:14,042 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-26 16:19:14,059 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - ------------------------------------------------------------------------------
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - Relations information saved in: D:/Work/Output/SimulationOutput22-03-2019/RelationsData.2019.Jul.26.16_19_14.txt
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession -  - ContextPopulationLoader.savePopulation() file path and name:./input/population.txt
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: .\input\population.txt (The system cannot find the path specified)
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open0(Native Method)
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:187)
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:208)
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:248)
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.writeToFile(SU.java:274)
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextPopulationLoader.savePopulation(ContextPopulationLoader.java:214)
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.step(ContextBuilder.java:176)
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - Simulation ended at : 10
-INFO  [Thread-2] 2019-07-26 16:19:14,060 repast.simphony.batch.ssh.LocalSession - ------------------------------------------------------------------------------
-INFO  [pool-5-thread-1] 2019-07-26 16:20:00,624 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564150720752 for DONE:  yes
-INFO  [SwingWorker-pool-2-thread-3] 2019-07-26 16:20:00,625 repast.simphony.batch.ssh.SessionsDriver - Run Time: 1,2468
-INFO  [SwingWorker-pool-2-thread-3] 2019-07-26 16:20:00,630 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564150720752
-WARN  [SwingWorker-pool-2-thread-3] 2019-07-26 16:20:00,632 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}D:\\Work\\Output\\SimulationOutput22-03-2019\\AvgWealthOutput*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564150720752\instance_1
-WARN  [SwingWorker-pool-2-thread-3] 2019-07-26 16:20:00,632 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}D:\\Work\\Output\\SimulationOutput22-03-2019\\ShipmentState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564150720752\instance_1
-WARN  [SwingWorker-pool-2-thread-3] 2019-07-26 16:20:00,632 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}D:\\Work\\Output\\SimulationOutput22-03-2019\\OrderState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564150720752\instance_1
-WARN  [SwingWorker-pool-2-thread-3] 2019-07-26 16:20:00,633 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}D:\\Work\\Output\\SimulationOutput22-03-2019\\AgentState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564150720752\instance_1
-WARN  [SwingWorker-pool-2-thread-3] 2019-07-26 16:20:00,633 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}D:\\Work\\Output\\SimulationOutput22-03-2019\\AvgWealthOutput*.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564150720752\instance_1
-WARN  [SwingWorker-pool-2-thread-3] 2019-07-26 16:20:00,633 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}D:\\Work\\Output\\SimulationOutput22-03-2019\\ShipmentState*.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564150720752\instance_1
-WARN  [SwingWorker-pool-2-thread-3] 2019-07-26 16:20:00,633 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}D:\\Work\\Output\\SimulationOutput22-03-2019\\OrderState*.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564150720752\instance_1
-WARN  [SwingWorker-pool-2-thread-3] 2019-07-26 16:20:00,633 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}D:\\Work\\Output\\SimulationOutput22-03-2019\\AgentState*.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564150720752\instance_1
-WARN  [SwingWorker-pool-2-thread-3] 2019-07-26 16:20:00,634 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}D:\\Work\\Output\\SimulationOutput22-03-2019\\AvgWealthOutput*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564150720752\instance_2
-WARN  [SwingWorker-pool-2-thread-3] 2019-07-26 16:20:00,634 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}D:\\Work\\Output\\SimulationOutput22-03-2019\\ShipmentState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564150720752\instance_2
-WARN  [SwingWorker-pool-2-thread-3] 2019-07-26 16:20:00,634 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}D:\\Work\\Output\\SimulationOutput22-03-2019\\OrderState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564150720752\instance_2
-WARN  [SwingWorker-pool-2-thread-3] 2019-07-26 16:20:00,634 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}D:\\Work\\Output\\SimulationOutput22-03-2019\\AgentState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564150720752\instance_2
-WARN  [SwingWorker-pool-2-thread-3] 2019-07-26 16:20:00,634 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}D:\\Work\\Output\\SimulationOutput22-03-2019\\AvgWealthOutput*.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564150720752\instance_2
-WARN  [SwingWorker-pool-2-thread-3] 2019-07-26 16:20:00,634 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}D:\\Work\\Output\\SimulationOutput22-03-2019\\ShipmentState*.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564150720752\instance_2
-WARN  [SwingWorker-pool-2-thread-3] 2019-07-26 16:20:00,634 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}D:\\Work\\Output\\SimulationOutput22-03-2019\\OrderState*.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564150720752\instance_2
-WARN  [SwingWorker-pool-2-thread-3] 2019-07-26 16:20:00,635 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}D:\\Work\\Output\\SimulationOutput22-03-2019\\AgentState*.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564150720752\instance_2
-INFO  [SwingWorker-pool-2-thread-3] 2019-07-26 16:20:00,635 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into D:/Work/Output/BatchRunOutput
-INFO  [AWT-EventQueue-0] 2019-07-26 16:39:17,210 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: D:\Work\WorkspaceRepast\SupplyChainModel\output\config.props
-INFO  [AWT-EventQueue-0] 2019-07-26 16:39:17,405 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
-	D:\Work\WorkspaceRepast\SupplyChainModel\batch\batch_params.xml to
-	C:\Users\Maarten\AppData\Local\Temp\unrolledParamFile.txt
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-26 16:39:51,257 repast.simphony.batch.ssh.LocalSession - 
-	Copying locally C:\Users\Maarten\AppData\Local\Temp\Maarten_localhost5709743741864053827.zip to 
-C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564151985797 ...
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-26 16:39:51,313 repast.simphony.batch.ssh.LocalSession - Copying Finished.
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-26 16:39:51,314 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0,0919
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-26 16:39:51,314 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564151985797\Maarten_localhost5709743741864053827.zip
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-26 16:40:07,619 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
-INFO  [Thread-5] 2019-07-26 16:40:20,760 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
-INFO  [Thread-5] 2019-07-26 16:40:20,761 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Maarten/AppData/Local/Temp/simphony_model_1564151985797/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
-INFO  [Thread-5] 2019-07-26 16:40:20,761 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
-INFO  [Thread-5] 2019-07-26 16:40:20,761 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
-INFO  [Thread-5] 2019-07-26 16:40:20,761 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
-INFO  [Thread-5] 2019-07-26 16:40:20,790 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
-INFO  [Thread-5] 2019-07-26 16:40:20,791 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Maarten/AppData/Local/Temp/simphony_model_1564151985797/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
-INFO  [Thread-5] 2019-07-26 16:40:20,791 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
-INFO  [Thread-5] 2019-07-26 16:40:20,791 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
-INFO  [Thread-5] 2019-07-26 16:40:20,791 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
-INFO  [Thread-5] 2019-07-26 16:40:21,098 repast.simphony.batch.ssh.LocalSession -  - DataCollector pos:[1, 49]
-INFO  [Thread-5] 2019-07-26 16:40:21,098 repast.simphony.batch.ssh.LocalSession -  - ContextDataLoader.readFullFile() file path and name: ./input/inputDataCountryBetterView.csv
-INFO  [Thread-5] 2019-07-26 16:40:21,099 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: .\input\inputDataCountryBetterView.csv (The system cannot find the path specified)
-INFO  [Thread-5] 2019-07-26 16:40:21,101 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open0(Native Method)
-INFO  [Thread-5] 2019-07-26 16:40:21,101 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
-INFO  [Thread-5] 2019-07-26 16:40:21,102 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
-INFO  [Thread-5] 2019-07-26 16:40:21,102 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:112)
-INFO  [Thread-5] 2019-07-26 16:40:21,102 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileReader.<init>(FileReader.java:60)
-INFO  [Thread-5] 2019-07-26 16:40:21,102 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.readFile(SU.java:296)
-INFO  [Thread-5] 2019-07-26 16:40:21,102 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextDataLoader.readFullFile(ContextDataLoader.java:32)
-INFO  [Thread-5] 2019-07-26 16:40:21,104 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.countryCreation(ContextBuilder.java:80)
-INFO  [Thread-5] 2019-07-26 16:40:21,104 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.build(ContextBuilder.java:61)
-INFO  [Thread-5] 2019-07-26 16:40:21,104 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.OneRunBatchRunner.run(OneRunBatchRunner.java:101)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.run(InstanceRunner.java:195)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.main(InstanceRunner.java:217)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession -  - ContextDataLoader.readFullFile() read another file: ./input/inputDataBorders.csv
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: .\input\inputDataBorders.csv (The system cannot find the path specified)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open0(Native Method)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:112)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileReader.<init>(FileReader.java:60)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.readFile(SU.java:296)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextDataLoader.readFullFile(ContextDataLoader.java:42)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.countryCreation(ContextBuilder.java:80)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.build(ContextBuilder.java:61)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
-INFO  [Thread-5] 2019-07-26 16:40:21,105 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
-INFO  [Thread-5] 2019-07-26 16:40:21,106 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
-INFO  [Thread-5] 2019-07-26 16:40:21,106 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
-INFO  [Thread-5] 2019-07-26 16:40:21,106 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
-INFO  [Thread-5] 2019-07-26 16:40:21,106 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-INFO  [Thread-5] 2019-07-26 16:40:21,106 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-INFO  [Thread-5] 2019-07-26 16:40:21,106 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
-INFO  [Thread-5] 2019-07-26 16:40:21,106 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
-INFO  [Thread-5] 2019-07-26 16:40:21,106 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
-INFO  [Thread-5] 2019-07-26 16:40:21,107 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.OneRunBatchRunner.run(OneRunBatchRunner.java:101)
-INFO  [Thread-5] 2019-07-26 16:40:21,107 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.run(InstanceRunner.java:195)
-INFO  [Thread-5] 2019-07-26 16:40:21,107 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.main(InstanceRunner.java:217)
-INFO  [Thread-5] 2019-07-26 16:40:21,107 repast.simphony.batch.ssh.LocalSession -  - ContextDataLoader.readFullFile() generate countries
-INFO  [Thread-5] 2019-07-26 16:40:21,180 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-5] 2019-07-26 16:40:21,181 repast.simphony.batch.ssh.LocalSession - Step 1
-INFO  [Thread-5] 2019-07-26 16:40:21,181 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-5] 2019-07-26 16:40:21,181 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-5] 2019-07-26 16:40:21,181 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-5] 2019-07-26 16:40:21,181 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-5] 2019-07-26 16:40:21,182 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-5] 2019-07-26 16:40:21,182 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-5] 2019-07-26 16:40:21,182 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-5] 2019-07-26 16:40:21,182 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-5] 2019-07-26 16:40:21,182 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-5] 2019-07-26 16:40:21,182 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-5] 2019-07-26 16:40:21,182 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-5] 2019-07-26 16:40:21,182 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-5] 2019-07-26 16:40:21,182 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-5] 2019-07-26 16:40:21,208 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-5] 2019-07-26 16:40:21,208 repast.simphony.batch.ssh.LocalSession - Step 2
-INFO  [Thread-5] 2019-07-26 16:40:21,208 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-5] 2019-07-26 16:40:21,208 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-5] 2019-07-26 16:40:21,208 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-5] 2019-07-26 16:40:21,208 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-5] 2019-07-26 16:40:21,208 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-5] 2019-07-26 16:40:21,209 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-5] 2019-07-26 16:40:21,209 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-5] 2019-07-26 16:40:21,209 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-5] 2019-07-26 16:40:21,209 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-5] 2019-07-26 16:40:21,209 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-5] 2019-07-26 16:40:21,209 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-5] 2019-07-26 16:40:21,209 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-5] 2019-07-26 16:40:21,209 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-5] 2019-07-26 16:40:21,209 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-5] 2019-07-26 16:40:21,211 repast.simphony.batch.ssh.LocalSession - Step 3
-INFO  [Thread-5] 2019-07-26 16:40:21,211 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-5] 2019-07-26 16:40:21,211 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-5] 2019-07-26 16:40:21,212 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-5] 2019-07-26 16:40:21,212 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-5] 2019-07-26 16:40:21,212 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-5] 2019-07-26 16:40:21,212 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-5] 2019-07-26 16:40:21,212 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-5] 2019-07-26 16:40:21,212 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-5] 2019-07-26 16:40:21,212 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-5] 2019-07-26 16:40:21,212 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-5] 2019-07-26 16:40:21,212 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-5] 2019-07-26 16:40:21,212 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-5] 2019-07-26 16:40:21,212 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-5] 2019-07-26 16:40:21,214 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-5] 2019-07-26 16:40:21,214 repast.simphony.batch.ssh.LocalSession - Step 4
-INFO  [Thread-5] 2019-07-26 16:40:21,214 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-5] 2019-07-26 16:40:21,214 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-5] 2019-07-26 16:40:21,215 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-5] 2019-07-26 16:40:21,216 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-5] 2019-07-26 16:40:21,216 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-5] 2019-07-26 16:40:21,216 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-5] 2019-07-26 16:40:21,216 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-5] 2019-07-26 16:40:21,216 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-5] 2019-07-26 16:40:21,221 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-5] 2019-07-26 16:40:21,221 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-5] 2019-07-26 16:40:21,221 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-5] 2019-07-26 16:40:21,221 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-5] 2019-07-26 16:40:21,221 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-5] 2019-07-26 16:40:21,222 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-5] 2019-07-26 16:40:21,223 repast.simphony.batch.ssh.LocalSession - Step 5
-INFO  [Thread-5] 2019-07-26 16:40:21,223 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-5] 2019-07-26 16:40:21,223 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-5] 2019-07-26 16:40:21,223 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-5] 2019-07-26 16:40:21,223 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-5] 2019-07-26 16:40:21,223 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-5] 2019-07-26 16:40:21,223 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-5] 2019-07-26 16:40:21,223 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-5] 2019-07-26 16:40:21,223 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step 6
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step 7
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-5] 2019-07-26 16:40:21,224 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - Step 8
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-5] 2019-07-26 16:40:21,225 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - Step 9
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - Step 10
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-5] 2019-07-26 16:40:21,226 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-5] 2019-07-26 16:40:21,227 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-5] 2019-07-26 16:40:21,227 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-5] 2019-07-26 16:40:21,227 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-5] 2019-07-26 16:40:21,227 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-5] 2019-07-26 16:40:21,227 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-5] 2019-07-26 16:40:21,227 repast.simphony.batch.ssh.LocalSession - ------------------------------------------------------------------------------
-INFO  [Thread-5] 2019-07-26 16:40:21,227 repast.simphony.batch.ssh.LocalSession - Relations information saved in: D:/Work/Output/SimulationOutput22-03-2019/RelationsData.2019.Jul.26.16_40_21.txt
-INFO  [Thread-5] 2019-07-26 16:40:21,243 repast.simphony.batch.ssh.LocalSession -  - ContextPopulationLoader.savePopulation() file path and name:./input/population.txt
-INFO  [Thread-5] 2019-07-26 16:40:21,243 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: .\input\population.txt (The system cannot find the path specified)
-INFO  [Thread-5] 2019-07-26 16:40:21,244 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open0(Native Method)
-INFO  [Thread-5] 2019-07-26 16:40:21,245 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
-INFO  [Thread-5] 2019-07-26 16:40:21,245 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
-INFO  [Thread-5] 2019-07-26 16:40:21,245 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:187)
-INFO  [Thread-5] 2019-07-26 16:40:21,245 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:208)
-INFO  [Thread-5] 2019-07-26 16:40:21,245 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:248)
-INFO  [Thread-5] 2019-07-26 16:40:21,245 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.writeToFile(SU.java:274)
-INFO  [Thread-5] 2019-07-26 16:40:21,245 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextPopulationLoader.savePopulation(ContextPopulationLoader.java:214)
-INFO  [Thread-5] 2019-07-26 16:40:21,245 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.step(ContextBuilder.java:176)
-INFO  [Thread-5] 2019-07-26 16:40:21,245 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
-INFO  [Thread-5] 2019-07-26 16:40:21,245 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-INFO  [Thread-5] 2019-07-26 16:40:21,245 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-INFO  [Thread-5] 2019-07-26 16:40:21,245 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-INFO  [Thread-5] 2019-07-26 16:40:21,245 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-INFO  [Thread-5] 2019-07-26 16:40:21,245 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-INFO  [Thread-5] 2019-07-26 16:40:21,245 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-INFO  [Thread-5] 2019-07-26 16:40:21,245 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-INFO  [Thread-5] 2019-07-26 16:40:21,245 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
-INFO  [Thread-5] 2019-07-26 16:40:21,245 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
-INFO  [Thread-5] 2019-07-26 16:40:21,245 repast.simphony.batch.ssh.LocalSession - Simulation ended at : 10
-INFO  [Thread-5] 2019-07-26 16:40:21,246 repast.simphony.batch.ssh.LocalSession - ------------------------------------------------------------------------------
-INFO  [pool-3-thread-1] 2019-07-26 16:41:07,626 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564151985797 for DONE:  yes
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-26 16:41:07,627 repast.simphony.batch.ssh.SessionsDriver - Run Time: 1,2719
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-26 16:41:07,647 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564151985797
-WARN  [SwingWorker-pool-2-thread-1] 2019-07-26 16:41:07,766 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\ShipmentState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564151985797\instance_1
-WARN  [SwingWorker-pool-2-thread-1] 2019-07-26 16:41:07,767 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\OrderState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564151985797\instance_1
-WARN  [SwingWorker-pool-2-thread-1] 2019-07-26 16:41:07,767 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\AgentState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564151985797\instance_1
-WARN  [SwingWorker-pool-2-thread-1] 2019-07-26 16:41:07,768 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\ShipmentState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564151985797\instance_2
-WARN  [SwingWorker-pool-2-thread-1] 2019-07-26 16:41:07,769 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\OrderState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564151985797\instance_2
-WARN  [SwingWorker-pool-2-thread-1] 2019-07-26 16:41:07,769 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\AgentState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564151985797\instance_2
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-26 16:41:07,769 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into D:/Work/WorkspaceRepast/SupplyChainModel/output
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-26 16:41:07,797 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,0028
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-26 16:41:07,797 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 1,3668
-INFO  [AWT-EventQueue-0] 2019-07-26 18:33:35,526 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: D:\Work\WorkspaceRepast\SupplyChainModel\output\config.props
-INFO  [AWT-EventQueue-0] 2019-07-26 18:33:35,588 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
-	D:\Work\WorkspaceRepast\SupplyChainModel\batch\batch_params.xml to
-	C:\Users\Maarten\AppData\Local\Temp\unrolledParamFile.txt
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-26 18:34:27,726 repast.simphony.batch.ssh.LocalSession - 
-	Copying locally C:\Users\Maarten\AppData\Local\Temp\Maarten_localhost2112394344171962585.zip to 
-C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564158862933 ...
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-26 18:34:27,775 repast.simphony.batch.ssh.LocalSession - Copying Finished.
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-26 18:34:27,777 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0,0807
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-26 18:34:27,777 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564158862933\Maarten_localhost2112394344171962585.zip
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-26 18:34:41,760 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
-INFO  [Thread-0] 2019-07-26 18:34:52,343 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
-INFO  [Thread-0] 2019-07-26 18:34:52,344 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Maarten/AppData/Local/Temp/simphony_model_1564158862933/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
-INFO  [Thread-0] 2019-07-26 18:34:52,344 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
-INFO  [Thread-0] 2019-07-26 18:34:52,344 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
-INFO  [Thread-0] 2019-07-26 18:34:52,344 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
-INFO  [Thread-0] 2019-07-26 18:34:52,455 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
-INFO  [Thread-0] 2019-07-26 18:34:52,455 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Maarten/AppData/Local/Temp/simphony_model_1564158862933/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
-INFO  [Thread-0] 2019-07-26 18:34:52,455 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
-INFO  [Thread-0] 2019-07-26 18:34:52,455 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
-INFO  [Thread-0] 2019-07-26 18:34:52,455 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
-INFO  [Thread-0] 2019-07-26 18:34:52,613 repast.simphony.batch.ssh.LocalSession -  - DataCollector pos:[1, 49]
-INFO  [Thread-0] 2019-07-26 18:34:52,614 repast.simphony.batch.ssh.LocalSession -  - ContextDataLoader.readFullFile() file path and name: ./input/inputDataCountryBetterView.csv
-INFO  [Thread-0] 2019-07-26 18:34:52,615 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: .\input\inputDataCountryBetterView.csv (The system cannot find the path specified)
-INFO  [Thread-0] 2019-07-26 18:34:52,616 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open0(Native Method)
-INFO  [Thread-0] 2019-07-26 18:34:52,617 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
-INFO  [Thread-0] 2019-07-26 18:34:52,617 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
-INFO  [Thread-0] 2019-07-26 18:34:52,617 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:112)
-INFO  [Thread-0] 2019-07-26 18:34:52,617 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileReader.<init>(FileReader.java:60)
-INFO  [Thread-0] 2019-07-26 18:34:52,617 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.readFile(SU.java:296)
-INFO  [Thread-0] 2019-07-26 18:34:52,617 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextDataLoader.readFullFile(ContextDataLoader.java:32)
-INFO  [Thread-0] 2019-07-26 18:34:52,617 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.countryCreation(ContextBuilder.java:80)
-INFO  [Thread-0] 2019-07-26 18:34:52,617 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.build(ContextBuilder.java:61)
-INFO  [Thread-0] 2019-07-26 18:34:52,618 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
-INFO  [Thread-0] 2019-07-26 18:34:52,618 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
-INFO  [Thread-0] 2019-07-26 18:34:52,618 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
-INFO  [Thread-0] 2019-07-26 18:34:52,618 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
-INFO  [Thread-0] 2019-07-26 18:34:52,618 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
-INFO  [Thread-0] 2019-07-26 18:34:52,618 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-INFO  [Thread-0] 2019-07-26 18:34:52,618 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-INFO  [Thread-0] 2019-07-26 18:34:52,618 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
-INFO  [Thread-0] 2019-07-26 18:34:52,618 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
-INFO  [Thread-0] 2019-07-26 18:34:52,619 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
-INFO  [Thread-0] 2019-07-26 18:34:52,619 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.OneRunBatchRunner.run(OneRunBatchRunner.java:101)
-INFO  [Thread-0] 2019-07-26 18:34:52,619 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.run(InstanceRunner.java:195)
-INFO  [Thread-0] 2019-07-26 18:34:52,619 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.main(InstanceRunner.java:217)
-INFO  [Thread-0] 2019-07-26 18:34:52,619 repast.simphony.batch.ssh.LocalSession -  - ContextDataLoader.readFullFile() read another file: ./input/inputDataBorders.csv
-INFO  [Thread-0] 2019-07-26 18:34:52,619 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: .\input\inputDataBorders.csv (The system cannot find the path specified)
-INFO  [Thread-0] 2019-07-26 18:34:52,619 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open0(Native Method)
-INFO  [Thread-0] 2019-07-26 18:34:52,619 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
-INFO  [Thread-0] 2019-07-26 18:34:52,619 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
-INFO  [Thread-0] 2019-07-26 18:34:52,620 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:112)
-INFO  [Thread-0] 2019-07-26 18:34:52,620 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileReader.<init>(FileReader.java:60)
-INFO  [Thread-0] 2019-07-26 18:34:52,620 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.readFile(SU.java:296)
-INFO  [Thread-0] 2019-07-26 18:34:52,620 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextDataLoader.readFullFile(ContextDataLoader.java:42)
-INFO  [Thread-0] 2019-07-26 18:34:52,620 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.countryCreation(ContextBuilder.java:80)
-INFO  [Thread-0] 2019-07-26 18:34:52,620 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.build(ContextBuilder.java:61)
-INFO  [Thread-0] 2019-07-26 18:34:52,620 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
-INFO  [Thread-0] 2019-07-26 18:34:52,620 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
-INFO  [Thread-0] 2019-07-26 18:34:52,620 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
-INFO  [Thread-0] 2019-07-26 18:34:52,620 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
-INFO  [Thread-0] 2019-07-26 18:34:52,620 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
-INFO  [Thread-0] 2019-07-26 18:34:52,620 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-INFO  [Thread-0] 2019-07-26 18:34:52,620 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
-INFO  [Thread-0] 2019-07-26 18:34:52,620 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
-INFO  [Thread-0] 2019-07-26 18:34:52,621 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
-INFO  [Thread-0] 2019-07-26 18:34:52,621 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
-INFO  [Thread-0] 2019-07-26 18:34:52,621 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.OneRunBatchRunner.run(OneRunBatchRunner.java:101)
-INFO  [Thread-0] 2019-07-26 18:34:52,621 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.run(InstanceRunner.java:195)
-INFO  [Thread-0] 2019-07-26 18:34:52,621 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.InstanceRunner.main(InstanceRunner.java:217)
-INFO  [Thread-0] 2019-07-26 18:34:52,621 repast.simphony.batch.ssh.LocalSession -  - ContextDataLoader.readFullFile() generate countries
-INFO  [Thread-0] 2019-07-26 18:34:52,685 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-0] 2019-07-26 18:34:52,685 repast.simphony.batch.ssh.LocalSession - Step 1
-INFO  [Thread-0] 2019-07-26 18:34:52,685 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-0] 2019-07-26 18:34:52,685 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-0] 2019-07-26 18:34:52,687 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-0] 2019-07-26 18:34:52,688 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-0] 2019-07-26 18:34:52,690 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-0] 2019-07-26 18:34:52,691 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-0] 2019-07-26 18:34:52,691 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-0] 2019-07-26 18:34:52,691 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-0] 2019-07-26 18:34:52,691 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-0] 2019-07-26 18:34:52,692 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-0] 2019-07-26 18:34:52,692 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-0] 2019-07-26 18:34:52,693 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-0] 2019-07-26 18:34:52,693 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-0] 2019-07-26 18:34:52,716 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-0] 2019-07-26 18:34:52,716 repast.simphony.batch.ssh.LocalSession - Step 2
-INFO  [Thread-0] 2019-07-26 18:34:52,716 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-0] 2019-07-26 18:34:52,716 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-0] 2019-07-26 18:34:52,716 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-0] 2019-07-26 18:34:52,716 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-0] 2019-07-26 18:34:52,716 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-0] 2019-07-26 18:34:52,717 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-0] 2019-07-26 18:34:52,717 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-0] 2019-07-26 18:34:52,717 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-0] 2019-07-26 18:34:52,717 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-0] 2019-07-26 18:34:52,717 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-0] 2019-07-26 18:34:52,717 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-0] 2019-07-26 18:34:52,717 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-0] 2019-07-26 18:34:52,717 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-0] 2019-07-26 18:34:52,717 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-0] 2019-07-26 18:34:52,717 repast.simphony.batch.ssh.LocalSession - Step 3
-INFO  [Thread-0] 2019-07-26 18:34:52,717 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-0] 2019-07-26 18:34:52,717 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-0] 2019-07-26 18:34:52,718 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-0] 2019-07-26 18:34:52,718 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-0] 2019-07-26 18:34:52,718 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-0] 2019-07-26 18:34:52,718 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-0] 2019-07-26 18:34:52,718 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-0] 2019-07-26 18:34:52,719 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-0] 2019-07-26 18:34:52,719 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-0] 2019-07-26 18:34:52,720 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-0] 2019-07-26 18:34:52,720 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-0] 2019-07-26 18:34:52,721 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-0] 2019-07-26 18:34:52,724 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-0] 2019-07-26 18:34:52,725 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-0] 2019-07-26 18:34:52,725 repast.simphony.batch.ssh.LocalSession - Step 4
-INFO  [Thread-0] 2019-07-26 18:34:52,725 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-0] 2019-07-26 18:34:52,725 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-0] 2019-07-26 18:34:52,725 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-0] 2019-07-26 18:34:52,726 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-0] 2019-07-26 18:34:52,726 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-0] 2019-07-26 18:34:52,726 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-0] 2019-07-26 18:34:52,726 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-0] 2019-07-26 18:34:52,726 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-0] 2019-07-26 18:34:52,726 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-0] 2019-07-26 18:34:52,726 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-0] 2019-07-26 18:34:52,727 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-0] 2019-07-26 18:34:52,727 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-0] 2019-07-26 18:34:52,727 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-0] 2019-07-26 18:34:52,728 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-0] 2019-07-26 18:34:52,728 repast.simphony.batch.ssh.LocalSession - Step 5
-INFO  [Thread-0] 2019-07-26 18:34:52,728 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-0] 2019-07-26 18:34:52,729 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-0] 2019-07-26 18:34:52,729 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-0] 2019-07-26 18:34:52,729 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-0] 2019-07-26 18:34:52,729 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-0] 2019-07-26 18:34:52,730 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-0] 2019-07-26 18:34:52,730 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-0] 2019-07-26 18:34:52,730 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-0] 2019-07-26 18:34:52,734 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-0] 2019-07-26 18:34:52,734 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-0] 2019-07-26 18:34:52,734 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-0] 2019-07-26 18:34:52,735 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-0] 2019-07-26 18:34:52,735 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-0] 2019-07-26 18:34:52,735 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-0] 2019-07-26 18:34:52,736 repast.simphony.batch.ssh.LocalSession - Step 6
-INFO  [Thread-0] 2019-07-26 18:34:52,736 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-0] 2019-07-26 18:34:52,738 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-0] 2019-07-26 18:34:52,739 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-0] 2019-07-26 18:34:52,739 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-0] 2019-07-26 18:34:52,739 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-0] 2019-07-26 18:34:52,739 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-0] 2019-07-26 18:34:52,739 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-0] 2019-07-26 18:34:52,739 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-0] 2019-07-26 18:34:52,739 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-0] 2019-07-26 18:34:52,739 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-0] 2019-07-26 18:34:52,739 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-0] 2019-07-26 18:34:52,739 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-0] 2019-07-26 18:34:52,739 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-0] 2019-07-26 18:34:52,740 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-0] 2019-07-26 18:34:52,741 repast.simphony.batch.ssh.LocalSession - Step 7
-INFO  [Thread-0] 2019-07-26 18:34:52,741 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-0] 2019-07-26 18:34:52,741 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-0] 2019-07-26 18:34:52,741 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-0] 2019-07-26 18:34:52,741 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-0] 2019-07-26 18:34:52,741 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-0] 2019-07-26 18:34:52,741 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-0] 2019-07-26 18:34:52,741 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-0] 2019-07-26 18:34:52,741 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-0] 2019-07-26 18:34:52,741 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-0] 2019-07-26 18:34:52,741 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-0] 2019-07-26 18:34:52,741 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-0] 2019-07-26 18:34:52,742 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-0] 2019-07-26 18:34:52,742 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-0] 2019-07-26 18:34:52,743 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-0] 2019-07-26 18:34:52,743 repast.simphony.batch.ssh.LocalSession - Step 8
-INFO  [Thread-0] 2019-07-26 18:34:52,743 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-0] 2019-07-26 18:34:52,743 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-0] 2019-07-26 18:34:52,743 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-0] 2019-07-26 18:34:52,743 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-0] 2019-07-26 18:34:52,743 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-0] 2019-07-26 18:34:52,743 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-0] 2019-07-26 18:34:52,743 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-0] 2019-07-26 18:34:52,743 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-0] 2019-07-26 18:34:52,743 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-0] 2019-07-26 18:34:52,743 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-0] 2019-07-26 18:34:52,743 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-0] 2019-07-26 18:34:52,744 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-0] 2019-07-26 18:34:52,744 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-0] 2019-07-26 18:34:52,746 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-0] 2019-07-26 18:34:52,746 repast.simphony.batch.ssh.LocalSession - Step 9
-INFO  [Thread-0] 2019-07-26 18:34:52,746 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-0] 2019-07-26 18:34:52,747 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-0] 2019-07-26 18:34:52,747 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-0] 2019-07-26 18:34:52,747 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-0] 2019-07-26 18:34:52,747 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-0] 2019-07-26 18:34:52,747 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-0] 2019-07-26 18:34:52,747 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-0] 2019-07-26 18:34:52,747 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-0] 2019-07-26 18:34:52,747 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-0] 2019-07-26 18:34:52,747 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-0] 2019-07-26 18:34:52,747 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-0] 2019-07-26 18:34:52,747 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-0] 2019-07-26 18:34:52,747 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-0] 2019-07-26 18:34:52,747 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-0] 2019-07-26 18:34:52,747 repast.simphony.batch.ssh.LocalSession - Step 10
-INFO  [Thread-0] 2019-07-26 18:34:52,747 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-0] 2019-07-26 18:34:52,747 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-0] 2019-07-26 18:34:52,747 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-0] 2019-07-26 18:34:52,747 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-0] 2019-07-26 18:34:52,747 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-0] 2019-07-26 18:34:52,747 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-0] 2019-07-26 18:34:52,750 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-0] 2019-07-26 18:34:52,751 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-0] 2019-07-26 18:34:52,751 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-0] 2019-07-26 18:34:52,751 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-0] 2019-07-26 18:34:52,751 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-0] 2019-07-26 18:34:52,751 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-0] 2019-07-26 18:34:52,751 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-0] 2019-07-26 18:34:52,751 repast.simphony.batch.ssh.LocalSession - ------------------------------------------------------------------------------
-INFO  [Thread-0] 2019-07-26 18:34:52,751 repast.simphony.batch.ssh.LocalSession - Relations information saved in: D:/Work/Output/SimulationOutput22-03-2019/RelationsData.2019.Jul.26.18_34_52.txt
-INFO  [Thread-0] 2019-07-26 18:34:52,756 repast.simphony.batch.ssh.LocalSession -  - ContextPopulationLoader.savePopulation() file path and name:./input/population.txt
-INFO  [Thread-0] 2019-07-26 18:34:52,757 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: .\input\population.txt (The system cannot find the path specified)
-INFO  [Thread-0] 2019-07-26 18:34:52,757 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open0(Native Method)
-INFO  [Thread-0] 2019-07-26 18:34:52,757 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
-INFO  [Thread-0] 2019-07-26 18:34:52,757 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
-INFO  [Thread-0] 2019-07-26 18:34:52,758 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:187)
-INFO  [Thread-0] 2019-07-26 18:34:52,758 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:208)
-INFO  [Thread-0] 2019-07-26 18:34:52,758 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:248)
-INFO  [Thread-0] 2019-07-26 18:34:52,758 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.writeToFile(SU.java:274)
-INFO  [Thread-0] 2019-07-26 18:34:52,758 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextPopulationLoader.savePopulation(ContextPopulationLoader.java:214)
-INFO  [Thread-0] 2019-07-26 18:34:52,758 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.step(ContextBuilder.java:176)
-INFO  [Thread-0] 2019-07-26 18:34:52,758 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
-INFO  [Thread-0] 2019-07-26 18:34:52,758 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
-INFO  [Thread-0] 2019-07-26 18:34:52,758 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
-INFO  [Thread-0] 2019-07-26 18:34:52,758 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
-INFO  [Thread-0] 2019-07-26 18:34:52,758 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
-INFO  [Thread-0] 2019-07-26 18:34:52,760 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
-INFO  [Thread-0] 2019-07-26 18:34:52,760 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
-INFO  [Thread-0] 2019-07-26 18:34:52,760 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
-INFO  [Thread-0] 2019-07-26 18:34:52,760 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
-INFO  [Thread-0] 2019-07-26 18:34:52,760 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
-INFO  [Thread-0] 2019-07-26 18:34:52,760 repast.simphony.batch.ssh.LocalSession - Simulation ended at : 10
-INFO  [Thread-0] 2019-07-26 18:34:52,760 repast.simphony.batch.ssh.LocalSession - ------------------------------------------------------------------------------
-INFO  [pool-3-thread-1] 2019-07-26 18:35:41,769 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564158862933 for DONE:  yes
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-26 18:35:41,770 repast.simphony.batch.ssh.SessionsDriver - Run Time: 1,2332
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-26 18:35:41,789 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564158862933
-WARN  [SwingWorker-pool-2-thread-1] 2019-07-26 18:35:41,798 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\ShipmentState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564158862933\instance_1
-WARN  [SwingWorker-pool-2-thread-1] 2019-07-26 18:35:41,798 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\OrderState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564158862933\instance_1
-WARN  [SwingWorker-pool-2-thread-1] 2019-07-26 18:35:41,798 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\AgentState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564158862933\instance_1
-WARN  [SwingWorker-pool-2-thread-1] 2019-07-26 18:35:41,801 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\ShipmentState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564158862933\instance_2
-WARN  [SwingWorker-pool-2-thread-1] 2019-07-26 18:35:41,801 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\OrderState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564158862933\instance_2
-WARN  [SwingWorker-pool-2-thread-1] 2019-07-26 18:35:41,801 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\AgentState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564158862933\instance_2
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-26 18:35:41,801 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into D:/Work/WorkspaceRepast/SupplyChainModel/output
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-26 18:35:41,824 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,0009
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-26 18:35:41,824 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 1,3150
+INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step 176
+INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step 177
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step 178
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step 179
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step 180
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step 181
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step 182
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step 183
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step 184
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step 185
+INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step 186
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step 187
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step 188
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step 189
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step 190
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step 191
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step 192
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step 193
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step 194
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step 195
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step 196
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step 197
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step 198
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step 199
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step 200
+INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - ----------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
+INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
+INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
+INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
+INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
+INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
+INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
+INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
+INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
+INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
+INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
+INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - ------------------------------------------------------------------------------
+INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Relations information saved in: D:/Work/Output/SimulationOutput22-03-2019/RelationsData.2019.Jul.29.11_47_22.txt
+INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Saving Batch Data 0: true, 0.0
+INFO  [Thread-2] 2019-07-29 11:47:22,184 repast.simphony.batch.ssh.LocalSession - Simulation ended at : 200
+INFO  [Thread-2] 2019-07-29 11:47:22,184 repast.simphony.batch.ssh.LocalSession - ------------------------------------------------------------------------------
+INFO  [pool-3-thread-1] 2019-07-29 11:48:09,469 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564393608642 for DONE:  yes
+INFO  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,472 repast.simphony.batch.ssh.SessionsDriver - Run Time: 1,2651
+INFO  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,486 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564393608642
+WARN  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,494 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\ShipmentState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564393608642\instance_1
+WARN  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,494 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\OrderState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564393608642\instance_1
+WARN  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,494 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\AgentState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564393608642\instance_1
+WARN  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,497 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\ShipmentState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564393608642\instance_2
+WARN  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,497 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\OrderState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564393608642\instance_2
+WARN  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,497 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\AgentState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564393608642\instance_2
+INFO  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,497 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into D:/Work/WorkspaceRepast/SupplyChainModel/output
+INFO  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,520 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,0008
+INFO  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,520 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 1,3481

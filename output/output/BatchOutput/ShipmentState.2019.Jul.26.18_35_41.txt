@@ -1,1 +1,0 @@
-"run","tick","IdSupplier","IdClient","LocationX","LocationY","Size"

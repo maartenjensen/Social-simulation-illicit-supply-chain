@@ -12,6 +12,8 @@ import java.util.HashMap;
  */
 public class Constants {
 	
+	public static final String DATA_PATH = "D:/Work/Output/SimulationOutput22-03-2019";
+	
 	// See SupplyChainModel.rs/context.xml
 	public static final String ID_CONTEXT = "supply chain";
 	public static final String ID_CONTINUOUS_SPACE = "continuous space";
