@@ -1,5 +1,8 @@
 package supplyChainModel.common;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.parameter.Parameters;
 
@@ -23,6 +26,7 @@ public final class RepastParam {
 	private static double sendShipmentProbability = 1;
 	private static int producerNumberCap = 8;
 	private static boolean limitedSuppliersClients = false;
+	private static String runStartTime = ".yyyy.MMM.dd.HH_mm_ss";
 	
 	public static void setRepastParameters() {
 		
@@ -83,5 +87,15 @@ public final class RepastParam {
 	
 	public static boolean getLimitedSuppliersClients() {
 		return limitedSuppliersClients;
+	}
+	
+	public static String getStartTime() {
+		return runStartTime;
+	}
+	
+	public static void setStartTime() {
+		SimpleDateFormat formatter= new SimpleDateFormat(".yyyy.MMM.dd.HH_mm_ss");  
+		Date date = new Date(System.currentTimeMillis());
+		runStartTime = formatter.format(date);
 	}
 }

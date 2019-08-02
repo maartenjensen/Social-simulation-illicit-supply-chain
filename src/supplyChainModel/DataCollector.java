@@ -33,7 +33,7 @@ public class DataCollector {
 	
 	public DataCollector(final Context<Object> context) {
 		context.add(this);
-		relationsData.add("\"tick\",\"Id\",\"OtherId\",\"Type\",\"Trust\"");
+		relationsData.add("\"tick\",\"Id\",\"OtherId\",\"Type\",\"Trust\",\"Connected\"");
 		move();
 	}
 	

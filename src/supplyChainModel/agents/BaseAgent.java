@@ -81,7 +81,6 @@ public class BaseAgent {
 	/*========================================================
 	 * The main steps of the agents, called by ContextBuilder
 	 *========================================================*/
-
 	/**
 	 * Pay the cost for stock saving, standard living cost and remove bankrupt nodes
 	 */

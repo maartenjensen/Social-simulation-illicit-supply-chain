@@ -17,7 +17,6 @@ import supplyChainModel.enums.SCType;
  * This class can load data to generate a simulation state with
  * appropriate classes.
  * @author Maarten Jensen
- *
  */
 public class ContextDataLoader {
 

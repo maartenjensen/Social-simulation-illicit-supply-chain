@@ -135,6 +135,15 @@ public class Order {
 		return supplier.getId();
 	}
 	
+	public boolean isConnected() {
+		if (!client.isConnected()) 
+			return false;
+		else if (!supplier.isConnected()) 
+			return false;
+
+		return true;
+	}
+	
 	public double getLocationX() {
 		return SU.getContinuousSpace().getLocation(this).getX();
 	}
@@ -195,5 +204,9 @@ public class Order {
 			}	
 		}
 		vsl_size += goods.get(vsl_largest_quality);
+	}
+	
+	public double getLargestQuality() {
+		return vsl_largest_quality;
 	}
 }

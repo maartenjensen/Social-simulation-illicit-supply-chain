@@ -3,6 +3,7 @@ package frameworkTrust;
 import java.util.HashMap;
 
 import repast.simphony.engine.environment.RunEnvironment;
+import supplyChainModel.common.SU;
 
 /**
  * This class represents the Relation in a Client, it can calculate the trustLevel.
@@ -119,6 +120,15 @@ public class RelationC {
 		return active;
 	}
 	
+	public boolean isConnected() {
+		if (!SU.getBaseAgent(thisId).isConnected()) 
+			return false;
+		else if (!SU.getBaseAgent(otherId).isConnected()) 
+			return false;
+
+		return true;
+	}
+	
 	public void setInActive() {
 		active = false;
 	}
@@ -128,6 +138,6 @@ public class RelationC {
 	}
 	
 	public String getStateString() {
-		return thisId + "," + otherId + ",C," + getTrustLevel();
+		return thisId + "," + otherId + ",C," + getTrustLevel() + "," + isConnected();
 	}
 }

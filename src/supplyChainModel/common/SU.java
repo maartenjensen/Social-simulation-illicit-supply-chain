@@ -3,9 +3,7 @@ package supplyChainModel.common;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import repast.simphony.context.Context;
@@ -235,11 +233,7 @@ public class SU {
 		return network;
 	}
 	
-	public static String getCurrentDateTime() {
-		SimpleDateFormat formatter= new SimpleDateFormat(".yyyy.MMM.dd.HH_mm_ss");  
-		Date date = new Date(System.currentTimeMillis());
-		return formatter.format(date);
-	}
+
 	
 	public static void writeToFile(String filePathAndName, List<String> data) {
 		PrintWriter writer;

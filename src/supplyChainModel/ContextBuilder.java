@@ -74,6 +74,7 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		
 		dataCollector.addAllCurrentStock();
 		
+		RepastParam.setStartTime();
 		return context;
 	}
 
@@ -81,7 +82,6 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		
 		if (SCType.getScLayers() <= 2)
 			Logger.logError("To few supply chain layers, minimum of 3 required:" + SCType.getScLayers());
-		
 		
 		ArrayList<CountryAgent> countryAgents = SU.getObjectsAll(CountryAgent.class);
 		
@@ -208,8 +208,8 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 	}
 	
 	public void saveRelations() {
-		
-		String filePathAndName = "D:/Work/Output/SimulationOutput22-03-2019/RelationsData" + SU.getCurrentDateTime() + ".txt";
+
+		String filePathAndName = "D:/Work/Output/SimulationOutput31-07-2019/RelationsData" + RepastParam.getStartTime() + ".txt";
 		Logger.logMain("Relations information saved in: " + filePathAndName);
 		List<String> data = new ArrayList<String>();
 		data = SU.getDataCollector().getRelationsData();

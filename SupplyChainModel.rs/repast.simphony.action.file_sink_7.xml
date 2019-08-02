@@ -9,7 +9,8 @@
     <string>LocationX</string>
     <string>LocationY</string>
     <string>Money</string>
+    <string>Connected</string>
   </sourceIds>
-  <fileName>D:\Work\Output\SimulationOutput22-03-2019\AgentState.txt</fileName>
+  <fileName>D:\Work\Output\SimulationOutput31-07-2019\AgentState.txt</fileName>
   <addTimeStamp>true</addTimeStamp>
 </repast.simphony.data2.engine.FileSinkDescriptor>

@@ -56,6 +56,22 @@
         <methodName>getSize</methodName>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
+    <entry>
+      <string>LargestQuality</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>LargestQuality</id>
+        <className>supplyChainModel.support.Shipment</className>
+        <methodName>getLargestQuality</methodName>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Connected</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Connected</id>
+        <className>supplyChainModel.support.Shipment</className>
+        <methodName>isConnected</methodName>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
   </methodDataSources>
   <countSources class="linked-hash-map"/>
   <customNADataSources class="linked-hash-map"/>

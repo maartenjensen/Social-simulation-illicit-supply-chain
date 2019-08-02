@@ -10,7 +10,9 @@
     <string>LocationX</string>
     <string>LocationY</string>
     <string>Size</string>
+    <string>LargestQuality</string>
+    <string>Connected</string>
   </sourceIds>
-  <fileName>D:\Work\Output\SimulationOutput22-03-2019\ShipmentState.txt</fileName>
+  <fileName>D:\Work\Output\SimulationOutput31-07-2019\ShipmentState.txt</fileName>
   <addTimeStamp>true</addTimeStamp>
 </repast.simphony.data2.engine.FileSinkDescriptor>

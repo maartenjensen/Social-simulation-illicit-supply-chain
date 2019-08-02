@@ -108,6 +108,16 @@ public class Shipment {
 		return String.format("%.1f", goods.get(vsl_largest_quality));
 	}
 	
+	public boolean isConnected() {
+		if (!client.isConnected()) 
+			return false;
+		else if (supplier != null) {
+			if (!supplier.isConnected())
+				return false;
+		}
+		return true;
+	}
+	
 	public double getLocationX() {
 		return SU.getContinuousSpace().getLocation(this).getX();
 	}
@@ -126,6 +136,10 @@ public class Shipment {
 			Logger.logError("Shipment.getColor(): factor > 1 =" + factor + ", quality:" + vsl_largest_quality);
 		}
 		return new Color(factor, factor, 0);		
+	}
+	
+	public double getLargestQuality() {
+		return vsl_largest_quality;
 	}
 	
 	// Visualization 

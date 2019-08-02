@@ -11,6 +11,6 @@
     <string>Money avg. 4 Retailers</string>
     <string>Money avg. 5 Consumers</string>
   </sourceIds>
-  <fileName>D:\Work\Output\SimulationOutput22-03-2019\AvgWealthOutput.txt</fileName>
+  <fileName>D:\Work\Output\SimulationOutput31-07-2019\AvgWealthOutput.txt</fileName>
   <addTimeStamp>true</addTimeStamp>
 </repast.simphony.data2.engine.FileSinkDescriptor>
