@@ -256,6 +256,7 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 				
 				interventShipment(shipment, "NL");
 				SU.getDataCollector().addShipmentNLIntervenedCount();
+				SU.getDataCollector().addShipmentNLIntervenedSize(shipment.getRealSize());
 			}
 		}
 	}

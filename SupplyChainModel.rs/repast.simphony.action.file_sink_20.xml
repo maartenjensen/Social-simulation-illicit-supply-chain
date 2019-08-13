@@ -1,0 +1,19 @@
+<repast.simphony.data2.engine.FileSinkDescriptor simphonyVersion="2.6.0">
+  <name>Selling Price</name>
+  <dataSet>Agent Data Selling Price</dataSet>
+  <delimiter>,</delimiter>
+  <format>TABULAR</format>
+  <sourceIds class="linked-hash-set">
+    <string>tick</string>
+    <string>P Sell Price</string>
+    <string>P Avg Buy</string>
+    <string>I Sell Price</string>
+    <string>I Avg Buy</string>
+    <string>W Sell Price</string>
+    <string>W Avg Buy</string>
+    <string>R Sell Price</string>
+    <string>R Avg Buy</string>
+  </sourceIds>
+  <fileName>output\BatchOutput\SellingPrice.txt</fileName>
+  <addTimeStamp>true</addTimeStamp>
+</repast.simphony.data2.engine.FileSinkDescriptor>

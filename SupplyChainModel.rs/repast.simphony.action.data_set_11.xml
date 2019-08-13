@@ -1,0 +1,85 @@
+<repast.simphony.data2.engine.DataSetDescriptor simphonyVersion="2.6.0">
+  <name>BatchRunOutputIntervention</name>
+  <type>AGGREGATE</type>
+  <inclTick>true</inclTick>
+  <inclBatchRun>true</inclBatchRun>
+  <inclRandomSeed>true</inclRandomSeed>
+  <scheduleParams>
+    <start>Infinity</start>
+    <interval>0.0</interval>
+    <priority>-Infinity</priority>
+    <pType>LAST</pType>
+    <duration>-1.0</duration>
+    <frequency>ONE_TIME</frequency>
+    <hashCode>799051961</hashCode>
+  </scheduleParams>
+  <atEnd>false</atEnd>
+  <methodDataSources class="linked-hash-map">
+    <entry>
+      <string>Intervened Global %</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Intervened Global %</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getShipmentIntervenedPercentage</methodName>
+        <aggType>MEAN</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Intervened Global Count</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Intervened Global Count</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getShipmentIntervenedCount</methodName>
+        <aggType>MEAN</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Intervened NL %</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Intervened NL %</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getShipmentNLIntervenedPercentage</methodName>
+        <aggType>MEAN</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Intervened NL Size</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Intervened NL Size</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getShipmentNLIntervenedSize</methodName>
+        <aggType>MEAN</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Shipment NL Max Size</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Shipment NL Max Size</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getShipmentNLMax</methodName>
+        <aggType>MEAN</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Shipment ES Max Size</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Shipment ES Max Size</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getShipmentESMax</methodName>
+        <aggType>MEAN</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Intervened NL Count</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Intervened NL Count</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getShipmentNLIntervenedCount</methodName>
+        <aggType>MEAN</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+  </methodDataSources>
+  <countSources class="linked-hash-map"/>
+  <customNADataSources class="linked-hash-map"/>
+  <customAggDataSources class="linked-hash-map"/>
+</repast.simphony.data2.engine.DataSetDescriptor>

@@ -107,6 +107,15 @@ public class Shipment {
 		return client.getId();
 	}
 	
+	public double getRealSize() {
+		
+		double realSize = 0;
+		for (Double size : goods.values()) {
+			realSize += size;
+		}
+		return realSize;
+	}
+	
 	public double getSize() {
 		return vsl_size;
 	}

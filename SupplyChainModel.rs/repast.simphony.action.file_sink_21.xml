@@ -1,0 +1,20 @@
+<repast.simphony.data2.engine.FileSinkDescriptor simphonyVersion="2.6.0">
+  <name>BatchRunOutputIntervention</name>
+  <dataSet>BatchRunOutputIntervention</dataSet>
+  <delimiter>,</delimiter>
+  <format>TABULAR</format>
+  <sourceIds class="linked-hash-set">
+    <string>tick</string>
+    <string>run</string>
+    <string>random_seed</string>
+    <string>Intervened Global %</string>
+    <string>Intervened Global Count</string>
+    <string>Intervened NL Count</string>
+    <string>Intervened NL %</string>
+    <string>Intervened NL Size</string>
+    <string>Shipment NL Max Size</string>
+    <string>Shipment ES Max Size</string>
+  </sourceIds>
+  <fileName>output\BatchOutput\BatchRunOutputIntervention.txt</fileName>
+  <addTimeStamp>true</addTimeStamp>
+</repast.simphony.data2.engine.FileSinkDescriptor>

@@ -1,0 +1,16 @@
+<repast.simphony.data2.engine.FileSinkDescriptor simphonyVersion="2.6.0">
+  <name>Agent Count</name>
+  <dataSet>DC Agent Count</dataSet>
+  <delimiter>,</delimiter>
+  <format>TABULAR</format>
+  <sourceIds class="linked-hash-set">
+    <string>tick</string>
+    <string>Count 1 Producers</string>
+    <string>Count 2 Internationals</string>
+    <string>Count 3 Wholesalers</string>
+    <string>Count 4 Retailers</string>
+    <string>Count 5 Consumers</string>
+  </sourceIds>
+  <fileName>output\BatchOutput\AgentCount.txt</fileName>
+  <addTimeStamp>true</addTimeStamp>
+</repast.simphony.data2.engine.FileSinkDescriptor>

@@ -1,24 +1,16 @@
 <repast.simphony.data2.engine.FileSinkDescriptor simphonyVersion="2.6.0">
-  <name>BatchRunOutput</name>
-  <dataSet>BatchRunOutput</dataSet>
+  <name>Order State</name>
+  <dataSet>Order Data</dataSet>
   <delimiter>,</delimiter>
   <format>TABULAR</format>
   <sourceIds class="linked-hash-set">
-    <string>run</string>
     <string>tick</string>
-    <string>random_seed</string>
-    <string>Produced</string>
-    <string>Deleted</string>
-    <string>Consumed</string>
-    <string>Cut Source</string>
-    <string>Cut Produced</string>
-    <string>Consumed Low</string>
-    <string>Consumed High</string>
-    <string>Quality ES High</string>
-    <string>Quality ES Low</string>
-    <string>Quality NL High</string>
-    <string>Quality NL Low</string>
+    <string>IdClient</string>
+    <string>IdSupplier</string>
+    <string>LocationX</string>
+    <string>LocationY</string>
+    <string>Size</string>
   </sourceIds>
-  <fileName>output\BatchOutput\BatchRunOutput.txt</fileName>
+  <fileName>output\BatchOutput\OrderState.txt</fileName>
   <addTimeStamp>true</addTimeStamp>
 </repast.simphony.data2.engine.FileSinkDescriptor>

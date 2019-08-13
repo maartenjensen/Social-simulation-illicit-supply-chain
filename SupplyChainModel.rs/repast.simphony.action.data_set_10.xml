@@ -33,6 +33,33 @@
         <aggType>MEAN</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
+    <entry>
+      <string>Intervened NL Size</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Intervened NL Size</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getShipmentNLIntervenedSize</methodName>
+        <aggType>MEAN</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Intervened NL Count</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Intervened NL Count</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getShipmentNLIntervenedCount</methodName>
+        <aggType>MEAN</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Intervened Global Count</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Intervened Global Count</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getShipmentIntervenedCount</methodName>
+        <aggType>MEAN</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
   </methodDataSources>
   <countSources class="linked-hash-map"/>
   <customNADataSources class="linked-hash-map"/>

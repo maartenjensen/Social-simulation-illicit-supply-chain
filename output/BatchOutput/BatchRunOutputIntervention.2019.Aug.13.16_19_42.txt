@@ -1,0 +1,2 @@
+"tick","run","random_seed","Intervened Global %","Intervened Global Count","Intervened NL Count","Intervened NL %","Intervened NL Size","Shipment NL Max Size","Shipment ES Max Size"
+1000.0,1,894498068,4.04076524226712,226.0,0.0,0.0,0.0,0.0,0.0

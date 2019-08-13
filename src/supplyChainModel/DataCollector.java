@@ -36,6 +36,10 @@ public class DataCollector {
 	
 	private int shipmentNLCount = 0;
 	private int shipmentNLIntervenedCount = 0;
+	private double shipmentNLIntervenedSize = 0;
+	
+	private HashMap<Integer, Double> shipmentSizeMaxNL = new HashMap<Integer, Double>();
+	private HashMap<Integer, Double> shipmentSizeMaxES = new HashMap<Integer, Double>();
 	
 	private HashMap<Byte, Double> wholesalerReceiveNL = new HashMap<Byte, Double>();
 	private HashMap<Byte, Double> wholesalerReceiveES = new HashMap<Byte, Double>();
@@ -214,6 +218,14 @@ public class DataCollector {
 		shipmentNLIntervenedCount ++;
 	}
 	
+	public double getShipmentNLIntervenedSize() {
+		return shipmentNLIntervenedSize;
+	}
+	
+	public void addShipmentNLIntervenedSize(double size) {
+		shipmentNLIntervenedSize += size;
+	}
+	
 	public double getQualityConsumedLow() {
 		if (consumedStock.containsKey(Constants.QUALITY_MINIMUM))
 			return consumedStock.get(Constants.QUALITY_MINIMUM);
@@ -267,6 +279,30 @@ public class DataCollector {
 	public double getQualityESHigh() {
 		if (wholesalerReceiveES.containsKey(Constants.QUALITY_MAXIMUM))
 			return wholesalerReceiveES.get(Constants.QUALITY_MAXIMUM);
+		return 0;
+	} 
+	
+	public void addShipmentSizeNL(double size) {
+		if (!shipmentSizeMaxNL.containsKey(SU.getTick()))
+			shipmentSizeMaxNL.put(SU.getTick(), size);
+		else
+			shipmentSizeMaxNL.put(SU.getTick(), Math.max(size, shipmentSizeMaxNL.get(SU.getTick())));
+	}
+	
+	public void addShipmentSizeES(double size) {
+		if (!shipmentSizeMaxES.containsKey(SU.getTick()))
+			shipmentSizeMaxES.put(SU.getTick(), size);
+		else
+			shipmentSizeMaxES.put(SU.getTick(), Math.max(size, shipmentSizeMaxES.get(SU.getTick())));
+	}
+	
+	public double getShipmentNLMax() {
+		//TODO implement this
+		return 0;
+	}
+	
+	public double getShipmentESMax() {
+		//TODO implement this
 		return 0;
 	}
 	
