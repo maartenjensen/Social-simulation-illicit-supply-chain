@@ -26,11 +26,11 @@ public final class RepastParam {
 	private static boolean limitedSuppliersClients = false;
 	private static boolean realisticMap = false;
 	private static boolean settingLoadPopulationFile = false;
-	private static String interceptionType = "none";
-	private static int interceptionSupplierId = -1;
-	private static int interceptionClientId = -1;
-	private static int interceptionFromStep = -1;
-	private static int interceptionCount = 1;
+	private static int settingInitializeTime = 100;
+	
+	private static String interventionType = "none";
+	private static int interventionGlobalPercentage = 5;
+	private static int interventionWholesalerNLPercentage = 0;
 	
 	public static void setRepastParameters() {
 		
@@ -48,12 +48,11 @@ public final class RepastParam {
 		enableSupplierOnPriceSelection = p.getBoolean("pEnableSupplierOnPriceSelection");
 		enableDesperationOnOrder = p.getBoolean("pDesperationOnOrder");
 		settingLoadPopulationFile = p.getBoolean("pSettingLoadPopulationFile");
+		settingInitializeTime = p.getInteger("pSettingInitializeTime");
 		
-		interceptionType 		= p.getString("pInterceptionType");
-		interceptionSupplierId	= p.getInteger("pInterceptionSupplierId");
-		interceptionClientId   	= p.getInteger("pInterceptionClientId");
-		interceptionFromStep  	= p.getInteger("pInterceptionFromStep");
-		interceptionCount	   	= p.getInteger("pInterceptionCount");
+		interventionType 		= p.getString("pInterventionType");
+		interventionGlobalPercentage = p.getInteger("pInterventionGlobalPercentage");
+		interventionWholesalerNLPercentage = p.getInteger("pInterventionWholesalerNLPercentage");
 	}
 
 	/**
@@ -110,37 +109,23 @@ public final class RepastParam {
 		return settingLoadPopulationFile;
 	}
 	
+	public static int getSettingInitializeTime() {
+		return settingInitializeTime;
+	}
+	
 	public static boolean getEnableSupplierOnPriceSelection() {
 		return enableSupplierOnPriceSelection;
 	}
 	
-	public static String getInterceptionType() {
-		return interceptionType;
+	public static String getInterventionType() {
+		return interventionType;
 	}
 	
-	public static int getInterceptionSupplierId() {
-		return interceptionSupplierId;
+	public static int getInterventionGlobalPercentage() {
+		return interventionGlobalPercentage;
 	}
 	
-	public static int getInterceptionClientId() {
-		return interceptionClientId;
-	}
-	
-	public static int getInterceptionFromStep() {
-		return interceptionFromStep;
-	}
-	
-	public static int getInterceptionCount() {
-		return interceptionCount;
-	}
-	
-	public static boolean canIntercept() {
-		if (interceptionCount > 0)
-			return true;
-		return false;
-	}
-	
-	public static void interceptionCountUpdate() {
-		interceptionCount -= 1;
+	public static int getInterventionWholesalerNLPercentage() {
+		return interventionWholesalerNLPercentage;
 	}
 }

@@ -1,400 +1,720 @@
-INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step 176
-INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,172 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step 177
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step 178
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step 179
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,173 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step 180
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step 181
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step 182
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,174 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step 183
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step 184
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - Step 185
-INFO  [Thread-2] 2019-07-29 11:47:22,175 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step 186
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step 187
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step 188
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,176 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step 189
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step 190
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,177 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step 191
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step 192
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step 193
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,178 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step 194
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step 195
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step 196
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,179 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step 197
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step 198
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step 199
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,180 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step 200
-INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - ----------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: remove bankrupt agents
-INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: reset output parameters
-INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: spawning of new agents
-INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-Shipment: shipments advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-Shipment: orders advancements
-INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-Agent5Consumer: temporary receive income
-INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: receive shipment from suppliers
-INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: choose suppliers and buyers
-INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send shipment to clients
-INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-ContextBuilder: step intervention on shipment
-INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: send order
-INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Step-BaseAgent: add to data
-INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - ------------------------------------------------------------------------------
-INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Relations information saved in: D:/Work/Output/SimulationOutput22-03-2019/RelationsData.2019.Jul.29.11_47_22.txt
-INFO  [Thread-2] 2019-07-29 11:47:22,181 repast.simphony.batch.ssh.LocalSession - Saving Batch Data 0: true, 0.0
-INFO  [Thread-2] 2019-07-29 11:47:22,184 repast.simphony.batch.ssh.LocalSession - Simulation ended at : 200
-INFO  [Thread-2] 2019-07-29 11:47:22,184 repast.simphony.batch.ssh.LocalSession - ------------------------------------------------------------------------------
-INFO  [pool-3-thread-1] 2019-07-29 11:48:09,469 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564393608642 for DONE:  yes
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,472 repast.simphony.batch.ssh.SessionsDriver - Run Time: 1,2651
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,486 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564393608642
-WARN  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,494 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\ShipmentState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564393608642\instance_1
-WARN  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,494 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\OrderState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564393608642\instance_1
-WARN  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,494 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\AgentState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564393608642\instance_1
-WARN  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,497 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\ShipmentState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564393608642\instance_2
-WARN  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,497 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\OrderState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564393608642\instance_2
-WARN  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,497 repast.simphony.batch.ssh.OutputFinder - No model output found matching glob:{**\\,}output\\BatchOutput\\AgentState*.batch_param_map.txt in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1564393608642\instance_2
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,497 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into D:/Work/WorkspaceRepast/SupplyChainModel/output
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,520 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,0008
-INFO  [SwingWorker-pool-2-thread-1] 2019-07-29 11:48:09,520 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 1,3481
+INFO  [Thread-0] 2019-08-06 14:04:29,935 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
+INFO  [Thread-0] 2019-08-06 14:04:29,935 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+INFO  [Thread-0] 2019-08-06 14:04:29,935 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+INFO  [Thread-0] 2019-08-06 14:04:29,935 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+INFO  [Thread-0] 2019-08-06 14:04:29,935 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+INFO  [Thread-0] 2019-08-06 14:04:29,935 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+INFO  [Thread-0] 2019-08-06 14:04:29,935 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+INFO  [Thread-0] 2019-08-06 14:04:29,936 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+INFO  [Thread-0] 2019-08-06 14:04:29,936 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
+INFO  [Thread-0] 2019-08-06 14:04:29,936 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [Thread-0] 2019-08-06 14:04:29,936 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: D:\Work\Output\SimulationOutput31-07-2019\output\BatchOutput\BatchRunData.2019.Aug.06.14_04_29.txt (The system cannot find the file specified)
+INFO  [Thread-0] 2019-08-06 14:04:29,936 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open0(Native Method)
+INFO  [Thread-0] 2019-08-06 14:04:29,936 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+INFO  [Thread-0] 2019-08-06 14:04:29,936 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+INFO  [Thread-0] 2019-08-06 14:04:29,936 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:112)
+INFO  [Thread-0] 2019-08-06 14:04:29,936 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileReader.<init>(FileReader.java:60)
+INFO  [Thread-0] 2019-08-06 14:04:29,936 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.readFile(SU.java:296)
+INFO  [Thread-0] 2019-08-06 14:04:29,936 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.BatchRunDataSave.saveData(BatchRunDataSave.java:33)
+INFO  [Thread-0] 2019-08-06 14:04:29,936 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.step(ContextBuilder.java:182)
+INFO  [Thread-0] 2019-08-06 14:04:29,936 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
+INFO  [Thread-0] 2019-08-06 14:04:29,936 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+INFO  [Thread-0] 2019-08-06 14:04:29,936 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+INFO  [Thread-0] 2019-08-06 14:04:29,936 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+INFO  [Thread-0] 2019-08-06 14:04:29,936 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+INFO  [Thread-0] 2019-08-06 14:04:29,936 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+INFO  [Thread-0] 2019-08-06 14:04:29,936 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+INFO  [Thread-0] 2019-08-06 14:04:29,936 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+INFO  [Thread-0] 2019-08-06 14:04:29,936 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
+INFO  [Thread-0] 2019-08-06 14:04:29,937 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [pool-3-thread-1] 2019-08-06 14:04:56,389 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565092939989 for DONE:  yes
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 14:04:56,390 repast.simphony.batch.ssh.SessionsDriver - Run Time: 2,4682
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 14:04:56,463 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565092939989
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 14:04:56,504 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into D:/Work/Output/SimulationOutput31-07-2019
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 14:04:58,154 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,0294
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 14:04:58,155 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 2,6363
+INFO  [AWT-EventQueue-0] 2019-08-06 14:37:08,643 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: D:\Work\Output\SimulationOutput31-07-2019\config.props
+INFO  [AWT-EventQueue-0] 2019-08-06 14:37:08,652 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	D:\Work\WorkspaceRepast\SupplyChainModel\batch\batch_params.xml to
+	C:\Users\Maarten\AppData\Local\Temp\unrolledParamFile.txt
+INFO  [SwingWorker-pool-2-thread-2] 2019-08-06 14:37:55,388 repast.simphony.batch.ssh.LocalSession - 
+	Copying locally C:\Users\Maarten\AppData\Local\Temp\Maarten_localhost18160986686923919726.zip to 
+C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565095067849 ...
+INFO  [SwingWorker-pool-2-thread-2] 2019-08-06 14:37:55,484 repast.simphony.batch.ssh.LocalSession - Copying Finished.
+INFO  [SwingWorker-pool-2-thread-2] 2019-08-06 14:37:55,485 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0,1273
+INFO  [SwingWorker-pool-2-thread-2] 2019-08-06 14:37:55,485 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565095067849\Maarten_localhost18160986686923919726.zip
+INFO  [SwingWorker-pool-2-thread-2] 2019-08-06 14:38:23,353 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
+INFO  [Thread-1] 2019-08-06 14:38:38,594 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-1] 2019-08-06 14:38:38,594 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Maarten/AppData/Local/Temp/simphony_model_1565095067849/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-1] 2019-08-06 14:38:38,594 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-1] 2019-08-06 14:38:38,594 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-1] 2019-08-06 14:38:38,595 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-1] 2019-08-06 14:38:38,884 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-1] 2019-08-06 14:38:38,884 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Maarten/AppData/Local/Temp/simphony_model_1565095067849/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-1] 2019-08-06 14:38:38,884 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-1] 2019-08-06 14:38:38,884 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-1] 2019-08-06 14:38:38,885 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-1] 2019-08-06 14:38:43,643 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: \output\RelationsData.2019.Aug.06.14_38_43.txt (The system cannot find the path specified)
+INFO  [Thread-1] 2019-08-06 14:38:43,644 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open0(Native Method)
+INFO  [Thread-1] 2019-08-06 14:38:43,644 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+INFO  [Thread-1] 2019-08-06 14:38:43,644 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+INFO  [Thread-1] 2019-08-06 14:38:43,644 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:187)
+INFO  [Thread-1] 2019-08-06 14:38:43,644 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:208)
+INFO  [Thread-1] 2019-08-06 14:38:43,644 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:248)
+INFO  [Thread-1] 2019-08-06 14:38:43,644 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.writeToFile(SU.java:274)
+INFO  [Thread-1] 2019-08-06 14:38:43,644 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.saveRelations(ContextBuilder.java:202)
+INFO  [Thread-1] 2019-08-06 14:38:43,644 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.step(ContextBuilder.java:177)
+INFO  [Thread-1] 2019-08-06 14:38:43,644 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
+INFO  [Thread-1] 2019-08-06 14:38:43,644 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+INFO  [Thread-1] 2019-08-06 14:38:43,644 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+INFO  [Thread-1] 2019-08-06 14:38:43,644 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+INFO  [Thread-1] 2019-08-06 14:38:43,644 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+INFO  [Thread-1] 2019-08-06 14:38:43,644 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+INFO  [Thread-1] 2019-08-06 14:38:43,645 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+INFO  [Thread-1] 2019-08-06 14:38:43,650 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+INFO  [Thread-1] 2019-08-06 14:38:43,651 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
+INFO  [Thread-1] 2019-08-06 14:38:43,651 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [Thread-1] 2019-08-06 14:38:43,651 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: D:\Work\Output\SimulationOutput31-07-2019\output\BatchOutput\BatchRunData.2019.Aug.06.14_38_43.txt (The system cannot find the file specified)
+INFO  [Thread-1] 2019-08-06 14:38:43,651 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open0(Native Method)
+INFO  [Thread-1] 2019-08-06 14:38:43,651 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+INFO  [Thread-1] 2019-08-06 14:38:43,651 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+INFO  [Thread-1] 2019-08-06 14:38:43,652 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:112)
+INFO  [Thread-1] 2019-08-06 14:38:43,652 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileReader.<init>(FileReader.java:60)
+INFO  [Thread-1] 2019-08-06 14:38:43,652 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.readFile(SU.java:296)
+INFO  [Thread-1] 2019-08-06 14:38:43,652 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.BatchRunDataSave.saveData(BatchRunDataSave.java:33)
+INFO  [Thread-1] 2019-08-06 14:38:43,652 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.step(ContextBuilder.java:182)
+INFO  [Thread-1] 2019-08-06 14:38:43,652 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
+INFO  [Thread-1] 2019-08-06 14:38:43,652 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+INFO  [Thread-1] 2019-08-06 14:38:43,652 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+INFO  [Thread-1] 2019-08-06 14:38:43,652 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+INFO  [Thread-1] 2019-08-06 14:38:43,652 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+INFO  [Thread-1] 2019-08-06 14:38:43,652 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+INFO  [Thread-1] 2019-08-06 14:38:43,652 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+INFO  [Thread-1] 2019-08-06 14:38:43,652 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+INFO  [Thread-1] 2019-08-06 14:38:43,652 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
+INFO  [Thread-1] 2019-08-06 14:38:43,652 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [Thread-1] 2019-08-06 14:38:44,775 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: \output\RelationsData.2019.Aug.06.14_38_44.txt (The system cannot find the path specified)
+INFO  [Thread-1] 2019-08-06 14:38:44,776 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open0(Native Method)
+INFO  [Thread-1] 2019-08-06 14:38:44,776 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+INFO  [Thread-1] 2019-08-06 14:38:44,776 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+INFO  [Thread-1] 2019-08-06 14:38:44,776 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:187)
+INFO  [Thread-1] 2019-08-06 14:38:44,780 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:208)
+INFO  [Thread-1] 2019-08-06 14:38:44,781 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:248)
+INFO  [Thread-1] 2019-08-06 14:38:44,781 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.writeToFile(SU.java:274)
+INFO  [Thread-1] 2019-08-06 14:38:44,781 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.saveRelations(ContextBuilder.java:202)
+INFO  [Thread-1] 2019-08-06 14:38:44,781 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.step(ContextBuilder.java:177)
+INFO  [Thread-1] 2019-08-06 14:38:44,781 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
+INFO  [Thread-1] 2019-08-06 14:38:44,781 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+INFO  [Thread-1] 2019-08-06 14:38:44,781 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+INFO  [Thread-1] 2019-08-06 14:38:44,781 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+INFO  [Thread-1] 2019-08-06 14:38:44,781 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+INFO  [Thread-1] 2019-08-06 14:38:44,781 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+INFO  [Thread-1] 2019-08-06 14:38:44,781 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+INFO  [Thread-1] 2019-08-06 14:38:44,782 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+INFO  [Thread-1] 2019-08-06 14:38:44,782 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
+INFO  [Thread-1] 2019-08-06 14:38:44,782 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [Thread-1] 2019-08-06 14:38:44,784 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: D:\Work\Output\SimulationOutput31-07-2019\output\BatchOutput\BatchRunData.2019.Aug.06.14_38_44.txt (The system cannot find the file specified)
+INFO  [Thread-1] 2019-08-06 14:38:44,785 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open0(Native Method)
+INFO  [Thread-1] 2019-08-06 14:38:44,786 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+INFO  [Thread-1] 2019-08-06 14:38:44,786 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+INFO  [Thread-1] 2019-08-06 14:38:44,786 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:112)
+INFO  [Thread-1] 2019-08-06 14:38:44,786 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileReader.<init>(FileReader.java:60)
+INFO  [Thread-1] 2019-08-06 14:38:44,786 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.readFile(SU.java:296)
+INFO  [Thread-1] 2019-08-06 14:38:44,786 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.BatchRunDataSave.saveData(BatchRunDataSave.java:33)
+INFO  [Thread-1] 2019-08-06 14:38:44,786 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.step(ContextBuilder.java:182)
+INFO  [Thread-1] 2019-08-06 14:38:44,786 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
+INFO  [Thread-1] 2019-08-06 14:38:44,786 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+INFO  [Thread-1] 2019-08-06 14:38:44,786 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+INFO  [Thread-1] 2019-08-06 14:38:44,786 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+INFO  [Thread-1] 2019-08-06 14:38:44,786 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+INFO  [Thread-1] 2019-08-06 14:38:44,786 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+INFO  [Thread-1] 2019-08-06 14:38:44,786 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+INFO  [Thread-1] 2019-08-06 14:38:44,786 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+INFO  [Thread-1] 2019-08-06 14:38:44,786 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
+INFO  [Thread-1] 2019-08-06 14:38:44,786 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [Thread-1] 2019-08-06 14:38:47,916 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: \output\RelationsData.2019.Aug.06.14_38_47.txt (The system cannot find the path specified)
+INFO  [Thread-1] 2019-08-06 14:38:47,916 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open0(Native Method)
+INFO  [Thread-1] 2019-08-06 14:38:47,916 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+INFO  [Thread-1] 2019-08-06 14:38:47,916 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+INFO  [Thread-1] 2019-08-06 14:38:47,917 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:187)
+INFO  [Thread-1] 2019-08-06 14:38:47,918 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:208)
+INFO  [Thread-1] 2019-08-06 14:38:47,918 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:248)
+INFO  [Thread-1] 2019-08-06 14:38:47,918 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.writeToFile(SU.java:274)
+INFO  [Thread-1] 2019-08-06 14:38:47,918 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.saveRelations(ContextBuilder.java:202)
+INFO  [Thread-1] 2019-08-06 14:38:47,918 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.step(ContextBuilder.java:177)
+INFO  [Thread-1] 2019-08-06 14:38:47,918 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
+INFO  [Thread-1] 2019-08-06 14:38:47,918 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+INFO  [Thread-1] 2019-08-06 14:38:47,918 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+INFO  [Thread-1] 2019-08-06 14:38:47,918 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+INFO  [Thread-1] 2019-08-06 14:38:47,918 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+INFO  [Thread-1] 2019-08-06 14:38:47,918 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+INFO  [Thread-1] 2019-08-06 14:38:47,918 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+INFO  [Thread-1] 2019-08-06 14:38:47,918 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+INFO  [Thread-1] 2019-08-06 14:38:47,918 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
+INFO  [Thread-1] 2019-08-06 14:38:47,918 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [Thread-1] 2019-08-06 14:38:47,918 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: D:\Work\Output\SimulationOutput31-07-2019\output\BatchOutput\BatchRunData.2019.Aug.06.14_38_47.txt (The system cannot find the file specified)
+INFO  [Thread-1] 2019-08-06 14:38:47,919 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open0(Native Method)
+INFO  [Thread-1] 2019-08-06 14:38:47,919 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+INFO  [Thread-1] 2019-08-06 14:38:47,919 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+INFO  [Thread-1] 2019-08-06 14:38:47,919 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:112)
+INFO  [Thread-1] 2019-08-06 14:38:47,920 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileReader.<init>(FileReader.java:60)
+INFO  [Thread-1] 2019-08-06 14:38:47,920 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.readFile(SU.java:296)
+INFO  [Thread-1] 2019-08-06 14:38:47,920 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.BatchRunDataSave.saveData(BatchRunDataSave.java:33)
+INFO  [Thread-1] 2019-08-06 14:38:47,920 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.step(ContextBuilder.java:182)
+INFO  [Thread-1] 2019-08-06 14:38:47,920 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
+INFO  [Thread-1] 2019-08-06 14:38:47,920 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+INFO  [Thread-1] 2019-08-06 14:38:47,920 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+INFO  [Thread-1] 2019-08-06 14:38:47,920 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+INFO  [Thread-1] 2019-08-06 14:38:47,923 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+INFO  [Thread-1] 2019-08-06 14:38:47,923 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+INFO  [Thread-1] 2019-08-06 14:38:47,923 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+INFO  [Thread-1] 2019-08-06 14:38:47,923 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+INFO  [Thread-1] 2019-08-06 14:38:47,923 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
+INFO  [Thread-1] 2019-08-06 14:38:47,923 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [Thread-1] 2019-08-06 14:38:48,879 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: \output\RelationsData.2019.Aug.06.14_38_48.txt (The system cannot find the path specified)
+INFO  [Thread-1] 2019-08-06 14:38:48,879 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open0(Native Method)
+INFO  [Thread-1] 2019-08-06 14:38:48,879 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+INFO  [Thread-1] 2019-08-06 14:38:48,879 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+INFO  [Thread-1] 2019-08-06 14:38:48,880 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:187)
+INFO  [Thread-1] 2019-08-06 14:38:48,880 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:208)
+INFO  [Thread-1] 2019-08-06 14:38:48,880 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:248)
+INFO  [Thread-1] 2019-08-06 14:38:48,880 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.writeToFile(SU.java:274)
+INFO  [Thread-1] 2019-08-06 14:38:48,880 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.saveRelations(ContextBuilder.java:202)
+INFO  [Thread-1] 2019-08-06 14:38:48,880 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.step(ContextBuilder.java:177)
+INFO  [Thread-1] 2019-08-06 14:38:48,880 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
+INFO  [Thread-1] 2019-08-06 14:38:48,880 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+INFO  [Thread-1] 2019-08-06 14:38:48,880 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+INFO  [Thread-1] 2019-08-06 14:38:48,880 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+INFO  [Thread-1] 2019-08-06 14:38:48,880 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+INFO  [Thread-1] 2019-08-06 14:38:48,880 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+INFO  [Thread-1] 2019-08-06 14:38:48,880 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+INFO  [Thread-1] 2019-08-06 14:38:48,880 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+INFO  [Thread-1] 2019-08-06 14:38:48,880 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
+INFO  [Thread-1] 2019-08-06 14:38:48,880 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [Thread-1] 2019-08-06 14:38:48,880 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: D:\Work\Output\SimulationOutput31-07-2019\output\BatchOutput\BatchRunData.2019.Aug.06.14_38_48.txt (The system cannot find the file specified)
+INFO  [Thread-1] 2019-08-06 14:38:48,881 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open0(Native Method)
+INFO  [Thread-1] 2019-08-06 14:38:48,881 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+INFO  [Thread-1] 2019-08-06 14:38:48,881 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+INFO  [Thread-1] 2019-08-06 14:38:48,881 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:112)
+INFO  [Thread-1] 2019-08-06 14:38:48,881 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileReader.<init>(FileReader.java:60)
+INFO  [Thread-1] 2019-08-06 14:38:48,881 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.readFile(SU.java:296)
+INFO  [Thread-1] 2019-08-06 14:38:48,881 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.BatchRunDataSave.saveData(BatchRunDataSave.java:33)
+INFO  [Thread-1] 2019-08-06 14:38:48,881 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.step(ContextBuilder.java:182)
+INFO  [Thread-1] 2019-08-06 14:38:48,881 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
+INFO  [Thread-1] 2019-08-06 14:38:48,881 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+INFO  [Thread-1] 2019-08-06 14:38:48,881 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+INFO  [Thread-1] 2019-08-06 14:38:48,881 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+INFO  [Thread-1] 2019-08-06 14:38:48,881 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+INFO  [Thread-1] 2019-08-06 14:38:48,881 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+INFO  [Thread-1] 2019-08-06 14:38:48,881 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+INFO  [Thread-1] 2019-08-06 14:38:48,881 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+INFO  [Thread-1] 2019-08-06 14:38:48,881 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
+INFO  [Thread-1] 2019-08-06 14:38:48,881 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [pool-4-thread-1] 2019-08-06 14:39:23,354 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565095067849 for DONE:  yes
+INFO  [SwingWorker-pool-2-thread-2] 2019-08-06 14:39:23,357 repast.simphony.batch.ssh.SessionsDriver - Run Time: 1,4645
+INFO  [SwingWorker-pool-2-thread-2] 2019-08-06 14:39:23,371 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565095067849
+INFO  [SwingWorker-pool-2-thread-2] 2019-08-06 14:39:23,387 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into D:/Work/Output/SimulationOutput31-07-2019
+INFO  [SwingWorker-pool-2-thread-2] 2019-08-06 14:39:24,060 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,0117
+INFO  [SwingWorker-pool-2-thread-2] 2019-08-06 14:39:24,061 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 1,6036
+INFO  [AWT-EventQueue-0] 2019-08-06 15:08:00,402 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: D:\Work\WorkspaceRepast\SupplyChainModel\output\config.props
+INFO  [AWT-EventQueue-0] 2019-08-06 15:08:00,405 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	D:\Work\WorkspaceRepast\SupplyChainModel\batch\batch_params.xml to
+	C:\Users\Maarten\AppData\Local\Temp\unrolledParamFile.txt
+INFO  [SwingWorker-pool-2-thread-3] 2019-08-06 15:08:31,003 repast.simphony.batch.ssh.LocalSession - 
+	Copying locally C:\Users\Maarten\AppData\Local\Temp\Maarten_localhost4911501538481632225.zip to 
+C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565096906281 ...
+INFO  [SwingWorker-pool-2-thread-3] 2019-08-06 15:08:31,057 repast.simphony.batch.ssh.LocalSession - Copying Finished.
+INFO  [SwingWorker-pool-2-thread-3] 2019-08-06 15:08:31,057 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0,0796
+INFO  [SwingWorker-pool-2-thread-3] 2019-08-06 15:08:31,057 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565096906281\Maarten_localhost4911501538481632225.zip
+INFO  [SwingWorker-pool-2-thread-3] 2019-08-06 15:08:45,940 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
+INFO  [Thread-2] 2019-08-06 15:08:57,101 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-2] 2019-08-06 15:08:57,101 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Maarten/AppData/Local/Temp/simphony_model_1565096906281/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-2] 2019-08-06 15:08:57,102 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-2] 2019-08-06 15:08:57,102 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-2] 2019-08-06 15:08:57,102 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-2] 2019-08-06 15:08:57,155 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-2] 2019-08-06 15:08:57,155 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Maarten/AppData/Local/Temp/simphony_model_1565096906281/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-2] 2019-08-06 15:08:57,155 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-2] 2019-08-06 15:08:57,155 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-2] 2019-08-06 15:08:57,155 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-2] 2019-08-06 15:08:57,523 repast.simphony.batch.ssh.LocalSession - Started a new batch run!
+INFO  [Thread-2] 2019-08-06 15:08:57,649 repast.simphony.batch.ssh.LocalSession - Started a new batch run!
+INFO  [Thread-2] 2019-08-06 15:09:02,301 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: \output\RelationsData.2019.Aug.06.15_09_02.txt (The system cannot find the path specified)
+INFO  [Thread-2] 2019-08-06 15:09:02,304 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open0(Native Method)
+INFO  [Thread-2] 2019-08-06 15:09:02,305 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+INFO  [Thread-2] 2019-08-06 15:09:02,305 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+INFO  [Thread-2] 2019-08-06 15:09:02,305 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:187)
+INFO  [Thread-2] 2019-08-06 15:09:02,307 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:208)
+INFO  [Thread-2] 2019-08-06 15:09:02,307 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:248)
+INFO  [Thread-2] 2019-08-06 15:09:02,307 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.writeToFile(SU.java:274)
+INFO  [Thread-2] 2019-08-06 15:09:02,307 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.saveRelations(ContextBuilder.java:203)
+INFO  [Thread-2] 2019-08-06 15:09:02,307 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.step(ContextBuilder.java:178)
+INFO  [Thread-2] 2019-08-06 15:09:02,307 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
+INFO  [Thread-2] 2019-08-06 15:09:02,318 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+INFO  [Thread-2] 2019-08-06 15:09:02,319 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+INFO  [Thread-2] 2019-08-06 15:09:02,319 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+INFO  [Thread-2] 2019-08-06 15:09:02,319 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+INFO  [Thread-2] 2019-08-06 15:09:02,319 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+INFO  [Thread-2] 2019-08-06 15:09:02,319 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+INFO  [Thread-2] 2019-08-06 15:09:02,319 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+INFO  [Thread-2] 2019-08-06 15:09:02,319 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
+INFO  [Thread-2] 2019-08-06 15:09:02,319 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [Thread-2] 2019-08-06 15:09:02,410 repast.simphony.batch.ssh.LocalSession - Started a new batch run!
+INFO  [Thread-2] 2019-08-06 15:09:03,465 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: \output\RelationsData.2019.Aug.06.15_09_03.txt (The system cannot find the path specified)
+INFO  [Thread-2] 2019-08-06 15:09:03,466 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open0(Native Method)
+INFO  [Thread-2] 2019-08-06 15:09:03,466 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+INFO  [Thread-2] 2019-08-06 15:09:03,466 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+INFO  [Thread-2] 2019-08-06 15:09:03,466 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:187)
+INFO  [Thread-2] 2019-08-06 15:09:03,466 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:208)
+INFO  [Thread-2] 2019-08-06 15:09:03,466 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:248)
+INFO  [Thread-2] 2019-08-06 15:09:03,466 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.writeToFile(SU.java:274)
+INFO  [Thread-2] 2019-08-06 15:09:03,466 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.saveRelations(ContextBuilder.java:203)
+INFO  [Thread-2] 2019-08-06 15:09:03,466 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.step(ContextBuilder.java:178)
+INFO  [Thread-2] 2019-08-06 15:09:03,466 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
+INFO  [Thread-2] 2019-08-06 15:09:03,466 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+INFO  [Thread-2] 2019-08-06 15:09:03,466 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+INFO  [Thread-2] 2019-08-06 15:09:03,468 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+INFO  [Thread-2] 2019-08-06 15:09:03,468 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+INFO  [Thread-2] 2019-08-06 15:09:03,468 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+INFO  [Thread-2] 2019-08-06 15:09:03,468 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+INFO  [Thread-2] 2019-08-06 15:09:03,468 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+INFO  [Thread-2] 2019-08-06 15:09:03,468 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
+INFO  [Thread-2] 2019-08-06 15:09:03,468 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [Thread-2] 2019-08-06 15:09:03,676 repast.simphony.batch.ssh.LocalSession - Started a new batch run!
+INFO  [Thread-2] 2019-08-06 15:09:05,796 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: \output\RelationsData.2019.Aug.06.15_09_05.txt (The system cannot find the path specified)
+INFO  [Thread-2] 2019-08-06 15:09:05,796 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open0(Native Method)
+INFO  [Thread-2] 2019-08-06 15:09:05,797 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+INFO  [Thread-2] 2019-08-06 15:09:05,797 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+INFO  [Thread-2] 2019-08-06 15:09:05,797 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:187)
+INFO  [Thread-2] 2019-08-06 15:09:05,797 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:208)
+INFO  [Thread-2] 2019-08-06 15:09:05,797 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:248)
+INFO  [Thread-2] 2019-08-06 15:09:05,797 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.writeToFile(SU.java:274)
+INFO  [Thread-2] 2019-08-06 15:09:05,797 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.saveRelations(ContextBuilder.java:203)
+INFO  [Thread-2] 2019-08-06 15:09:05,797 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.step(ContextBuilder.java:178)
+INFO  [Thread-2] 2019-08-06 15:09:05,797 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
+INFO  [Thread-2] 2019-08-06 15:09:05,797 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+INFO  [Thread-2] 2019-08-06 15:09:05,797 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+INFO  [Thread-2] 2019-08-06 15:09:05,797 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+INFO  [Thread-2] 2019-08-06 15:09:05,797 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+INFO  [Thread-2] 2019-08-06 15:09:05,797 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+INFO  [Thread-2] 2019-08-06 15:09:05,797 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+INFO  [Thread-2] 2019-08-06 15:09:05,797 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+INFO  [Thread-2] 2019-08-06 15:09:05,798 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
+INFO  [Thread-2] 2019-08-06 15:09:05,798 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [Thread-2] 2019-08-06 15:09:06,378 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: \output\RelationsData.2019.Aug.06.15_09_06.txt (The system cannot find the path specified)
+INFO  [Thread-2] 2019-08-06 15:09:06,378 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open0(Native Method)
+INFO  [Thread-2] 2019-08-06 15:09:06,378 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+INFO  [Thread-2] 2019-08-06 15:09:06,378 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+INFO  [Thread-2] 2019-08-06 15:09:06,378 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:187)
+INFO  [Thread-2] 2019-08-06 15:09:06,378 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:208)
+INFO  [Thread-2] 2019-08-06 15:09:06,378 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:248)
+INFO  [Thread-2] 2019-08-06 15:09:06,378 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.writeToFile(SU.java:274)
+INFO  [Thread-2] 2019-08-06 15:09:06,378 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.saveRelations(ContextBuilder.java:203)
+INFO  [Thread-2] 2019-08-06 15:09:06,378 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.step(ContextBuilder.java:178)
+INFO  [Thread-2] 2019-08-06 15:09:06,378 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
+INFO  [Thread-2] 2019-08-06 15:09:06,378 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+INFO  [Thread-2] 2019-08-06 15:09:06,378 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+INFO  [Thread-2] 2019-08-06 15:09:06,378 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+INFO  [Thread-2] 2019-08-06 15:09:06,378 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+INFO  [Thread-2] 2019-08-06 15:09:06,378 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+INFO  [Thread-2] 2019-08-06 15:09:06,378 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+INFO  [Thread-2] 2019-08-06 15:09:06,378 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+INFO  [Thread-2] 2019-08-06 15:09:06,378 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
+INFO  [Thread-2] 2019-08-06 15:09:06,378 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [AWT-EventQueue-0] 2019-08-06 15:10:38,498 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: D:\Work\Output\SimulationOutput31-07-2019\config.props
+INFO  [AWT-EventQueue-0] 2019-08-06 15:10:38,569 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	D:\Work\WorkspaceRepast\SupplyChainModel\batch\batch_params.xml to
+	C:\Users\Maarten\AppData\Local\Temp\unrolledParamFile.txt
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 15:11:08,876 repast.simphony.batch.ssh.LocalSession - 
+	Copying locally C:\Users\Maarten\AppData\Local\Temp\Maarten_localhost1358412757263065697.zip to 
+C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565097064307 ...
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 15:11:08,931 repast.simphony.batch.ssh.LocalSession - Copying Finished.
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 15:11:08,932 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0,0771
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 15:11:08,932 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565097064307\Maarten_localhost1358412757263065697.zip
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 15:11:24,457 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
+INFO  [Thread-0] 2019-08-06 15:11:36,616 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2019-08-06 15:11:36,617 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Maarten/AppData/Local/Temp/simphony_model_1565097064307/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2019-08-06 15:11:36,617 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2019-08-06 15:11:36,617 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2019-08-06 15:11:36,617 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2019-08-06 15:11:36,672 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2019-08-06 15:11:36,672 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Maarten/AppData/Local/Temp/simphony_model_1565097064307/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2019-08-06 15:11:36,673 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2019-08-06 15:11:36,673 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2019-08-06 15:11:36,673 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2019-08-06 15:11:36,976 repast.simphony.batch.ssh.LocalSession - Started a new batch run!
+INFO  [Thread-0] 2019-08-06 15:11:37,056 repast.simphony.batch.ssh.LocalSession - Started a new batch run!
+INFO  [Thread-0] 2019-08-06 15:11:41,181 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: \output\RelationsData.2019.Aug.06.15_11_41.txt (The system cannot find the path specified)
+INFO  [Thread-0] 2019-08-06 15:11:41,188 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open0(Native Method)
+INFO  [Thread-0] 2019-08-06 15:11:41,188 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+INFO  [Thread-0] 2019-08-06 15:11:41,188 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+INFO  [Thread-0] 2019-08-06 15:11:41,189 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:187)
+INFO  [Thread-0] 2019-08-06 15:11:41,189 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:208)
+INFO  [Thread-0] 2019-08-06 15:11:41,189 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:248)
+INFO  [Thread-0] 2019-08-06 15:11:41,189 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.writeToFile(SU.java:274)
+INFO  [Thread-0] 2019-08-06 15:11:41,189 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.saveRelations(ContextBuilder.java:203)
+INFO  [Thread-0] 2019-08-06 15:11:41,189 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.step(ContextBuilder.java:178)
+INFO  [Thread-0] 2019-08-06 15:11:41,189 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
+INFO  [Thread-0] 2019-08-06 15:11:41,189 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+INFO  [Thread-0] 2019-08-06 15:11:41,189 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+INFO  [Thread-0] 2019-08-06 15:11:41,189 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+INFO  [Thread-0] 2019-08-06 15:11:41,189 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+INFO  [Thread-0] 2019-08-06 15:11:41,189 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+INFO  [Thread-0] 2019-08-06 15:11:41,189 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+INFO  [Thread-0] 2019-08-06 15:11:41,189 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+INFO  [Thread-0] 2019-08-06 15:11:41,189 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
+INFO  [Thread-0] 2019-08-06 15:11:41,189 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [Thread-0] 2019-08-06 15:11:41,268 repast.simphony.batch.ssh.LocalSession - Started a new batch run!
+INFO  [Thread-0] 2019-08-06 15:11:43,312 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: \output\RelationsData.2019.Aug.06.15_11_43.txt (The system cannot find the path specified)
+INFO  [Thread-0] 2019-08-06 15:11:43,314 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open0(Native Method)
+INFO  [Thread-0] 2019-08-06 15:11:43,314 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+INFO  [Thread-0] 2019-08-06 15:11:43,314 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+INFO  [Thread-0] 2019-08-06 15:11:43,314 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:187)
+INFO  [Thread-0] 2019-08-06 15:11:43,315 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:208)
+INFO  [Thread-0] 2019-08-06 15:11:43,315 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:248)
+INFO  [Thread-0] 2019-08-06 15:11:43,315 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.writeToFile(SU.java:274)
+INFO  [Thread-0] 2019-08-06 15:11:43,315 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.saveRelations(ContextBuilder.java:203)
+INFO  [Thread-0] 2019-08-06 15:11:43,315 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.step(ContextBuilder.java:178)
+INFO  [Thread-0] 2019-08-06 15:11:43,315 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
+INFO  [Thread-0] 2019-08-06 15:11:43,315 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+INFO  [Thread-0] 2019-08-06 15:11:43,315 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+INFO  [Thread-0] 2019-08-06 15:11:43,315 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+INFO  [Thread-0] 2019-08-06 15:11:43,315 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+INFO  [Thread-0] 2019-08-06 15:11:43,315 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+INFO  [Thread-0] 2019-08-06 15:11:43,315 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+INFO  [Thread-0] 2019-08-06 15:11:43,316 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+INFO  [Thread-0] 2019-08-06 15:11:43,317 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
+INFO  [Thread-0] 2019-08-06 15:11:43,317 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [Thread-0] 2019-08-06 15:11:43,382 repast.simphony.batch.ssh.LocalSession - Started a new batch run!
+INFO  [Thread-0] 2019-08-06 15:11:44,997 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: \output\RelationsData.2019.Aug.06.15_11_44.txt (The system cannot find the path specified)
+INFO  [Thread-0] 2019-08-06 15:11:44,997 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open0(Native Method)
+INFO  [Thread-0] 2019-08-06 15:11:45,002 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+INFO  [Thread-0] 2019-08-06 15:11:45,002 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+INFO  [Thread-0] 2019-08-06 15:11:45,002 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:187)
+INFO  [Thread-0] 2019-08-06 15:11:45,002 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:208)
+INFO  [Thread-0] 2019-08-06 15:11:45,003 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:248)
+INFO  [Thread-0] 2019-08-06 15:11:45,003 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.writeToFile(SU.java:274)
+INFO  [Thread-0] 2019-08-06 15:11:45,003 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.saveRelations(ContextBuilder.java:203)
+INFO  [Thread-0] 2019-08-06 15:11:45,003 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.step(ContextBuilder.java:178)
+INFO  [Thread-0] 2019-08-06 15:11:45,003 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
+INFO  [Thread-0] 2019-08-06 15:11:45,003 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+INFO  [Thread-0] 2019-08-06 15:11:45,003 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+INFO  [Thread-0] 2019-08-06 15:11:45,003 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+INFO  [Thread-0] 2019-08-06 15:11:45,003 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+INFO  [Thread-0] 2019-08-06 15:11:45,003 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+INFO  [Thread-0] 2019-08-06 15:11:45,003 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+INFO  [Thread-0] 2019-08-06 15:11:45,003 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+INFO  [Thread-0] 2019-08-06 15:11:45,003 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
+INFO  [Thread-0] 2019-08-06 15:11:45,004 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [Thread-0] 2019-08-06 15:11:47,860 repast.simphony.batch.ssh.LocalSession - java.io.FileNotFoundException: \output\RelationsData.2019.Aug.06.15_11_47.txt (The system cannot find the path specified)
+INFO  [Thread-0] 2019-08-06 15:11:47,862 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open0(Native Method)
+INFO  [Thread-0] 2019-08-06 15:11:47,863 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:298)
+INFO  [Thread-0] 2019-08-06 15:11:47,863 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:237)
+INFO  [Thread-0] 2019-08-06 15:11:47,863 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:187)
+INFO  [Thread-0] 2019-08-06 15:11:47,863 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:208)
+INFO  [Thread-0] 2019-08-06 15:11:47,863 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.io.PrintWriter.<init>(PrintWriter.java:248)
+INFO  [Thread-0] 2019-08-06 15:11:47,864 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.common.SU.writeToFile(SU.java:274)
+INFO  [Thread-0] 2019-08-06 15:11:47,864 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.saveRelations(ContextBuilder.java:203)
+INFO  [Thread-0] 2019-08-06 15:11:47,864 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder.step(ContextBuilder.java:178)
+INFO  [Thread-0] 2019-08-06 15:11:47,864 repast.simphony.batch.ssh.LocalSession - 	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
+INFO  [Thread-0] 2019-08-06 15:11:47,864 repast.simphony.batch.ssh.LocalSession - 	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+INFO  [Thread-0] 2019-08-06 15:11:47,864 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+INFO  [Thread-0] 2019-08-06 15:11:47,864 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+INFO  [Thread-0] 2019-08-06 15:11:47,864 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+INFO  [Thread-0] 2019-08-06 15:11:47,864 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+INFO  [Thread-0] 2019-08-06 15:11:47,864 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+INFO  [Thread-0] 2019-08-06 15:11:47,864 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+INFO  [Thread-0] 2019-08-06 15:11:47,864 repast.simphony.batch.ssh.LocalSession - 	at repast.simphony.batch.BatchScheduleRunner$ScheduleLoopRunnable.run(BatchScheduleRunner.java:37)
+INFO  [Thread-0] 2019-08-06 15:11:47,864 repast.simphony.batch.ssh.LocalSession - 	at java.base/java.lang.Thread.run(Thread.java:834)
+INFO  [pool-3-thread-1] 2019-08-06 15:12:24,467 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565097064307 for DONE:  yes
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 15:12:24,467 repast.simphony.batch.ssh.SessionsDriver - Run Time: 1,2589
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 15:12:24,490 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565097064307
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 15:12:24,510 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into D:/Work/Output/SimulationOutput31-07-2019
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 15:12:25,189 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,0120
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 15:12:25,189 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 1,3482
+INFO  [AWT-EventQueue-0] 2019-08-06 15:16:18,402 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: D:\Work\Output\SimulationOutput31-07-2019\config.props
+INFO  [AWT-EventQueue-0] 2019-08-06 15:16:18,460 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	D:\Work\WorkspaceRepast\SupplyChainModel\batch\batch_params.xml to
+	C:\Users\Maarten\AppData\Local\Temp\unrolledParamFile.txt
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 15:16:49,201 repast.simphony.batch.ssh.LocalSession - 
+	Copying locally C:\Users\Maarten\AppData\Local\Temp\Maarten_localhost3923981317716566642.zip to 
+C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565097404597 ...
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 15:16:49,251 repast.simphony.batch.ssh.LocalSession - Copying Finished.
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 15:16:49,252 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0,0776
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 15:16:49,252 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565097404597\Maarten_localhost3923981317716566642.zip
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 15:17:03,921 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
+INFO  [Thread-0] 2019-08-06 15:17:14,930 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2019-08-06 15:17:14,930 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Maarten/AppData/Local/Temp/simphony_model_1565097404597/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2019-08-06 15:17:14,930 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2019-08-06 15:17:14,930 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2019-08-06 15:17:14,931 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2019-08-06 15:17:15,126 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-0] 2019-08-06 15:17:15,126 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Maarten/AppData/Local/Temp/simphony_model_1565097404597/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-0] 2019-08-06 15:17:15,126 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-0] 2019-08-06 15:17:15,126 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-0] 2019-08-06 15:17:15,126 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-0] 2019-08-06 15:17:15,271 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-0] 2019-08-06 15:17:15,615 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-0] 2019-08-06 15:17:19,389 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-0] 2019-08-06 15:17:21,865 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [pool-3-thread-1] 2019-08-06 15:18:03,926 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565097404597 for DONE:  yes
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 15:18:03,927 repast.simphony.batch.ssh.SessionsDriver - Run Time: 1,2446
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 15:18:03,943 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565097404597
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 15:18:03,965 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into D:/Work/Output/SimulationOutput31-07-2019
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 15:18:04,368 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,0074
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-06 15:18:04,368 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 1,3297
+INFO  [AWT-EventQueue-0] 2019-08-06 15:23:39,376 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: D:\Work\Output\SimulationOutput31-07-2019\config.props
+INFO  [AWT-EventQueue-0] 2019-08-06 15:23:39,380 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	D:\Work\WorkspaceRepast\SupplyChainModel\batch\batch_params.xml to
+	C:\Users\Maarten\AppData\Local\Temp\unrolledParamFile.txt
+INFO  [SwingWorker-pool-2-thread-2] 2019-08-06 15:24:13,407 repast.simphony.batch.ssh.LocalSession - 
+	Copying locally C:\Users\Maarten\AppData\Local\Temp\Maarten_localhost5149723889418355695.zip to 
+C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565097848625 ...
+INFO  [SwingWorker-pool-2-thread-2] 2019-08-06 15:24:13,453 repast.simphony.batch.ssh.LocalSession - Copying Finished.
+INFO  [SwingWorker-pool-2-thread-2] 2019-08-06 15:24:13,454 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0,0805
+INFO  [SwingWorker-pool-2-thread-2] 2019-08-06 15:24:13,454 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565097848625\Maarten_localhost5149723889418355695.zip
+INFO  [SwingWorker-pool-2-thread-2] 2019-08-06 15:24:28,058 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
+INFO  [Thread-1] 2019-08-06 15:24:39,773 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-1] 2019-08-06 15:24:39,773 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Maarten/AppData/Local/Temp/simphony_model_1565097848625/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-1] 2019-08-06 15:24:39,773 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-1] 2019-08-06 15:24:39,773 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-1] 2019-08-06 15:24:39,773 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-1] 2019-08-06 15:24:39,913 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-1] 2019-08-06 15:24:39,914 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Maarten/AppData/Local/Temp/simphony_model_1565097848625/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-1] 2019-08-06 15:24:39,914 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-1] 2019-08-06 15:24:39,914 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-1] 2019-08-06 15:24:39,914 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-1] 2019-08-06 15:24:40,143 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-1] 2019-08-06 15:24:40,446 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-1] 2019-08-06 15:24:45,857 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-1] 2019-08-06 15:24:48,164 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [pool-4-thread-1] 2019-08-06 15:25:28,060 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565097848625 for DONE:  yes
+INFO  [SwingWorker-pool-2-thread-2] 2019-08-06 15:25:28,060 repast.simphony.batch.ssh.SessionsDriver - Run Time: 1,2434
+INFO  [SwingWorker-pool-2-thread-2] 2019-08-06 15:25:28,066 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565097848625
+INFO  [SwingWorker-pool-2-thread-2] 2019-08-06 15:25:28,072 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into D:/Work/Output/SimulationOutput31-07-2019
+INFO  [SwingWorker-pool-2-thread-2] 2019-08-06 15:25:28,396 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,0056
+INFO  [SwingWorker-pool-2-thread-2] 2019-08-06 15:25:28,397 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 1,3297
+INFO  [AWT-EventQueue-0] 2019-08-06 16:13:16,648 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: D:\Work\Output\SimulationOutput31-07-2019\config.props
+INFO  [AWT-EventQueue-0] 2019-08-06 16:13:16,658 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
+	D:\Work\WorkspaceRepast\SupplyChainModel\batch\batch_params.xml to
+	C:\Users\Maarten\AppData\Local\Temp\unrolledParamFile.txt
+INFO  [SwingWorker-pool-2-thread-3] 2019-08-06 16:14:36,171 repast.simphony.batch.ssh.LocalSession - 
+	Copying locally C:\Users\Maarten\AppData\Local\Temp\Maarten_localhost9449642725672842325.zip to 
+C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565100871154 ...
+INFO  [SwingWorker-pool-2-thread-3] 2019-08-06 16:14:36,232 repast.simphony.batch.ssh.LocalSession - Copying Finished.
+INFO  [SwingWorker-pool-2-thread-3] 2019-08-06 16:14:36,232 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0,0846
+INFO  [SwingWorker-pool-2-thread-3] 2019-08-06 16:14:36,233 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565100871154\Maarten_localhost9449642725672842325.zip
+INFO  [SwingWorker-pool-2-thread-3] 2019-08-06 16:14:51,389 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
+INFO  [Thread-2] 2019-08-06 16:15:02,491 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-2] 2019-08-06 16:15:02,491 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Maarten/AppData/Local/Temp/simphony_model_1565100871154/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-2] 2019-08-06 16:15:02,491 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-2] 2019-08-06 16:15:02,491 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-2] 2019-08-06 16:15:02,491 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-2] 2019-08-06 16:15:02,586 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
+INFO  [Thread-2] 2019-08-06 16:15:02,586 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Maarten/AppData/Local/Temp/simphony_model_1565100871154/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
+INFO  [Thread-2] 2019-08-06 16:15:02,586 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+INFO  [Thread-2] 2019-08-06 16:15:02,586 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+INFO  [Thread-2] 2019-08-06 16:15:02,586 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
+INFO  [Thread-2] 2019-08-06 16:15:02,992 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:15:02,999 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:15:15,135 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:15:25,652 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:15:32,783 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:15:34,300 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:15:43,796 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:15:48,355 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [pool-5-thread-1] 2019-08-06 16:15:51,390 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565100871154 for DONE:  no
+INFO  [Thread-2] 2019-08-06 16:15:53,393 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:16:02,800 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:16:07,470 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:16:11,914 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:16:21,408 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:16:22,031 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:16:25,919 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:16:36,587 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:16:41,097 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:16:50,009 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [pool-5-thread-1] 2019-08-06 16:16:51,391 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565100871154 for DONE:  no
+INFO  [Thread-2] 2019-08-06 16:17:04,640 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:17:05,077 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:17:24,941 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:17:30,111 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:17:47,255 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:17:48,596 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [pool-5-thread-1] 2019-08-06 16:17:51,391 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565100871154 for DONE:  no
+INFO  [Thread-2] 2019-08-06 16:18:14,807 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:18:19,114 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:18:31,137 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:18:39,949 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:18:42,370 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [pool-5-thread-1] 2019-08-06 16:18:51,392 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565100871154 for DONE:  no
+INFO  [Thread-2] 2019-08-06 16:18:53,149 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:19:02,928 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:19:03,838 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:19:15,966 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:19:24,484 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:19:26,010 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:19:40,684 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:19:44,305 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [pool-5-thread-1] 2019-08-06 16:19:51,393 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565100871154 for DONE:  no
+INFO  [Thread-2] 2019-08-06 16:19:53,956 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:19:55,545 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [Thread-2] 2019-08-06 16:20:11,769 repast.simphony.batch.ssh.LocalSession - BATCH:Started a new batch run!
+INFO  [pool-5-thread-1] 2019-08-06 16:20:51,393 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565100871154 for DONE:  yes
+INFO  [SwingWorker-pool-2-thread-3] 2019-08-06 16:20:51,394 repast.simphony.batch.ssh.SessionsDriver - Run Time: 6,2527
+INFO  [SwingWorker-pool-2-thread-3] 2019-08-06 16:20:51,523 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565100871154
+INFO  [SwingWorker-pool-2-thread-3] 2019-08-06 16:20:51,529 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into D:/Work/Output/SimulationOutput31-07-2019
+INFO  [SwingWorker-pool-2-thread-3] 2019-08-06 16:21:14,012 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,3770
+INFO  [SwingWorker-pool-2-thread-3] 2019-08-06 16:21:14,012 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 6,7145
+ERROR [AWT-EventQueue-0] 2019-08-12 10:48:25,770 repast.simphony.ui.RSApplication - Scenario Load Error
+repast.simphony.scenario.ScenarioLoadException: Constraining list '[single, multi, all]' for parameter 'pInterventionType' does not contain default value 'none'
+	at repast.simphony.scenario.ScenarioLoader.load(ScenarioLoader.java:220)
+	at repast.simphony.ui.RSApplication.open(RSApplication.java:359)
+	at repast.simphony.ui.RSAppConfigurator.postWindowOpen(RSAppConfigurator.java:39)
+	at saf.core.ui.GUICreatorDelegate.runDisplay(GUICreatorDelegate.java:216)
+	at saf.core.ui.GUICreator$1.run(GUICreator.java:18)
+	at simphony.util.ThreadUtilities$Runner.run(ThreadUtilities.java:33)
+	at simphony.util.ThreadUtilities.runInEventThread(ThreadUtilities.java:47)
+	at saf.core.ui.GUICreator.runDisplay(GUICreator.java:16)
+	at repast.simphony.ui.RSUIPlugin$1.run(RSUIPlugin.java:101)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:313)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:740)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+Caused by: repast.simphony.parameter.IllegalParameterException: Constraining list '[single, multi, all]' for parameter 'pInterventionType' does not contain default value 'none'
+	at repast.simphony.parameter.DefaultParameterSchema.setConstrainingList(DefaultParameterSchema.java:136)
+	at repast.simphony.parameter.DefaultSchema.addConstraint(DefaultSchema.java:72)
+	at repast.simphony.parameter.DefaultParameters.addConstraint(DefaultParameters.java:142)
+	at repast.simphony.parameter.ParametersCreator.addConstraint(ParametersCreator.java:96)
+	at repast.simphony.parameter.ParametersParser.startElement(ParametersParser.java:121)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.startElement(AbstractSAXParser.java:510)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.AbstractXMLDocumentParser.emptyElement(AbstractXMLDocumentParser.java:183)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanStartElement(XMLDocumentFragmentScannerImpl.java:1377)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2708)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:605)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:534)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:888)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:824)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1216)
+	at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:635)
+	at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:324)
+	at java.xml/javax.xml.parsers.SAXParser.parse(SAXParser.java:330)
+	at repast.simphony.parameter.ParametersParser.<init>(ParametersParser.java:46)
+	at repast.simphony.scenario.ScenarioLoader.load(ScenarioLoader.java:168)
+	... 21 more
+FATAL [Thread-2] 2019-08-12 10:49:55,225 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (17.0)
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:72)
+	at repast.simphony.engine.controller.ScheduledMethodControllerAction$ScheduleMethodAllAction.execute(ScheduledMethodControllerAction.java:333)
+	at repast.simphony.engine.schedule.DefaultAction.execute(DefaultAction.java:38)
+	at repast.simphony.engine.schedule.ScheduleGroup.executeList(ScheduleGroup.java:205)
+	at repast.simphony.engine.schedule.ScheduleGroup.execute(ScheduleGroup.java:231)
+	at repast.simphony.engine.schedule.Schedule.execute(Schedule.java:352)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:52)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.reflect.InvocationTargetException
+	at supplyChainModel.ContextBuilder$$FastClassByCGLIB$$51dce2a3.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at repast.simphony.engine.schedule.DynamicTargetAction.execute(DynamicTargetAction.java:69)
+	... 7 more
+Caused by: java.lang.NullPointerException
+	at supplyChainModel.ContextBuilder.interventShipmentRisk(ContextBuilder.java:256)
+	at supplyChainModel.ContextBuilder.interventShipment(ContextBuilder.java:247)
+	at supplyChainModel.ContextBuilder.stepInterventionOnShipment(ContextBuilder.java:237)
+	at supplyChainModel.ContextBuilder.step(ContextBuilder.java:162)
+	... 10 more
+FATAL [Thread-2] 2019-08-12 10:56:09,548 repast.simphony.ui.GUIScheduleRunner - RunTimeException when running the schedule
+Current tick (1618.0)
+com.jgoodies.binding.beans.PropertyAccessException: Failed to read an adapted Java Bean property.
+cause=java.lang.NullPointerException
+bean=S237 C237, $1.7519066788629831,5,0
+bean type=supplyChainModel.support.Shipment
+property name=locationX
+property type=double
+property reader=public double supplyChainModel.support.Shipment.getLocationX()
+	at com.jgoodies.binding.beans.PropertyAccessException.createReadAccessException(PropertyAccessException.java:92)
+	at com.jgoodies.binding.beans.PropertyAccessor.getValue(PropertyAccessor.java:162)
+	at com.jgoodies.binding.beans.BeanAdapter.getValue0(BeanAdapter.java:1149)
+	at com.jgoodies.binding.beans.BeanAdapter.access$500(BeanAdapter.java:288)
+	at com.jgoodies.binding.beans.BeanAdapter$SimplePropertyAdapter.fireChange(BeanAdapter.java:1434)
+	at repast.simphony.ui.probe.ProbeModel$ProbeBeanAdapter$SimplePropertyAdapter.fireChange(ProbeModel.java:64)
+	at repast.simphony.ui.probe.ProbeModel$ProbeBeanAdapter.fireChange(ProbeModel.java:52)
+	at repast.simphony.ui.probe.ProbeModel.update(ProbeModel.java:108)
+	at repast.simphony.ui.probe.Probe.update(Probe.java:76)
+	at repast.simphony.ui.probe.ProbeManager.update(ProbeManager.java:76)
+	at repast.simphony.ui.RSApplication.tickCountUpdated(RSApplication.java:608)
+	at repast.simphony.ui.GUIScheduleRunner$ScheduleLoopRunnable.run(GUIScheduleRunner.java:60)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.NullPointerException
+	at supplyChainModel.support.Shipment.getLocationX(Shipment.java:116)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at com.jgoodies.binding.beans.PropertyAccessor.getValue(PropertyAccessor.java:160)
+	... 11 more
+ERROR [AWT-EventQueue-0] 2019-08-13 11:26:02,540 repast.simphony.ui.RSApplication - Error while initializing simulation
+repast.simphony.parameter.IllegalParameterException: Parameter 'pInterceptionSupplierId' not found in the schema.
+	at repast.simphony.parameter.DefaultParameters.getValue(DefaultParameters.java:213)
+	at repast.simphony.parameter.DefaultParameters.getInteger(DefaultParameters.java:242)
+	at supplyChainModel.common.RepastParam.setRepastParameters(RepastParam.java:58)
+	at supplyChainModel.ContextBuilder.build(ContextBuilder.java:59)
+	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
+	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
+	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
+	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:1)
+	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:292)
+	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+	at repast.simphony.util.collections.NaryTree.preOrderTraverals(NaryTree.java:295)
+	at repast.simphony.util.collections.NaryTree.preOrderTraversal(NaryTree.java:288)
+	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:212)
+	at repast.simphony.engine.controller.DefaultController.runInitialize(DefaultController.java:383)
+	at repast.simphony.ui.RSApplication.initSim(RSApplication.java:157)
+	at repast.simphony.ui.action.InitRun.actionPerformed(InitRun.java:17)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1967)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2308)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:405)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:262)
+	at java.desktop/javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:279)
+	at java.desktop/java.awt.AWTEventMulticaster.mouseReleased(AWTEventMulticaster.java:297)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6632)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3342)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6397)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2263)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:5008)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2321)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4840)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4918)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4547)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4488)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2307)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2772)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4840)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:772)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:95)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:743)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)

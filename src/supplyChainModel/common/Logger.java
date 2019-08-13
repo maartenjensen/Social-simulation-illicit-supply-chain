@@ -48,23 +48,31 @@ public final class Logger {
 			RunEnvironment.getInstance().endRun();
 		}
 	}
+
+	public static void logBatch(String output) {
+		if (SU.isBatchRun()) 
+			System.out.println("BATCH: " + output);
+	}
 	
 	public static void logMain(String output) {
-		if (logMain)
+		if (logMain && !SU.isBatchRun())
 			System.out.println(output);
 	}
 	
 	public static void logRemove(String output) {
-		if (logRemove)
+		if (logRemove && !SU.isBatchRun())
 			System.out.println("  - " + output);
 	}
 	
 	public static void logInfo(String output) {
-		if (logInfo)
+		if (logInfo && !SU.isBatchRun())
 			System.out.println(" - " + output);
 	}
 	
 	public static void logSCAgent(SCType scType, String output) {
+		
+		if (SU.isBatchRun())
+			return ;
 		
 		switch (scType) {
 		case PRODUCER:
@@ -102,6 +110,9 @@ public final class Logger {
 	 * @param id
 	 */
 	public static void logInfoId(int id, String output) {
+		if (SU.isBatchRun())
+			return ;
+		
 		if (logId && (logIdIndex == id || logIdIndex == -1)) {
 			
 			logIdIndex = id;

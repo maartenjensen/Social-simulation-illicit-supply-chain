@@ -47,8 +47,12 @@ public class Agent3Wholesaler extends BaseAgent {
 			shipment.getSupplier().receivePayment(shipment.getPrice());
 			updateAverageBuyCost(shipment.getPrice(), getTotalGoodsQuantity(shipment.getGoods()));
 			addToStock(shipment.getGoods());
+			if (baseCountry.getName().equals("NL & B"))
+				SU.getDataCollector().addStockImportedNL(shipment.getGoods());
+			else if (baseCountry.getName().equals("ES & P"))
+				SU.getDataCollector().addStockImportedES(shipment.getGoods());
 			shipment.remove();
-			// Add import etc for DataCollector.
+
 		}
 	}
 	

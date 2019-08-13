@@ -9,6 +9,7 @@ import supplyChainModel.agents.BaseAgent;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
 import supplyChainModel.common.SU;
+import supplyChainModel.enums.SCType;
 
 public class Shipment {
 
@@ -39,6 +40,12 @@ public class Shipment {
 		
 		setStartPosition();
 		setLargestQuality();
+		
+		if (supplier != null) {
+			SU.getDataCollector().addShipmentCount();
+			if (client.getCountry().getName().equals("NL & B") && client.getScType() == SCType.WHOLESALER)
+				SU.getDataCollector().addShipmentNLCount();
+		}
 	}
 	
 	/**

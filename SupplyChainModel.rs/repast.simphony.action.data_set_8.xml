@@ -1,0 +1,121 @@
+<repast.simphony.data2.engine.DataSetDescriptor simphonyVersion="2.6.0">
+  <name>BatchRunOutput</name>
+  <type>AGGREGATE</type>
+  <inclTick>true</inclTick>
+  <inclBatchRun>true</inclBatchRun>
+  <inclRandomSeed>true</inclRandomSeed>
+  <scheduleParams>
+    <start>Infinity</start>
+    <interval>0.0</interval>
+    <priority>-Infinity</priority>
+    <pType>LAST</pType>
+    <duration>-1.0</duration>
+    <frequency>ONE_TIME</frequency>
+    <hashCode>-1809157037</hashCode>
+  </scheduleParams>
+  <atEnd>false</atEnd>
+  <methodDataSources class="linked-hash-map">
+    <entry>
+      <string>Produced</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Produced</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getStockProducedTot</methodName>
+        <aggType>SUM</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Deleted</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Deleted</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getStockDeletedTot</methodName>
+        <aggType>SUM</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Consumed</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Consumed</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getStockConsumedTot</methodName>
+        <aggType>SUM</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Cut Source</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Cut Source</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getStockCutSourceTot</methodName>
+        <aggType>SUM</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Cut Produced</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Cut Produced</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getStockCutProductTot</methodName>
+        <aggType>SUM</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Quality ES High</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Quality ES High</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getQualityESHigh</methodName>
+        <aggType>SUM</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Quality ES Low</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Quality ES Low</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getQualityESLow</methodName>
+        <aggType>SUM</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Quality NL High</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Quality NL High</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getQualityNLHigh</methodName>
+        <aggType>SUM</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Quality NL Low</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Quality NL Low</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getQualityNLLow</methodName>
+        <aggType>SUM</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Consumed Low</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Consumed Low</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getQualityConsumedLow</methodName>
+        <aggType>SUM</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Consumed High</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Consumed High</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getQualityConsumedHigh</methodName>
+        <aggType>SUM</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+  </methodDataSources>
+  <countSources class="linked-hash-map"/>
+  <customNADataSources class="linked-hash-map"/>
+  <customAggDataSources class="linked-hash-map"/>
+</repast.simphony.data2.engine.DataSetDescriptor>

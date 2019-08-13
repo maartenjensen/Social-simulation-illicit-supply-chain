@@ -19,7 +19,6 @@ import repast.simphony.space.grid.SimpleGridAdder;
 import supplyChainModel.agents.Agent5Consumer;
 import supplyChainModel.agents.BaseAgent;
 import supplyChainModel.agents.CountryAgent;
-import supplyChainModel.common.BatchRunDataSave;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
 import supplyChainModel.common.RepastParam;
@@ -67,9 +66,10 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		agentsCreation(context);
 		
 		// If running in batch mode, tell the scheduler when to end each run.
-		if (RunEnvironment.getInstance().isBatch()) {
+		if (SU.isBatchRun()) {
 			double endAt = RepastParam.getRunLength();
 			RunEnvironment.getInstance().endAt(endAt);
+			Logger.logBatch("Started a new batch run!");
 		}
 		
 		return context;
@@ -79,9 +79,9 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		
 		ContextDataLoader countryLoader = new ContextDataLoader();
 		if (RepastParam.getRealisticMap())
-			countryLoader.readFullFile(context,"./input", "inputDataCountryRealistic.csv", "inputDataBorders.csv");
+			countryLoader.readFullFile(context,"./data", "inputDataCountryRealistic.csv", "inputDataBorders.csv");
 		else
-			countryLoader.readFullFile(context, "./input", "inputDataCountryBetterView.csv", "inputDataBorders.csv");
+			countryLoader.readFullFile(context, "./data", "inputDataCountryBetterView2.csv", "inputDataBorders.csv");
 	}
 	
 	private void agentsCreation(final Context<Object> context) {
@@ -92,7 +92,7 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 			populationLoader.generatePopulation();
 		}
 		else {
-			populationLoader.generatePopulation("./input/population.txt");
+			populationLoader.generatePopulation("./data/population.txt");
 		}		
 	}
 
@@ -158,8 +158,11 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 			baseAgent.stepSendShipment();
 		}
 		
-		Logger.logMain("Step-ContextBuilder: step intervention on shipment");
+		Logger.logMain("Step-ContextBuilder: step intervention on shipment Global: " + RepastParam.getInterventionGlobalPercentage() + "%");
 		stepInterventionOnShipment();
+		
+		Logger.logMain("Step-ContextBuilder: step intervention on shipment NL: " + RepastParam.getInterventionWholesalerNLPercentage() + "%");
+		stepInterventionNLWholesaler();
 		
 		Logger.logMain("Step-BaseAgent: send order");
 		for (BaseAgent baseAgent : SU.getObjectsAll(BaseAgent.class)) {
@@ -174,23 +177,30 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		if (SU.getTick() == RepastParam.getRunLength()) {
 			
 			Logger.logMain("------------------------------------------------------------------------------");
-			saveRelations();
+			if (!SU.isBatchRun())
+				saveRelations();
+			
 			if (!RepastParam.getSettingLoadPopulationFile())
-				populationLoader.savePopulation("./input/population.txt");
+				populationLoader.savePopulation("./data/population.txt");
 
-			if (RunEnvironment.getInstance().isBatch()) {
-				BatchRunDataSave.saveData(Constants.DATA_PATH + "/BatchRunData.txt", RepastParam.getEnablePersonalRisk(), SU.getDataCollector().getStockConsumedTot());
-			}
+			//if (SU.isBatchRun()) {
+			//	BatchRunDataSave.saveData(Constants.DATA_PATH + "/output/BatchOutput/BatchRunData" + SU.getCurrentDateTime() + ".txt",
+			//							  RepastParam.getEnablePersonalRisk(), SU.getDataCollector().getStockConsumedTot());
+			//}
 			
 			RunEnvironment.getInstance().pauseRun();
 			Logger.logMain("Simulation ended at : " + SU.getTick());
 			Logger.logMain("------------------------------------------------------------------------------");
 		}
 	}
-	
+
 	public void saveRelations() {
 		
-		String filePathAndName = Constants.DATA_PATH + "/RelationsData" + SU.getCurrentDateTime() + ".txt";
+		String filePathAndName = Constants.DATA_PATH;
+		if (SU.isBatchRun())
+			filePathAndName = "/output/RelationsData" + SU.getCurrentDateTime() + ".txt";
+		else
+			filePathAndName += "/output/BatchOutput/RelationsData" + SU.getCurrentDateTime() + ".txt";
 		Logger.logMain("Relations information saved in: " + filePathAndName);
 		List<String> data = new ArrayList<String>();
 		data = SU.getDataCollector().getRelationsData();
@@ -219,25 +229,94 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		}
 	}
 
+	/**
+	 * Only intervene on shipments that have a supplier
+	 */
 	public void stepInterventionOnShipment() {
 		
-		if (!RepastParam.canIntercept() || RepastParam.getInterceptionType().equals("none"))
+		if (!(RepastParam.getInterventionGlobalPercentage() > 0) || RepastParam.getInterventionType().equals("none") || SU.getTick() <= RepastParam.getSettingInitializeTime())
 			return ;
 		
-		if (SU.getTick() >= RepastParam.getInterceptionFromStep()) {
-			if (SU.getTick() == RepastParam.getInterceptionFromStep()) 
-				Logger.logInfo("Intercept:stepInterventionOnShipment on this tick (" + RepastParam.canIntercept() + ")");
-			else
-				Logger.logInfo("Intercept:stepInterventionOnShipment on a > tick (" + RepastParam.canIntercept() + ")");
-			
-			if (intercept(RepastParam.getInterceptionSupplierId(), RepastParam.getInterceptionClientId())) {
-				
-				RepastParam.interceptionCountUpdate();
+		double interventionProbability = ((double) RepastParam.getInterventionGlobalPercentage()) / Constants.SHIPMENT_STEP * 0.01;
+		for (Shipment shipment : SU.getObjectsAll(Shipment.class)) {
+			if (RandomHelper.nextDouble() <= interventionProbability && shipment.getSupplier() != null) {
+				interventShipment(shipment, "Global");
 			}
 		}
 	}
 	
+	public void stepInterventionNLWholesaler() {
+		if (!(RepastParam.getInterventionWholesalerNLPercentage() > 0) || SU.getTick() <= RepastParam.getSettingInitializeTime())
+			return ;
+			
+		double interventionProbabilityNL = ((double) RepastParam.getInterventionWholesalerNLPercentage()) / Constants.SHIPMENT_STEP * 0.01;
+		for (Shipment shipment : SU.getObjectsAll(Shipment.class)) {
+			if (RandomHelper.nextDouble() <= interventionProbabilityNL && shipment.getSupplier() != null &&
+				shipment.getClient().getCountry().getName().equals("NL & B") && shipment.getClient().getScType() == SCType.WHOLESALER) {
+				
+				interventShipment(shipment, "NL");
+				SU.getDataCollector().addShipmentNLIntervenedCount();
+			}
+		}
+	}
+	
+	public void interventShipment(Shipment shipment, String message) {
+		
+		SU.getDataCollector().addDeletedStock(shipment.getGoods());
+		Logger.logInfo("stepInterventionOnShipment:" + message + " (" + shipment.getIdSupplier() + " -> " + shipment.getIdClient() + ") shipment:" + shipment.toString());
+		SU.getDataCollector().addShipmentIntervenedCount();			
+		interventShipmentRisk(shipment, shipment.getSupplier(), shipment.getClient());		
+		shipment.remove();
+	}
+	
+	/**
+	 * This function should not be called when the shipment does not have a
+	 * @param shipment
+	 */
+	public void interventShipmentRisk(Shipment shipment, BaseAgent supplier, BaseAgent client) {
+		
+		if (!RepastParam.getEnablePersonalRisk())
+			return ;
+		
+		supplier.increaseRisk(Constants.PS_INTERVENED_SHIPMENT);
+		client.increaseRisk(Constants.PS_INTERVENED_SHIPMENT_OTHER);
+		
+		CountryAgent countryC = client.getCountry();
+		
+		if (RepastParam.getInterventionType().equals("single")) 
+			return ;
+				
+		for (BaseAgent agent : SU.getObjectsAllRandom(BaseAgent.class)) {
+			if (agent.getCountry() == countryC && agent != client) {
+				if ((RepastParam.getInterventionType().equals("high") && RandomHelper.nextDouble() <= Constants.PS_INTERVENTION_SPREAD_HIGH) ||
+					(RepastParam.getInterventionType().equals("low") && RandomHelper.nextDouble() <= Constants.PS_INTERVENTION_SPREAD_LOW)) {
+					Logger.logInfo("ContextBuilder.interventShipmentRisk() increase-risk of other:" + agent.getNameId() );
+					agent.increaseRisk(Constants.PS_INTERVENED_SHIPMENT_OTHER);
+				}
+			}
+		}
+	}
+	
+	/**
+	 * DEAD CODE
+	 * @param supplierId
+	 * @param clientId
+	 * @return
+	 */
 	public boolean intercept(int supplierId, int clientId) {
+		
+		/*
+		if (SU.getTick() >= RepastParam.getInterventionFromStep()) {
+			if (SU.getTick() == RepastParam.getInterventionFromStep()) 
+				Logger.logInfo("Intercept:stepInterventionOnShipment on this tick (" + RepastParam.canIntercept() + ")");
+			else
+				Logger.logInfo("Intercept:stepInterventionOnShipment on a > tick (" + RepastParam.canIntercept() + ")");
+			
+			if (intercept(RepastParam.getInterventionSupplierId(), RepastParam.getInterventionClientId())) {
+				
+				RepastParam.interceptionCountUpdate();
+			}
+		}*/
 		
 		for (Shipment shipment : SU.getObjectsAll(Shipment.class)) {
 			if (shipment.getIdSupplier() == supplierId && shipment.getIdClient() == clientId) {

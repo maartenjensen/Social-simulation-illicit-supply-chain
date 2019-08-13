@@ -41,7 +41,6 @@ public class Agent5Consumer extends BaseAgent {
 		//ticksUntilRemoved = Constants.CONSUMER_REMOVE_TICKS;
 		ticksWithoutSatisfaction = 0;
 		
-	
 		stock.put(quality, 0.0);
 		
 		setStartingStock();

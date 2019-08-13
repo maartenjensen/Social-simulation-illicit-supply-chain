@@ -12,7 +12,7 @@ import java.util.HashMap;
  */
 public class Constants {
 	
-	public static final String DATA_PATH = "D:/Work/Output/SimulationOutput22-03-2019";
+	public static final String DATA_PATH = "D:/Work/Output/SimulationOutput31-07-2019";
 	
 	// See SupplyChainModel.rs/context.xml
 	public static final String ID_CONTEXT = "supply chain";
@@ -35,7 +35,7 @@ public class Constants {
 	public static final int MAX_NUMBER_OF_ACTIVE_CLIENTS = 10;
 	public static final int INITIALIZE_TICKS = 50;
 	public static final double SPAWN_RATE = 0.015;
-	public static final double SPAWN_RATE_CONSUMERS = 0.06;
+	public static final double SPAWN_RATE_CONSUMERS = 0.09;
 	public static final int INACTIVITY_REMOVAL = 104; //Represents two years
 	
 	public static final int SHIPMENT_STEP = 3;
@@ -70,15 +70,6 @@ public class Constants {
 	public static final double PROB_POSSIBLE_NEW_MULT = 0.5;
 	public static final int    NEW_CONNECTION_COOLDOWN = 10;
 	
-	// Risk concepts	
-	public static final double PERSONAL_RISK_DRAIN = 0.1;
-	public static final double PERSONAL_RISK_THRESHOLD_MIN = 0.5;
-	public static final double PERSONAL_RISK_THRESHOLD_MAX = 0.5;
-	
-	// Desperation concepts
-	public static final double DESPERATION_INCREASE = 0.025;
-	public static final double DESPERATION_RESET = 0.5;
-	
 	public static final double AVERAGE_COST_LEARNING_RATE = 0.2;
 	
 	public static final double PROFIT_PERC_START = 0.5;
@@ -86,10 +77,24 @@ public class Constants {
 	public static final double PROFIT_PERC_MAX = 0.9;
 	public static final double PROFIT_PERC_CHANGE = 0.025;
 	
+	// Risk concepts	
+	public static final double PERSONAL_RISK_DRAIN = 0.1;
+	public static final double PERSONAL_RISK_THRESHOLD_MIN = 0.5;
+	public static final double PERSONAL_RISK_THRESHOLD_MAX = 0.5;
+		
 	public static final double PS_SEARCH_CONNECTION = 0.05;
 	public static final double PS_NEW_CONNECTION = 0.05;
 	public static final double PS_SEND_ORDER = 0.01;
 	public static final double PS_SEND_SHIPMENT = 0.05;
+	public static final double PS_INTERVENED_SHIPMENT = 0.5;
+	public static final double PS_INTERVENED_SHIPMENT_OTHER = 0.25;
+	
+	public static final double PS_INTERVENTION_SPREAD_LOW = 0.3;
+	public static final double PS_INTERVENTION_SPREAD_HIGH = 0.6;
+	
+	// Desperation concepts
+	public static final double DESPERATION_INCREASE = 0.025;
+	public static final double DESPERATION_RESET = 0.5;
 	
 	//public static final int HashMap<Integer, Double> = ;
 	private static final HashMap<Integer, Double> BORDERS_CONNECT_P = new HashMap<Integer, Double>() {

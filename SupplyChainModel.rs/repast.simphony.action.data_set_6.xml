@@ -60,6 +60,69 @@
         <aggType>SUM</aggType>
       </repast.simphony.data2.engine.MethodDataSourceDefinition>
     </entry>
+    <entry>
+      <string>Intervened Percentage</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Intervened Percentage</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getShipmentIntervenedPercentage</methodName>
+        <aggType>SUM</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Consumed Low Quality</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Consumed Low Quality</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getQualityConsumedLow</methodName>
+        <aggType>SUM</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Consumed High Quality</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Consumed High Quality</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getQualityConsumedHigh</methodName>
+        <aggType>SUM</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Imported NL Low</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Imported NL Low</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getQualityNLLow</methodName>
+        <aggType>SUM</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Imported NL High</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Imported NL High</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getQualityNLHigh</methodName>
+        <aggType>SUM</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Imported ES Low</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Imported ES Low</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getQualityESLow</methodName>
+        <aggType>SUM</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
+    <entry>
+      <string>Imported ES High</string>
+      <repast.simphony.data2.engine.MethodDataSourceDefinition>
+        <id>Imported ES High</id>
+        <className>supplyChainModel.DataCollector</className>
+        <methodName>getQualityESHigh</methodName>
+        <aggType>SUM</aggType>
+      </repast.simphony.data2.engine.MethodDataSourceDefinition>
+    </entry>
   </methodDataSources>
   <countSources class="linked-hash-map"/>
   <customNADataSources class="linked-hash-map"/>

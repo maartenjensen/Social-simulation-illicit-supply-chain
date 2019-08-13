@@ -62,7 +62,6 @@ public class ContextDataLoader {
 
 		double qualMin = getCountryQualityMin(dataC);
 		double qualDif = getCountryQualityMax(dataC) - qualMin;
-		
 		//double europeMapX = Constants.GRID_WIDTH - 150 * Constants.VSL_EUROPEAN_MAP_SCALE;
 		//Logger.logInfo("Map of Europe starting at X: " + europeMapX);
 		
@@ -123,8 +122,8 @@ public class ContextDataLoader {
 		for (String nodeString : dataC) {
 			
 			List<String> vars = Arrays.asList(nodeString.split(","));
-			double countryQuality = Double.parseDouble(vars.get(3));
-			if (countryQuality < minQuality)
+			double countryQuality = Double.parseDouble(vars.get(6));
+			if (countryQuality < minQuality && countryQuality > 0)
 				minQuality = countryQuality;
 		}
 		return minQuality;
@@ -142,7 +141,7 @@ public class ContextDataLoader {
 		for (String nodeString : dataC) {
 			
 			List<String> vars = Arrays.asList(nodeString.split(","));
-			double countryQuality = Double.parseDouble(vars.get(3));
+			double countryQuality = Double.parseDouble(vars.get(6));
 			if (countryQuality > maxQuality)
 				maxQuality = countryQuality;
 		}

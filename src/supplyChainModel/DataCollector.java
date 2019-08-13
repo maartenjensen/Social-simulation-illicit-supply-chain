@@ -31,8 +31,14 @@ public class DataCollector {
 	private HashMap<Byte, Double> deletedStock    = new HashMap<Byte, Double>();
 	private HashMap<Byte, Double> consumedStock   = new HashMap<Byte, Double>();
 	
-	//private HashMap<Byte, Double> wholesalerSendNL = new HashMap<Byte, Double>();
-	//private HashMap<Byte, Double> wholesalerSendES = new HashMap<Byte, Double>();
+	private int shipmentCount = 0;
+	private int shipmentIntervenedCount = 0;
+	
+	private int shipmentNLCount = 0;
+	private int shipmentNLIntervenedCount = 0;
+	
+	private HashMap<Byte, Double> wholesalerReceiveNL = new HashMap<Byte, Double>();
+	private HashMap<Byte, Double> wholesalerReceiveES = new HashMap<Byte, Double>();
 	
 	protected List<String> relationsData = new ArrayList<String>();
 	
@@ -166,6 +172,102 @@ public class DataCollector {
 	
 	public double getStockCutProductTot() {
 		return cutProductStock;
+	}
+	
+	public double getShipmentIntervenedPercentage() {
+		return ((double) shipmentIntervenedCount) / shipmentCount * 100;
+	}
+	
+	public int getShipmentCount() {
+		return shipmentCount;
+	}
+	
+	public void addShipmentCount() {
+		shipmentCount ++;
+	}
+	
+	public int getShipmentIntervenedCount() {
+		return shipmentIntervenedCount;
+	}
+	
+	public void addShipmentIntervenedCount() {
+		shipmentIntervenedCount ++;
+	}
+	
+	public double getShipmentNLIntervenedPercentage() {
+		return ((double) shipmentNLIntervenedCount) / shipmentNLCount * 100;
+	}
+	
+	public int getShipmentNLCount() {
+		return shipmentNLCount;
+	}
+	
+	public void addShipmentNLCount() {
+		shipmentNLCount ++;
+	}
+	
+	public int getShipmentNLIntervenedCount() {
+		return shipmentNLIntervenedCount;
+	}
+	
+	public void addShipmentNLIntervenedCount() {
+		shipmentNLIntervenedCount ++;
+	}
+	
+	public double getQualityConsumedLow() {
+		if (consumedStock.containsKey(Constants.QUALITY_MINIMUM))
+			return consumedStock.get(Constants.QUALITY_MINIMUM);
+		return 0;
+	}
+	
+	public double getQualityConsumedHigh() {
+		if (consumedStock.containsKey(Constants.QUALITY_MAXIMUM))
+			return consumedStock.get(Constants.QUALITY_MAXIMUM);
+		return 0;
+	}
+	
+	public void addStockImportedNL(HashMap<Byte, Double> importedGoods) {
+		
+		for (Byte quality : importedGoods.keySet()) {
+			if (wholesalerReceiveNL.containsKey(quality))
+				wholesalerReceiveNL.put(quality, wholesalerReceiveNL.get(quality) + importedGoods.get(quality));
+			else
+				wholesalerReceiveNL.put(quality, importedGoods.get(quality));
+		}
+	}
+	
+	public void addStockImportedES(HashMap<Byte, Double> importedGoods) {
+		
+		for (Byte quality : importedGoods.keySet()) {
+			if (wholesalerReceiveES.containsKey(quality))
+				wholesalerReceiveES.put(quality, wholesalerReceiveES.get(quality) + importedGoods.get(quality));
+			else
+				wholesalerReceiveES.put(quality, importedGoods.get(quality));
+		}
+	}
+	
+	public double getQualityNLLow() {
+		if (wholesalerReceiveNL.containsKey(Constants.QUALITY_MINIMUM))
+			return wholesalerReceiveNL.get(Constants.QUALITY_MINIMUM);
+		return 0;
+	}
+	
+	public double getQualityNLHigh() {
+		if (wholesalerReceiveNL.containsKey(Constants.QUALITY_MAXIMUM))
+			return wholesalerReceiveNL.get(Constants.QUALITY_MAXIMUM);
+		return 0;
+	}
+	
+	public double getQualityESLow() {
+		if (wholesalerReceiveES.containsKey(Constants.QUALITY_MINIMUM))
+			return wholesalerReceiveES.get(Constants.QUALITY_MINIMUM);
+		return 0;
+	}
+	
+	public double getQualityESHigh() {
+		if (wholesalerReceiveES.containsKey(Constants.QUALITY_MAXIMUM))
+			return wholesalerReceiveES.get(Constants.QUALITY_MAXIMUM);
+		return 0;
 	}
 	
 	/*================================

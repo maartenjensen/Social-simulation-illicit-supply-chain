@@ -305,4 +305,9 @@ public class SU {
 		}
 		return data;
 	}
+	
+	public static boolean isBatchRun() {
+		
+		return RunEnvironment.getInstance().isBatch();
+	}
 }
