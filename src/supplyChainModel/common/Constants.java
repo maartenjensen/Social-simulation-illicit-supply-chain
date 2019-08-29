@@ -40,7 +40,7 @@ public class Constants {
 	
 	public static final int SHIPMENT_STEP = 3;
 	
-	// Pricing parameters	
+	// Pricing parameters
 	public static final double PRICE_LIVING_COST_MULT = 0.01;
 	public static final double PRICE_SAVED_STOCK_MULT = 0.01;
 	public static final double PRICE_MONEY_START_MULT = 5;
@@ -81,6 +81,7 @@ public class Constants {
 	public static final double PERSONAL_RISK_DRAIN = 0.1;
 	public static final double PERSONAL_RISK_THRESHOLD_MIN = 0.5;
 	public static final double PERSONAL_RISK_THRESHOLD_MAX = 0.5;
+	public static final double PERSONAL_RISK_MAX = 5;
 		
 	public static final double PS_SEARCH_CONNECTION = 0.05;
 	public static final double PS_NEW_CONNECTION = 0.05;
@@ -106,12 +107,12 @@ public class Constants {
 	};
 	
 	//public static final int HashMap<Integer, Double> = ;
-	private static final HashMap<Integer, Integer> BORDERS_COST = new HashMap<Integer, Integer>() {
+	/*private static final HashMap<Integer, Integer> BORDERS_COST = new HashMap<Integer, Integer>() {
 		private static final long serialVersionUID = 1L;
 		{
 			put(0, 100); put(1, 250); put(2, 550); put(3, 1000); put(4, 1600); put(5, 2350); put(6, 3250); put(7, 4300);
 		}
-	};
+	};*/
 	
 	// Number of nodes per country
 	public static final int N_PRODUCERS	= 6;
@@ -152,7 +153,7 @@ public class Constants {
 			return 0.0;
 		}
 	}
-	
+	/*
 	public static double getBordersCost(int borders) {
 		if (BORDERS_COST.containsKey(borders)) {
 			return BORDERS_COST.get(borders);
@@ -161,5 +162,5 @@ public class Constants {
 			Logger.logError("Constants.getBordersCost didn't find border number:" + borders);
 			return 0.0;
 		}
-	}
+	}*/
 }

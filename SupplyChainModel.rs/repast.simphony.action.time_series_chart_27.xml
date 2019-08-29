@@ -1,9 +1,9 @@
 <repast.simphony.chart2.engine.TimeSeriesChartDescriptor simphonyVersion="2.6.0">
-  <name>European Import</name>
-  <dataSet>DC Stock</dataSet>
+  <name>Selling Price and Margins</name>
+  <dataSet>Agent Data Selling Price</dataSet>
   <xAxisLabel>Tick Count</xAxisLabel>
-  <yAxisLabel>Amount KG</yAxisLabel>
-  <chartTitle>European Import</chartTitle>
+  <yAxisLabel>Price per Unit</yAxisLabel>
+  <chartTitle>Selling Price</chartTitle>
   <type>TIME_SERIES</type>
   <background>
     <red>255</red>
@@ -21,23 +21,47 @@
   <showLegend>true</showLegend>
   <seriesIds>
     <entry>
-      <string>Imported ES High</string>
+      <string>I Avg Buy</string>
       <SeriesData>
-        <label>Imported ES High</label>
+        <label>I Avg Buy</label>
         <color>
-          <red>255</red>
-          <green>0</green>
+          <red>153</red>
+          <green>255</green>
+          <blue>102</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+    <entry>
+      <string>I Sell Price</string>
+      <SeriesData>
+        <label>I Sell Price</label>
+        <color>
+          <red>0</red>
+          <green>153</green>
           <blue>0</blue>
           <alpha>255</alpha>
         </color>
       </SeriesData>
     </entry>
     <entry>
-      <string>Imported NL Low</string>
+      <string>R Avg Buy</string>
       <SeriesData>
-        <label>Imported NL Low</label>
+        <label>R Avg Buy</label>
         <color>
-          <red>0</red>
+          <red>255</red>
+          <green>153</green>
+          <blue>102</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+    <entry>
+      <string>W Sell Price</string>
+      <SeriesData>
+        <label>W Sell Price</label>
+        <color>
+          <red>204</red>
           <green>0</green>
           <blue>204</blue>
           <alpha>255</alpha>
@@ -45,23 +69,47 @@
       </SeriesData>
     </entry>
     <entry>
-      <string>Imported NL High</string>
+      <string>P Sell Price</string>
       <SeriesData>
-        <label>Imported NL High</label>
+        <label>P Sell Price</label>
         <color>
           <red>0</red>
-          <green>204</green>
+          <green>0</green>
           <blue>255</blue>
           <alpha>255</alpha>
         </color>
       </SeriesData>
     </entry>
     <entry>
-      <string>Imported ES Low</string>
+      <string>P Avg Buy</string>
       <SeriesData>
-        <label>Imported ES Low</label>
+        <label>P Avg Buy</label>
         <color>
-          <red>102</red>
+          <red>51</red>
+          <green>255</green>
+          <blue>255</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+    <entry>
+      <string>W Avg Buy</string>
+      <SeriesData>
+        <label>W Avg Buy</label>
+        <color>
+          <red>255</red>
+          <green>153</green>
+          <blue>255</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+    <entry>
+      <string>R Sell Price</string>
+      <SeriesData>
+        <label>R Sell Price</label>
+        <color>
+          <red>153</red>
           <green>0</green>
           <blue>0</blue>
           <alpha>255</alpha>

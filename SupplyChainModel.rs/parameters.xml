@@ -7,7 +7,7 @@
 									
 		/>
 				<parameter name="pInterventionType" displayName="Intervention - Type" type="java.lang.String" 
-						defaultValue="none" 
+						defaultValue="high" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
 									values="none single low high "
@@ -25,6 +25,12 @@
 						converter="repast.simphony.parameter.StringConverterFactory$BooleanConverter"
 									
 		/>
+				<parameter name="pInterventionRiskIncreaseOther" displayName="Intervention - Risk Increase Other" type="double" 
+						defaultValue="1.0" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
 				<parameter name="pSendShipmentProbability" displayName="Concept - Send Shipment Probability" type="double" 
 						defaultValue="1.0" 
 						isReadOnly="false" 
@@ -38,15 +44,9 @@
 									
 		/>
 				<parameter name="pInterventionGlobalPercentage" displayName="Intervention - Global Percentage" type="int" 
-						defaultValue="5" 
+						defaultValue="10" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
-									
-		/>
-				<parameter name="pDesperationOnOrder" displayName="Concept - Desperation on Order (not shipment)" type="boolean" 
-						defaultValue="true" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$BooleanConverter"
 									
 		/>
 				<parameter name="pConMax" displayName="Parameter - Consumption Max" type="double" 
@@ -92,7 +92,7 @@
 									
 		/>
 				<parameter name="pInterventionWholesalerNLPercentage" displayName="Intervention Wholesaler NL Percentage" type="int" 
-						defaultValue="0" 
+						defaultValue="50" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									

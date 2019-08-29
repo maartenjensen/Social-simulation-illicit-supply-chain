@@ -179,7 +179,10 @@ public class DataCollector {
 	}
 	
 	public double getShipmentIntervenedPercentage() {
-		return ((double) shipmentIntervenedCount) / shipmentCount * 100;
+		if (shipmentCount == 0)
+			return 0;
+		else
+			return ((double) shipmentIntervenedCount) / shipmentCount * 100;
 	}
 	
 	public int getShipmentCount() {
@@ -199,7 +202,10 @@ public class DataCollector {
 	}
 	
 	public double getShipmentNLIntervenedPercentage() {
-		return ((double) shipmentNLIntervenedCount) / shipmentNLCount * 100;
+		if (shipmentNLCount == 0)
+			return 0;
+		else
+			return ((double) shipmentNLIntervenedCount) / shipmentNLCount * 100;
 	}
 	
 	public int getShipmentNLCount() {
@@ -236,6 +242,38 @@ public class DataCollector {
 		if (consumedStock.containsKey(Constants.QUALITY_MAXIMUM))
 			return consumedStock.get(Constants.QUALITY_MAXIMUM);
 		return 0;
+	}
+	
+	public double getAverageWholesalerRiskNL() {
+		
+		int count = 0;
+		double total = 0;
+		for (Agent3Wholesaler wholesaler : SU.getObjectsAll(Agent3Wholesaler.class)) {
+			if (wholesaler.getCountry().getName().equals("NL & B")) {
+				count ++;
+				total += wholesaler.getPersonalRisk();
+			}
+		}
+		if (count == 0)
+			return 0;
+		else
+			return total / count;
+	}
+	
+	public double getAverageWholesalerRiskES() {
+		
+		int count = 0;
+		double total = 0;
+		for (Agent3Wholesaler wholesaler : SU.getObjectsAll(Agent3Wholesaler.class)) {
+			if (wholesaler.getCountry().getName().equals("ES & P")) {
+				count ++;
+				total += wholesaler.getPersonalRisk();
+			}
+		}
+		if (count == 0)
+			return 0;
+		else
+			return total / count;
 	}
 	
 	public void addStockImportedNL(HashMap<Byte, Double> importedGoods) {
@@ -297,13 +335,17 @@ public class DataCollector {
 	}
 	
 	public double getShipmentNLMax() {
-		//TODO implement this
-		return 0;
+		if (shipmentSizeMaxNL.containsKey(SU.getTick()))
+			return shipmentSizeMaxNL.get(SU.getTick());
+		else
+			return 0;
 	}
 	
 	public double getShipmentESMax() {
-		//TODO implement this
-		return 0;
+		if (shipmentSizeMaxES.containsKey(SU.getTick()))
+			return shipmentSizeMaxES.get(SU.getTick());
+		else
+			return 0;
 	}
 	
 	/*================================

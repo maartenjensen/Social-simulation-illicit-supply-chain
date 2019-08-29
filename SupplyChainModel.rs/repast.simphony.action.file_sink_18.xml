@@ -1,15 +1,24 @@
 <repast.simphony.data2.engine.FileSinkDescriptor simphonyVersion="2.6.0">
-  <name>European Import</name>
-  <dataSet>DC Stock</dataSet>
+  <name>BatchRunOutput</name>
+  <dataSet>BatchRunOutput</dataSet>
   <delimiter>,</delimiter>
   <format>TABULAR</format>
   <sourceIds class="linked-hash-set">
+    <string>run</string>
     <string>tick</string>
-    <string>Imported NL Low</string>
-    <string>Imported NL High</string>
-    <string>Imported ES Low</string>
-    <string>Imported ES High</string>
+    <string>random_seed</string>
+    <string>Produced</string>
+    <string>Deleted</string>
+    <string>Consumed</string>
+    <string>Cut Source</string>
+    <string>Cut Produced</string>
+    <string>Consumed Low</string>
+    <string>Consumed High</string>
+    <string>Quality ES High</string>
+    <string>Quality ES Low</string>
+    <string>Quality NL High</string>
+    <string>Quality NL Low</string>
   </sourceIds>
-  <fileName>output\BatchOutput\EuropeanImport.txt</fileName>
+  <fileName>output\BatchOutput\BatchRunOutput.txt</fileName>
   <addTimeStamp>true</addTimeStamp>
 </repast.simphony.data2.engine.FileSinkDescriptor>

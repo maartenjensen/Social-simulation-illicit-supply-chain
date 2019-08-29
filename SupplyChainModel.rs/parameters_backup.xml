@@ -7,7 +7,7 @@
 									
 		/>
 				<parameter name="pInterventionType" displayName="Intervention - Type" type="java.lang.String" 
-						defaultValue="none" 
+						defaultValue="high" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
 									values="none single low high "
@@ -25,6 +25,12 @@
 						converter="repast.simphony.parameter.StringConverterFactory$BooleanConverter"
 									
 		/>
+				<parameter name="pInterventionRiskIncreaseOther" displayName="Intervention - Risk Increase Other" type="double" 
+						defaultValue="1.0" 
+						isReadOnly="false" 
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
+									
+		/>
 				<parameter name="pSendShipmentProbability" displayName="Concept - Send Shipment Probability" type="double" 
 						defaultValue="1.0" 
 						isReadOnly="false" 
@@ -37,14 +43,8 @@
 						converter="repast.simphony.parameter.StringConverterFactory$BooleanConverter"
 									
 		/>
-				<parameter name="pInterceptionClientId" displayName="Interception - Client Id" type="int" 
-						defaultValue="-1" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
-									
-		/>
 				<parameter name="pInterventionGlobalPercentage" displayName="Intervention - Global Percentage" type="int" 
-						defaultValue="5" 
+						defaultValue="10" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
@@ -79,18 +79,6 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="pInterceptionFromStep" displayName="Interception - Intercept from step" type="int" 
-						defaultValue="0" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
-									
-		/>
-				<parameter name="pInterceptionSupplierId" displayName="Interception - Supplier Id" type="int" 
-						defaultValue="-1" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
-									
-		/>
 				<parameter name="pProdMax" displayName="Parameter - Production max" type="double" 
 						defaultValue="10.0" 
 						isReadOnly="false" 
@@ -103,12 +91,6 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="pInterceptionCount" displayName="Interception - Number of Interceptions" type="int" 
-						defaultValue="1" 
-						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
-									
-		/>
 				<parameter name="pProducerNumberCap" displayName="Parameter - Producer Number Maximum" type="int" 
 						defaultValue="8" 
 						isReadOnly="false" 
@@ -116,7 +98,7 @@
 									
 		/>
 				<parameter name="pInterventionWholesalerNLPercentage" displayName="Intervention Wholesaler NL Percentage" type="int" 
-						defaultValue="0" 
+						defaultValue="50" 
 						isReadOnly="false" 
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									

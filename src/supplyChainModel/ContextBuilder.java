@@ -241,6 +241,10 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		for (Shipment shipment : SU.getObjectsAll(Shipment.class)) {
 			if (RandomHelper.nextDouble() <= interventionProbability && shipment.getSupplier() != null) {
 				interventShipment(shipment, "Global");
+				if (shipment.getClient().getCountry().getName().equals("NL & B")) {
+					SU.getDataCollector().addShipmentNLIntervenedCount();
+					SU.getDataCollector().addShipmentNLIntervenedSize(shipment.getRealSize());
+				}
 			}
 		}
 	}
@@ -279,56 +283,23 @@ public class ContextBuilder implements repast.simphony.dataLoader.ContextBuilder
 		if (!RepastParam.getEnablePersonalRisk())
 			return ;
 		
-		supplier.increaseRisk(Constants.PS_INTERVENED_SHIPMENT);
-		client.increaseRisk(Constants.PS_INTERVENED_SHIPMENT_OTHER);
+		supplier.increaseRisk(Math.max(RepastParam.getInterventionRiskIncreaseOther(), Constants.PS_INTERVENED_SHIPMENT));
+		client.increaseRisk(RepastParam.getInterventionRiskIncreaseOther());//Constants.PS_INTERVENED_SHIPMENT_OTHER);
 		
 		CountryAgent countryC = client.getCountry();
 		
 		if (RepastParam.getInterventionType().equals("single")) 
 			return ;
-				
+		
 		for (BaseAgent agent : SU.getObjectsAllRandom(BaseAgent.class)) {
 			if (agent.getCountry() == countryC && agent != client) {
 				if ((RepastParam.getInterventionType().equals("high") && RandomHelper.nextDouble() <= Constants.PS_INTERVENTION_SPREAD_HIGH) ||
 					(RepastParam.getInterventionType().equals("low") && RandomHelper.nextDouble() <= Constants.PS_INTERVENTION_SPREAD_LOW)) {
 					Logger.logInfo("ContextBuilder.interventShipmentRisk() increase-risk of other:" + agent.getNameId() );
-					agent.increaseRisk(Constants.PS_INTERVENED_SHIPMENT_OTHER);
+					agent.increaseRisk(RepastParam.getInterventionRiskIncreaseOther());//Constants.PS_INTERVENED_SHIPMENT_OTHER);
 				}
 			}
 		}
-	}
-	
-	/**
-	 * DEAD CODE
-	 * @param supplierId
-	 * @param clientId
-	 * @return
-	 */
-	public boolean intercept(int supplierId, int clientId) {
-		
-		/*
-		if (SU.getTick() >= RepastParam.getInterventionFromStep()) {
-			if (SU.getTick() == RepastParam.getInterventionFromStep()) 
-				Logger.logInfo("Intercept:stepInterventionOnShipment on this tick (" + RepastParam.canIntercept() + ")");
-			else
-				Logger.logInfo("Intercept:stepInterventionOnShipment on a > tick (" + RepastParam.canIntercept() + ")");
-			
-			if (intercept(RepastParam.getInterventionSupplierId(), RepastParam.getInterventionClientId())) {
-				
-				RepastParam.interceptionCountUpdate();
-			}
-		}*/
-		
-		for (Shipment shipment : SU.getObjectsAll(Shipment.class)) {
-			if (shipment.getIdSupplier() == supplierId && shipment.getIdClient() == clientId) {
-				SU.getDataCollector().addDeletedStock(shipment.getGoods());
-				shipment.remove();
-				Logger.logInfo("Intercept:intercept(" + supplierId + "," + clientId + ") shipment:" + shipment.toString());
-				return true;
-			}				
-		}
-		Logger.logInfo("Intercept:intercept(" + supplierId + "," + clientId + ") not performed, no possible shipments");
-		return false;
 	}
 	
 	/**

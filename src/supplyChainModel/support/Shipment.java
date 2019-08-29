@@ -8,6 +8,7 @@ import repast.simphony.space.continuous.NdPoint;
 import supplyChainModel.agents.BaseAgent;
 import supplyChainModel.common.Constants;
 import supplyChainModel.common.Logger;
+import supplyChainModel.common.RepastParam;
 import supplyChainModel.common.SU;
 import supplyChainModel.enums.SCType;
 
@@ -41,13 +42,19 @@ public class Shipment {
 		setStartPosition();
 		setLargestQuality();
 		
-		if (supplier != null) {
+		if (supplier != null && SU.getTick() > RepastParam.getSettingInitializeTime()) {
 			SU.getDataCollector().addShipmentCount();
-			if (client.getCountry().getName().equals("NL & B") && client.getScType() == SCType.WHOLESALER)
-				SU.getDataCollector().addShipmentNLCount();
+			if (client.getScType() == SCType.WHOLESALER) {
+				if (client.getCountry().getName().equals("NL & B")) {
+					SU.getDataCollector().addShipmentSizeNL(getRealSize());
+					SU.getDataCollector().addShipmentNLCount();
+				}
+				else if (client.getCountry().getName().equals("ES & P"))
+					SU.getDataCollector().addShipmentSizeES(getRealSize());
+			}
 		}
 	}
-	
+
 	/**
 	 * Decreases the steps, gives an error if there are less than zero steps and moves the order
 	 */

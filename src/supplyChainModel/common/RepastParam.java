@@ -21,7 +21,7 @@ public final class RepastParam {
 	private static boolean enablePersonalRisk = true;
 	private static boolean enableDesperation = true;
 	private static boolean enableSupplierOnPriceSelection = true;
-	private static boolean enableDesperationOnOrder = true;
+	//private static boolean enableDesperationOnOrder = true;
 	private static int producerNumberCap = 8;
 	private static boolean limitedSuppliersClients = false;
 	private static boolean realisticMap = false;
@@ -31,6 +31,7 @@ public final class RepastParam {
 	private static String interventionType = "none";
 	private static int interventionGlobalPercentage = 5;
 	private static int interventionWholesalerNLPercentage = 0;
+	private static double interventionRiskIncreaseOther = 0.25;
 	
 	public static void setRepastParameters() {
 		
@@ -46,13 +47,15 @@ public final class RepastParam {
 		enablePersonalRisk = p.getBoolean("pEnablePersonalRisk");
 		enableDesperation = p.getBoolean("pDesperation");
 		enableSupplierOnPriceSelection = p.getBoolean("pEnableSupplierOnPriceSelection");
-		enableDesperationOnOrder = p.getBoolean("pDesperationOnOrder");
+		//enableDesperationOnOrder = p.getBoolean("pDesperationOnOrder");
 		settingLoadPopulationFile = p.getBoolean("pSettingLoadPopulationFile");
 		settingInitializeTime = p.getInteger("pSettingInitializeTime");
 		
 		interventionType 		= p.getString("pInterventionType");
 		interventionGlobalPercentage = p.getInteger("pInterventionGlobalPercentage");
 		interventionWholesalerNLPercentage = p.getInteger("pInterventionWholesalerNLPercentage");
+		
+		interventionRiskIncreaseOther = p.getDouble("pInterventionRiskIncreaseOther");
 	}
 
 	/**
@@ -101,9 +104,9 @@ public final class RepastParam {
 		return enableDesperation;
 	}
 	
-	public static boolean enableDesperationOnOrder() {
-		return enableDesperationOnOrder;
-	}
+	//public static boolean enableDesperationOnOrder() {
+	//	return enableDesperationOnOrder;
+	//}
 	
 	public static boolean getSettingLoadPopulationFile() {
 		return settingLoadPopulationFile;
@@ -127,5 +130,9 @@ public final class RepastParam {
 	
 	public static int getInterventionWholesalerNLPercentage() {
 		return interventionWholesalerNLPercentage;
+	}
+	
+	public static double getInterventionRiskIncreaseOther() {
+		return interventionRiskIncreaseOther;
 	}
 }

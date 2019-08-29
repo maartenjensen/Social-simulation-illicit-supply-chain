@@ -1,9 +1,9 @@
 <repast.simphony.chart2.engine.TimeSeriesChartDescriptor simphonyVersion="2.6.0">
-  <name>Quality</name>
+  <name>Stock</name>
   <dataSet>DC Stock</dataSet>
   <xAxisLabel>Tick Count</xAxisLabel>
-  <yAxisLabel>Amount kg</yAxisLabel>
-  <chartTitle>Quality</chartTitle>
+  <yAxisLabel>Kilograms</yAxisLabel>
+  <chartTitle>Stock Totals</chartTitle>
   <type>TIME_SERIES</type>
   <background>
     <red>255</red>
@@ -21,25 +21,61 @@
   <showLegend>true</showLegend>
   <seriesIds>
     <entry>
-      <string>Consumed Low Quality</string>
+      <string>Produced Tot</string>
       <SeriesData>
-        <label>Consumed Low Quality</label>
+        <label>Produced</label>
         <color>
-          <red>51</red>
-          <green>102</green>
+          <red>0</red>
+          <green>0</green>
+          <blue>255</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+    <entry>
+      <string>Deleted Tot</string>
+      <SeriesData>
+        <label>Deleted</label>
+        <color>
+          <red>255</red>
+          <green>0</green>
           <blue>0</blue>
           <alpha>255</alpha>
         </color>
       </SeriesData>
     </entry>
     <entry>
-      <string>Consumed High Quality</string>
+      <string>Cut Product Tot</string>
       <SeriesData>
-        <label>Consumed High Quality</label>
+        <label>Cut Product Low</label>
         <color>
-          <red>102</red>
+          <red>255</red>
+          <green>153</green>
+          <blue>0</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+    <entry>
+      <string>Consumed Tot</string>
+      <SeriesData>
+        <label>Consumed</label>
+        <color>
+          <red>0</red>
           <green>255</green>
           <blue>0</blue>
+          <alpha>255</alpha>
+        </color>
+      </SeriesData>
+    </entry>
+    <entry>
+      <string>Cut Source Tot</string>
+      <SeriesData>
+        <label>Cut Source High</label>
+        <color>
+          <red>255</red>
+          <green>255</green>
+          <blue>51</blue>
           <alpha>255</alpha>
         </color>
       </SeriesData>

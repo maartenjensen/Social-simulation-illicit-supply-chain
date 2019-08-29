@@ -32,7 +32,6 @@ public class BaseAgent {
 	protected CountryAgent baseCountry;
 	protected SCType scType;
 	
-	
 	protected double minPackageSize;
 	protected double maxPackageSize;
 	
@@ -1172,12 +1171,12 @@ public class BaseAgent {
 		if (personalRisk >= personalRiskThreshold && RepastParam.getEnablePersonalRisk()) {
 			return false;
 		} 
-		personalRisk = Math.min(1, personalRisk + riskAdd);
+		personalRisk = Math.min(Constants.PERSONAL_RISK_MAX, personalRisk + riskAdd);
 		return true;
 	}
 	
 	public void increaseRisk(double riskAdd) {
-		personalRisk = Math.min(1, personalRisk + riskAdd);
+		personalRisk = Math.min(Constants.PERSONAL_RISK_MAX, personalRisk + riskAdd);
 	}
 
 	/*================================

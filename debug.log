@@ -1,55 +1,30 @@
-INFO  [AWT-EventQueue-0] 2019-08-13 16:00:09,761 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: D:\Work\WorkspaceRepast\SupplyChainModel\output\config.props
-INFO  [AWT-EventQueue-0] 2019-08-13 16:00:10,202 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
-	D:\Work\WorkspaceRepast\SupplyChainModel\batch\batch_params.xml to
-	C:\Users\Maarten\AppData\Local\Temp\unrolledParamFile.txt
-INFO  [AWT-EventQueue-0] 2019-08-13 16:02:11,888 repast.simphony.batch.gui.BatchConfigMediator - Writing batch run config file to: D:\Work\WorkspaceRepast\SupplyChainModel\output\config.props
-INFO  [AWT-EventQueue-0] 2019-08-13 16:02:11,893 repast.simphony.batch.gui.BatchConfigMediator - Unrolling batch parameter file:
-	D:\Work\WorkspaceRepast\SupplyChainModel\batch\batch_params.xml to
-	C:\Users\Maarten\AppData\Local\Temp\unrolledParamFile.txt
-INFO  [SwingWorker-pool-2-thread-1] 2019-08-13 16:03:34,198 repast.simphony.batch.ssh.LocalSession - 
-	Copying locally C:\Users\Maarten\AppData\Local\Temp\Maarten_localhost9999979507900578.zip to 
-C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565705009203 ...
-INFO  [SwingWorker-pool-2-thread-1] 2019-08-13 16:03:34,250 repast.simphony.batch.ssh.LocalSession - Copying Finished.
-INFO  [SwingWorker-pool-2-thread-1] 2019-08-13 16:03:34,251 repast.simphony.batch.ssh.SessionsDriver - Initialization Time: 0,0841
-INFO  [SwingWorker-pool-2-thread-1] 2019-08-13 16:03:34,251 repast.simphony.batch.ssh.LocalSession - Unzipping model C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565705009203\Maarten_localhost9999979507900578.zip
-INFO  [SwingWorker-pool-2-thread-1] 2019-08-13 16:03:50,903 repast.simphony.batch.ssh.LocalSession - Running model on localhost ...
-INFO  [Thread-0] 2019-08-13 16:04:02,858 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
-INFO  [Thread-0] 2019-08-13 16:04:02,859 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Maarten/AppData/Local/Temp/simphony_model_1565705009203/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
-INFO  [Thread-0] 2019-08-13 16:04:02,859 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
-INFO  [Thread-0] 2019-08-13 16:04:02,859 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
-INFO  [Thread-0] 2019-08-13 16:04:02,860 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
-INFO  [Thread-0] 2019-08-13 16:04:02,864 repast.simphony.batch.ssh.LocalSession - WARNING: An illegal reflective access operation has occurred
-INFO  [Thread-0] 2019-08-13 16:04:02,864 repast.simphony.batch.ssh.LocalSession - WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/C:/Users/Maarten/AppData/Local/Temp/simphony_model_1565705009203/lib/xstream-1.4.7.jar) to field java.util.TreeMap.comparator
-INFO  [Thread-0] 2019-08-13 16:04:02,864 repast.simphony.batch.ssh.LocalSession - WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
-INFO  [Thread-0] 2019-08-13 16:04:02,864 repast.simphony.batch.ssh.LocalSession - WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
-INFO  [Thread-0] 2019-08-13 16:04:02,864 repast.simphony.batch.ssh.LocalSession - WARNING: All illegal access operations will be denied in a future release
-INFO  [Thread-0] 2019-08-13 16:04:03,258 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:03,270 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:06,325 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:06,455 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:08,502 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:09,057 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:10,449 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:10,922 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:12,562 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:13,674 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:15,227 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:15,500 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:16,860 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:17,076 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:17,369 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:17,982 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:18,204 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:18,686 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:18,931 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:19,792 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:19,928 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:20,847 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:21,065 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [Thread-0] 2019-08-13 16:04:21,690 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
-INFO  [pool-3-thread-1] 2019-08-13 16:04:50,913 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565705009203 for DONE:  yes
-INFO  [SwingWorker-pool-2-thread-1] 2019-08-13 16:04:50,914 repast.simphony.batch.ssh.SessionsDriver - Run Time: 1,2777
-INFO  [SwingWorker-pool-2-thread-1] 2019-08-13 16:04:51,289 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1565705009203
-INFO  [SwingWorker-pool-2-thread-1] 2019-08-13 16:04:51,324 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into D:/Work/WorkspaceRepast/SupplyChainModel/output
-INFO  [SwingWorker-pool-2-thread-1] 2019-08-13 16:04:51,894 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,0163
-INFO  [SwingWorker-pool-2-thread-1] 2019-08-13 16:04:51,894 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 1,3785
+INFO  [Thread-3] 2019-08-22 12:00:57,986 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [Thread-3] 2019-08-22 12:00:59,611 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [Thread-3] 2019-08-22 12:01:00,831 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [Thread-3] 2019-08-22 12:01:02,447 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [Thread-3] 2019-08-22 12:01:04,445 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [Thread-3] 2019-08-22 12:01:06,094 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [Thread-3] 2019-08-22 12:01:07,991 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [Thread-3] 2019-08-22 12:01:10,377 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [Thread-3] 2019-08-22 12:01:11,947 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [Thread-3] 2019-08-22 12:01:13,959 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [Thread-3] 2019-08-22 12:01:16,135 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [Thread-3] 2019-08-22 12:01:17,558 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [Thread-3] 2019-08-22 12:01:19,005 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [Thread-3] 2019-08-22 12:01:20,474 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [Thread-3] 2019-08-22 12:01:21,967 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [Thread-3] 2019-08-22 12:01:23,453 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [Thread-3] 2019-08-22 12:01:25,631 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [Thread-3] 2019-08-22 12:01:26,886 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [Thread-3] 2019-08-22 12:01:28,610 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [Thread-3] 2019-08-22 12:01:30,920 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [Thread-3] 2019-08-22 12:01:32,872 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [pool-3-thread-1] 2019-08-22 12:01:33,682 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Maarten\AppData\Local\Temp\simphony_model_1566466452702 for DONE:  no
+INFO  [Thread-3] 2019-08-22 12:01:34,584 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [Thread-3] 2019-08-22 12:01:36,010 repast.simphony.batch.ssh.LocalSession - BATCH: Started a new batch run!
+INFO  [pool-3-thread-1] 2019-08-22 12:02:33,682 repast.simphony.batch.ssh.LocalDonePoller - Polled C:\Users\Maarten\AppData\Local\Temp\simphony_model_1566466452702 for DONE:  yes
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-22 12:02:33,684 repast.simphony.batch.ssh.SessionsDriver - Run Time: 28,2685
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-22 12:02:34,000 repast.simphony.batch.ssh.LocalSession - Finding output on localhost in C:\Users\Maarten\AppData\Local\Temp\simphony_model_1566466452702
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-22 12:02:34,065 repast.simphony.batch.ssh.SessionsDriver - Aggregating output into D:/Work/WorkspaceRepast/SupplyChainModel/output
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-22 12:03:09,494 repast.simphony.batch.ssh.SessionsDriver - Get Output Time: 0,5968
+INFO  [SwingWorker-pool-2-thread-1] 2019-08-22 12:03:09,494 repast.simphony.batch.ssh.SessionsDriver - Finished. Elapsed Time: 28,9472
