@@ -47,6 +47,8 @@ public class Constants {
 	public static final double SHIPMENT_MAX_4TO5 = 20;
 	public static final double SHIPMENT_MIN_PERCENTAGE = 5;
 	
+	public static final int INACTIVITY_REMOVAL = 104; //Represents two years
+	
 	public static final double SEND_ORDER_LEARN_RATE = 0.05;
 	public static final double LATE_SHIPMENT_PENALIZE_MULT = 0.5;
 	

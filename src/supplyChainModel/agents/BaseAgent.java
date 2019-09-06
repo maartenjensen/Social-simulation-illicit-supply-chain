@@ -42,6 +42,8 @@ public class BaseAgent {
 	protected int newSupplierCooldown = 0;
 	protected int newClientCooldown = 0;
 
+	protected int inactivityTimer = 0;
+	
 	protected HashMap<Integer, RelationS> relationsS = new HashMap<Integer, RelationS>(); // Key: node id
 	protected HashMap<Integer, RelationC> relationsC = new HashMap<Integer, RelationC>(); // Key: node id
 
@@ -88,7 +90,12 @@ public class BaseAgent {
 		
 		money -= ((Constants.PRICE_LIVING_COST_MULT * maxPackageSize) + Constants.PRICE_SAVED_STOCK_MULT * getTotalGoodsQuantity(stock)) * sellPrice;
 		
-		if (money < 0) {
+		if (getAllMyShipments().size() >= 1)
+			inactivityTimer = 0;
+		else
+			inactivityTimer ++;
+		
+		if (money < 0 || inactivityTimer > Constants.INACTIVITY_REMOVAL) {
 			remove();
 		}
 	}
